@@ -1,1 +1,1 @@
-# [vRPEX] ZIRIX V2 (0.2.0)
+# [vRPEX] ZIRIX V2 (v0.2.0)
