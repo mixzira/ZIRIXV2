@@ -1,2 +1,2 @@
-
-zirix-data/cache/files/character-creator/resource.rpf.db
+build/**/*
+zirix-data/cache/**/*
