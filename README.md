@@ -1,1 +1,1 @@
-# vrpex-zirix-v2
+# [vRPEX] ZIRIX V2 (0.2.0)
