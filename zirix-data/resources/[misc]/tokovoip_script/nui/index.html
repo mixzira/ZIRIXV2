@@ -1,0 +1,75 @@
+<html>
+	<head>
+		<style>
+			body {
+				overflow-y: hidden;
+				overflow-x: hidden;
+				overflow: hidden;
+			}
+			
+			.tokovoipInfo {
+				position: absolute;
+				width: 284px;
+				height: 13px;
+				bottom: 24px;
+				left: 1617px;
+				font-family: Arial;
+				font-weight: bold;
+				font-size: 8pt;
+				color: white;
+				float: right;
+				overflow: hidden;
+				overflow-y: hidden;
+				overflow: hidden;
+			}
+			.pluginScreen {
+				display: none;
+				position: absolute;
+				background: rgba(0, 0, 0, 1);
+				width: 100%;
+				height: 100%;
+				top: 0;
+				left: 0;
+				z-index: 8888888;
+				overflow: hidden;
+			}
+			.pluginScreenWindow {
+				background: rgba(0, 0, 0, 0.5);
+				width: 300px;
+				height: auto;
+				margin-left: auto;
+				margin-right: auto;
+				position: relative;
+				top: 50%;
+				transform: translateY(-51%);
+				color: #eee;
+				font-family: Tahoma, Geneva, sans-serif;
+				font-size: 12px;
+				text-shadow: 1px 1px #000000;
+				font-weight: bold;
+				overflow: hidden;
+			}
+			.talking {
+				color: #EACB66;
+				font-size: 8pt;
+			}
+			.normal { 
+				color: #BFBFBF;
+				font-size: 8pt;
+			}
+		</style>
+		<script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+		<script src="script.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="pluginScreen" class="pluginScreen">
+			<div id="pluginScreenWindow" class="pluginScreenWindow">
+				<div style="font-size:25px;text-align:center;margin-bottom:20px;">
+					TOKOVOIP OFFLINE
+				</div>
+			</div>
+		</div>
+		<div id="tokovoipInfo" class="tokovoipInfo">
+		</div>
+	</body>
+</html>
