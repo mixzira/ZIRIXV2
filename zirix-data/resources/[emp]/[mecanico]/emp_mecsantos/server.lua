@@ -26,14 +26,9 @@ function emP.checkPayment()
 	local user_id = vRP.getUserId(source)
 	local data = vRP.getUserAptitudes(user_id)
 	if user_id then
-		if vRP.getToken(user_id) > 0 then
-			TriggerClientEvent("Notify",source,"importante","Não estamos contratando pessoas com <b>Ficha Criminal</b>, caso queira trabalhar<br>conosco procure as autoridades e efetue a limpeza da mesma.",10000)
-			return false
-		end
-
-		if vRP.tryGetInventoryItem(user_id,"ferramenta",quantidade[source]) then
+		if vRP.tryGetInventoryItem(user_id,"celular",quantidade[source]) then
 			local valor = math.random(750,1000)
-			local result = valor+(valor*data.creative.mecanico*0.0001)
+			local result = valor+(valor*data.creative.mecanico*0.0001) -- esta dando erro aqui 
 			vRP.giveMoney(user_id,parseInt(result))
 			TriggerClientEvent("vrp_sound:source",source,'coin',0.2)
 			TriggerClientEvent("Notify",source,"sucesso","Entrega concluída, recebido <b>$"..vRP.format(parseInt(result)).." dólares</b>.",8000)

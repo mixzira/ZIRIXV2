@@ -25,7 +25,7 @@ function cRP.startPlanting(id,receive)
 	local user_id = vRP.getUserId(source)
 	if user_id then
 		if not locates[id] then
-			if vRP.tryGetInventoryItem(user_id,"semente",1) then
+			if vRP.tryGetInventoryItem(user_id,"celular",1) then
 				locates[id] = 0
 				TriggerClientEvent("cancelando",source,true)
 				TriggerClientEvent("Progress",source,9000)

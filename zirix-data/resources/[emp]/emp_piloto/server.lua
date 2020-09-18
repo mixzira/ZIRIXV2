@@ -9,7 +9,7 @@ Tunnel.bindInterface("emp_piloto",emP)
 function emP.checkPermission()
 	local source = source
 	local user_id = vRP.getUserId(source)
-	return vRP.hasPermission(user_id,"piloto.permissao")
+	return vRP.hasPermission(user_id,"mecanico.permissao")
 end
 
 function emP.checkPayment()

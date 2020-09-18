@@ -17,6 +17,8 @@ local checkped = true
 local maxlocs = 32
 local timers = 0
 local payment = 10
+
+--Locs 304.01,-597.35,43.29
 -----------------------------------------------------------------------------------------------------------------------------------------
 -- LOCALIDADES
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -115,7 +117,7 @@ Citizen.CreateThread(function()
 			if IsPedInAnyVehicle(ped) then
 				local vehicle = GetVehiclePedIsUsing(ped)
 				local x,y,z = table.unpack(GetEntityCoords(ped))
-				if Vdist(x,y,z,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]) <= 50.0 and (IsVehicleModel(vehicle,GetHashKey("crownvictoria")) or IsVehicleModel(vehicle,GetHashKey("chevtahoe")) or IsVehicleModel(vehicle,GetHashKey("fordexplorer")) or IsVehicleModel(vehicle,GetHashKey("charger2014"))) then
+				if Vdist(x,y,z,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]) <= 50.0 and (IsVehicleModel(vehicle,GetHashKey("crownvictoria")) or IsVehicleModel(vehicle,GetHashKey("ambulance")) or IsVehicleModel(vehicle,GetHashKey("fordexplorer")) or IsVehicleModel(vehicle,GetHashKey("charger2014"))) then
 					DrawMarker(21,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]+0.20,0,0,0,0,180.0,130.0,2.0,2.0,1.0,240,200,80,20,1,0,0,1)
 					if Vdist(x,y,z,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]) <= 2.5 then
 						if IsControlJustPressed(1,38) and emP.checkPermission() and (GetEntityHeading(ped) >= locs[selecionado][7]-20.0 and GetEntityHeading(ped) <= locs[selecionado][7]+20.0) then
