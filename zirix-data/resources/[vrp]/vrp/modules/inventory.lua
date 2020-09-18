@@ -38,6 +38,13 @@ local itemlist = {
 	["garrafa-vazia"] = { index = "garrafa-vazia", nome = "Garrafa vazia", type = "usar" },
 	["ponta-britadeira"] = { index = "ponta-britadeira", nome = "Ponta de britadeira", type = "usar" },
 
+	--[ Miner Work ]-------------------------------------------------------------------------------------------------------- 
+
+	["minerio-diamante"] = { index = "minerio-diamante", nome = "Minerio de Diamante", type = "usar" },
+	["minerio-ouro"] = { index = "minerio-ouro", nome = "Minerio de Ouro", type = "usar" },
+	["minerio-prata"] = { index = "minerio-prata", nome = "Minerio de Prata", type = "usar" },
+	["minerio-ferro"] = { index = "minerio-ferro", nome = "Minerio de Ferro", type = "usar" },
+
 	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 	
 	["agua"] = { index = "agua", nome = "Água", type = "usar" },

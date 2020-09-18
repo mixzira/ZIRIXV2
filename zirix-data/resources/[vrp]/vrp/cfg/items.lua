@@ -43,6 +43,13 @@ cfg.items = {
 	["garrafa-vazia"] = { "Garrafa vazia",0.1 },
 	["ponta-britadeira"] = { "Ponta de britadeira",1.0 },
 
+
+	--[ Miner Work ]-------------------------------------------------------------------------------------------------------- 
+	["minerio-diamante"] = { "Minerio de Diamante",0.1 },
+	["minerio-ouro"] = { "Minerio de Ouro",0.1 },
+	["minerio-prata"] = { "Minerio de Prata",0.1 },
+	["minerio-ferro"] = { "Minerio de Ferro",0.1 },
+
 	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 
 	["agua"] = { "Água",0.3 },
