@@ -6562,29 +6562,8 @@
             PLAYER::GET_PLAYER_WANTED_LEVEL(player); executes in less than half the time. Which means that it's worth first checking if the wanted level needs to be cleared before clearing. However, this is mostly about good code practice and can important in other situations. The difference in time in this example is negligible.
             </summary>
         </member>
-        <member name="F:CitizenFX.Core.Native.Hash.CREATE_OBJECT">
-            <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.  
-            p5 - last parameter does not mean object handle is returned  
-            maybe a quick view in disassembly will tell us what is actually does  
-            ----------  
-            prop_tt_screenstatic (0xE2E039BC) is handled different. Not sure how yet but it I know it is.
-            </summary>
-        </member>
-        <member name="F:CitizenFX.Core.Native.Hash.CREATE_OBJECT_NO_OFFSET">
-            <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.  
-            p5 - does not mean object handle is returned  
-            maybe a quick view in disassembly will tell us what is actually does  
-            ----------  
-            prop_tt_screenstatic (0xE2E039BC) is handled different. Not sure how yet but it I know it is.
-            </summary>
-        </member>
         <member name="F:CitizenFX.Core.Native.Hash.CREATE_PED">
             <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.  
-            p7 - last parameter does not mean ped handle is returned  
-            maybe a quick view in disassembly will tell us what is actually does  
             *Heading*: 0.0  
             *Heading* is the Z axis spawn rotation of the ped 0-&gt;5th parameter.  
             Ped Types:  
@@ -6625,9 +6604,6 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.CREATE_PED_INSIDE_VEHICLE">
             <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.  
-            p5 - last parameter does not mean ped handle is returned  
-            maybe a quick view in disassembly will tell us what is actually does  
             Ped Types:  
             enum ePedType  
             {  
@@ -6653,11 +6629,12 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.CREATE_VEHICLE">
             <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.  
-            ```
-            
-            ```
             NativeDB Added Parameter 8: BOOL p7
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.DELETE_ENTITY">
+            <summary>
+            Deletes the specified entity.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.DOES_PLAYER_OWN_SKU">
@@ -6670,6 +6647,11 @@
             Requests whether or not the player owns the specified package.
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.ENSURE_ENTITY_STATE_BAG">
+            <summary>
+            Internal function for ensuring an entity has a state bag.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.FREEZE_ENTITY_POSITION">
             <summary>
             ```
@@ -6678,6 +6660,26 @@
             ```
             
             Freezes or unfreezes an entity preventing its coordinates to change by the player if set to `true`. You can still change the entity position using SET_ENTITY_COORDS.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_ALL_OBJECTS">
+            <summary>
+            Returns all object handles known to the server.
+            The data returned adheres to the following layout:
+            
+            ```
+            [127, 42, 13, 37]
+            ```
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_ALL_PEDS">
+            <summary>
+            Returns all peds handles known to the server.
+            The data returned adheres to the following layout:
+            
+            ```
+            [127, 42, 13, 37]
+            ```
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_ALL_VEHICLES">
@@ -6715,6 +6717,11 @@
             Currently it only works with peds.
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_ENTITY_POPULATION_TYPE">
+            <summary>
+            This native gets an entity's population type.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_GAME_TIMER">
             <summary>
             Gets the current game timer in milliseconds.
@@ -6729,6 +6736,38 @@
             <summary>
             Gets the amount of metadata values with the specified key existing in the specified resource's manifest.
             See also: [Resource manifest](https://docs.fivem.net/resources/manifest/)
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER">
+            <summary>
+            A getter for [SET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER](#_0x4A3DC7ECCC321032).
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_PLAYER_TIME_IN_PURSUIT">
+            <summary>
+            Gets the amount of time player has spent evading the cops.
+            Counter starts and increments only when cops are chasing the player.
+            If the player is evading, the timer will pause.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_PLAYER_WANTED_LEVEL">
+            <summary>
+            Returns given players wanted level server-side.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_PLAYER_WEAPON_DAMAGE_MODIFIER">
+            <summary>
+            A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#_0xCE07B9F7817AADA3).
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_PLAYER_WEAPON_DEFENSE_MODIFIER">
+            <summary>
+            A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#_0x2D83BC011CA14A3C).
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_PLAYER_WEAPON_DEFENSE_MODIFIER_2">
+            <summary>
+            A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER_2](#_0xBCFDE9EDE4CF27DC).
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_REGISTERED_COMMANDS">
@@ -6769,6 +6808,11 @@
             Returns a hash of selected ped weapon.
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_STATE_BAG_VALUE">
+            <summary>
+            Returns the value of a state bag key.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.GET_VEHICLE_DOORS_LOCKED_FOR_PLAYER">
             <summary>
             Currently it only works when set to "all players".
@@ -6786,6 +6830,11 @@
                 CanBeBrokenIntoPersist = 8, -- Can be broken into persist
                 CannotBeTriedToEnter = 10, -- Cannot be tried to enter (Nothing happens when you press the vehicle enter key).
             }
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.GET_VEHICLE_PED_IS_IN">
+            <summary>
+            Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.GIVE_WEAPON_TO_PED">
@@ -6827,6 +6876,14 @@
         <member name="F:CitizenFX.Core.Native.Hash.IS_PLAYER_COMMERCE_INFO_LOADED_EXT">
             <summary>
             Requests whether or not the commerce data for the specified player has loaded from Tebex.
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.IS_PLAYER_EVADING_WANTED_LEVEL">
+            <summary>
+            This will return true if the player is evading wanted level, meaning that the wanted level stars are blink.
+            Otherwise will return false.
+            
+            If the player is not wanted, it simply returns false.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.LOAD_PLAYER_COMMERCE_DATA">
@@ -6997,6 +7054,12 @@
             Sets an entity's coordinates in world space.
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_ENTITY_DISTANCE_CULLING_RADIUS">
+            <summary>
+            It overrides the default distance culling radius of an entity. Set to `0.0` to reset.
+            If you want to interact with an entity outside of your players' scopes set the radius to a huge number.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_ENTITY_HEADING">
             <summary>
             Set the heading of an entity in degrees also known as "Yaw".
@@ -7004,10 +7067,8 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_ENTITY_ROTATION">
             <summary>
-            rotationOrder refers to the order yaw pitch roll is applied  
-            value ranges from 0 to 5. What you use for rotationOrder when setting must be the same as rotationOrder when getting the rotation.   
-            Unsure what value corresponds to what rotation order, more testing will be needed for that.  
-            For the most part R* uses 1 or 2 as the order.  
+            rotationOrder refers to the order yaw pitch roll is applied, see [GET_ENTITY_ROTATION](#_0xAFBD61CC738D9EB9)
+            
             p5 is usually set as true
             </summary>
         </member>
@@ -7179,9 +7240,9 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_RANDOM_COMPONENT_VARIATION">
             <summary>
-            p1 is always false in R* scripts.  
-            Quick disassembly seems to indicate that p1 is unused.  
-            List of component/props ID  
+            p1 is always false in R* scripts; and a quick disassembly seems to indicate that p1 is unused.  
+            
+            List of component/props ID:
             gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html  
             ```
             
@@ -7197,21 +7258,20 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_RESET_FLAG">
             <summary>
-            PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);
+            **Known values**
+            
+            `PRF_PreventGoingIntoStillInVehicleState` = 236 _(fanatic2.c)_
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_TO_RAGDOLL">
             <summary>
-            time1- Time Ped is in ragdoll mode(ms)  
-            time2- Unknown time, in milliseconds  
-            ragdollType-  
-            0 : Normal ragdoll  
-            1 : Falls with stiff legs/body  
-            2 : Narrow leg stumble(may not fall)  
-            3 : Wide leg stumble(may not fall)  
-            p4, p5, p6- No idea. In R*'s scripts they are usually either "true, true, false" or "false, false, false".  
-            EDIT 3/11/16: unclear what 'mircoseconds' mean-- a microsecond is 1000x a ms, so time2 must be 1000x time1?  more testing needed.  -sob  
-            Edit Mar 21, 2017: removed part about time2 being the microseconds version of time1. this just isn't correct. time2 is in milliseconds, and time1 and time2 don't seem to be connected in any way.
+            p4/p5: Unusued in TU27
+            
+            ### Ragdoll Types
+            
+            **0**: CTaskNMRelax
+            **1**: CTaskNMScriptControl: Hardcoded not to work in networked environments.
+            **Else**: CTaskNMBalance
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PED_TO_RAGDOLL_WITH_FALL">
@@ -7232,7 +7292,8 @@
             Flags(0, 4, 16, 24, 32, 56, 60, 64, 128, 134, 512, 640, 1024, 2048, 2560)  
             - Disables camera rotation as well.  
             Flags(256, 260, 384, 768, 896, 900, 952, 1280)  
-            [ translation: cameraRotation = flags &amp; (1 &lt;&lt; 8) - sfink]
+            
+            cameraRotation = flags &amp; (1 &lt;&lt; 8)
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_PLAYER_INVINCIBLE">
@@ -7257,6 +7318,11 @@
             Call SET_PLAYER_WANTED_LEVEL_NOW for immediate effect  
             wantedLevel is an integer value representing 0 to 5 stars even though the game supports the 6th wanted level but no police will appear since no definitions are present for it in the game files  
             disableNoMission-  Disables When Off Mission- appears to always be false
+            </summary>
+        </member>
+        <member name="F:CitizenFX.Core.Native.Hash.SET_STATE_BAG_VALUE">
+            <summary>
+            Internal function for setting a state bag value.
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.SET_VEHICLE_BODY_HEALTH">
@@ -7364,6 +7430,11 @@
             4 = outside right
             </summary>
         </member>
+        <member name="F:CitizenFX.Core.Native.Hash.TASK_GO_STRAIGHT_TO_COORD">
+            <summary>
+            This native will make the ped move straight to a coordinate.
+            </summary>
+        </member>
         <member name="F:CitizenFX.Core.Native.Hash.TASK_GO_TO_COORD_ANY_MEANS">
             <summary>
             example from fm_mission_controller  
@@ -7453,10 +7524,7 @@
         </member>
         <member name="F:CitizenFX.Core.Native.Hash.TASK_PLAY_ANIM_ADVANCED">
             <summary>
-            ```
-            It's similar to the one above, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position). animTime is a float from 0.0 -&gt; 1.0, lets you start an animation from given point. The rest as in AI::TASK_PLAY_ANIM.   
-            Rotation information : rotX and rotY don't seem to have any effect, only rotZ works.  
-            ```
+            It's similar to the one above, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position).
             
             [Animations list](https://alexguirre.github.io/animations-list/)
             </summary>
@@ -7529,7 +7597,7 @@
             <summary>
             Sets the various freemode face features, e.g. nose length, chin shape. Scale ranges from -1.0 to 1.0.  
             Index can be 0   
-            Edit:----&gt;Thanks to the first user.  
+            
                 Enum Face_Feature  
                     Nose_Width  
                     Nose_Peak_Hight  
@@ -7551,11 +7619,7 @@
                     Chimp_Bone_Width  
                     Chimp_Hole  
                     Neck_Thikness  
-                End Enum  
-            Example in VB.Net  
-            Public Shared Sub SET_PED_FACE_FEATURE(FreemodePed As Ped, Index As Face_Feature, Scale As Single)  
-            Native.Function.Call(Native.Hash._SET_PED_FACE_FEATURE, FreemodePed, Index, Scale)  
-            End Sub
+                End Enum
             </summary>
         </member>
         <member name="F:CitizenFX.Core.Native.Hash._SET_PED_HAIR_COLOR">
@@ -7744,29 +7808,8 @@
             PLAYER::GET_PLAYER_WANTED_LEVEL(player); executes in less than half the time. Which means that it's worth first checking if the wanted level needs to be cleared before clearing. However, this is mostly about good code practice and can important in other situations. The difference in time in this example is negligible.
             </summary>
         </member>
-        <member name="M:CitizenFX.Core.Native.API.CreateObject(System.Int32,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.
-            p5 - last parameter does not mean object handle is returned
-            maybe a quick view in disassembly will tell us what is actually does
-            ----------
-            prop_tt_screenstatic (0xE2E039BC) is handled different. Not sure how yet but it I know it is.
-            </summary>
-        </member>
-        <member name="M:CitizenFX.Core.Native.API.CreateObjectNoOffset(System.UInt32,System.Single,System.Single,System.Single,System.Boolean,System.Boolean,System.Boolean)">
-            <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.
-            p5 - does not mean object handle is returned
-            maybe a quick view in disassembly will tell us what is actually does
-            ----------
-            prop_tt_screenstatic (0xE2E039BC) is handled different. Not sure how yet but it I know it is.
-            </summary>
-        </member>
         <member name="M:CitizenFX.Core.Native.API.CreatePed(System.Int32,System.UInt32,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
             <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.
-            p7 - last parameter does not mean ped handle is returned
-            maybe a quick view in disassembly will tell us what is actually does
             *Heading*: 0.0
             *Heading* is the Z axis spawn rotation of the ped 0-&gt;5th parameter.
             Ped Types:
@@ -7807,9 +7850,6 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.CreatePedInsideVehicle(System.Int32,System.Int32,System.UInt32,System.Int32,System.Boolean,System.Boolean)">
             <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.
-            p5 - last parameter does not mean ped handle is returned
-            maybe a quick view in disassembly will tell us what is actually does
             Ped Types:
             enum ePedType
             {
@@ -7835,11 +7875,16 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.CreateVehicle(System.UInt32,System.Single,System.Single,System.Single,System.Single,System.Boolean,System.Boolean)">
             <summary>
-            thisScriptCheck - can be destroyed if it belongs to the calling script.
-            ```
-            ```
             NativeDB Added Parameter 8: BOOL p7
             </summary>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.DeleteEntity(System.Int32)">
+            <summary>
+            Deletes the specified entity.
+            </summary>
+            <param name="entity">
+            The entity to delete.
+            </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.DoesPlayerOwnSku(System.String,System.Int32)">
             <summary>
@@ -7869,6 +7914,11 @@
             A boolean.
             </returns>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.EnsureEntityStateBag(System.Int32)">
+            <summary>
+            Internal function for ensuring an entity has a state bag.
+            </summary>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.FreezeEntityPosition(System.Int32,System.Boolean)">
             <summary>
             ```
@@ -7883,6 +7933,30 @@
             <param name="toggle">
             Freeze or unfreeze entity.
             </param>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetAllObjects">
+            <summary>
+            Returns all object handles known to the server.
+            The data returned adheres to the following layout:
+            ```
+            [127, 42, 13, 37]
+            ```
+            </summary>
+            <returns>
+            An object containing a list of object handles.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetAllPeds">
+            <summary>
+            Returns all peds handles known to the server.
+            The data returned adheres to the following layout:
+            ```
+            [127, 42, 13, 37]
+            ```
+            </summary>
+            <returns>
+            An object containing a list of peds handles.
+            </returns>
         </member>
         <member name="M:CitizenFX.Core.Native.API.GetAllVehicles">
             <summary>
@@ -7933,6 +8007,32 @@
             Currently it only works with peds.
             </summary>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.GetEntityPopulationType(System.Int32)">
+            <summary>
+            This native gets an entity's population type.
+            </summary>
+            <param name="entity">
+            the entity to obtain the population type from
+            </param>
+            <returns>
+            Returns the population type ID, defined by the below enumeration:```cpp
+            enum ePopulationType
+            {
+            POPTYPE_UNKNOWN = 0,
+            POPTYPE_RANDOM_PERMANENT,
+            POPTYPE_RANDOM_PARKED,
+            POPTYPE_RANDOM_PATROL,
+            POPTYPE_RANDOM_SCENARIO,
+            POPTYPE_RANDOM_AMBIENT,
+            POPTYPE_PERMANENT,
+            POPTYPE_MISSION,
+            POPTYPE_REPLAY,
+            POPTYPE_CACHE,
+            POPTYPE_TOOL
+            };
+            ```
+            </returns>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.GetGameTimer">
             <summary>
             Gets the current game timer in milliseconds.
@@ -7957,6 +8057,76 @@
             <param name="metadataKey">
             The key to look up in the resource manifest.
             </param>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetPlayerMeleeWeaponDamageModifier">
+            <summary>
+            A getter for [SET_PLAYER_MELEE_WEAPON_DAMAGE_MODIFIER](#_0x4A3DC7ECCC321032).
+            </summary>
+            <returns>
+            Returns player melee weapon damage modifier value.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetPlayerTimeInPursuit(System.String,System.Boolean)">
+            <summary>
+            Gets the amount of time player has spent evading the cops.
+            Counter starts and increments only when cops are chasing the player.
+            If the player is evading, the timer will pause.
+            </summary>
+            <param name="playerSrc">
+            The target player
+            </param>
+            <param name="lastPursuit">
+            False = CurrentPursuit, True = LastPursuit
+            </param>
+            <returns>
+            Returns -1, if the player is not wanted or wasn't in pursuit before, depending on the lastPursuit parameter
+            Returns 0, if lastPursuit == False and the player has a wanted level, but the pursuit has not started yet
+            Otherwise, will return the milliseconds of the pursuit.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetPlayerWantedLevel(System.String)">
+            <summary>
+            Returns given players wanted level server-side.
+            </summary>
+            <param name="playerSrc">
+            The target player
+            </param>
+            <returns>
+            The wanted level
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetPlayerWeaponDamageModifier(System.Int32)">
+            <summary>
+            A getter for [SET_PLAYER_WEAPON_DAMAGE_MODIFIER](#_0xCE07B9F7817AADA3).
+            </summary>
+            <param name="playerId">
+            The player index.
+            </param>
+            <returns>
+            The value of player weapon damage modifier.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetPlayerWeaponDefenseModifier(System.Int32)">
+            <summary>
+            A getter for [SET_PLAYER_WEAPON_DEFENSE_MODIFIER](#_0x2D83BC011CA14A3C).
+            </summary>
+            <param name="playerId">
+            The player index.
+            </param>
+            <returns>
+            The value of player weapon defense modifier.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetPlayerWeaponDefenseModifier_2(System.Int32)">
+            <summary>
+            A getter for [\_SET_PLAYER_WEAPON_DEFENSE_MODIFIER_2](#_0xBCFDE9EDE4CF27DC).
+            </summary>
+            <param name="playerId">
+            The player index.
+            </param>
+            <returns>
+            The value of player weapon defense modifier 2.
+            </returns>
         </member>
         <member name="M:CitizenFX.Core.Native.API.GetRegisteredCommands">
             <summary>
@@ -8025,6 +8195,14 @@
             The weapon hash.
             </returns>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.GetStateBagValue(System.String,System.String)">
+            <summary>
+            Returns the value of a state bag key.
+            </summary>
+            <returns>
+            Value.
+            </returns>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.GetVehicleDoorLockStatus(System.Int32)">
             <summary>
             enum VehicleLockStatus = {
@@ -8043,6 +8221,20 @@
             <summary>
             Currently it only works when set to "all players".
             </summary>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.GetVehiclePedIsIn(System.Int32,System.Boolean)">
+            <summary>
+            Gets the vehicle the specified Ped is/was in depending on bool value. This native is used server side when using OneSync.
+            </summary>
+            <param name="ped">
+            The target ped
+            </param>
+            <param name="lastVehicle">
+            False = CurrentVehicle, True = LastVehicle
+            </param>
+            <returns>
+            The vehicle id. Returns 0 if the ped is/was not in a vehicle.
+            </returns>
         </member>
         <member name="M:CitizenFX.Core.Native.API.GiveWeaponToPed(System.Int32,System.UInt32,System.Int32,System.Boolean,System.Boolean)">
             <summary>
@@ -8098,6 +8290,19 @@
             </param>
             <returns>
             A boolean.
+            </returns>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.IsPlayerEvadingWantedLevel(System.String)">
+            <summary>
+            This will return true if the player is evading wanted level, meaning that the wanted level stars are blink.
+            Otherwise will return false.
+            If the player is not wanted, it simply returns false.
+            </summary>
+            <param name="playerSrc">
+            The target player
+            </param>
+            <returns>
+            boolean value, depending if the player is evading his wanted level or not.
             </returns>
         </member>
         <member name="M:CitizenFX.Core.Native.API.LoadPlayerCommerceData(System.String)">
@@ -8372,6 +8577,18 @@
             Whether to clear other entities in area around entity.
             </param>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.SetEntityDistanceCullingRadius(System.Int32,System.Single)">
+            <summary>
+            It overrides the default distance culling radius of an entity. Set to `0.0` to reset.
+            If you want to interact with an entity outside of your players' scopes set the radius to a huge number.
+            </summary>
+            <param name="entity">
+            The entity handle to override the distance culling radius.
+            </param>
+            <param name="radius">
+            The new distance culling radius.
+            </param>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.SetEntityHeading(System.Int32,System.Single)">
             <summary>
             Set the heading of an entity in degrees also known as "Yaw".
@@ -8385,10 +8602,7 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetEntityRotation(System.Int32,System.Single,System.Single,System.Single,System.Int32,System.Boolean)">
             <summary>
-            rotationOrder refers to the order yaw pitch roll is applied
-            value ranges from 0 to 5. What you use for rotationOrder when setting must be the same as rotationOrder when getting the rotation.
-            Unsure what value corresponds to what rotation order, more testing will be needed for that.
-            For the most part R* uses 1 or 2 as the order.
+            rotationOrder refers to the order yaw pitch roll is applied, see [GET_ENTITY_ROTATION](#_0xAFBD61CC738D9EB9)
             p5 is usually set as true
             </summary>
         </member>
@@ -8513,7 +8727,6 @@
             <summary>
             Sets the various freemode face features, e.g. nose length, chin shape. Scale ranges from -1.0 to 1.0.
             Index can be 0
-            Edit:----&gt;Thanks to the first user.
             Enum Face_Feature
             Nose_Width
             Nose_Peak_Hight
@@ -8536,10 +8749,6 @@
             Chimp_Hole
             Neck_Thikness
             End Enum
-            Example in VB.Net
-            Public Shared Sub SET_PED_FACE_FEATURE(FreemodePed As Ped, Index As Face_Feature, Scale As Single)
-            Native.Function.Call(Native.Hash._SET_PED_FACE_FEATURE, FreemodePed, Index, Scale)
-            End Sub
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedHairColor(System.Int32,System.Int32,System.Int32)">
@@ -8631,9 +8840,8 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedRandomComponentVariation(System.Int32,System.Boolean)">
             <summary>
-            p1 is always false in R* scripts.
-            Quick disassembly seems to indicate that p1 is unused.
-            List of component/props ID
+            p1 is always false in R* scripts; and a quick disassembly seems to indicate that p1 is unused.
+            List of component/props ID:
             gtaxscripting.blogspot.com/2016/04/gta-v-peds-component-and-props.html
             ```
             ```
@@ -8648,22 +8856,27 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedResetFlag(System.Int32,System.Int32,System.Boolean)">
             <summary>
-            PED::SET_PED_RESET_FLAG(PLAYER::PLAYER_PED_ID(), 240, 1);
+            **Known values**
+            `PRF_PreventGoingIntoStillInVehicleState` = 236 _(fanatic2.c)_
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedToRagdoll(System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Boolean,System.Boolean)">
             <summary>
-            time1- Time Ped is in ragdoll mode(ms)
-            time2- Unknown time, in milliseconds
-            ragdollType-
-            0 : Normal ragdoll
-            1 : Falls with stiff legs/body
-            2 : Narrow leg stumble(may not fall)
-            3 : Wide leg stumble(may not fall)
-            p4, p5, p6- No idea. In R*'s scripts they are usually either "true, true, false" or "false, false, false".
-            EDIT 3/11/16: unclear what 'mircoseconds' mean-- a microsecond is 1000x a ms, so time2 must be 1000x time1?  more testing needed.  -sob
-            Edit Mar 21, 2017: removed part about time2 being the microseconds version of time1. this just isn't correct. time2 is in milliseconds, and time1 and time2 don't seem to be connected in any way.
+            p4/p5: Unusued in TU27
+            ### Ragdoll Types
+            **0**: CTaskNMRelax
+            **1**: CTaskNMScriptControl: Hardcoded not to work in networked environments.
+            **Else**: CTaskNMBalance
             </summary>
+            <param name="time1">
+            Time(ms) Ped is in ragdoll mode; only applies to ragdoll types 0 and not 1.
+            </param>
+            <param name="p4">
+            :
+            </param>
+            <param name="p5">
+            :
+            </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPedToRagdollWithFall(System.Int32,System.Int32,System.Int32,System.Int32,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single)">
             <summary>
@@ -8683,7 +8896,7 @@
             Flags(0, 4, 16, 24, 32, 56, 60, 64, 128, 134, 512, 640, 1024, 2048, 2560)
             - Disables camera rotation as well.
             Flags(256, 260, 384, 768, 896, 900, 952, 1280)
-            [ translation: cameraRotation = flags &amp; (1 &lt;&lt; 8) - sfink]
+            cameraRotation = flags &amp; (1 &lt;&lt; 8)
             </summary>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetPlayerInvincible(System.Int32,System.Boolean)">
@@ -8708,6 +8921,14 @@
             wantedLevel is an integer value representing 0 to 5 stars even though the game supports the 6th wanted level but no police will appear since no definitions are present for it in the game files
             disableNoMission-  Disables When Off Mission- appears to always be false
             </summary>
+        </member>
+        <member name="M:CitizenFX.Core.Native.API.SetStateBagValue(System.String,System.String,System.String,System.Int32,System.Boolean)">
+            <summary>
+            Internal function for setting a state bag value.
+            </summary>
+            <param name="replicated">
+            :
+            </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.SetVehicleBodyHealth(System.Int32,System.Single)">
             <summary>
@@ -8819,6 +9040,35 @@
             4 = outside right
             </summary>
         </member>
+        <member name="M:CitizenFX.Core.Native.API.TaskGoStraightToCoord(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Single,System.Single)">
+            <summary>
+            This native will make the ped move straight to a coordinate.
+            </summary>
+            <param name="ped">
+            The ped handle.
+            </param>
+            <param name="x">
+            The x coordinate.
+            </param>
+            <param name="y">
+            The y coordinate.
+            </param>
+            <param name="z">
+            The z coordinate.
+            </param>
+            <param name="speed">
+            The ped movement speed.
+            </param>
+            <param name="timeout">
+            \-1 , other values appear to break the ped movement.
+            </param>
+            <param name="targetHeading">
+            The heading you want the ped to be on x,y,z coord.
+            </param>
+            <param name="distanceToSlide">
+            The distance from x,y,z where the ped will start sliding.
+            </param>
+        </member>
         <member name="M:CitizenFX.Core.Native.API.TaskGoToCoordAnyMeans(System.Int32,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Boolean,System.Int32,System.Single)">
             <summary>
             example from fm_mission_controller
@@ -8907,12 +9157,48 @@
         </member>
         <member name="M:CitizenFX.Core.Native.API.TaskPlayAnimAdvanced(System.Int32,System.String,System.String,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Single,System.Int32,System.Int32,System.Single,System.Int32,System.Int32)">
             <summary>
-            ```
-            It's similar to the one above, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position). animTime is a float from 0.0 -&gt; 1.0, lets you start an animation from given point. The rest as in AI::TASK_PLAY_ANIM.
-            Rotation information : rotX and rotY don't seem to have any effect, only rotZ works.
-            ```
+            It's similar to the one above, except the first 6 floats let you specify the initial position and rotation of the task. (Ped gets teleported to the position).
             [Animations list](https://alexguirre.github.io/animations-list/)
             </summary>
+            <param name="ped">
+            The target ped
+            </param>
+            <param name="animDict">
+            Name of the animation dictionary
+            </param>
+            <param name="animName">
+            Name of the animation
+            </param>
+            <param name="posX">
+            Initial X position of the task
+            </param>
+            <param name="posY">
+            Initial Y position of the task
+            </param>
+            <param name="posZ">
+            Initial Z position of the task
+            </param>
+            <param name="rotX">
+            Initial X rotation of the task, doesn't seem to have any effect
+            </param>
+            <param name="rotY">
+            Initial Y rotation of the task, doesn't seem to have any effect
+            </param>
+            <param name="rotZ">
+            Initial Z rotation of the task
+            </param>
+            <param name="animEnterSpeed">
+            Adjust character speed to fully enter animation
+            </param>
+            <param name="animExitSpeed">
+            Adjust character speed to fully exit animation (useless `ClearPedTasksImmediately()` is called)
+            </param>
+            <param name="duration">
+            Time in milliseconds
+            </param>
+            <param name="animTime">
+            Value between 0.0 and 1.0, lets you start an animation from the given point
+            </param>
         </member>
         <member name="M:CitizenFX.Core.Native.API.TaskShootAtEntity(System.Int32,System.Int32,System.Int32,System.UInt32)">
             <summary>
@@ -9025,6 +9311,11 @@
             <returns>Returns 1 if this <see cref="T:CitizenFX.Core.Entity"/> is a Ped.
             Returns 2 if this <see cref="T:CitizenFX.Core.Entity"/> is a Vehicle.
             Returns 3 if this <see cref="T:CitizenFX.Core.Entity"/> is a Prop.</returns>
+        </member>
+        <member name="P:CitizenFX.Core.Entity.State">
+            <summary>
+            Gets the <see cref="T:CitizenFX.Core.StateBag"/> of this <see cref="T:CitizenFX.Core.Entity"/>
+            </summary>
         </member>
         <member name="M:CitizenFX.Core.Entity.FromHandle(System.Int32)">
             <summary>

@@ -1,4 +1,16 @@
 local debug = debug
+local coroutine_close = coroutine.close or (function(c) end) -- 5.3 compatibility
+
+-- setup msgpack compat
+msgpack.set_string('string_compat')
+msgpack.set_integer('unsigned')
+msgpack.set_array('without_hole')
+msgpack.setoption('empty_table_as_array', true)
+
+-- setup json compat
+json.version = json._VERSION -- Version compatibility
+json.setoption("empty_table_as_array", true)
+json.setoption('with_hole', true)
 
 -- temp
 local function FormatStackTrace()
@@ -61,6 +73,7 @@ local runWithBoundaryEnd = getBoundaryFunc(Citizen.SubmitBoundaryEnd)
 local function resumeThread(coro) -- Internal utility
 	if coroutine.status(coro) == "dead" then
 		threads[coro] = nil
+		coroutine_close(coro)
 		return false
 	end
 
@@ -601,28 +614,6 @@ Citizen.SetDeleteRefRoutine(function(refId)
 	end
 end)
 
-local EXT_FUNCREF = 10
-local EXT_LOCALFUNCREF = 11
-
-msgpack.packers['funcref'] = function(buffer, ref)
-	msgpack.packers['ext'](buffer, EXT_FUNCREF, ref)
-end
-
-msgpack.packers['table'] = function(buffer, table)
-	if rawget(table, '__cfx_functionReference') then
-		-- pack as function reference
-		msgpack.packers['function'](buffer, function(...)
-			return table(...)
-		end)
-	else
-		msgpack.packers['_table'](buffer, table)
-	end
-end
-
-msgpack.packers['function'] = function(buffer, func)
-	msgpack.packers['funcref'](buffer, MakeFunctionReference(func))
-end
-
 -- RPC REQUEST HANDLER
 local InvokeRpcEvent
 
@@ -726,6 +717,11 @@ if IsDuplicityVersion() then
 	end)
 end
 
+local EXT_FUNCREF = 10
+local EXT_LOCALFUNCREF = 11
+
+msgpack.extend_clear(EXT_FUNCREF, EXT_LOCALFUNCREF)
+
 -- RPC INVOCATION
 InvokeRpcEvent = function(source, ref, args)
 	if not coroutine.running() then
@@ -763,7 +759,9 @@ InvokeRpcEvent = function(source, ref, args)
 	return Citizen.Await(p)
 end
 
-local funcref_mt = {
+local funcref_mt = nil
+
+funcref_mt = msgpack.extend({
 	__gc = function(t)
 		DeleteFunctionReference(rawget(t, '__cfx_functionReference'))
 	end,
@@ -808,32 +806,20 @@ local funcref_mt = {
 		else
 			return InvokeRpcEvent(tonumber(netSource.source:sub(5)), ref, {...})
 		end
-	end
-}
+	end,
 
-local EXT_VECTOR2 = 20
-local EXT_VECTOR3 = 21
-local EXT_VECTOR4 = 22
-local EXT_QUAT = 23
+	__ext = EXT_FUNCREF,
 
-msgpack.packers['vector2'] = function(buffer, vec)
-	msgpack.packers['ext'](buffer, EXT_VECTOR2, string.pack('<ff', vec.x, vec.y))
-end
+	__pack = function(self, tag)
+		local refstr = Citizen.GetFunctionReference(self)
+		if refstr then
+			return refstr
+		else
+			error(("Unknown funcref type: %d %s"):format(tag, type(self)))
+		end
+	end,
 
-msgpack.packers['vector3'] = function(buffer, vec)
-	msgpack.packers['ext'](buffer, EXT_VECTOR3, string.pack('<fff', vec.x, vec.y, vec.z))
-end
-
-msgpack.packers['vector4'] = function(buffer, vec)
-	msgpack.packers['ext'](buffer, EXT_VECTOR4, string.pack('<ffff', vec.x, vec.y, vec.z, vec.w))
-end
-
-msgpack.packers['quat'] = function(buffer, vec)
-	msgpack.packers['ext'](buffer, EXT_QUAT, string.pack('<ffff', vec.x, vec.y, vec.z, vec.w))
-end
-
-msgpack.build_ext = function(tag, data)
-	if tag == EXT_FUNCREF or tag == EXT_LOCALFUNCREF then
+	__unpack = function(data, tag)
 		local ref = data
 		
 		-- add a reference
@@ -851,24 +837,17 @@ msgpack.build_ext = function(tag, data)
 		tbl = setmetatable(tbl, funcref_mt)
 
 		return tbl
-	elseif tag == EXT_VECTOR2 then
-		local x, y = string.unpack('<ff', data)
-	
-		return vector2(x, y)
-	elseif tag == EXT_VECTOR3 then
-		local x, y, z = string.unpack('<fff', data)
-	
-		return vector3(x, y, z)
-	elseif tag == EXT_VECTOR4 then
-		local x, y, z, w = string.unpack('<ffff', data)
-	
-		return vector4(x, y, z, w)
-	elseif tag == EXT_QUAT then
-		local x, y, z, w = string.unpack('<ffff', data)
-	
-		return quat(w, x, y, z)
-	end
-end
+	end,
+})
+
+--[[ Also initialize unpackers for local function references --]]
+msgpack.extend({
+	__ext = EXT_LOCALFUNCREF,
+	__pack = funcref_mt.__pack,
+	__unpack = funcref_mt.__unpack,
+})
+
+msgpack.settype("function", EXT_FUNCREF)
 
 -- exports compatibility
 local function getExportEventName(resource, name)
@@ -974,4 +953,132 @@ if not IsDuplicityVersion() then
 	function SendNUIMessage(message)
 		_sendNuiMessage(json.encode(message))
 	end
+end
+
+-- entity helpers
+local EXT_ENTITY = 41
+local EXT_PLAYER = 42
+
+msgpack.extend_clear(EXT_ENTITY, EXT_PLAYER)
+
+local function NewStateBag(es)
+	local sv = IsDuplicityVersion()
+
+	return setmetatable({}, {
+		__index = function(_, s)
+			if s == 'set' then
+				return function(_, s, v, r)
+					local payload = msgpack.pack(v)
+					SetStateBagValue(es, s, payload, payload:len(), r)
+				end
+			end
+		
+			return GetStateBagValue(es, s)
+		end,
+		
+		__newindex = function(_, s, v)
+			local payload = msgpack.pack(v)
+			SetStateBagValue(es, s, payload, payload:len(), sv)
+		end
+	})
+end
+
+GlobalState = NewStateBag('global')
+
+local entityTM = {
+	__index = function(t, s)
+		if s == 'state' then
+			local es = ('entity:%d'):format(NetworkGetNetworkIdFromEntity(t.__data))
+			
+			if IsDuplicityVersion() then
+				EnsureEntityStateBag(t.__data)
+			end
+		
+			return NewStateBag(es)
+		end
+		
+		return nil
+	end,
+	
+	__newindex = function()
+		error('Not allowed at this time.')
+	end,
+	
+	__ext = EXT_ENTITY,
+	
+	__pack = function(self, t)
+		return tostring(NetworkGetNetworkIdFromEntity(self.__data))
+	end,
+	
+	__unpack = function(data, t)
+		local ref = NetworkGetEntityFromNetworkId(tonumber(data))
+		
+		return setmetatable({
+			__data = ref
+		}, entityTM)
+	end
+}
+
+msgpack.extend(entityTM)
+
+local playerTM = {
+	__index = function(t, s)
+		if s == 'state' then
+			local pid = t.__data
+			
+			if pid == -1 then
+				pid = GetPlayerServerId(PlayerId())
+			end
+			
+			local es = ('player:%d'):format(pid)
+		
+			return NewStateBag(es)
+		end
+		
+		return nil
+	end,
+	
+	__newindex = function()
+		error('Not allowed at this time.')
+	end,
+	
+	__ext = EXT_PLAYER,
+	
+	__pack = function(self, t)
+		return tostring(self.__data)
+	end,
+	
+	__unpack = function(data, t)
+		local ref = tonumber(data)
+		
+		return setmetatable({
+			__data = ref
+		}, playerTM)
+	end
+}
+
+msgpack.extend(playerTM)
+
+function Entity(ent)
+	if type(ent) == 'number' then
+		return setmetatable({
+			__data = ent
+		}, entityTM)
+	end
+	
+	return ent
+end
+
+function Player(ent)
+	if type(ent) == 'number' or type(ent) == 'string' then
+		return setmetatable({
+			__data = tonumber(ent)
+		}, playerTM)
+	end
+	
+	return ent
+end
+
+if not IsDuplicityVersion() then
+	LocalPlayer = Player(-1)
 end
