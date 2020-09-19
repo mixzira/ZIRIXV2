@@ -55,7 +55,7 @@ Citizen.CreateThread(function()
 			local armarios = armarios[k]
 			
 			if distance < 5.1 then
-				DrawMarker(23,armarios.x,armarios.y,armarios.z-0.99,0,0,0,0,0,0,0.7,0.7,0.5,247,217,99,100,0,0,0,0)
+				DrawMarker(23,armarios.x,armarios.y,armarios.z-0.99,0,0,0,0,0,0,0.7,0.7,0.5,136, 96, 240, 180,0,0,0,0)
 				idle = 5
 				if distance <= 1.2 then
 					if IsControlJustPressed(0,38) and emP.checkPermissao() then

@@ -65,7 +65,7 @@ Citizen.CreateThread(function()
 				local distance = Vdist(x,y,z,CoordenadaX,CoordenadaY,CoordenadaZ)
 
 				if distance <= 30.0 then
-					DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,240,200,80,20,0,0,0,0)
+					DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
 					if distance <= 1.2 then
 						drawTxt("PRESSIONE  ~b~E~w~  PARA INICIAR ROTA",4,0.5,0.93,0.50,255,255,255,180)
 						if IsControlJustPressed(1,38) then

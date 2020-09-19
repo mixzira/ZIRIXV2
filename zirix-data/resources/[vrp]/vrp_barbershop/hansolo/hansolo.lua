@@ -155,7 +155,7 @@ Citizen.CreateThread(function()
 			local x,y,z = table.unpack(v)
 			if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, x, y, z, true ) < 5.2 then
 				idle = 5
-				DrawMarker( 23, x, y, z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 247, 217, 99, 100, 0, 0, 0, 0)
+				DrawMarker( 23, x, y, z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 			end
 		end
 		Citizen.Wait(idle)

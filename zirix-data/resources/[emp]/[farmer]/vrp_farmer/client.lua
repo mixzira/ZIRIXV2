@@ -752,7 +752,7 @@ Citizen.CreateThread(function()
 				if distance <= 5 then
 					if parseInt(progress[k]) >= 100 then
 						DrawText3Ds(v[2],v[3],v[4]-0.7,"~g~E   ~w~COLLECT")
-						DrawMarker(23,v[2],v[3],v[4]-0.9,0,0,0,0,0,0,1.0,1.0,0.5,70,170,0,100,0,0,0,0)
+						DrawMarker(23,v[2],v[3],v[4]-0.9,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
 					elseif progress[k] then
 						DrawText3Ds(v[2],v[3],v[4]-0.7,"PROGRESS: ~g~"..progress[k].."%")
 					else

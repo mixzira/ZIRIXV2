@@ -26,7 +26,7 @@ Citizen.CreateThread(function()
 				for k,v in pairs(pescs) do
 					local distancia = Vdist(x,y,z,v[1],v[2],v[3])
 					if distancia <= 75 then
-						DrawMarker(1,v[1],v[2],v[3]-1.5,0,0,0,0,0,0,150.0,150.0,50.0,255,255,255,25,0,0,0,0)
+						DrawMarker(1,v[1],v[2],v[3]-1.5,0,0,0,0,0,0,150.0,150.0,50.0,136, 96, 240, 180,0,0,0,0)
 						if IsControlJustPressed(1,38) and not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) >= 102 then
 							if emP.checkPayment() then
 								processo = true

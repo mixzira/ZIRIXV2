@@ -24,10 +24,10 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			if distance <= 15 then
 				idle = 5
-				DrawMarker(25, v.x, v.y, cdz+0.01, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0.5, 255, 255, 255, 50, 0, 0, 2, 0, 0, 0, 0)
+				DrawMarker(25, v.x, v.y, cdz+0.01, 0, 0, 0, 0, 0, 0, 0.4, 0.4, 0.5, 136, 96, 240, 180, 0, 0, 2, 0, 0, 0, 0)
 				DrawMarker(25, v.x, v.y, cdz+0.01, 0, 0, 0, 0, 0, 0, 0.3, 0.3, 0.5, 234, 203, 102, 220, 0, 0, 2, 0, 0, 0, 0)
 				if distance < 1.2 then
-					drawTxt("Pressione [~y~E~w~] para pegar ~y~"..v.count.."~w~x ~y~"..string.upper(v.name).."~w~.",4,0.5,0.90,0.35,255,255,255,255)
+					drawTxt("Pressione [~p~E~w~] para pegar ~p~"..v.count.."~w~x ~p~"..string.upper(v.name).."~w~.",4,0.5,0.90,0.35,255,255,255,255)
 					if distance <= 1.2 and v.count ~= nil and v.name ~= nil and not IsPedInAnyVehicle(ped) then
 						if IsControlJustPressed(1,38) and not cooldown then
 							cooldown = true

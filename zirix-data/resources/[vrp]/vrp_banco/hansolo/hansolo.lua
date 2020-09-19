@@ -327,8 +327,8 @@ function nearBanco()
 		local distance = GetDistanceBetweenCoords(search.x, search.y, search.z, playerloc['x'], playerloc['y'], playerloc['z'], true)
 		
 		if distance <= 1 then
-			DrawText3D(search.x, search.y, search.z, "Pressione [~g~E~w~] para acessar o ~g~BANCO~w~  &  [~y~G~w~] para adquirir um ~y~CARTÃO DE DÉBITO~w~.")
-			DrawMarker(23, search.x, search.y, search.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 61, 186, 86, 180, 0, 0, 0, 0)
+			DrawText3D(search.x, search.y, search.z, "Pressione [~y~E~w~] para acessar o ~y~BANCO~w~  &  [~p~G~w~] para adquirir um ~p~CARTÃO DE DÉBITO~w~.")
+			DrawMarker(23, search.x, search.y, search.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 			return true
 		end
 	end
@@ -343,12 +343,12 @@ function nearATM()
 		
 		if distance <= 1 and not andamento then
 			if search.assaltavel == true then 
-				DrawText3D(search.x, search.y, search.z, "Pressione [~g~E~w~] para acessar o ~g~CAIXA ELETRÔNICO~w~  &  [~r~G~w~] para iniciar o ~r~ROUBO~w~.")
-				DrawMarker(23, search.x, search.y, search.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 61, 186, 86, 180, 0, 0, 0, 0)
+				DrawText3D(search.x, search.y, search.z, "Pressione [~y~E~w~] para acessar o ~y~CAIXA ELETRÔNICO~w~  &  [~r~G~w~] para iniciar o ~r~ROUBO~w~.")
+				DrawMarker(23, search.x, search.y, search.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 				return true
 			else
-				DrawText3D(search.x, search.y, search.z, "Pressione [~g~E~w~] para acessar o ~g~CAIXA ELETRÔNICO~w~.")
-				DrawMarker(23, search.x, search.y, search.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 61, 186, 86, 180, 0, 0, 0, 0)
+				DrawText3D(search.x, search.y, search.z, "Pressione [~y~E~w~] para acessar o ~y~CAIXA ELETRÔNICO~w~.")
+				DrawMarker(23, search.x, search.y, search.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 				return true
 			end
 		end

@@ -310,7 +310,7 @@ Citizen.CreateThread(function()
 			end
 
 			if distance1 <= 100 and not reducaopenal then
-				DrawMarker(21,1691.59,2566.05,45.56,0,0,0,0,180.0,130.0,1.0,1.0,0.5,255,0,0,100,1,0,0,1)
+				DrawMarker(21,1691.59,2566.05,45.56,0,0,0,0,180.0,130.0,1.0,1.0,0.5,136, 96, 240, 180,1,0,0,1)
 				if distance1 <= 1.2 then
 					drawTxt("PRESSIONE  ~r~E~w~  PARA PEGAR A CAIXA",4,0.5,0.93,0.50,255,255,255,180)
 					if IsControlJustPressed(0,38) then
@@ -323,7 +323,7 @@ Citizen.CreateThread(function()
 			end
 
 			if distance2 <= 100 and reducaopenal then
-				DrawMarker(21,1669.51,2487.71,45.82,0,0,0,0,180.0,130.0,1.0,1.0,0.5,255,0,0,100,1,0,0,1)
+				DrawMarker(21,1669.51,2487.71,45.82,0,0,0,0,180.0,130.0,1.0,1.0,0.5,136, 96, 240, 180,1,0,0,1)
 				if distance2 <= 1.2 then
 					drawTxt("PRESSIONE  ~r~E~w~  PARA ENTREGAR A CAIXA",4,0.5,0.93,0.50,255,255,255,180)
 					if IsControlJustPressed(0,38) then
@@ -353,7 +353,7 @@ Citizen.CreateThread(function()
 			local maquina = maquina[k]
 			
 			if distance < 5.1 then
-				DrawMarker(23, maquina.x, maquina.y, maquina.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 234, 203, 102, 220, 0, 0, 0, 0)
+				DrawMarker(23, maquina.x, maquina.y, maquina.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 				idle = 5
 				if distance < 1.2 then
 					if IsControlJustPressed(0,38) and src.checkPermissao() then

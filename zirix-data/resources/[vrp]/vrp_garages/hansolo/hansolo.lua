@@ -1380,9 +1380,9 @@ Citizen.CreateThread(function()
 				for k,v in pairs(spawn) do
 					if Vdist(x,y,z,v.x,v.y,v.z) <= 10.5 then
 						idle = 5
-						DrawMarker(23,v.x,v.y,v.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 247, 217, 99, 100, 0, 0, 0, 0)
+						DrawMarker(23,v.x,v.y,v.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 						if Vdist(x,y,z,v.x,v.y,v.z) <= 1 then
-							DrawText3D(v.x, v.y, v.z, "Pressione [~y~E~w~] para acessar o ~y~GARAGEM~w~.")
+							DrawText3D(v.x, v.y, v.z, "Pressione [~p~E~w~] para acessar o ~p~GARAGEM~w~.")
 							if IsControlJustPressed(0,38) then
 								vSERVER.returnHouses(v.name,k)
 							end

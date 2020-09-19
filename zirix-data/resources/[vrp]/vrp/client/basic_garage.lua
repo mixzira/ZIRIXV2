@@ -577,6 +577,24 @@ local vehList = {
 
 --[ VEHLIST ]----------------------------------------------------------------------------------------------------------------------------
 
+function tvRP.vehListHash()
+	local ped = PlayerPedId()
+	local veh = GetVehiclePedIsUsing(ped)
+
+	if not IsPedInAnyVehicle(ped) then
+		veh = GetPlayersLastVehicle()
+	end
+
+	if IsEntityAVehicle(veh) then
+		for k,v in pairs(vehList) do
+			if v.hash == GetEntityModel(veh) then
+				if v.name then
+					return veh,v.hash,GetVehicleNumberPlateText(veh),v.name
+				end
+			end
+		end
+	end
+end
 
 function tvRP.vehList(radius)
 	local ped = PlayerPedId()

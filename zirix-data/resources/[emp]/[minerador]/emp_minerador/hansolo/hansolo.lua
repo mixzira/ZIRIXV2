@@ -33,40 +33,46 @@ local rocks = {
 Citizen.CreateThread(function()
 	while true do
 		local idle = 1000
-		
 		if not working then
 			local ped = PlayerPedId()
-			
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(x, y, z, rocks[selected].x, rocks[selected].y, rocks[selected].z)
-
+				local lastVehicle = GetEntityModel(GetPlayersLastVehicle())
 				if distance <= 100.0 then
 					idle = 5
-					DrawMarker(21, rocks[selected].x, rocks[selected].y, rocks[selected].z-0.3, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 255, 0, 0, 150, 1, 0, 0, 1)
-					if distance <= 1.2 and IsControlJustPressed(1,38) and emp.checkWeight() then
-						working = true
-						vRP.DeletarObjeto()
-						TriggerEvent("cancelando",true)
-						SetEntityCoords(ped, rocks[selected].x+0.0001, rocks[selected].y+0.0001, rocks[selected].z+0.0001-1, 1, 0, 0, 1)
-						vRP.CarregarObjeto("amb@world_human_const_drill@male@drill@base", "base","prop_tool_jackham", 15, 28422)
-						
-						SetTimeout(10000,function()
-							working = false
-							vRP.DeletarObjeto()
-							vRP._stopAnim(false)
-							TriggerEvent("cancelando",false)
-							backentrega = selected
-							while true do
-								if backentrega == selected then
-									selected = math.random(#rocks)
-								else
-									break
-								end
-								Citizen.Wait(10)
+					DrawMarker(21, rocks[selected].x, rocks[selected].y, rocks[selected].z-0.3, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
+					if distance <= 1.2 and IsControlJustPressed(1,38) then
+						if lastVehicle == 48339065 and emp.checkPlate(lastVehicle) then
+							if emp.checkWeight() then
+								working = true
+								vRP.DeletarObjeto()
+								TriggerEvent("cancelando",true)
+								SetEntityCoords(ped, rocks[selected].x+0.0001, rocks[selected].y+0.0001, rocks[selected].z+0.0001-1, 1, 0, 0, 1)
+								vRP.CarregarObjeto("amb@world_human_const_drill@male@drill@base", "base","prop_tool_jackham", 15, 28422)
+								
+								SetTimeout(10000,function()
+									working = false
+									vRP.DeletarObjeto()
+									vRP._stopAnim(false)
+									TriggerEvent("cancelando",false)
+									backentrega = selected
+									while true do
+										if backentrega == selected then
+											selected = math.random(#rocks)
+										else
+											break
+										end
+										Citizen.Wait(10)
+									end
+									emp.collectOres()
+								end)
+							else
+								TriggerEvent("Notify","negado","<b>Ferramenta</b> ou <b>espaço na mochila</b> insuficientes.")	
 							end
-							emp.collectOres()
-						end)
+						else
+							TriggerEvent("Notify","negado","Você precisa do <b>veículo da mineradora</b> para fazer isso.")
+						end
 					end
 				end
 			end

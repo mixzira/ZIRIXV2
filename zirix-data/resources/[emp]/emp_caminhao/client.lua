@@ -203,7 +203,7 @@ Citizen.CreateThread(function()
 			local distance = Vdist(x,y,z,CoordenadaX2,CoordenadaY2,CoordenadaZ2)
 
 			if distance <= 100.0 then
-				DrawMarker(23,CoordenadaX2,CoordenadaY2,CoordenadaZ2-0.96,0,0,0,0,0,0,10.0,10.0,1.0,0,95,140,50,0,0,0,0)
+				DrawMarker(23,CoordenadaX2,CoordenadaY2,CoordenadaZ2-0.96,0,0,0,0,0,0,10.0,10.0,1.0,136, 96, 240, 180,0,0,0,0)
 				if distance <= 5.9 then
 					if IsControlJustPressed(1,38) then
 						local vehicle = getVehicleInDirection(GetEntityCoords(ped),GetOffsetFromEntityInWorldCoords(ped,0.0,5.0,0.0))

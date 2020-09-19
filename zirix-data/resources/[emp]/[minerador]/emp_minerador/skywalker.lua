@@ -58,3 +58,15 @@ function emp.collectOres()
 		ammount[source] = nil
 	end
 end
+
+function emp.checkPlate(modelo)
+	local source = source
+	local user_id = vRP.getUserId(source)
+	local veh,vhash,vplaca,vname = vRPclient.vehListHash(source,4)
+	if veh and vhash == modelo then
+		local placa_user_id = vRP.getUserByRegistration(vplaca)
+		if user_id == placa_user_id then
+			return true
+		end
+	end
+end
