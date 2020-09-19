@@ -45,6 +45,12 @@ local itemlist = {
 	["minerio-prata"] = { index = "minerio-prata", nome = "Minerio de Prata", type = "usar" },
 	["minerio-ferro"] = { index = "minerio-ferro", nome = "Minerio de Ferro", type = "usar" },
 
+
+	["diamante"] = { index = "diamante", nome = "Diamante Bruto", type = "usar" },
+	["barra-ouro"] = { index = "barra-ouro", nome = "Barra de Ouro", type = "usar" },
+	["barra-prata"] = { index = "barra-prata", nome = "Barra de Prata", type = "usar" },
+	["barra-ferro"] = { index = "barra-ferro", nome = "Barra de Ferro", type = "usar" },
+
 	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 	
 	["agua"] = { index = "agua", nome = "Água", type = "usar" },

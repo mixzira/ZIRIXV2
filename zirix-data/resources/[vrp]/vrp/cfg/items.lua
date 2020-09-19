@@ -49,6 +49,11 @@ cfg.items = {
 	["minerio-prata"] = { "Minerio de Prata",1.0 },
 	["minerio-ferro"] = { "Minerio de Ferro",1.0 },
 
+	["diamante"] = { "Diamante Bruto",1.0 },
+	["barra-ouro"] = { "Barra de Ouro",1.0 },
+	["barra-prata"] = { "Barra de Prata",1.0 },
+	["barra-ferro"] = { "Barra de Ferro",1.0 },
+
 	--[ Drinks ]-------------------------------------------------------------------------------------------------------
 
 	["agua"] = { "Água",0.3 },
