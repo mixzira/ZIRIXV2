@@ -4,7 +4,7 @@ vRP = Proxy.getInterface("vRP")
 
 --[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
-func = Tunnel.getInterface("carteiro_coletar")
+emp = Tunnel.getInterface("emp_carteiro-coletar")
 
 --[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 
@@ -28,29 +28,31 @@ end
 Citizen.CreateThread(function()
 	while true do
 		local idle = 1000
-		if not process then
-			local ped = PlayerPedId()
-			if not IsPedInAnyVehicle(ped) then
-				local x,y,z = table.unpack(GetEntityCoords(ped))
-				if Vdist(CoordenadaX,CoordenadaY,CoordenadaZ,x,y,z) < 5.1 then
-					idle = 5
-					DrawMarker(23, CoordenadaX, CoordenadaY, CoordenadaZ-0.98, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
-					if Vdist(CoordenadaX,CoordenadaY,CoordenadaZ,x,y,z) <= 1.2 then
-
-						if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), CoordenadaX,CoordenadaY,CoordenadaZ, true ) <= 1.1 and not process then
-							DrawText3D(CoordenadaX,CoordenadaY,CoordenadaZ, "Pressione [~p~E~w~] para empacotar as ~p~ENCOMENDAS~w~.")
-						end
-
-						if IsControlJustPressed(1,38) then
+		local ped = PlayerPedId()
+		if not IsPedInAnyVehicle(ped) then
+			local x,y,z = table.unpack(GetEntityCoords(ped))
+			if Vdist(CoordenadaX,CoordenadaY,CoordenadaZ,x,y,z) < 5.1 then
+				idle = 5
+				DrawMarker(23, CoordenadaX, CoordenadaY, CoordenadaZ-0.98, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
+				if Vdist(CoordenadaX,CoordenadaY,CoordenadaZ,x,y,z) <= 1.2 then
+					if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), CoordenadaX,CoordenadaY,CoordenadaZ, true ) <= 1.1  then
+						DrawText3D(CoordenadaX,CoordenadaY,CoordenadaZ, "Pressione [~p~E~w~] para empacotar as ~p~ENCOMENDAS~w~.")
+					end
+					if IsControlJustPressed(1,38) then
+						if not process then
 							CalculateTimeToDisplay()
 							if parseInt(time) >= 06 and parseInt(time) <= 20 then
-								if func.checkPayment() then
+								if emp.checkCrimeRecord() and emp.checkWeight() then
 									process = true
 									TriggerEvent('cancelando',true)
-									TriggerEvent("Progress",10000)
+									TriggerEvent("progress",8000,"Coletando")
+									FreezeEntityPosition(ped,true)
+									vRP._playAnim(false,{{"amb@prop_human_parking_meter@female@idle_a","idle_a_female"}},true)
 									SetTimeout(8000,function()
 										process = false
 										TriggerEvent('cancelando',false)
+										emp.giveOrders()
+										FreezeEntityPosition(ped,false)
 									end)
 								end
 							else
