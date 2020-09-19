@@ -53,6 +53,7 @@ Citizen.CreateThread(function()
 										TriggerEvent('cancelando',false)
 										emp.giveOrders()
 										FreezeEntityPosition(ped,false)
+										vRP._stopAnim(false)
 									end)
 								end
 							else

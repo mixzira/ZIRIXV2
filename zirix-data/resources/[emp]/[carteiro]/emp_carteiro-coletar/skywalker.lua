@@ -13,7 +13,7 @@ function emp.checkWeight()
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id then
-		if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("encomenda")*3 <= vRP.getInventoryMaxWeight(user_id) and vRP.tryGetInventoryItem(user_id,"caixa-vazia",1) and TriggerClientEvent("itensNotify",source,"usar","Usou","caixa-vazia") then
+		if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("encomenda")*3 <= vRP.getInventoryMaxWeight(user_id) and vRP.tryGetInventoryItem(user_id,"caixa-vazia",3) and TriggerClientEvent("itensNotify",source,"usar","Usou","caixa-vazia") then
 			return true
 		else
 			TriggerClientEvent("Notify",source,"negado","<b>Mochila</b> cheia ou <b>itens insuficientes</b> para o trabalho.",10000)
