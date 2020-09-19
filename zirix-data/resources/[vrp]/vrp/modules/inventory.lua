@@ -20,6 +20,10 @@ local itemlist = {
 	["maquininha"] = { index = "maquininha", nome = "Maquininha", type = "usar" },
 	["paninho"] = { index = "paninho", nome = "Pano de Microfibra", type = "usar" },
 
+	["camisinha"] = { index = "camisinha", nome = "Camisinha", type = "usar" },
+	["vibrador"] = { index = "vibrador", nome = "Vibrador", type = "usar" },
+	["kit"] = { index = "kit", nome = "Kit de Sex Shop", type = "usar" },
+
 	--[ Illegal Utilities ]--------------------------------------------------------------------------------------------
 
 	["dinheiro-sujo"] = { index = "dinheiro-sujo", nome = "Dinheiro", type = "usar" },
@@ -179,7 +183,7 @@ local itemlist = {
 
 	["semente-maconha"] = { index = "semente-maconha", nome = "Pacote de Sementes Genericas", type = "usar" },
 	["semente-blueberry"] = { index = "semente-blueberry", nome = "Pacote de Sementes de Blueberry", type = "usar" },
-
+	
 	--[ Desmanche ]------------------------------------------------------------------------------------------
 	["transmissao"] = { index = "transmissao", nome = "Transmissao", type = "usar" },
 	["suspensao"] = { index = "suspensao", nome = "Suspensao", type = "usar" },
