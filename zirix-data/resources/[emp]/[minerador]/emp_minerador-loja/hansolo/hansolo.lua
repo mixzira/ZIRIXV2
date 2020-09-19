@@ -1,3 +1,6 @@
+
+--[ MENU ]---------------------------------------------------------------------------------------
+
 local menuactive = false
 function ToggleActionMenu()
 	menuactive = not menuactive
@@ -33,13 +36,13 @@ RegisterNUICallback("ButtonClick",function(data,cb)
 	end
 end)
 
---[ LOCAIS ]-----------------------------------------------------------------------------------------------------------------------------
+--[ LOCS ]-----------------------------------------------------------------------------------------------------------------------------
 
 local lojas = {
 	{ ['x'] = -620.89, ['y'] = -224.63, ['z'] = 38.06 },
 }
 
---[ MENU ]-------------------------------------------------------------------------------------------------------------------------------
+--[ ACTION ]---------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
@@ -54,7 +57,7 @@ Citizen.CreateThread(function()
 			local lojas = lojas[k]
 			
 			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) < 2.1 and not menuactive then
-				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~y~E~w~] para acessar a ~y~DIGITALDEN~w~.")
+				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~y~E~w~] para acessar a ~y~LOJA DE MINÉRIOS ~w~.")
 			end
 
 			if distance < 5.1 then

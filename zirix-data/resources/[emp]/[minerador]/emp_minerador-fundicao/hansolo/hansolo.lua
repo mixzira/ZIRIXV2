@@ -55,7 +55,7 @@ AddEventHandler("fechar-nui", function()
 	ToggleActionMenu()
 end)
 
---[ AÇÃO ]---------------------------------------------------------------------------------------
+--[ ACTION ]---------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
 	while true do
@@ -83,7 +83,7 @@ Citizen.CreateThread(function()
 	end
 end)
 
---[ FUNÇÃO ]-------------------------------------------------------------------------------------
+--[ FUNCTION ]-------------------------------------------------------------------------------------
 
 function DrawText3D(x, y, z, text)
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)

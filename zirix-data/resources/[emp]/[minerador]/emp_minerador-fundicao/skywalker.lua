@@ -17,7 +17,7 @@ local ores = {
     { bar = "barra-ferro", barAmmount = 1, ore = "minerio-ferro", oreAmmount = 2 }
 }
 
---[ EVENTOS ]----------------------------------------------------------------------------------------------------------------------
+--[ EVENT ]----------------------------------------------------------------------------------------------------------------------
 
 RegisterServerEvent("fundir")
 AddEventHandler("fundir",function(item)
