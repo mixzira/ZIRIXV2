@@ -184,7 +184,7 @@ const updateMochila = () => {
 				${nameList2.map((item) => (`
 					<div class="item" data-item-key="${item.key}" data-vehname-key="${item.vehname}">
 						<div class="image"><img src='http://192.99.251.232:3554/images/vrp_itens/${item.index}.png'></div>
-						<div id="weight">${(item.peso*item.amount).toFixed(2)}</div>
+						<div id="weight">${(item.peso*item.amount).toFixed(2)}Kg</div>
 						<div id="quantity">${formatarNumero(item.amount)}x</div>
 						<div id="itemname">${item.name}</div>
 					</div>
@@ -199,7 +199,7 @@ const updateMochila = () => {
 				${nameList.map((item) => (`
 					<div class="item-trunk" data-item-key="${item.key}" data-vehname-key="${item.vehname}">
 					<div class="image"><img src='http://192.99.251.232:3554/images/vrp_itens/${item.index}.png'></div>
-						<div id="weight">${(item.peso*item.amount).toFixed(2)}</div>
+						<div id="weight">${(item.peso*item.amount).toFixed(2)}Kg</div>
 						<div id="quantity">${formatarNumero(item.amount)}x</div>
 						<div id="itemname">${item.name}</div>
 					</div>

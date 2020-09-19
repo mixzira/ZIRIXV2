@@ -11,8 +11,8 @@ Tunnel.bindInterface("vrp_autoescola",dmv)
 
 --[ mySQL ]------------------------------------------------------------------------------------------------------------------------------
 
-vRP._prepare("vRP/update_licenca","UPDATE vrp_user_identities SET licenca = @licenca WHERE user_id = @user_id")
-vRP._prepare("vRP/get_licenca","SELECT user_id FROM vrp_user_identities WHERE licenca = @licenca")
+vRP._prepare("vRP/update_driverlicense","UPDATE vrp_user_identities SET driverlicense = @driverlicense WHERE user_id = @user_id")
+vRP._prepare("vRP/get_driverlicense","SELECT user_id FROM vrp_user_identities WHERE driverlicense = @driverlicense")
 
 --[ AÇÃO ]-------------------------------------------------------------------------------------------------------------------------------
 
@@ -70,7 +70,7 @@ function dmv.checkcarlicense()
     local user_id = vRP.getUserId(source)
     local identity = vRP.getUserIdentity(user_id)
 
-    if identity.licenca == 0 or identity.licenca == 3 then
+    if identity.driverlicense == 0 or identity.driverlicense == 3 then
         return true
     end
 end
@@ -103,7 +103,7 @@ RegisterCommand('aprender',function(source,args,rawCommand)
 end)
 
 RegisterServerEvent("carteira")
-AddEventHandler("carteira",function(licenca,user_id)
-    vRP.execute("vRP/update_licenca", {licenca = licenca, user_id = user_id})
+AddEventHandler("carteira",function(driverlicense,user_id)
+    vRP.execute("vRP/update_driverlicense", {driverlicense = driverlicense, user_id = user_id})
 end)
 

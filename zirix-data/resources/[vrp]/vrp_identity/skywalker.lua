@@ -35,11 +35,11 @@ function vRPN.Identidade()
 		end
 
 		local cnh = "Inválido"
-		if identity.licenca == 0 then
+		if identity.driverlicense == 0 then
 			cnh = "Não habilitado"
-		elseif identity.licenca == 1 then
+		elseif identity.driverlicense == 1 then
 			cnh = "Habilitado"
-		elseif identity.licenca == 3 then
+		elseif identity.driverlicense == 3 then
 			cnh = "Cassada"
 		end
 
@@ -56,11 +56,11 @@ function vRPN.nuIdentidade()
 		local identitynu = vRP.getUserIdentity(nuser_id)
 
 		local cnh = "Inválido"
-		if identitynu.licenca == 0 then
+		if identitynu.driverlicense == 0 then
 			cnh = "Não habilitado"
-		elseif identitynu.licenca == 1 then
+		elseif identitynu.driverlicense == 1 then
 			cnh = "Habilitado"
-		elseif identitynu.licenca == 3 then
+		elseif identitynu.driverlicense == 3 then
 			cnh = "Cassada"
 		end
 
