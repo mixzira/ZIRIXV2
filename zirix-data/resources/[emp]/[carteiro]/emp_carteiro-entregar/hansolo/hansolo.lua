@@ -1,26 +1,21 @@
------------------------------------------------------------------------------------------------------------------------------------------
--- VRP
------------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
------------------------------------------------------------------------------------------------------------------------------------------
--- CONEXÃO
------------------------------------------------------------------------------------------------------------------------------------------
-vSERVER = Tunnel.getInterface("vrp_postman")
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIÁVEIS
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
+
+emp = Tunnel.getInterface("emp_carteiro-entregar")
+
+--[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
+
 local check = 0
 local blips = false
 local inService = false
 local serviceX = 53.51
 local serviceY = 114.72
 local serviceZ = 79.19
---Locs 53.51,114.72,79.19
------------------------------------------------------------------------------------------------------------------------------------------
--- RESIDENCES
------------------------------------------------------------------------------------------------------------------------------------------
+local time = 0
+
 local deliverys = {
 	[1] = { -34.20,-1847.02,26.19 },
 	[2] = { -20.62,-1858.82,25.40 },
@@ -223,45 +218,43 @@ local deliverys = {
 	[199] = { -1493.87,-668.44,33.39 },
 	[200] = { -1490.05,-671.55,33.39 }
 }
------------------------------------------------------------------------------------------------------------------------------------------
--- FUNÇÕES
------------------------------------------------------------------------------------------------------------------------------------------
-local hora = 0
+
+--[ TIME | FUNCTION ]-----------------------------------------------------------------------------------------------------------
+
 function CalculateTimeToDisplay()
-	hora = GetClockHours()
-	if hora <= 9 then
-		hora = "0" .. hora
+	time = GetClockHours()
+	if time <= 9 then
+		time = "0" .. time
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- STARTDELIVERY
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ PROCESS | THREAD ]----------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if not inService then
-			local ped = PlayerPedId()
-			if not IsPedInAnyVehicle(ped) then
-				local x,y,z = table.unpack(GetEntityCoords(ped))
-				local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
-				if distance <= 30.0 then
-					DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
-					if distance <= 1.2 then
-						drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.93,0.50,255,255,255,180)
-						if IsControlJustPressed(1,38) then
-							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
-								inService = true
-								check = math.random(#deliverys)
-								makeBlipsServices()
-							else
-								TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
-							end
+		local idle = 1000
+		local ped = PlayerPedId()
+		if not IsPedInAnyVehicle(ped) then
+			local x,y,z = table.unpack(GetEntityCoords(ped))
+			local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
+			if distance <= 30.0 then
+				DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
+				if distance <= 1.2 then
+					drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.93,0.50,255,255,255,180)
+					if IsControlJustPressed(1,38) and not inService then
+						CalculateTimeToDisplay()
+						if parseInt(time) >= 06 and parseInt(time) <= 20 then
+							inService = true
+							check = math.random(#deliverys)
+							makeBlipsServices()
+						else
+							TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
 						end
 					end
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 -----------------------------------------------------------------------------------------------------------------------------------------
@@ -281,7 +274,7 @@ Citizen.CreateThread(function()
 						drawTexts("PRESSIONE  ~b~E~w~  PARA ENTREGAR ENCOMENDAS",4,0.5,0.93,0.50,255,255,255,180)
 						if IsControlJustPressed(1,38) then
 							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
+							if parseInt(time) >= 06 and parseInt(time) <= 20 then
 								if vSERVER.startPayments() then
 									RemoveBlip(blips)
 									check = math.random(#deliverys)
