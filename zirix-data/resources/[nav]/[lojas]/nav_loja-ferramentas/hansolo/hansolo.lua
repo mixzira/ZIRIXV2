@@ -18,9 +18,12 @@ RegisterNUICallback("ButtonClick",function(data,cb)
 	if data == "ferramentas-comprar-paninho" then
 		TriggerServerEvent("ferramentas-comprar","paninho")
 	
-	elseif data == "ferramentas-comprar-ponta-britadeira" then
-		TriggerServerEvent("ferramentas-comprar","ponta-britadeira")
+	elseif data == "ferramentas-comprar-garrafa-vazia" then
+		TriggerServerEvent("ferramentas-comprar","garrafa-vazia")
 		
+	elseif data == "ferramentas-comprar-caixa-vazia" then
+		TriggerServerEvent("ferramentas-comprar","caixa-vazia")
+
 	elseif data == "ferramentas-comprar-ponta-britadeira" then
 		TriggerServerEvent("ferramentas-comprar","ponta-britadeira")
 
