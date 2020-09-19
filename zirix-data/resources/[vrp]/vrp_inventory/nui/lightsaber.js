@@ -127,7 +127,7 @@ const updateMochila = () => {
 			`)).join('')}
 		`);
 		$('#pesoinfo').html(`
-			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}0Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}0Kg</div>
+			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}Kg</div>
 		`);
 		updateDrag();
 	});

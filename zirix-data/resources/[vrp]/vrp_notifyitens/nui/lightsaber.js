@@ -3,11 +3,11 @@ $(document).ready(function(){
 		var html = ""
 
 		if (event.data.mode == 'sucesso') {
-			html = "<div id='showitem'><img src='http://192.99.251.232:3554/images/vrp_itens/"+event.data.item+".png'></img><b><p><sucesso></sucesso> "+event.data.mensagem+"</p></b><div class='quantidade'><p>"+event.data.quantidade+"x</p></div><div class='peso'><p>"+event.data.peso+"00Kg</p></div></div>"
+			html = "<div id='showitem'><img src='http://192.99.251.232:3554/images/vrp_itens/"+event.data.item+".png'></img><b><p><sucesso></sucesso> "+event.data.mensagem+"</p></b><div class='quantidade'><p>"+event.data.quantidade+"x</p></div><div class='peso'><p>"+event.data.peso+"Kg</p></div></div>"
 		}
 
 		if (event.data.mode == 'negado') {
-			html = "<div id='showitem'><img src='http://192.99.251.232:3554/images/vrp_itens/"+event.data.item+".png'></img><b><p><negado></negado> "+event.data.mensagem+"</p></b><div class='quantidade'><p>"+event.data.quantidade+"x</p></div><div class='peso'><p>"+event.data.peso+"00Kg</p></div></div>"
+			html = "<div id='showitem'><img src='http://192.99.251.232:3554/images/vrp_itens/"+event.data.item+".png'></img><b><p><negado></negado> "+event.data.mensagem+"</p></b><div class='quantidade'><p>"+event.data.quantidade+"x</p></div><div class='peso'><p>"+event.data.peso+"Kg</p></div></div>"
 		}
 
 		if (event.data.mode == 'usar') {

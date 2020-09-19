@@ -54,7 +54,7 @@ function emp.collectOres()
 
 	if user_id then
 		vRP.giveInventoryItem(user_id,itemName,ammount[source])
-		TriggerClientEvent("itensNotify",source,"sucesso","Minerou",""..vRP.itemNameList(itemName).."",""..ammount[source].."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(ammount[source])).."")
+		TriggerClientEvent("itensNotify",source,"sucesso","Minerou",""..itemName.."",""..ammount[source].."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(ammount[source])).."")
 		ammount[source] = nil
 	end
 end

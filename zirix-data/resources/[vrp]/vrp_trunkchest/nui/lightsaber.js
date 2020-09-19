@@ -177,8 +177,8 @@ const updateMochila = () => {
 		$('#inventory').html(`
 
 
-			<div class="weight"><b>EM USO:</b>  ${(data.weight).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxweight-data.weight).toFixed(2)}0Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxweight).toFixed(2)}0Kg</div>
-			<div class="weight-trunk"><b>EM USO:</b>  ${(data.trunkweight).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxtrunkweight-data.trunkweight).toFixed(2)}0Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxtrunkweight).toFixed(2)}0Kg</div>
+			<div class="weight"><b>EM USO:</b>  ${(data.weight).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxweight-data.weight).toFixed(2)}Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxweight).toFixed(2)}Kg</div>
+			<div class="weight-trunk"><b>EM USO:</b>  ${(data.trunkweight).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxtrunkweight-data.trunkweight).toFixed(2)}Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxtrunkweight).toFixed(2)}Kg</div>
 			
 			<div class="left">
 				${nameList2.map((item) => (`

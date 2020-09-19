@@ -174,14 +174,14 @@ const updateChest = () => {
 		const nameList2 = data.inventario2.sort((a,b) => (a.name > b.name) ? 1: -1);
 		$('#inventory').html(`
 
-			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}0Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}0Kg</div>
-			<div class="peso2"><b>EM USO:</b>  ${(data.peso2).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso2-data.peso2).toFixed(2)}0Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso2).toFixed(2)}0Kg</div>
+			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}Kg</div>
+			<div class="peso2"><b>EM USO:</b>  ${(data.peso2).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso2-data.peso2).toFixed(2)}Kg    <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso2).toFixed(2)}Kg</div>
 			
 			<div class="esquerda">
 				${nameList2.map((item) => (`
 					<div class="item" data-item-key="${item.key}">
 						<div class="thumb"><img src='http://192.99.251.232:3554/images/vrp_itens/${item.index}.png'></div>	
-						<div id="peso">${(item.peso*item.amount).toFixed(2)}0Kg</div>
+						<div id="peso">${(item.peso*item.amount).toFixed(2)}Kg</div>
 						<div id="quantity">${formatarNumero(item.amount)}x</div>
 						<div id="itemname">${item.name}</div>
 					</div>
@@ -196,7 +196,7 @@ const updateChest = () => {
 				${nameList.map((item) => (`
 					<div class="item2" data-item-key="${item.key}">
 						<div class="thumb"><img src='http://192.99.251.232:3554/images/vrp_itens/${item.index}.png'></div>		
-						<div id="peso">${(item.peso*item.amount).toFixed(2)}0Kg</div>
+						<div id="peso">${(item.peso*item.amount).toFixed(2)}Kg</div>
 						<div id="quantity">${formatarNumero(item.amount)}x</div>
 						<div id="itemname">${item.name}</div>
 					</div>
@@ -204,7 +204,7 @@ const updateChest = () => {
 			</div>
 		`);
 		$('#pesoinfo').html(`
-			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}0Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}0Kg</div>
+			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}Kg</div>
 		`);
 		updateDrag();
 	});
