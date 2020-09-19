@@ -155,6 +155,40 @@ local itemlist = {
 
 	["garrafa-leite"] = { index = "garrafa-leite", nome = "Garrafa com Leite", type = "usar" },
 
+	--[ Emprego ][ Pescador ]------------------------------------------------------------------------------------------
+
+	["isca"] = { index = "isca", nome = "Iscas de Pesca", type = "usar" },
+
+	--[ Emprego ][ Lenhador ]------------------------------------------------------------------------------------------
+
+	["tora"] = { index = "tora", nome = "Tora de Madeira", type = "usar" },
+
+	--[ Emprego ][ Lixeiro ]------------------------------------------------------------------------------------------
+
+	["sacodelixo"] = {index = "sacodelixo", nome = "Saco de Lixo", type = "usar" },
+
+	--[ Emprego ][ Carteiro ]------------------------------------------------------------------------------------------
+
+	["encomenda"] = { index = "encomenda", nome = "Encomenda", type = "usar" },
+
+	--[ Emprego ][ Transporter ]------------------------------------------------------------------------------------------
+
+	["malote"] = { index = "malote", nome = "Malote de Dinheiro", type = "usar" },
+
+	--[ Emprego ][ Farmer ]------------------------------------------------------------------------------------------
+
+	["semente-maconha"] = { index = "semente-maconha", nome = "Pacote de Sementes Genericas", type = "usar" },
+	["semente-blueberry"] = { index = "semente-blueberry", nome = "Pacote de Sementes de Blueberry", type = "usar" },
+
+	--[ Desmanche ]------------------------------------------------------------------------------------------
+	["transmissao"] = { index = "transmissao", nome = "Transmissao", type = "usar" },
+	["suspensao"] = { index = "suspensao", nome = "Suspensao", type = "usar" },
+	["portas"] = { index = "portas", nome = "Portas", type = "usar" },
+	["borrachas"] = { index = "borrachas", nome = "Borrachas", type = "usar" },
+	["pneus"] = { index = "pneus", nome = "Pneus", type = "usar" },
+	["capo"] = { index = "capo", nome = "Capo", type = "usar" },
+	["bateria-carro"] = { index = "bateria-carro", nome = "Bateria de Carro", type = "usar" },
+	["motor"] = { index = "motor", nome = "Motor", type = "usar" },
 	--[ Itens danificados ]--------------------------------------------------------------------------------------------
 
 	["celular-queimado"] = { index = "celular-queimado", nome = "Celular queimado", type = "usar" },

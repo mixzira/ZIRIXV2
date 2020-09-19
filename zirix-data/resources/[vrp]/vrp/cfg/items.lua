@@ -158,6 +158,44 @@ cfg.items = {
 
 	["garrafa-leite"] = { "Garrafa com Leite",0.1 },
 
+
+	--[ Emprego ][ Pescador ]------------------------------------------------------------------------------------------
+
+	["isca"] = { "Isca de Pesca",0.1 },
+
+	--[ Emprego ][ Lenhador ]------------------------------------------------------------------------------------------
+
+	["tora"] = { "Tora de Madeira",0.5 },
+
+	--[ Emprego ][ Lixeiro ]------------------------------------------------------------------------------------------
+
+	["sacodelixo"] = { "Saco de Lixo",0.5 },
+
+
+	--[ Emprego ][ Carteiro ]------------------------------------------------------------------------------------------
+
+	["encomenda"] = { "Encomenda",0.5 },
+
+	--[ Emprego ][ Transporter ]------------------------------------------------------------------------------------------
+
+	["malote"] = { "Malote de Dinheiro",0.5 },
+
+	--[ Emprego ][ Farmer ]------------------------------------------------------------------------------------------
+
+	["semente-maconha"] = { "Pacote de Sementes Genericas",0.1 },
+	["semente-blueberry"] = { "Pacote de Sementes de Blueberry",0.1 },
+
+	--[ Desmanche ]------------------------------------------------------------------------------------------
+	["transmissao"] = { "Transmissao",0.5 },
+	["suspensao"] = { "Suspensao",0.5 },
+	["portas"] = { "Portas",1.0 },
+	["borrachas"] = { "Borrachas",0.5 },
+	["pneus"] = { "Pneus",0.5 },
+	["capo"] = { "Capo",1.0 },
+	["bateria-carro"] = { "Bateria de Carro",0.7 },
+	["motor"] = { "Motor",1.0 },
+
+
 	--[ Itens queimados ]----------------------------------------------------------------------------------------------
 
 	["celular-queimado"] = { "Celular queimado",0.3 },
