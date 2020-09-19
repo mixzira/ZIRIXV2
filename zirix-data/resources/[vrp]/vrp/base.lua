@@ -301,6 +301,7 @@ function vRP.dropPlayer(source)
 						}
 					}
 				}), { ['Content-Type'] = 'application/json' })
+
 			elseif vRP.hasGroup(user_id,"manager") then
 				vRP.addUserGroup(user_id,"off-manager")
 				local cargo = "Manager"
@@ -336,6 +337,7 @@ function vRP.dropPlayer(source)
 						}
 					}
 				}), { ['Content-Type'] = 'application/json' })
+
 			elseif vRP.hasGroup(user_id,"administrador") then
 				vRP.addUserGroup(user_id,"off-administrador")
 				local cargo = "Administrador"
@@ -371,6 +373,7 @@ function vRP.dropPlayer(source)
 						}
 					}
 				}), { ['Content-Type'] = 'application/json' })
+
 			elseif vRP.hasGroup(user_id,"moderador") then
 				vRP.addUserGroup(user_id,"off-moderador")
 				local cargo = "Moderador"
@@ -406,6 +409,7 @@ function vRP.dropPlayer(source)
 						}
 					}
 				}), { ['Content-Type'] = 'application/json' })
+				
 			elseif vRP.hasGroup(user_id,"suporte") then
 				vRP.addUserGroup(user_id,"off-suporte")
 				local cargo = "Suporte"
