@@ -64,7 +64,7 @@ Citizen.CreateThread(function()
 			local lojas = lojas[k]
 
 			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) <= 1.5 and not menuactive then
-				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~y~E~w~] para acessar a ~y~LOJA DE ACESSÓRIOS~w~.")
+				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~p~E~w~] para acessar a ~p~LOJA DE ACESSÓRIOS~w~.")
 			end
 			
 			if distance < 5.1 then
