@@ -174,6 +174,7 @@ local itemlist = {
 	--[ Emprego ][ Carteiro ]------------------------------------------------------------------------------------------
 
 	["encomenda"] = { index = "encomenda", nome = "Encomenda", type = "usar" },
+	["caixa-vazia"] = { index = "caixa-vazia", nome = "Caixa Vazia", type = "usar" },
 
 	--[ Emprego ][ Transporter ]------------------------------------------------------------------------------------------
 
