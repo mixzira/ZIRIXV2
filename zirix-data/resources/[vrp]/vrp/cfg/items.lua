@@ -158,7 +158,6 @@ cfg.items = {
 
 	["garrafa-leite"] = { "Garrafa com Leite",0.1 },
 
-
 	--[ Emprego ][ Pescador ]------------------------------------------------------------------------------------------
 
 	["isca"] = { "Isca de Pesca",0.1 },
@@ -170,7 +169,6 @@ cfg.items = {
 	--[ Emprego ][ Lixeiro ]------------------------------------------------------------------------------------------
 
 	["sacodelixo"] = { "Saco de Lixo",0.5 },
-
 
 	--[ Emprego ][ Carteiro ]------------------------------------------------------------------------------------------
 
@@ -185,6 +183,13 @@ cfg.items = {
 	["semente-maconha"] = { "Pacote de Sementes Genericas",0.1 },
 	["semente-blueberry"] = { "Pacote de Sementes de Blueberry",0.1 },
 
+	--[ Emprego ][ Vanilla ]------------------------------------------------------------------------------------------
+
+	["camisinha"] = { "Camisinha",0.1 },
+	["vibrador"] = { "Vibrador",0.1 },
+	["lubrificante"] = { "Lubrificante",0.1 },
+	["kit"] = { "Kit de Sex Shop",0.1 },
+	
 	--[ Desmanche ]------------------------------------------------------------------------------------------
 	["transmissao"] = { "Transmissao",0.5 },
 	["suspensao"] = { "Suspensao",0.5 },
