@@ -61,11 +61,8 @@ function vRP.generatePhoneNumber(cbr)
 	return phone
 end
 
-function vRP.checkCrimeRecord()
-    local source = source
-    local user_id = vRP.getUserId(source)
+function vRP.checkCrimeRecord(user_id)
     local identity = vRP.getUserIdentity(user_id)
-    
     return identity.crimerecord
 end
 
