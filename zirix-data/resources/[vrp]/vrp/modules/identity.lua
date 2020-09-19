@@ -61,6 +61,14 @@ function vRP.generatePhoneNumber(cbr)
 	return phone
 end
 
+function vRP.checkCrimeRecord()
+    local source = source
+    local user_id = vRP.getUserId(source)
+    local identity = vRP.getUserIdentity(user_id)
+    
+    return identity.crimerecord
+end
+
 AddEventHandler("vRP:playerJoin",function(user_id,source,name)
 	if not vRP.getUserIdentity(user_id) then
 		local registration = vRP.generateRegistrationNumber()

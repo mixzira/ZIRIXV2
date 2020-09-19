@@ -120,14 +120,14 @@ const updateMochila = () => {
 			${nameList.map((item) => (`
 				<div class="item" data-item-key="${item.key}" data-item-type="${item.type}" data-name-key="${item.name}">
 					<div id="thumb"><img src='http://192.99.251.232:3554/images/vrp_itens/${item.index}.png'></div>	
-					<div id="peso">${(item.peso*item.amount).toFixed(2)}0Kg</div>
+					<div id="peso">${(item.peso*item.amount).toFixed(2)}Kg</div>
 					<div id="quantity">${formatarNumero(item.amount)}x</div>
 					<div id="itemname">${item.name}</div>
 				</div>
 			`)).join('')}
 		`);
 		$('#pesoinfo').html(`
-			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}0Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}0Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}0Kg</div>
+			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}Kg</div>
 		`);
 		updateDrag();
 	});

@@ -107,7 +107,7 @@ RegisterNetEvent("vehash")
 AddEventHandler("vehash",function()
 	local vehicle = vRP.getNearestVehicle(7)
     if IsEntityAVehicle(vehicle) then
-        vRP.prompt(source,"HASH:",GetEntityModel(vehicle))
+        vRP.prompt(source,"HASH: "..GetEntityModel(vehicle),GetEntityModel(vehicle))
 	end
 end)
 

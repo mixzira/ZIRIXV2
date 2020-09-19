@@ -30,7 +30,7 @@ Citizen.CreateThread(function()
 			for k,v in pairs(services) do
 				local distance = Vdist(x,y,z,v[1],v[2],v[3])
 				if distance <= 50 then
-					DrawMarker(23,v[1],v[2],v[3]-0.95,0,0,0,0,0,0,10.0,10.0,1.0,0,150,0,20,0,0,0,0)
+					DrawMarker(23,v[1],v[2],v[3]-0.95,0,0,0,0,0,0,10.0,10.0,1.0,136, 96, 240, 180,0,0,0,0)
 					if distance <= 5 then
 						if IsControlJustPressed(1,38) then
 							vSERVER.checkImpound()

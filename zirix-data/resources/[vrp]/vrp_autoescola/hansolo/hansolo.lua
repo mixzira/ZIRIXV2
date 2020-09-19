@@ -26,7 +26,7 @@ Citizen.CreateThread(function()
         local distance = GetDistanceBetweenCoords(226.11, 375.24,cdz,x,y,z,true)
 
         if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), 226.11, 375.24, 106.12, true ) < 5.1 and not emaula then
-            DrawText3D(226.11, 375.24, 107.06, "Pressione [~y~E~w~] para iniciar as ~y~aulas de direção~w~. ( ~g~$600 dólares~w~ )")
+            DrawText3D(226.11, 375.24, 107.06, "Pressione [~p~E~w~] para iniciar as ~p~aulas de direção~w~. ( ~g~$600 dólares~w~ )")
             idle = 5
         end
         
@@ -125,7 +125,7 @@ Citizen.CreateThread(function()
         
         if emrota == 1 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 214.75, 363.58, 106.23, true) > 4.0001 then
-                DrawMarker(21, 214.75, 363.58, 106.23, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 214.75, 363.58, 106.23, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -149,7 +149,7 @@ Citizen.CreateThread(function()
 
         if emrota == 2 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 237.44, 346.18, 105.56, true) > 4.0001 then
-                DrawMarker(21, 237.44, 346.18, 105.56, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 237.44, 346.18, 105.56, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -172,7 +172,7 @@ Citizen.CreateThread(function()
 
         if emrota == 3 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 549.12, 247.5, 103.11, true) > 4.0001 then
-                DrawMarker(21, 549.12, 247.5, 103.11, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 549.12, 247.5, 103.11, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -192,7 +192,7 @@ Citizen.CreateThread(function()
 
         if emrota == 4 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 913.36, 520.65, 120.55, true) > 4.0001 then
-                DrawMarker(21, 913.36, 520.65, 120.55, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 913.36, 520.65, 120.55, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -212,7 +212,7 @@ Citizen.CreateThread(function()
 
         if emrota == 5 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 1064.49, 407.65, 91.1, true) > 4.0001 then
-                DrawMarker(21, 1064.49, 407.65, 91.1, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 1064.49, 407.65, 91.1, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -233,7 +233,7 @@ Citizen.CreateThread(function()
 
         if emrota == 7 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 532.59, -323.64, 43.58, true) > 4.0001 then
-                DrawMarker(21, 532.59, -323.64, 43.58, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 532.59, -323.64, 43.58, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -254,7 +254,7 @@ Citizen.CreateThread(function()
 
         if emrota == 8 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 246.92, -221.15, 54.04, true) > 4.0001 then
-                DrawMarker(21, 246.92, -221.15, 54.04, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 246.92, -221.15, 54.04, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -274,7 +274,7 @@ Citizen.CreateThread(function()
 
         if emrota == 9 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -57.2, -103.0, 57.8, true) > 4.0001 then
-                DrawMarker(21, -57.2, -103.0, 57.8, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, -57.2, -103.0, 57.8, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -298,7 +298,7 @@ Citizen.CreateThread(function()
 
         if emrota == 10 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), -40.29, 18.62, 72.01, true) > 4.0001 then
-                DrawMarker(21, -40.29, 18.62, 72.01, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, -40.29, 18.62, 72.01, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -318,7 +318,7 @@ Citizen.CreateThread(function()
 
         if emrota == 11 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 30.87, 233.73, 109.55, true) > 4.0001 then
-                DrawMarker(21, 30.87, 233.73, 109.55, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 30.87, 233.73, 109.55, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -338,7 +338,7 @@ Citizen.CreateThread(function()
 
         if emrota == 12 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 201.65, 358.25, 106.4, true) > 4.0001 then
-                DrawMarker(21, 201.65, 358.25, 106.4, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 201.65, 358.25, 106.4, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -358,7 +358,7 @@ Citizen.CreateThread(function()
 
         if emrota == 13 then
             if GetDistanceBetweenCoords(GetEntityCoords(GetPlayerPed(-1)), 220.14, 377.39, 106.46, true) > 4.0001 then
-                DrawMarker(21, 220.14, 377.39, 106.46, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 234, 203, 102, 220, 1, 0, 0, 1)
+                DrawMarker(21, 220.14, 377.39, 106.46, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
             else
                 if bliprota ~= nil and DoesBlipExist(bliprota) then
                     Citizen.InvokeNative(0x86A652570E5F25DD,Citizen.PointerValueIntInitialized(bliprota))
@@ -450,11 +450,11 @@ Citizen.CreateThread(function()
             local pedcar = GetVehiclePedIsIn(ped)
 
             if area == 1 then
-                drawTxt("LIMITE DE VELOCIDADE DA VIA: ~y~60~w~KM/h",4,0.5,0.92,0.35,255,255,255,255)
+                drawTxt("LIMITE DE VELOCIDADE DA VIA: ~p~60~w~KM/h",4,0.5,0.92,0.35,255,255,255,255)
             elseif area == 2 then
-                drawTxt("LIMITE DE VELOCIDADE DA VIA: ~y~80~w~KM/h",4,0.5,0.92,0.35,255,255,255,255)
+                drawTxt("LIMITE DE VELOCIDADE DA VIA: ~p~80~w~KM/h",4,0.5,0.92,0.35,255,255,255,255)
             elseif area == 3 then
-                drawTxt("LIMITE DE VELOCIDADE DA VIA: ~y~120~w~KM/h",4,0.5,0.92,0.35,255,255,255,255)
+                drawTxt("LIMITE DE VELOCIDADE DA VIA: ~p~120~w~KM/h",4,0.5,0.92,0.35,255,255,255,255)
             end
 
             if HasEntityCollidedWithAnything(pedcar) and not emcolizao then

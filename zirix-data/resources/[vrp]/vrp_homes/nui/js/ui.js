@@ -160,7 +160,7 @@ var templateTrunkChest = (key, amount, image, name, weight, target) => {
       <div class="image" style="background-image: url('http://192.95.57.111/imagens/vrp_itens/${item.index}.png')"></div>
     </div>
     <div class="row">
-      <div class="name">${name} <i>(${(weight * amount).toFixed(2)}kg)</i></div>
+      <div class="name">${name} <i>(${(weight * amount).toFixed(2)}Kg)</i></div>
     </div>
   </div>
   `;
@@ -185,10 +185,10 @@ const updateVault = () => {
     const nameList = data.inventario.sort((a, b) => a.name > b.name ? 1 : -1);
     const nameList2 = data.inventario2.sort((a, b) => a.name > b.name ? 1 : -1);
     $('.bag-workspace > .inventory-title').html(`
-      Inventário <small>(<i><b>${data.peso.toFixed(2)}kg</b> em uso - <b>${(data.maxpeso - data.peso).toFixed(2)}kg</b> livre de <b>${data.maxpeso.toFixed(2)}kg</b></i> no total)</small>
+      Inventário <small>(<i><b>${data.peso.toFixed(2)}Kg</b> em uso - <b>${(data.maxpeso - data.peso).toFixed(2)}Kg</b> livre de <b>${data.maxpeso.toFixed(2)}Kg</b></i> no total)</small>
     `);
     $('.trunk-workspace > .inventory-title').html(`
-      Baú da casa <small>(<i><b>${data.peso2.toFixed(2)}kg</b> em uso - <b>${(data.maxpeso2 - data.peso2).toFixed(2)}kg </b> livre de <b>${data.maxpeso2.toFixed(2)}kg</b></i> no total)</small>
+      Baú da casa <small>(<i><b>${data.peso2.toFixed(2)}Kg</b> em uso - <b>${(data.maxpeso2 - data.peso2).toFixed(2)}Kg </b> livre de <b>${data.maxpeso2.toFixed(2)}Kg</b></i> no total)</small>
     `);
     var inventory = nameList.map(
       item => templateTrunkChest(item.key, item.amount, item.index, item.name, item.peso, 'trunk')

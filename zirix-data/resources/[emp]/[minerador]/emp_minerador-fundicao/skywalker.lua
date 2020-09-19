@@ -37,7 +37,7 @@ AddEventHandler("fundir",function(item)
                         SetTimeout(10000,function()
                             vRPclient._stopAnim(source,false)
                             vRP.giveInventoryItem(user_id,item,v.barAmmount)
-                            TriggerClientEvent("itensNotify",source,"sucesso","Fundiu",""..vRP.itemNameList(item).."",""..v.barAmmount.."",""..vRP.format(vRP.getItemWeight(item)*parseInt(v.barAmmount)).."")
+                            TriggerClientEvent("itensNotify",source,"sucesso","Fundiu",""..v.bar.."",""..v.barAmmount.."",""..vRP.format(vRP.getItemWeight(item)*parseInt(v.barAmmount)).."")
                         end)
                     end
                 else

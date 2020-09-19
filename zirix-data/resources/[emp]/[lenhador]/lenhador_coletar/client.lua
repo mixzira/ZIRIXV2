@@ -69,7 +69,7 @@ Citizen.CreateThread(function()
 				for _,func in pairs(arvores) do
 					local i,x,y,z = table.unpack(func)
 					if Vdist(x2,y2,z2,x,y,z) <= 50 and list[i] == nil then
-						DrawMarker(21,x,y,z,0,0,0,0,180.0,130.0,0.6,0.8,0.5,98,163,41,25,1,0,0,1)
+						DrawMarker(21,x,y,z,0,0,0,0,180.0,130.0,0.6,0.8,0.5,136, 96, 240, 180,1,0,0,1)
 						if Vdist(x2,y2,z2,x,y,z) <= 1.2 then
 							drawTxt("PRESSIONE  ~b~E~w~  PARA CORTAR MADEIRA",4,0.5,0.93,0.50,255,255,255,180)
 							if IsControlJustPressed(1,38) then

@@ -245,7 +245,7 @@ Citizen.CreateThread(function()
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
 				if distance <= 30.0 then
-					DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,240,200,80,20,0,0,0,0)
+					DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
 					if distance <= 1.2 then
 						drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.93,0.50,255,255,255,180)
 						if IsControlJustPressed(1,38) then
@@ -276,7 +276,7 @@ Citizen.CreateThread(function()
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(deliverys[check][1],deliverys[check][2],deliverys[check][3],x,y,z)
 				if distance <= 30.0 then
-					DrawMarker(21,deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,240,200,80,50,0,0,0,1)
+					DrawMarker(21,deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,136, 96, 240, 180,0,0,0,1)
 					if distance <= 1.2 then
 						drawTexts("PRESSIONE  ~b~E~w~  PARA ENTREGAR ENCOMENDAS",4,0.5,0.93,0.50,255,255,255,180)
 						if IsControlJustPressed(1,38) then

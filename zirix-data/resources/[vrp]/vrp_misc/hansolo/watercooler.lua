@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 
         if coolerCoords ~= nil then
             if GetDistanceBetweenCoords(pedCoords["x"], pedCoords["y"], pedCoords["z"], coolerCoords["x"], coolerCoords["y"], coolerCoords["z"] < 1) and not IsPedInAnyVehicle(ped) then
-                DrawText3D(coolerCoords["x"], coolerCoords["y"], coolerCoords["z"]+1.2, "Pressione [~y~E~w~] para ~y~ENCHER SUA GARRAFA D'ÁGUA~w~.")
+                DrawText3D(coolerCoords["x"], coolerCoords["y"], coolerCoords["z"]+1.2, "Pressione [~p~E~w~] para ~p~ENCHER SUA GARRAFA D'ÁGUA~w~.")
                 
                 if GetDistanceBetweenCoords(pedCoords["x"], pedCoords["y"], pedCoords["z"], coolerCoords["x"], coolerCoords["y"], coolerCoords["z"] < 0.5) then
                     if IsControlPressed(1,38) then

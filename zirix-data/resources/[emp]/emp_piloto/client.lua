@@ -110,7 +110,7 @@ Citizen.CreateThread(function()
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(x,y,z,CoordenadaX,CoordenadaY,CoordenadaZ)
 				if distance <= 30.0 then
-					DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,240,200,80,20,0,0,0,0)
+					DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
 					if distance <= 1.2 then
 						drawTxt("PRESSIONE  ~b~E~w~  PARA INICIAR EXPEDIENTE",4,0.5,0.93,0.50,255,255,255,180)
 						if IsControlJustPressed(1,38) and emP.checkPermission() then
@@ -142,7 +142,7 @@ Citizen.CreateThread(function()
 				local vehicle = GetVehiclePedIsUsing(ped)
 				local distance = Vdist(x,y,z,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3])
 				if distance <= 200.0 and (IsVehicleModel(vehicle,GetHashKey("supervolito")) or IsVehicleModel(vehicle,GetHashKey("supervolito2")) or IsVehicleModel(vehicle,GetHashKey("buzzard2")) or IsVehicleModel(vehicle,GetHashKey("frogger")) or IsVehicleModel(vehicle,GetHashKey("maverick"))) then
-					DrawMarker(23,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]-0.95,0,0,0,0,0,0,10.0,10.0,0.5,240,200,80,50,0,0,0,0)
+					DrawMarker(23,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]-0.95,0,0,0,0,0,0,10.0,10.0,0.5,136, 96, 240, 180,0,0,0,0)
 					if distance <= 10.1 then
 						if IsControlJustPressed(1,38) and emP.checkPermission() then
 							CalculateTimeToDisplay()
@@ -192,7 +192,7 @@ Citizen.CreateThread(function()
 										Citizen.Wait(5)
 										local x2,y2,z2 = table.unpack(GetEntityCoords(passageiro))
 										if not IsPedSittingInVehicle(passageiro,vehicle) then
-											DrawMarker(21,x2,y2,z2+1.3,0,0,0,0,180.0,130.0,0.6,0.8,0.5,240,200,80,50,1,0,0,1)
+											DrawMarker(21,x2,y2,z2+1.3,0,0,0,0,180.0,130.0,0.6,0.8,0.5,136, 96, 240, 180,1,0,0,1)
 										end
 										if IsPedSittingInVehicle(passageiro,vehicle) then
 											FreezeEntityPosition(vehicle,false)

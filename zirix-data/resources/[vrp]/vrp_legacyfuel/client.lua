@@ -163,10 +163,10 @@ AddEventHandler('fuel:refuelFromPump',function(pumpObject,ped,vehicle)
 		if pumpObject then
 			local stringCoords = GetEntityCoords(pumpObject)
 			DrawText3Ds(stringCoords.x,stringCoords.y,stringCoords.z + 1.2,"PRESSIONE ~g~E ~w~PARA CANCELAR")
-			DrawText3Ds(vehicleCoords.x,vehicleCoords.y,vehicleCoords.z + 0.5,"TANQUE: ~y~"..Round(currentFuel,1).."%")
+			DrawText3Ds(vehicleCoords.x,vehicleCoords.y,vehicleCoords.z + 0.5,"TANQUE: ~p~"..Round(currentFuel,1).."%")
 		else
 			DrawText3Ds(vehicleCoords.x,vehicleCoords.y,vehicleCoords.z + 0.5,"PRESSIONE ~g~E ~w~PARA CANCELAR")
-			DrawText3Ds(vehicleCoords.x,vehicleCoords.y,vehicleCoords.z + 0.34,"GALÃO: ~b~"..Round(GetAmmoInPedWeapon(ped,883325847) / 4500 * 100,1).."%~w~    TANQUE: ~y~"..Round(currentFuel,1).."%")
+			DrawText3Ds(vehicleCoords.x,vehicleCoords.y,vehicleCoords.z + 0.34,"GALÃO: ~b~"..Round(GetAmmoInPedWeapon(ped,883325847) / 4500 * 100,1).."%~w~    TANQUE: ~p~"..Round(currentFuel,1).."%")
 		end
 
 		if not IsEntityPlayingAnim(ped,"timetable@gardener@filling_can","gar_ig_5_filling_can",3) then
@@ -189,7 +189,7 @@ Citizen.CreateThread(function()
 		if not isFueling and ((isNearPump and GetEntityHealth(isNearPump) > 0) or (GetSelectedPedWeapon(ped) == 883325847 and not isNearPump)) then
 			if IsPedInAnyVehicle(ped) and GetPedInVehicleSeat(GetVehiclePedIsIn(ped),-1) == ped then
 				local pumpCoords = GetEntityCoords(isNearPump)
-				DrawText3Ds(pumpCoords.x,pumpCoords.y,pumpCoords.z + 1.2,"SAIA DO ~y~VEÍCULO ~w~PARA ABASTECER")
+				DrawText3Ds(pumpCoords.x,pumpCoords.y,pumpCoords.z + 1.2,"SAIA DO ~p~VEÍCULO ~w~PARA ABASTECER")
 			else
 				local vehicle = GetPlayersLastVehicle()
 				local vehicleCoords = GetEntityCoords(vehicle)

@@ -128,11 +128,11 @@ Citizen.CreateThread(function()
 
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z, true ) <= 10 then
                 idle = 5
-                DrawMarker( 23, lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z-0.99, 0, 0, 0, 0, 0, 0, 1.7, 1.7, 0.5, 247, 217, 99, 100, 0, 0, 0, 0)
+                DrawMarker( 23, lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z-0.99, 0, 0, 0, 0, 0, 0, 1.7, 1.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
             end
 
             if GetDistanceBetweenCoords(playerCoords.x, playerCoords.y, playerCoords.z, lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z, true ) <= 2 and not noProvador then
-                DrawText3D(lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z, "Pressione [~y~E~w~] para acessar a ~y~LOJA DE ROUPAS~w~.")    
+                DrawText3D(lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z, "Pressione [~p~E~w~] para acessar a ~p~LOJA DE ROUPAS~w~.")    
             end
 
             if GetDistanceBetweenCoords(GetEntityCoords(ped), lojaderoupa[k].x, lojaderoupa[k].y, lojaderoupa[k].z, true ) < 1 then

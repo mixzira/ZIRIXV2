@@ -50,29 +50,29 @@ end)
 --[ MACAS DO HOSPITAL ]------------------------------------------------------------------------------------------------------------------  ['x'] = 318.39, ['y'] = -580.79, ['z'] = 43.29
 
 local macas = {
-	{ ['x'] = 323.35, ['y'] = -582.42, ['z'] = 43.29, ['x2'] = 324.35, ['y2'] = -582.73, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." }, -- Enfermaria;
-	{ ['x'] = 318.39, ['y'] = -580.79, ['z'] = 43.29, ['x2'] = 319.48, ['y2'] = -581.01, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 314.76, ['y'] = -579.3, ['z'] = 43.29, ['x2'] = 313.97, ['y2'] = -579.01, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 310.24, ['y'] = -577.68, ['z'] = 43.29, ['x2'] = 309.32, ['y2'] = -577.36, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 321.79, ['y'] = -586.96, ['z'] = 43.29, ['x2'] = 322.6, ['y2'] = -587.22, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 318.56, ['y'] = -585.65, ['z'] = 43.29, ['x2'] = 317.79, ['y2'] = -585.37, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 315.37, ['y'] = -584.49, ['z'] = 43.29, ['x2'] = 314.52, ['y2'] = -584.21, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 311.96, ['y'] = -583.24, ['z'] = 43.29, ['x2'] = 311.17, ['y2'] = -582.94, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
-	{ ['x'] = 308.58, ['y'] = -582.09, ['z'] = 43.29, ['x2'] = 307.76, ['y2'] = -581.79, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~y~E~w~] para deitar   ~y~&~w~    [~y~G~w~] para se tratar." },
+	{ ['x'] = 323.35, ['y'] = -582.42, ['z'] = 43.29, ['x2'] = 324.35, ['y2'] = -582.73, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." }, -- Enfermaria;
+	{ ['x'] = 318.39, ['y'] = -580.79, ['z'] = 43.29, ['x2'] = 319.48, ['y2'] = -581.01, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 314.76, ['y'] = -579.3, ['z'] = 43.29, ['x2'] = 313.97, ['y2'] = -579.01, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 310.24, ['y'] = -577.68, ['z'] = 43.29, ['x2'] = 309.32, ['y2'] = -577.36, ['z2'] = 44.21, ['h'] = 339.96, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 321.79, ['y'] = -586.96, ['z'] = 43.29, ['x2'] = 322.6, ['y2'] = -587.22, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 318.56, ['y'] = -585.65, ['z'] = 43.29, ['x2'] = 317.79, ['y2'] = -585.37, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 315.37, ['y'] = -584.49, ['z'] = 43.29, ['x2'] = 314.52, ['y2'] = -584.21, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 311.96, ['y'] = -583.24, ['z'] = 43.29, ['x2'] = 311.17, ['y2'] = -582.94, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
+	{ ['x'] = 308.58, ['y'] = -582.09, ['z'] = 43.29, ['x2'] = 307.76, ['y2'] = -581.79, ['z2'] = 44.21, ['h'] = 156.98, ['name'] = "Pressione [~p~E~w~] para deitar   ~p~&~w~    [~p~G~w~] para se tratar." },
 
-	{ ['x'] = 314.6, ['y'] = -566.17, ['z'] = 43.29, ['x2'] = 315.38, ['y2'] = -566.59, ['z2'] = 44.28, ['h'] = 339.61, ['name'] = "Pressione [~y~E~w~] para deitar." }, -- Sala de Cirurgia;
-	{ ['x'] = 320.38, ['y'] = -568.08, ['z'] = 43.29, ['x2'] = 321.24, ['y2'] = -568.47, ['z2'] = 44.15, ['h'] = 339.61, ['name'] = "Pressione [~y~E~w~] para deitar." },-- Sala de Cirurgia;
-	{ ['x'] = 326.08, ['y'] = -570.8, ['z'] = 43.29, ['x2'] = 326.83, ['y2'] = -570.83, ['z2'] = 44.26, ['h'] = 339.61, ['name'] = "Pressione [~y~E~w~] para deitar." }, -- Sala de Cirurgia;
-	{ ['x'] = 336.33, ['y'] = -575.05, ['z'] = 43.29, ['x2'] = 336.93, ['y2'] = -575.27, ['z2'] = 44.19, ['h'] = 339.61, ['name'] = "Pressione [~y~E~w~] para deitar." }, -- Sala de Tumografia;
-	{ ['x'] = 347.99, ['y'] = -579.29, ['z'] = 43.29, ['x2'] = 348.49, ['y2'] = -579.89, ['z2'] = 44.19, ['h'] = 339.61, ['name'] = "Pressione [~y~E~w~] para deitar." }, -- Sala de Raio X;
+	{ ['x'] = 314.6, ['y'] = -566.17, ['z'] = 43.29, ['x2'] = 315.38, ['y2'] = -566.59, ['z2'] = 44.28, ['h'] = 339.61, ['name'] = "Pressione [~p~E~w~] para deitar." }, -- Sala de Cirurgia;
+	{ ['x'] = 320.38, ['y'] = -568.08, ['z'] = 43.29, ['x2'] = 321.24, ['y2'] = -568.47, ['z2'] = 44.15, ['h'] = 339.61, ['name'] = "Pressione [~p~E~w~] para deitar." },-- Sala de Cirurgia;
+	{ ['x'] = 326.08, ['y'] = -570.8, ['z'] = 43.29, ['x2'] = 326.83, ['y2'] = -570.83, ['z2'] = 44.26, ['h'] = 339.61, ['name'] = "Pressione [~p~E~w~] para deitar." }, -- Sala de Cirurgia;
+	{ ['x'] = 336.33, ['y'] = -575.05, ['z'] = 43.29, ['x2'] = 336.93, ['y2'] = -575.27, ['z2'] = 44.19, ['h'] = 339.61, ['name'] = "Pressione [~p~E~w~] para deitar." }, -- Sala de Tumografia;
+	{ ['x'] = 347.99, ['y'] = -579.29, ['z'] = 43.29, ['x2'] = 348.49, ['y2'] = -579.89, ['z2'] = 44.19, ['h'] = 339.61, ['name'] = "Pressione [~p~E~w~] para deitar." }, -- Sala de Raio X;
 
 
-	{ ['x'] = 361.06, ['y'] = -582.07, ['z'] = 43.29, ['x2'] = 361.42, ['y2'] = -581.23, ['z2'] = 44.2, ['h'] = 249.73, ['name'] = "Pressione [~y~E~w~] para deitar  ~y~&~w~   [~y~G~w~] para se tratar." }, -- Quarto particular 01;
-	{ ['x'] = 359.81, ['y'] = -585.34, ['z'] = 43.29, ['x2'] = 359.63, ['y2'] = -586.28, ['z2'] = 44.21, ['h'] = 249.73, ['name'] = "Pressione [~y~E~w~] para deitar  ~y~&~w~   [~y~G~w~] para se tratar." }, -- Quarto particular 02;
-	{ ['x'] = 366.27, ['y'] = -582.46, ['z'] = 43.29, ['x2'] = 366.56, ['y2'] = -581.66, ['z2'] = 44.22, ['h'] = 251.97, ['name'] = "Pressione [~y~E~w~] para deitar  ~y~&~w~   [~y~G~w~] para se tratar." }, -- Quarto particular 3 01;
-	{ ['x'] = 365.2, ['y'] = -585.03, ['z'] = 43.29, ['x2'] = 364.86, ['y2'] = -585.83, ['z2'] = 44.22, ['h'] = 251.97, ['name'] = "Pressione [~y~E~w~] para deitar  ~y~&~w~   [~y~G~w~] para se tratar." }, -- Quarto particular 3 02;
-	{ ['x'] = 364.06, ['y'] = -588.13, ['z'] = 43.29, ['x2'] = 363.75, ['y2'] = -588.95, ['z2'] = 44.22, ['h'] = 251.97, ['name'] = "Pressione [~y~E~w~] para deitar  ~y~&~w~   [~y~G~w~] para se tratar." }, -- Quarto particular 3 03;
-	{ ['x'] = 354.2, ['y'] = -600.99, ['z'] = 43.29, ['x2'] = 354.27, ['y2'] = -600.16, ['z2'] = 44.22, ['h'] = 257.55, ['name'] = "Pressione [~y~E~w~] para deitar  ~y~&~w~   [~y~G~w~] para se tratar." } -- Quarto particular 03;
+	{ ['x'] = 361.06, ['y'] = -582.07, ['z'] = 43.29, ['x2'] = 361.42, ['y2'] = -581.23, ['z2'] = 44.2, ['h'] = 249.73, ['name'] = "Pressione [~p~E~w~] para deitar  ~p~&~w~   [~p~G~w~] para se tratar." }, -- Quarto particular 01;
+	{ ['x'] = 359.81, ['y'] = -585.34, ['z'] = 43.29, ['x2'] = 359.63, ['y2'] = -586.28, ['z2'] = 44.21, ['h'] = 249.73, ['name'] = "Pressione [~p~E~w~] para deitar  ~p~&~w~   [~p~G~w~] para se tratar." }, -- Quarto particular 02;
+	{ ['x'] = 366.27, ['y'] = -582.46, ['z'] = 43.29, ['x2'] = 366.56, ['y2'] = -581.66, ['z2'] = 44.22, ['h'] = 251.97, ['name'] = "Pressione [~p~E~w~] para deitar  ~p~&~w~   [~p~G~w~] para se tratar." }, -- Quarto particular 3 01;
+	{ ['x'] = 365.2, ['y'] = -585.03, ['z'] = 43.29, ['x2'] = 364.86, ['y2'] = -585.83, ['z2'] = 44.22, ['h'] = 251.97, ['name'] = "Pressione [~p~E~w~] para deitar  ~p~&~w~   [~p~G~w~] para se tratar." }, -- Quarto particular 3 02;
+	{ ['x'] = 364.06, ['y'] = -588.13, ['z'] = 43.29, ['x2'] = 363.75, ['y2'] = -588.95, ['z2'] = 44.22, ['h'] = 251.97, ['name'] = "Pressione [~p~E~w~] para deitar  ~p~&~w~   [~p~G~w~] para se tratar." }, -- Quarto particular 3 03;
+	{ ['x'] = 354.2, ['y'] = -600.99, ['z'] = 43.29, ['x2'] = 354.27, ['y2'] = -600.16, ['z2'] = 44.22, ['h'] = 257.55, ['name'] = "Pressione [~p~E~w~] para deitar  ~p~&~w~   [~p~G~w~] para se tratar." } -- Quarto particular 03;
 }
 
 --[ USO ]-------------------------------------------------------------------------------------------------------------------------------- 
@@ -115,7 +115,7 @@ Citizen.CreateThread(function()
 
 			if tratamento then
 				idle = 5
-				drawTxt("RESTAM ~y~"..segundos.." SEGUNDOS ~w~PARA TERMINAR O TRATAMENTO.",4,0.5,0.92,0.35,255,255,255,200)
+				drawTxt("RESTAM ~p~"..segundos.." SEGUNDOS ~w~PARA TERMINAR O TRATAMENTO.",4,0.5,0.92,0.35,255,255,255,200)
 				DisableControlAction(0,167,true)
 				DisableControlAction(0,75,true)
 				DisableControlAction(0,245,true)

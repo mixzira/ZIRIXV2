@@ -162,7 +162,7 @@ Citizen.CreateThread(function()
 			local elev = elevadores[k]
 			
 			if distance < 5.1 then
-				DrawMarker(23, elev.x, elev.y, elev.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 234, 203, 102, 220, 0, 0, 0, 0)
+				DrawMarker(23, elev.x, elev.y, elev.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 				idle = 5
 				if distance <= 1.2 then
 					if IsControlJustPressed(0,38) then

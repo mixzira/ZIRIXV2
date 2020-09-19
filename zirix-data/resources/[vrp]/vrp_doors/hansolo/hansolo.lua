@@ -61,7 +61,7 @@ Citizen.CreateThread(function()
 					SetEntityCanBeDamaged(door,false)
 					if v.lock == false then
 						if v.text then
-							DrawText3Ds(v.x,v.y,v.z+0.2,"[~y~E~w~] Porta ~y~destrancada~w~.")
+							DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~destrancada~w~.")
 						end
 						NetworkRequestControlOfEntity(door)
 						FreezeEntityPosition(door,false)
@@ -69,7 +69,7 @@ Citizen.CreateThread(function()
 						local lock,heading = GetStateOfClosestDoorOfType(v.hash,v.x,v.y,v.z,lock,heading)
 						if heading > -0.02 and heading < 0.02 then
 							if v.text then
-								DrawText3Ds(v.x,v.y,v.z+0.2,"[~y~E~w~] Porta ~y~trancada~w~.")
+								DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")
 							end
 							NetworkRequestControlOfEntity(door)
 							FreezeEntityPosition(door,true)

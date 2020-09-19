@@ -30,7 +30,7 @@ Citizen.CreateThread(function()
 				local distance = Vdist(x,y,z,v.x,v.y,v.z)
 				if distance < 10.5 then
 					idle = 5
-					DrawMarker(23,v.x,v.y,v.z-0.98,0,0,0,0,0,0,0.7,0.7,0.5,247,217,99,100,0,0,0,0)
+					DrawMarker(23,v.x,v.y,v.z-0.98,0,0,0,0,0,0,0.7,0.7,0.5,136, 96, 240, 180,0,0,0,0)
 					if distance <= 1.5 and IsControlJustPressed(0,38) then
 						SetNuiFocus(true,true)
 						SendNUIMessage({ action = "showMenu" })
