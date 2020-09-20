@@ -21,6 +21,18 @@ local itemlist = {
 	["maquininha"] = { index = "maquininha", nome = "Maquininha", type = "usar" },
 	["paninho"] = { index = "paninho", nome = "Pano de Microfibra", type = "usar" },
 
+
+	["drone-basic1"] = { index = "drone-basic1", nome = "Drone Basico", type = "usar" },
+	["drone-basic2"] = { index = "drone-basic2", nome = "Drone Basico", type = "usar" },
+	["drone-basic3"] = { index = "drone-basic3", nome = "Drone Basico", type = "usar" },
+	["drone-advanced1"] = { index = "drone-advanced1", nome = "Drone Avancado", type = "usar" },
+	["drone-advanced2"] = { index = "drone-advanced2", nome = "Drone Avancado", type = "usar" },
+	["drone-advanced3"] = { index = "drone-advanced3", nome = "Drone Avancado", type = "usar" },
+	["drone-police"] = { index = "drone-police", nome = "Drone da Policia", type = "usar" },
+
+	["carrinho"] = { index = "carrinho", nome = "Carrinho", type = "usar" },
+
+
 	["camisinha"] = { index = "camisinha", nome = "Camisinha", type = "usar" },
 	["vibrador"] = { index = "vibrador", nome = "Vibrador", type = "usar" },
 	["kit"] = { index = "kit", nome = "Kit de Sex Shop", type = "usar" },

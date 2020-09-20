@@ -25,7 +25,16 @@ cfg.items = {
 	["cartao-debito"] = { "Cartão Débito",0.1 },
 	["maquininha"] = { "Maquininha",0.3 },
 	["paninho"] = { "Pano de Microfibra",0.1 },
+	
+	["drone-basic1"] = { "Drone Basico",0.2 },
+	["drone-basic2"] = { "Drone Basico",0.2 },
+	["drone-basic3"] = { "Drone Basico",0.2 },
+	["drone-advanced1"] = { "Drone Avancado",0.2 },
+	["drone-advanced2"] = { "Drone Avancado",0.2 },
+	["drone-advanced3"] = { "Drone Avancado",0.2 },
+	["drone-police"] = { "Drone da Policia",0.2 },
 
+	["carrinho"] = { "Carrinho",0.2 },
 	--[ Illegal Utilities ]--------------------------------------------------------------------------------------------
 
 	["dinheiro-sujo"] = { "Dinheiro", 0.0 },
