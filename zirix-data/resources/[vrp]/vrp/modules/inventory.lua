@@ -940,6 +940,7 @@ local vehglobal = {
 	["ratloader2"] = { ['name'] = "Ratloader2", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["rubble"] = { ['name'] = "Caminhão", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["taxi"] = { ['name'] = "Taxi", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
+	["boxville2"] = { ['name'] = "Caminhão", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["boxville4"] = { ['name'] = "Caminhão", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["trash2"] = { ['name'] = "Caminhão", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },
 	["tiptruck"] = { ['name'] = "Tiptruck", ['price'] = 1000, ['tipo'] = "work", ["mala"] = 10 },

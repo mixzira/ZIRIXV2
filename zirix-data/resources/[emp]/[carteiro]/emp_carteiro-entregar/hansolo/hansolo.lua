@@ -237,6 +237,7 @@ Citizen.CreateThread(function()
 		if not IsPedInAnyVehicle(ped) then
 			local x,y,z = table.unpack(GetEntityCoords(ped))
 			local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
+			local lastVehicle = GetEntityModel(GetPlayersLastVehicle())
 			if distance < 10.1 then
 				idle = 5
 				DrawMarker(23,serviceX,serviceY,serviceZ-0.98,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
@@ -244,15 +245,19 @@ Citizen.CreateThread(function()
 					if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), serviceX,serviceY,serviceZ, true ) <= 1.1  then
 						DrawText3D(serviceX,serviceY,serviceZ, "Pressione [~p~E~w~] para iniciar a entrega das ~p~ENCOMENDAS~w~.")
 					end
-					if IsControlJustPressed(1,38) and emp.checkCrimeRercord() and not inService then
-						CalculateTimeToDisplay()
-						if parseInt(time) >= 06 and parseInt(time) <= 20 then
-							inService = true
-							check = math.random(#deliverys)
-							makeBlipsServices()
-							TriggerEvent("Notify","sucesso","<b>Rota</b> iniciada.",8000)
+					if IsControlJustPressed(1,38) and emp.checkCrimeRecord() and not inService then
+						if lastVehicle == -233098306 and emp.checkPlate(lastVehicle) then
+							CalculateTimeToDisplay()
+							if parseInt(time) >= 06 and parseInt(time) <= 20 then
+								inService = true
+								check = math.random(#deliverys)
+								makeBlipsServices()
+								TriggerEvent("Notify","sucesso","<b>Rota</b> iniciada.",8000)
+							else
+								TriggerEvent("Notify","negado","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
+							end
 						else
-							TriggerEvent("Notify","negado","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
+							TriggerEvent("Notify","negado","Você precisa do <b>veículo de entregas</b> para fazer isso.")
 						end
 					end
 				end
@@ -272,6 +277,7 @@ Citizen.CreateThread(function()
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(deliverys[check][1],deliverys[check][2],deliverys[check][3],x,y,z)
+				local lastVehicle = GetEntityModel(GetPlayersLastVehicle())
 				if distance < 10.1 then
 					idle = 5
 					DrawMarker(21, deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.3, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
@@ -280,15 +286,19 @@ Citizen.CreateThread(function()
 							DrawText3D(deliverys[check][1],deliverys[check][2],deliverys[check][3], "Pressione [~p~E~w~] para entregar as ~p~ENCOMENDAS~w~.")
 						end
 						if IsControlJustPressed(1,38) then
-							CalculateTimeToDisplay()
-							if parseInt(time) >= 06 and parseInt(time) <= 20 then
-								if emp.startPayments() then
-									RemoveBlip(blips)
-									check = math.random(#deliverys)
-									makeBlipsServices()
+							if lastVehicle == -233098306 and emp.checkPlate(lastVehicle) then
+								CalculateTimeToDisplay()
+								if parseInt(time) >= 06 and parseInt(time) <= 20 then
+									if emp.startPayments() then
+										RemoveBlip(blips)
+										check = math.random(#deliverys)
+										makeBlipsServices()
+									end
+								else
+									TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
 								end
 							else
-								TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
+								TriggerEvent("Notify","negado","Você precisa do <b>veículo de entregas</b> para fazer isso.")
 							end
 						end
 					end
