@@ -4,7 +4,7 @@ vRP = Proxy.getInterface("vRP")
 
 --[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
-emp = Tunnel.getInterface("emp_carteiro-entregar")
+emp = Tunnel.getInterface("emp_postman-delivery")
 
 --[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 

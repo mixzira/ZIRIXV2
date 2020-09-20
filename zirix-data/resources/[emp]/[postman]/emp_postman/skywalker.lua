@@ -5,7 +5,7 @@ vRP = Proxy.getInterface("vRP")
 --[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
 emp = {}
-Tunnel.bindInterface("emp_carteiro-coletar",emp)
+Tunnel.bindInterface("emp_postman",emp)
 
 --[ COLLECT | FUNCTION ]--------------------------------------------------------------------------------------------------------
 
