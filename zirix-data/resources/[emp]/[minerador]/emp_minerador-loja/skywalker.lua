@@ -21,7 +21,7 @@ AddEventHandler("departamento-vender",function(item)
 		for k,v in pairs(valores) do
 			if item == v.item then
 				if vRP.tryGetInventoryItem(user_id,v.item,parseInt(v.quantidade)) then
-					TriggerClientEvent("Notify",source,"sucesso","Comprou <b>"..parseInt(v.quantidade).."x "..vRP.itemNameList(v.item).."</b> por <b>$"..vRP.format(parseInt(v.vender)).." dólares</b>.")
+					TriggerClientEvent("Notify",source,"sucesso","Vendeu <b>"..parseInt(v.quantidade).."x "..vRP.itemNameList(v.item).."</b> por <b>$"..vRP.format(parseInt(v.vender)).." dólares</b>.")
 					vRP.giveDinheirama(user_id,parseInt(v.vender))
 				else
 					TriggerClientEvent("Notify",source,"negado","Você precisa de <b>x"..v.quantidade.." "..v.item.."</b>.")

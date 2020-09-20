@@ -28,7 +28,7 @@ function src.startPayments()
 	
 		local data = vRP.getUserAptitudes(user_id)
 		if data then
-			if vRP.tryGetInventoryItem(user_id,"garrafadeleite",amount[source]) then
+			if vRP.tryGetInventoryItem(user_id,"garrafa-leite",amount[source]) then
 				local price = math.random(150,220)
 				local payment = price+(price*data.creative.leiteiro*0.0001)
 
