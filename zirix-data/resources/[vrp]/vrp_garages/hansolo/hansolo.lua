@@ -1366,6 +1366,20 @@ end
 
 --[ BUTTONS ]----------------------------------------------------------------------------------------------------------------------------
 
+RegisterKeyMapping('vrp_garages:lock', '[V] Trancar/destrancar veiculo', 'keyboard', 'L')
+
+--[ BUTTONS ]----------------------------------------------------------------------------------------------------------------------------
+
+RegisterCommand('vrp_garages:lock', function()
+	if vehicle and not IsPedInAnyVehicle(ped) then
+		local vehicle = vRP.getNearestVehicle(5)
+		if cooldown < 1 then
+			cooldown = 3
+			vSERVER.vehicleLock()
+		end
+	end
+end, false)
+
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
@@ -1373,7 +1387,6 @@ Citizen.CreateThread(function()
 
 		if cooldown < 1 then
 			local ped = PlayerPedId()
-			local vehicle = vRP.getNearestVehicle(5)
 			
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -1388,14 +1401,6 @@ Citizen.CreateThread(function()
 							end
 						end
 					end
-				end
-			end
-
-			if vehicle and not IsPedInAnyVehicle(ped) then
-				idle = 5
-				if IsControlJustPressed(0,182) then
-					cooldown = 3
-					vSERVER.vehicleLock()
 				end
 			end
 		end

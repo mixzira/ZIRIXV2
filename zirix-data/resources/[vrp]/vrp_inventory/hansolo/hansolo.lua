@@ -33,29 +33,26 @@ end)
 
 --[ ABRIR INVENTARIO ]-------------------------------------------------------------------------------------------------------------------
 
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(1)
-        local ped = PlayerPedId()
-        if IsControlJustPressed(0,243) then
-            if GetEntityHealth(ped) > 101 and not vRP.isHandcuffed() and not IsPedBeingStunned(ped) and not IsPlayerFreeAiming(ped) then
-                if not invOpen then
-                	StartScreenEffect("MenuMGSelectionIn", 0, true)
-                    invOpen = true
-                    SetNuiFocus(true,true)
-                    SendNUIMessage({ action = "showMenu" })
-                    TriggerEvent("status:celular",true)
-                else
-                	StopScreenEffect("MenuMGSelectionIn")
-                    SetNuiFocus(false,false)
-                    SendNUIMessage({ action = "hideMenu" })
-                    invOpen = false
-                    TriggerEvent("status:celular",false)
-                end
-            end
+RegisterKeyMapping('vrp_inventory:openInv', 'Inventário', 'keyboard', 'OEM_3')
+
+RegisterCommand('vrp_inventory:openInv', function()
+    local ped = PlayerPedId()
+    if GetEntityHealth(ped) > 101 and not vRP.isHandcuffed() and not IsPedBeingStunned(ped) and not IsPlayerFreeAiming(ped) then
+        if not invOpen then
+            StartScreenEffect("MenuMGSelectionIn", 0, true)
+            invOpen = true
+            SetNuiFocus(true,true)
+            SendNUIMessage({ action = "showMenu" })
+            TriggerEvent("status:celular",true)
+        else
+            StopScreenEffect("MenuMGSelectionIn")
+            SetNuiFocus(false,false)
+            SendNUIMessage({ action = "hideMenu" })
+            invOpen = false
+            TriggerEvent("status:celular",false)
         end
     end
-end)
+end, false)
 
 --[ CLONEPLATES ]------------------------------------------------------------------------------------------------------------------------
 

@@ -20,8 +20,9 @@ end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
 		if menu_celular then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,16,true)
 			DisableControlAction(0,17,true)
@@ -46,6 +47,11 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,289,true)
 			DisableControlAction(0,344,true)			
 		end
+		if menu_state.opened then
+			idle = 5
+			DisableControlAction(0,75)
+		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -150,9 +156,15 @@ function tvRP.DeletarObjeto()
         object = nil
     end
 end
------------------------------------------------------------------------------------------------------------------------------------------
+
+local menu_celular = false
+RegisterNetEvent("status:celular")
+AddEventHandler("status:celular",function(status)
+	menu_celular = status
+end)
+
 --[ COOLDOWN ]---------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------
+
 local cooldown = 0
 Citizen.CreateThread(function()
 	while true do
@@ -163,178 +175,248 @@ Citizen.CreateThread(function()
 	end
 end)
 
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(5)
-		local ped = PlayerPedId()
+--[  ]-----------------------------------------------------------------------------
 
-		if menu_state.opened then
-			DisableControlAction(0,75)
-		end
+RegisterKeyMapping ( 'vrp:accept' , 'Aceitar' , 'keyboard' , 'y' )
 
-		if IsControlJustPressed(0,172) then SendNUIMessage({ act = "event", event = "UP" }) if menu_state.opened then tvRP.playSound("NAV_UP_DOWN","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
-		if IsControlJustPressed(0,173) then SendNUIMessage({ act = "event", event = "DOWN" }) if menu_state.opened then tvRP.playSound("NAV_UP_DOWN","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
-		if IsControlJustPressed(0,174) then SendNUIMessage({ act = "event", event = "LEFT" }) if menu_state.opened then tvRP.playSound("NAV_LEFT_RIGHT","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
-		if IsControlJustPressed(0,175) then SendNUIMessage({ act = "event", event = "RIGHT" }) if menu_state.opened then tvRP.playSound("NAV_LEFT_RIGHT","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
-		if IsControlJustPressed(0,176) then SendNUIMessage({ act = "event", event = "SELECT" }) if menu_state.opened then tvRP.playSound("SELECT","HUD_FRONTEND_DEFAULT_SOUNDSET") end end
-		if IsControlJustPressed(0,177) then SendNUIMessage({ act = "event", event = "CANCEL" }) end
-		if IsControlJustPressed(0,246) then SendNUIMessage({ act = "event", event = "Y" }) end
-		if IsControlJustPressed(0,303) then SendNUIMessage({ act = "event", event = "U" }) end
+RegisterCommand('vrp:accept', function()
+    SendNUIMessage({ act = "event", event = "Y" })
+end, false)
 
-		-- CRUZAR O BRACO (F1)
-		if IsControlJustPressed(0,288) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				if IsEntityPlayingAnim(ped,"anim@heists@heist_corona@single_team","single_team_loop_boss",3) then
-					tvRP.DeletarObjeto()
-				else
-					tvRP.playAnim(true,{{"anim@heists@heist_corona@single_team","single_team_loop_boss"}},true)
-				end
-        	end
-		end
+RegisterKeyMapping ( 'vrp:decline' , 'Negar' , 'keyboard' , 'n' )
 
-		-- AGUARDAR (F2)
-		if IsControlJustPressed(0,289) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				if IsEntityPlayingAnim(ped,"mini@strip_club@idles@bouncer@base","base",3) then
-					tvRP.DeletarObjeto()
-				else
-					tvRP.playAnim(true,{{"mini@strip_club@idles@bouncer@base","base"}},true)
-				end
-        	end
-		end
+RegisterCommand('vrp:decline', function()
+    SendNUIMessage({ act = "event", event = "U" })
+end, false)
 
-		-- DEDO DO MEIO (F3)
-		if IsControlJustPressed(0,170) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				if IsEntityPlayingAnim(ped,"anim@mp_player_intupperfinger","idle_a_fp",3) then
-					tvRP.DeletarObjeto()
-				else
-					tvRP.playAnim(true,{{"anim@mp_player_intupperfinger","idle_a_fp"}},true)
-				end
-        	end
-		end
+--[  ]-----------------------------------------------------------------------------
 
-		-- PUTO (F5)
-		if IsControlJustPressed(0,166) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				tvRP.playAnim(true,{{"misscarsteal4@actor","actor_berating_loop"}},false)
-        	end
-		end
+RegisterKeyMapping ( 'vrp:up' , 'Cima' , 'keyboard' , 'UP' )
 
-		-- PARA TODAS AS ANIMAÇÕES (F6)
-		if IsControlJustPressed(0,167) then
-			if cooldown < 1 then
-				cooldown = 20
-				if GetEntityHealth(ped) > 101 then
-					if not menu_state.opened then
-						tvRP.DeletarObjeto()
-						ClearPedTasks(ped)
-					end
-				end
-			end
-		end
+RegisterCommand('vrp:up', function()
+	if menu_state.opened then
+		SendNUIMessage({ act = "event", event = "UP" }) 
+        tvRP.playSound("NAV_UP_DOWN","HUD_FRONTEND_DEFAULT_SOUNDSET") 
+	end
+end, false)
 
-		-- MÃOS NA CABEÇA (F10)
-		if IsControlJustPressed(0,57) then
-			if GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				if IsEntityPlayingAnim(ped,"random@arrests@busted","idle_a",3) then
-					tvRP.DeletarObjeto()
-				else
-					tvRP.DeletarObjeto()
-					tvRP.playAnim(true,{{"random@arrests@busted","idle_a"}},true)
-				end
-        	end
-		end
+RegisterKeyMapping ( 'vrp:down' , 'Baixo' , 'keyboard' , 'DOWN' )
 
-		-- BLZ (DEL)
-		if IsControlJustPressed(0,178) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				tvRP.playAnim(true,{{"anim@mp_player_intincarthumbs_upbodhi@ps@","enter"}},false)
-        	end
-		end
+RegisterCommand('vrp:down', function()
+	if menu_state.opened then
+		SendNUIMessage({ act = "event", event = "DOWN" })
+        tvRP.playSound("NAV_UP_DOWN","HUD_FRONTEND_DEFAULT_SOUNDSET")
+	end
+end, false)
 
-		-- ASSOBIAR (ARROW DOWN)
-		if IsControlJustPressed(0,187) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				tvRP.playAnim(true,{{"rcmnigel1c","hailing_whistle_waive_a"}},false)
-        	end
-		end
+RegisterKeyMapping ( 'vrp:left' , 'Esquerda' , 'keyboard' , 'LEFT' )
 
-		-- JOIA (ARROW LEFT)
-		if IsControlJustPressed(0,189) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				tvRP.playAnim(true,{{"anim@mp_player_intupperthumbs_up","enter"}},false)
-        	end
-		end
+RegisterCommand('vrp:left', function()
+	if menu_state.opened then
+		SendNUIMessage({ act = "event", event = "LEFT" })
+        tvRP.playSound("NAV_LEFT_RIGHT","HUD_FRONTEND_DEFAULT_SOUNDSET")
+	end
+end, false)
 
-		-- FACEPALM (ARROW RIGHT)
-		if IsControlJustPressed(0,190) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				tvRP.playAnim(true,{{"anim@mp_player_intcelebrationmale@face_palm","face_palm"}},false)
-        	end
-		end
+RegisterKeyMapping ( 'vrp:right' , 'Direita' , 'keyboard' , 'RIGHT' )
 
-		-- SAUDACAO (ARROW UP)
-		if IsControlJustPressed(0,188) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
-				tvRP.playAnim(true,{{"anim@mp_player_intcelebrationmale@salute","salute"}},false)
-        	end
-		end
+RegisterCommand('vrp:right', function()
+	if menu_state.opened then
+		SendNUIMessage({ act = "event", event = "RIGHT" }) 
+        tvRP.playSound("NAV_LEFT_RIGHT","HUD_FRONTEND_DEFAULT_SOUNDSET")
+	end
+end, false)
 
-		-- LEVANTAR A MAO (X)
-		if IsControlJustPressed(0,73) then
-			if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_celular then
-				--SetCurrentPedWeapon(ped,GetHashKey("WEAPON_UNARMED"),true)
-				if IsEntityPlayingAnim(ped,"random@mugging3","handsup_standing_base",3) then
-					tvRP.DeletarObjeto()
-				else
-					tvRP.playAnim(true,{{"random@mugging3","handsup_standing_base"}},true)
-				end
-        	end
-		end
+RegisterKeyMapping ( 'vrp:select' , 'Selecionar' , 'keyboard' , 'RETURN' )
 
-		-- LIGAR O MOTOR (Z)
-		if IsControlJustPressed(0,20) then
-			if IsPedInAnyVehicle(ped) then
-				local vehicle = GetVehiclePedIsIn(ped,false)
-				if GetPedInVehicleSeat(vehicle,-1) == ped then
-					tvRP.DeletarObjeto()
-					local running = Citizen.InvokeNative(0xAE31E7DF9B5B132E,vehicle)
-					SetVehicleEngineOn(vehicle,not running,true,true)
-					if running then
-						SetVehicleUndriveable(vehicle,true)
-					else
-						SetVehicleUndriveable(vehicle,false)
-					end
-				end
-			end
-		end
+RegisterCommand('vrp:select', function()
+	if menu_state.opened then
+		SendNUIMessage({ act = "event", event = "SELECT" })
+		tvRP.playSound("SELECT","HUD_FRONTEND_DEFAULT_SOUNDSET") 
+	end
+end, false)
 
-		-- APONTAR O DEDO (B)
-		if IsControlJustPressed(0,29) then
-			if GetEntityHealth(ped) > 101 and not menu_celular then
-				tvRP.CarregarAnim("anim@mp_point")
-				if not apontar then
-					SetPedCurrentWeaponVisible(ped,0,1,1,1)
-					SetPedConfigFlag(ped,36,1)
-					Citizen.InvokeNative(0x2D537BA194896636,ped,"task_mp_pointing",0.5,0,"anim@mp_point",24)
-                	apontar = true
-            	else
-            		Citizen.InvokeNative(0xD01015C7316AE176,ped,"Stop")
-					if not IsPedInjured(ped) then
-						ClearPedSecondaryTask(ped)
-					end
-					if not IsPedInAnyVehicle(ped) then
-						SetPedCurrentWeaponVisible(ped,1,1,1,1)
-					end
-					SetPedConfigFlag(ped,36,0)
-					ClearPedSecondaryTask(ped)
-                	apontar = false
-            	end
-        	end
+RegisterKeyMapping ( 'vrp:cancel' , 'Cancelar' , 'keyboard' , 'BACK' )
+
+RegisterCommand('vrp:cancel', function()
+	SendNUIMessage({ act = "event", event = "CANCEL" })
+end, false)
+
+--[  ]-----------------------------------------------------------------------------
+
+RegisterKeyMapping ( 'vrp:anim01' , '[A] Cruzar os braços' , 'keyboard' , 'F1' )
+
+RegisterCommand('vrp:anim01', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		if IsEntityPlayingAnim(ped,"anim@heists@heist_corona@single_team","single_team_loop_boss",3) then
+			tvRP.DeletarObjeto()
+		else
+			tvRP.playAnim(true,{{"anim@heists@heist_corona@single_team","single_team_loop_boss"}},true)
 		end
 	end
-end)
+end, false)
+
+RegisterKeyMapping ( 'vrp:anim02' , '[A] Aguardar' , 'keyboard' , 'F2' )
+
+RegisterCommand('vrp:anim02', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		if IsEntityPlayingAnim(ped,"mini@strip_club@idles@bouncer@base","base",3) then
+			tvRP.DeletarObjeto()
+		else
+			tvRP.playAnim(true,{{"mini@strip_club@idles@bouncer@base","base"}},true)
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:anim03' , '[A] Dedo do meio' , 'keyboard' , 'F3' )
+
+RegisterCommand('vrp:anim03', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		if IsEntityPlayingAnim(ped,"anim@mp_player_intupperfinger","idle_a_fp",3) then
+			tvRP.DeletarObjeto()
+		else
+			tvRP.playAnim(true,{{"anim@mp_player_intupperfinger","idle_a_fp"}},true)
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:anim05' , '[A] Puto' , 'keyboard' , 'F5' )
+
+RegisterCommand('vrp:anim05', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		tvRP.playAnim(true,{{"misscarsteal4@actor","actor_berating_loop"}},false)
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:cancelAnims' , 'Cancelar animações' , 'keyboard' , 'F6' )
+
+RegisterCommand('vrp:cancelAnims', function()
+	local ped = PlayerPedId()
+	if cooldown < 1 then
+		cooldown = 20
+		if GetEntityHealth(ped) > 101 then
+			if not menu_state.opened then
+				tvRP.DeletarObjeto()
+				ClearPedTasks(ped)
+			end
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:anim10' , '[A] Mãos na cabeça' , 'keyboard' , 'F10' )
+
+RegisterCommand('vrp:anim10', function()
+	local ped = PlayerPedId()
+	if GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		if IsEntityPlayingAnim(ped,"random@arrests@busted","idle_a",3) then
+			tvRP.DeletarObjeto()
+		else
+			tvRP.DeletarObjeto()
+			tvRP.playAnim(true,{{"random@arrests@busted","idle_a"}},true)
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:animX' , '[A] Levantar as mãos' , 'keyboard' , 'X' )
+
+RegisterCommand('vrp:animX', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_celular then
+		SetCurrentPedWeapon(ped,GetHashKey("WEAPON_UNARMED"),true)
+		if IsEntityPlayingAnim(ped,"random@mugging3","handsup_standing_base",3) then
+			tvRP.DeletarObjeto()
+		else
+			tvRP.playAnim(true,{{"random@mugging3","handsup_standing_base"}},true)
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:vehicleZ' , '[V] Ligar motor' , 'keyboard' , 'Z' )
+
+RegisterCommand('vrp:vehicleZ', function()
+	local ped = PlayerPedId()
+	if IsPedInAnyVehicle(ped) then
+		local vehicle = GetVehiclePedIsIn(ped,false)
+		if GetPedInVehicleSeat(vehicle,-1) == ped then
+			tvRP.DeletarObjeto()
+			local running = Citizen.InvokeNative(0xAE31E7DF9B5B132E,vehicle)
+			SetVehicleEngineOn(vehicle,not running,true,true)
+			if running then
+				SetVehicleUndriveable(vehicle,true)
+			else
+				SetVehicleUndriveable(vehicle,false)
+			end
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:animB' , '[A] Apontar o dedo' , 'keyboard' , 'B' )
+
+RegisterCommand('vrp:animB', function()
+	local ped = PlayerPedId()
+	if GetEntityHealth(ped) > 101 and not menu_celular then
+		tvRP.CarregarAnim("anim@mp_point")
+		if not apontar then
+			SetPedCurrentWeaponVisible(ped,0,1,1,1)
+			SetPedConfigFlag(ped,36,1)
+			Citizen.InvokeNative(0x2D537BA194896636,ped,"task_mp_pointing",0.5,0,"anim@mp_point",24)
+			apontar = true
+		else
+			Citizen.InvokeNative(0xD01015C7316AE176,ped,"Stop")
+			if not IsPedInjured(ped) then
+				ClearPedSecondaryTask(ped)
+			end
+			if not IsPedInAnyVehicle(ped) then
+				SetPedCurrentWeaponVisible(ped,1,1,1,1)
+			end
+			SetPedConfigFlag(ped,36,0)
+			ClearPedSecondaryTask(ped)
+			apontar = false
+		end
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:animp3' , '[A] Beleza' , 'keyboard' , '3' )
+
+RegisterCommand('vrp:animp3', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		tvRP.playAnim(true,{{"anim@mp_player_intincarthumbs_upbodhi@ps@","enter"}},false)
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:animp4' , '[A] Saudação' , 'keyboard' , '4' )
+
+RegisterCommand('vrp:animp4', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		tvRP.playAnim(true,{{"anim@mp_player_intcelebrationmale@salute","salute"}},false)
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:animp5' , '[A] Assobiar' , 'keyboard' , '5' )
+
+RegisterCommand('vrp:animp5', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		tvRP.playAnim(true,{{"rcmnigel1c","hailing_whistle_waive_a"}},false)
+	end
+end, false)
+
+RegisterKeyMapping ( 'vrp:animp6' , '[A] Vergonha!' , 'keyboard' , '7' )
+
+RegisterCommand('vrp:animp6', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+		tvRP.playAnim(true,{{"anim@mp_player_intcelebrationmale@face_palm","face_palm"}},false)
+	end
+end, false)
+
+--[  ]-----------------------------------------------------------------------------
 
 local anims = {
 	{ dict = "random@mugging3","handsup_standing_base", anim = "handsup_standing_base" },
@@ -365,9 +447,9 @@ Citizen.CreateThread(function()
 		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
+
 --[ FUNÇÃO DO APONTAR ]------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
 		local idle = 1000
@@ -412,9 +494,9 @@ Citizen.CreateThread(function()
 		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
+
 --[ SYNCCLEAN ]--------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------
+
 RegisterNetEvent("syncclean")
 AddEventHandler("syncclean",function(index)
 	if NetworkDoesNetworkIdExist(index) then
@@ -428,9 +510,9 @@ AddEventHandler("syncclean",function(index)
 		end
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
+
 --[ SYNCDELETEPED ]----------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------
+
 RegisterNetEvent("syncdeleteped")
 AddEventHandler("syncdeleteped",function(index)
 	if NetworkDoesNetworkIdExist(index) then

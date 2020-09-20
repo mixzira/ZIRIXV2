@@ -1,7 +1,7 @@
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(7)
-		N_0xf4f2c0d4ee209e20() -- REMOVA CAMERA 3D
+		Citizen.Wait(0)
+		N_0xf4f2c0d4ee209e20()
 		N_0x4757f00bc6323cfe(GetHashKey("WEAPON_UNARMED"),1.6)
 		N_0x4757f00bc6323cfe(GetHashKey("WEAPON_KNIFE"),0.3)
 		N_0x4757f00bc6323cfe(GetHashKey("WEAPON_DAGGER"),0.3)
@@ -96,11 +96,5 @@ Citizen.CreateThread(function()
 		RemoveAllPickupsOfType(0x079284A9)
 		RemoveAllPickupsOfType(0x8ADDEC75)
 		DisablePlayerVehicleRewards(PlayerId())
-		SetPedInfiniteAmmo(PlayerPedId(),true,GetHashKey("WEAPON_FIREEXTINGUISHER"))
-		SetCreateRandomCops(false)
-		SetGarbageTrucks(false)
-		SetRandomBoats(false)
-		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
-		RemoveVehiclesFromGeneratorsInArea(x-9999.0,y-9999.0,z-9999.0,x+9999.0,y+9999.0,z+9999.0)
 	end
 end)

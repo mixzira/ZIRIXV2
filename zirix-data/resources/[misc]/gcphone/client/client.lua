@@ -42,7 +42,7 @@ Citizen.CreateThread(function()
     Citizen.Wait(0)
     if takePhoto ~= true then
       if IsControlJustPressed(1, KeyOpenClose) then
-        if src.checkItemPhone() == true then
+        if src.checkItemPhone() then
           if src.planoCheck() then
             TriggerServerEvent('gcPhone:allUpdate')
             TooglePhone()

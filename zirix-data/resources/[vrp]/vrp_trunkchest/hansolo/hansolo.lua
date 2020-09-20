@@ -5,6 +5,8 @@ vRPNserver = Tunnel.getInterface("vrp_trunkchest")
 
 --[ STARTFOCUS ]-------------------------------------------------------------------------------------------------------------------------
 
+RegisterKeyMapping('vrp_trunkchest:trunk', '[V] Porta Malas', 'keyboard', 'O')
+
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 end)

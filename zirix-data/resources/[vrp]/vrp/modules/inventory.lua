@@ -1,6 +1,7 @@
 local itemlist = {
 	["mochila"] = { index = "mochila", nome = "Mochila", type = "usar" },
 	["celular"] = { index = "celular", nome = "iFruit XI", type = "usar" },
+	["celular-pro"] = { index = "celular-pro", nome = "iFruit XII", type = "usar" },
 	["jbl"] = { index = "jbl", nome = "JBL", type = "usar" },
 	["calculadora"] = { index = "calculadora", nome = "Calculadora", type = "usar" },
 	["tablet"] = { index = "tablet", nome = "Tablet", type = "usar" },

@@ -23,7 +23,7 @@ function src.checkItemPhone()
     local source = source
     local user_id = vRP.getUserId(source)
     if user_id then
-        if vRP.getInventoryItemAmount(user_id,"celular") >= 1 then
+        if vRP.getInventoryItemAmount(user_id,"celular") >= 1 or vRP.getInventoryItemAmount(user_id,"celular-pro") >= 1 then
             return true 
         else
             TriggerClientEvent("Notify",source,"negado","Você não possui um celular em sua mochila.") 

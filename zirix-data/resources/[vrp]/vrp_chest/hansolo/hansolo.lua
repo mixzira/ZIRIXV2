@@ -104,7 +104,7 @@ Citizen.CreateThread(function()
 			if distance < 10.1 then
 				idle = 5
 				DrawMarker(23,v[2],v[3],v[4]-0.99,0,0,0,0,0,0,0.7,0.7,0.5,136, 96, 240, 180,0,0,0,0)
-				if distance < 1.5 then
+				if distance < 0.8 then
 					if IsControlJustPressed(0,38) and chestTimer <= 0 then
 						chestTimer = 3
 						if vSERVER.checkIntPermissions(v[1]) then

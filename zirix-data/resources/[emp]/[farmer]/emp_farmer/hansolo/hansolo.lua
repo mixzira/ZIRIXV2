@@ -6,7 +6,7 @@ vRP = Proxy.getInterface("vRP")
 
 emp = {}
 Tunnel.bindInterface("emp_farmer",emp)
-vSERVER = Tunnel.getInterface("vrp_farmer")
+vSERVER = Tunnel.getInterface("emp_farmer")
 
 --[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 
@@ -739,9 +739,12 @@ Citizen.CreateThread(function()
 		local ped = PlayerPedId()
 		local x,y,z = table.unpack(GetEntityCoords(ped))
 		local disPlant = Vdist(x,y,z,plantX,plantY,plantZ)
+		
 		if disPlant <= 60 then
 			for k,v in pairs(locates) do
+				
 				local distance = Vdist(x,y,z,v[2],v[3],v[4])
+				
 				if distance <= 5 then
 					if parseInt(progress[k]) >= 100 then
 						DrawText3Ds(v[2],v[3],v[4]-0.7,"~g~E   ~w~COLLECT")

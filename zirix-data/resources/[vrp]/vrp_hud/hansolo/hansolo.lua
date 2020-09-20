@@ -86,15 +86,13 @@ Citizen.CreateThread(function()
 			else
 				farol = 0
 			end
-
-      if menu_celular then
-			  DisplayRadar(false)
-      else
-        DisplayRadar(true)
-      end
     else
-      
-			DisplayRadar(false)
+			if menu_celular then
+			  DisplayRadar(true)
+      else
+        DisplayRadar(false)
+      end
+
 			inCar  = false
       speed = nil
       gasolina = nil

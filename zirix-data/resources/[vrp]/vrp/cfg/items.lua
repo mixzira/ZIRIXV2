@@ -6,6 +6,7 @@ cfg.items = {
 	
 	["mochila"] = { "Mochila",0 },
 	["celular"] = { "iFruit XI",0.3 },
+	["celular-pro"] = { "iFruit XII",0.3 },
 	["jbl"] = { "JBL",0.4 },
 	["calculadora"] = { "Calculadora",0.2 },
 	["tablet"] = { "Tablet",0.3 },

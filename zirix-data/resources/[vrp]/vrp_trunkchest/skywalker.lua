@@ -123,7 +123,7 @@ end
 
 --[ TRUNK ]------------------------------------------------------------------------------------------------------------------------------
 
-RegisterCommand('trunk',function(source,args,rawCommand)
+RegisterCommand('vrp_trunkchest:trunk',function(source,args,rawCommand)
 	local user_id = vRP.getUserId(source)
 	if user_id then
 		local vehicle,vnetid,placa,vname,lock,banned,trunk = vRPclient.vehList(source,7)
