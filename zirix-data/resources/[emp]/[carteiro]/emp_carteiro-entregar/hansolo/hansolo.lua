@@ -228,7 +228,7 @@ function CalculateTimeToDisplay()
 	end
 end
 
---[ PROCESS | THREAD ]----------------------------------------------------------------------------------------------------------
+--[ START DELIVERY | THREAD ]---------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
 	while true do
@@ -237,18 +237,22 @@ Citizen.CreateThread(function()
 		if not IsPedInAnyVehicle(ped) then
 			local x,y,z = table.unpack(GetEntityCoords(ped))
 			local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
-			if distance <= 30.0 then
-				DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
-				if distance <= 1.2 then
-					drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.93,0.50,255,255,255,180)
-					if IsControlJustPressed(1,38) and not inService then
+			if distance < 10.1 then
+				idle = 5
+				DrawMarker(23,serviceX,serviceY,serviceZ-0.98,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
+				if distance < 1.2 then
+					if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), serviceX,serviceY,serviceZ, true ) <= 1.1  then
+						DrawText3D(serviceX,serviceY,serviceZ, "Pressione [~p~E~w~] para iniciar a entrega das ~p~ENCOMENDAS~w~.")
+					end
+					if IsControlJustPressed(1,38) and emp.checkCrimeRercord() and not inService then
 						CalculateTimeToDisplay()
 						if parseInt(time) >= 06 and parseInt(time) <= 20 then
 							inService = true
 							check = math.random(#deliverys)
 							makeBlipsServices()
+							TriggerEvent("Notify","sucesso","<b>Rota</b> iniciada.",8000)
 						else
-							TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
+							TriggerEvent("Notify","negado","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
 						end
 					end
 				end
@@ -257,25 +261,28 @@ Citizen.CreateThread(function()
 		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- LOOPDELIVERYS
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ DELIVER ORDER | THREAD ]----------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
+		local idle = 1000
+		local ped = PlayerPedId()
 		if inService then
-			local ped = PlayerPedId()
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(deliverys[check][1],deliverys[check][2],deliverys[check][3],x,y,z)
-				if distance <= 30.0 then
-					DrawMarker(21,deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,136, 96, 240, 180,0,0,0,1)
-					if distance <= 1.2 then
-						drawTexts("PRESSIONE  ~b~E~w~  PARA ENTREGAR ENCOMENDAS",4,0.5,0.93,0.50,255,255,255,180)
+				if distance < 10.1 then
+					idle = 5
+					DrawMarker(21, deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.3, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
+					if distance < 1.2 then
+						if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),deliverys[check][1],deliverys[check][2],deliverys[check][3], true ) <= 1.1  then
+							DrawText3D(deliverys[check][1],deliverys[check][2],deliverys[check][3], "Pressione [~p~E~w~] para entregar as ~p~ENCOMENDAS~w~.")
+						end
 						if IsControlJustPressed(1,38) then
 							CalculateTimeToDisplay()
 							if parseInt(time) >= 06 and parseInt(time) <= 20 then
-								if vSERVER.startPayments() then
+								if emp.startPayments() then
 									RemoveBlip(blips)
 									check = math.random(#deliverys)
 									makeBlipsServices()
@@ -288,11 +295,12 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CANCELSERVICE
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ CANCEL SERVICE | THREAD ]---------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(5)
@@ -302,26 +310,31 @@ Citizen.CreateThread(function()
 		end
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXTS
------------------------------------------------------------------------------------------------------------------------------------------
-function drawTexts(text,font,x,y,scale,r,g,b,a)
-	SetTextFont(font)
-	SetTextScale(scale,scale)
-	SetTextColour(r,g,b,a)
-	SetTextOutline()
-	SetTextCentre(1)
-	SetTextEntry("STRING")
-	AddTextComponentString(text)
-	DrawText(x,y)
+
+--[ TEXT | FUNCTION ]-----------------------------------------------------------------------------------------------------------
+
+function DrawText3D(x,y,z, text)
+    local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+    local px,py,pz=table.unpack(GetGameplayCamCoords())
+    
+    SetTextScale(0.28, 0.28)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(1)
+    AddTextComponentString(text)
+    DrawText(_x,_y)
+    local factor = (string.len(text)) / 370
+    DrawRect(_x,_y+0.0125, 0.005+ factor, 0.03, 41, 11, 41, 68)
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- MAKEBLIPSSERVICES
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ BLIP | FUNCTION ]-----------------------------------------------------------------------------------------------------------
+
 function makeBlipsServices()
 	blips = AddBlipForCoord(deliverys[check][1],deliverys[check][2],deliverys[check][3])
 	SetBlipSprite(blips,1)
-	SetBlipColour(blips,5)
+	SetBlipColour(blips,27)
 	SetBlipScale(blips,0.4)
 	SetBlipAsShortRange(blips,false)
 	SetBlipRoute(blips,true)
