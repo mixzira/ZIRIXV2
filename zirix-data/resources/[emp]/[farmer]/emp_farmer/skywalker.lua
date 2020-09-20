@@ -1,26 +1,23 @@
------------------------------------------------------------------------------------------------------------------------------------------
--- VRP
------------------------------------------------------------------------------------------------------------------------------------------
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
------------------------------------------------------------------------------------------------------------------------------------------
--- CONEXÃO
------------------------------------------------------------------------------------------------------------------------------------------
-cRP = {}
-Tunnel.bindInterface("vrp_farmer",cRP)
-vCLIENT = Tunnel.getInterface("vrp_farmer")
 vRPclient = Tunnel.getInterface("vRP")
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIÁVEIS
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
+
+emp = {}
+Tunnel.bindInterface("emp_farmer",emp)
+vCLIENT = Tunnel.getInterface("emp_farmer")
+
+--[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
+
 local locates = {}
 local blueberry = {}
-local maconha = {}
------------------------------------------------------------------------------------------------------------------------------------------
--- STARTPLANTING
------------------------------------------------------------------------------------------------------------------------------------------
-function cRP.startPlanting(id,receive)
+local marijuana = {}
+
+--[ PLANTING | FUNCTION ]-------------------------------------------------------------------------------------------------------
+
+function emp.startPlanting(id,receive)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id then
@@ -60,20 +57,20 @@ function cRP.startPlanting(id,receive)
 						blueberry[source] = nil
 					end
 
-				elseif receive == "maconha" then
+				elseif receive == "marijuana" then
 
-					if maconha[source] == nil then
+					if marijuana[source] == nil then
 						local data = vRP.getUserAptitudes(user_id)
 						if data then
 							if parseInt(data.creative.traficante) >= 10000 then
-								maconha[source] = math.random(3,7)
+								marijuana[source] = math.random(3,7)
 							else
-								maconha[source] = math.random(2,6)
+								marijuana[source] = math.random(2,6)
 							end
 						end
 					end
 
-					if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("maconha")*parseInt(maconha[source]) <= vRP.getInventoryMaxWeight(user_id) then
+					if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("marijuana")*parseInt(marijuana[source]) <= vRP.getInventoryMaxWeight(user_id) then
 						locates[id] = nil
 						TriggerClientEvent("cancelando",source,true)
 						TriggerClientEvent("Progress",source,10000)
@@ -82,8 +79,8 @@ function cRP.startPlanting(id,receive)
 						vRPclient._stopAnim(source,false)
 						vCLIENT.returnPlanting(-1,locates)
 						TriggerClientEvent("cancelando",source,false)
-						vRP.giveInventoryItem(user_id,"maconha",parseInt(maconha[source]))
-						maconha[source] = nil
+						vRP.giveInventoryItem(user_id,"marijuana",parseInt(marijuana[source]))
+						marijuana[source] = nil
 					end
 
 				end
@@ -91,9 +88,9 @@ function cRP.startPlanting(id,receive)
 		end
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- THREADTIMERS
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ TIME | THREAD ]-------------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
 		for k,v in pairs(locates) do
@@ -106,10 +103,10 @@ Citizen.CreateThread(function()
 		Citizen.Wait(5000)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CHECKPAYMENT
------------------------------------------------------------------------------------------------------------------------------------------
-function cRP.checkPayment(receive)
+
+--[ COLLECT | FUNCTION ]--------------------------------------------------------------------------------------------------------
+
+function emp.checkPayment(receive)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id then
@@ -125,9 +122,9 @@ function cRP.checkPayment(receive)
 					return true
 				end
 			end
-		elseif receive == "maconha" then
+		elseif receive == "marijuana" then
 			if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("baseado") <= vRP.getInventoryMaxWeight(user_id) then
-				if vRP.tryGetInventoryItem(user_id,"maconha",1) then
+				if vRP.tryGetInventoryItem(user_id,"marijuana",1) then
 					vRP.giveInventoryItem(user_id,"baseado",1)
 					return true
 				end
