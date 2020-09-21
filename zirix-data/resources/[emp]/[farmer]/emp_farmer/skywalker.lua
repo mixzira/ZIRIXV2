@@ -14,7 +14,7 @@ vCLIENT = Tunnel.getInterface("emp_farmer")
 local locates = {}
 local ammount = {}
 
---[ PLANTING | FUNCTION ]-------------------------------------------------------------------------------------------------------
+--[ RANDOM AMMOUNT | FUNCTION ]-------------------------------------------------------------------------------------------------
 
 function emp.ammount()
 	local source = source
@@ -22,6 +22,8 @@ function emp.ammount()
 		ammount[source] = math.random(2,6)
 	end
 end
+
+--[ PLANTING AND COLLECT | FUNCTION ]-------------------------------------------------------------------------------------------
 
 function emp.startPlanting(id,receive)
 	local source = source
@@ -103,43 +105,3 @@ Citizen.CreateThread(function()
 		Citizen.Wait(1000)
 	end
 end)
-
---[ COLLECT | FUNCTION ]--------------------------------------------------------------------------------------------------------
-
-function emp.checkPayment(receive)
-	local source = source
-	local user_id = vRP.getUserId(source)
-	
-	
-	if user_id then
-		if receive == "blueberry" then
-
-
-			if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("energetico2") <= vRP.getInventoryMaxWeight(user_id) then
-				if vRP.tryGetInventoryItem(user_id,"blueberry",3) and vRP.tryGetInventoryItem(user_id,"garrafavazia",1) then
-					vRP.giveInventoryItem(user_id,"energetico2",1)
-					return true
-				end
-			end
-
-
-		elseif receive == "marijuana" then
-
-
-			if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("baseado") <= vRP.getInventoryMaxWeight(user_id) then
-				if vRP.tryGetInventoryItem(user_id,"marijuana",1) then
-					vRP.giveInventoryItem(user_id,"baseado",1)
-					return true
-				end
-			end
-
-
-		end
-
-
-
-		return false
-	end
-
-
-end
