@@ -47,7 +47,8 @@ cfg.items = {
 
 	["serra"] = { "Serra",1.0 },
 	["furadeira"] = { "Furadeira",1.0 },
-	
+	["pa"] = { "Pa de Jardinagem",0.5 },
+
 	--[ Miscs ]--------------------------------------------------------------------------------------------------------
 
 	["garrafa-vazia"] = { "Garrafa vazia",0.1 },
