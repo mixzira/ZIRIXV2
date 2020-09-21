@@ -66,7 +66,7 @@ $(function() {
   }
   
   function sendData(name, data) {
-	$.post("http://nav_loja-mercado/" + name, JSON.stringify(data), function(
+	$.post("http://emp_farmer-store/" + name, JSON.stringify(data), function(
 	  datab
 	) {
 	  if (datab != "ok") {
