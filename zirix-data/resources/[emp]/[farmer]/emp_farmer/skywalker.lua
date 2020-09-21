@@ -19,7 +19,7 @@ local ammount = {}
 function emp.ammount()
 	local source = source
 	if ammount[source] == nil then
-		ammount[source] = math.random(2,6)
+		ammount[source] = math.random(1,3)
 	end
 end
 
@@ -36,6 +36,7 @@ function emp.startPlanting(id,receive)
 					locates[id] = 0
 					TriggerClientEvent("cancelando",source,true)
 					TriggerClientEvent("progress",source,9000,"plantando")
+					TriggerClientEvent("itensNotify",source,"usar","Plantou","semente-blueberry")
 					vRPclient._playAnim(source,true,{{"amb@world_human_gardener_plant@female@idle_a","idle_a_female"}},false)
 					Citizen.Wait(9000)
 					vRPclient._stopAnim(source,false)
@@ -48,6 +49,7 @@ function emp.startPlanting(id,receive)
 					locates[id] = 0
 					TriggerClientEvent("cancelando",source,true)
 					TriggerClientEvent("progress",source,9000,"plantando")
+					TriggerClientEvent("itensNotify",source,"usar","Plantou","semente-marijuana")
 					vRPclient._playAnim(source,true,{{"amb@world_human_gardener_plant@female@idle_a","idle_a_female"}},false)
 					Citizen.Wait(9000)
 					vRPclient._stopAnim(source,false)
@@ -70,6 +72,7 @@ function emp.startPlanting(id,receive)
 						vCLIENT.returnPlanting(-1,locates)
 						TriggerClientEvent("cancelando",source,false)
 						vRP.giveInventoryItem(user_id,"blueberry",parseInt(ammount[source]))
+						TriggerClientEvent("itensNotify",source,"sucesso","Colheu","blueberry",""..ammount[source].."",""..vRP.format(vRP.getItemWeight("blueberry")*parseInt(ammount[source])).."")
 						ammount[source] = nil
 					end
 				elseif receive == "marijuana" then
@@ -83,6 +86,7 @@ function emp.startPlanting(id,receive)
 						vCLIENT.returnPlanting(-1,locates)
 						TriggerClientEvent("cancelando",source,false)
 						vRP.giveInventoryItem(user_id,"marijuana",parseInt(ammount[source]))
+						TriggerClientEvent("itensNotify",source,"sucesso","Colheu","marijuana",""..ammount[source].."",""..vRP.format(vRP.getItemWeight("marijuana")*parseInt(ammount[source])).."")
 						ammount[source] = nil
 					end
 				end
