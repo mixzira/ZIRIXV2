@@ -49,7 +49,8 @@ local itemlist = {
 	
 	["serra"] = { index = "serra", nome = "Serra", type = "usar" },
 	["furadeira"] = { index = "furadeira", nome = "Furadeira", type = "usar" },
-	
+	["pa"] = { index = "pa", nome = "Pa de Jardinagem", type = "usar" },
+
 	--[ Miscs ]-------------------------------------------------------------------------------------------------------- 
 
 	["garrafa-vazia"] = { index = "garrafa-vazia", nome = "Garrafa vazia", type = "usar" },
