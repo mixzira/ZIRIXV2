@@ -12,7 +12,7 @@ local valores = {
 	{ item = "repairkit", quantidade = 1, compra = 800 },
 
 	{ item = "semente-blueberry", quantidade = 5, compra = 70 },
-	{ item = "semente-maconha", quantidade = 5, compra = 200 },
+	{ item = "semente-marijuana", quantidade = 5, compra = 200 },
 
 	{ item = "serra", quantidade = 1, compra = 650 },
 	{ item = "furadeira", quantidade = 1, compra = 450 },

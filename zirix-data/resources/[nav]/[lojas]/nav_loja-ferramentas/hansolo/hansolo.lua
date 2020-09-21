@@ -30,8 +30,8 @@ RegisterNUICallback("ButtonClick",function(data,cb)
 	elseif data == "ferramentas-comprar-semente-blueberry" then
 		TriggerServerEvent("ferramentas-comprar","semente-blueberry")
 
-	elseif data == "ferramentas-comprar-semente-maconha" then
-		TriggerServerEvent("ferramentas-comprar","semente-maconha")
+	elseif data == "ferramentas-comprar-semente-marijuana" then
+		TriggerServerEvent("ferramentas-comprar","semente-marijuana")
 
 	elseif data == "ferramentas-comprar-repairkit" then
 		TriggerServerEvent("ferramentas-comprar","repairkit")
