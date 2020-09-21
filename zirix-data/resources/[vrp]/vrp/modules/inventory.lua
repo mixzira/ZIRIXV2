@@ -203,9 +203,15 @@ local itemlist = {
 
 	--[ Emprego ][ Farmer ]------------------------------------------------------------------------------------------
 
-	["semente-marijuana"] = { index = "semente-maconha", nome = "Pacote de Sementes Genericas", type = "usar" },
-	["semente-blueberry"] = { index = "semente-blueberry", nome = "Pacote de Sementes de Blueberry", type = "usar" },
+	["semente-marijuana"] = { index = "semente-maconha", nome = "Sementes Genericas", type = "usar" },
+	["semente-blueberry"] = { index = "semente-blueberry", nome = "Sementes de Blueberry", type = "usar" },
+	["semente-tomate"] = { index = "semente-tomate", nome = "Semente de Tomate", type = "usar" },
+	["semente-laranja"] = { index = "semente-laranja", nome = "Semente de Laranja", type = "usar" },
 	
+	["laranja"] = { index = "laranja", nome = "Laranja", type = "usar" },
+	["tomate"] = { index = "tomate", nome = "Tomate", type = "usar" },
+	["blueberry"] = { index = "blueberry", nome = "Blueberry", type = "usar" },
+
 	--[ Desmanche ]------------------------------------------------------------------------------------------
 	["transmissao"] = { index = "transmissao", nome = "Transmissao", type = "usar" },
 	["suspensao"] = { index = "suspensao", nome = "Suspensao", type = "usar" },

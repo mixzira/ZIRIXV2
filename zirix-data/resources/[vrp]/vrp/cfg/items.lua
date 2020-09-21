@@ -199,8 +199,16 @@ cfg.items = {
 
 	--[ Emprego ][ Farmer ]------------------------------------------------------------------------------------------
 
-	["semente-marijuana"] = { "Pacote de Sementes Genericas",0.1 },
-	["semente-blueberry"] = { "Pacote de Sementes de Blueberry",0.1 },
+	["semente-marijuana"] = { "Semente Genericas",0.1 },
+	["semente-blueberry"] = { "Semente de Blueberry",0.1 },
+
+	["semente-tomate"] = { "Semente de Tomate",0.1 },
+	["semente-laranja"] = { "Semente de Laranja",0.1 },
+
+
+	["laranja"] = { "Laranja",0.1 },
+	["tomate"] = { "Tomate",0.1 },
+	["blueberry"] = { "Blueberry",0.1 },
 
 	--[ Emprego ][ Vanilla ]------------------------------------------------------------------------------------------
 
