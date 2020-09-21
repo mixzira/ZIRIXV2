@@ -6,7 +6,7 @@ vRPclient = Tunnel.getInterface("vRP")
 --[ CONNECTION ]-------------------------------------------------------------------------------------------------------------------------
 
 emp = {}
-Tunnel.bindInterface("emp_minerador-fundicao-armas",emp)
+Tunnel.bindInterface("emp_miner-foundry",emp)
 
 --[ VARIABLES ]--------------------------------------------------------------------------------------------------------------------------
 
