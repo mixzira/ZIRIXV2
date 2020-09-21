@@ -57,6 +57,13 @@ AddEventHandler("status:celular",function(status)
 	menu_celular = status
 end)
 
+local on_gps = false
+RegisterNetEvent("status:gps")
+AddEventHandler("status:gps",function(status)
+	on_gps = status
+end)
+
+
 RegisterNetEvent("vrp_hud:update")
 AddEventHandler("vrp_hud:update", function(rHunger, rThirst)
   hunger, thirst = rHunger, rThirst
@@ -87,7 +94,7 @@ Citizen.CreateThread(function()
 				farol = 0
 			end
     else
-			if menu_celular then
+			if on_gps then
 			  DisplayRadar(true)
       else
         DisplayRadar(false)

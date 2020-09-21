@@ -703,7 +703,7 @@ local locates = {
 
 --[ PRODUCTION | THREAD ]-------------------------------------------------------------------------------------------------------
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 	while true do
 		local ped = PlayerPedId()
 		if not IsPedInAnyVehicle(ped) then
@@ -713,8 +713,11 @@ Citizen.CreateThread(function()
 				if distance <= 1.1 then
 					drawTxt("PRESSIONE  ~b~E~w~  PARA "..v[5],4,0.5,0.93,0.50,255,255,255,180)
 					if IsControlJustPressed(1,38) and vSERVER.checkPayment(tostring(v[1])) then
+						
 						TriggerEvent("cancelando",true)
-						TriggerEvent("Progress",2000)
+						
+						-- Precisa de um progress bar
+						
 						SetTimeout(2000,function()
 							TriggerEvent("cancelando",false)
 						end)
@@ -724,7 +727,7 @@ Citizen.CreateThread(function()
 		end
 		Citizen.Wait(4)
 	end
-end)
+end)]]
 
 --[ REPLANTING | FUNCTION ]-----------------------------------------------------------------------------------------------------
 
@@ -736,23 +739,22 @@ end
 
 Citizen.CreateThread(function()
 	while true do
+		local idle = 1000
 		local ped = PlayerPedId()
 		local x,y,z = table.unpack(GetEntityCoords(ped))
 		local disPlant = Vdist(x,y,z,plantX,plantY,plantZ)
-		
 		if disPlant <= 60 then
 			for k,v in pairs(locates) do
-				
 				local distance = Vdist(x,y,z,v[2],v[3],v[4])
-				
 				if distance <= 5 then
+					idle = 5
 					if parseInt(progress[k]) >= 100 then
-						DrawText3Ds(v[2],v[3],v[4]-0.7,"~g~E   ~w~COLLECT")
+						DrawText3Ds(v[2],v[3],v[4]-0.7,"Pressione [~p~E~w~] para ~p~COLHER~w~.")
 						DrawMarker(23,v[2],v[3],v[4]-0.9,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
 					elseif progress[k] then
-						DrawText3Ds(v[2],v[3],v[4]-0.7,"PROGRESS: ~g~"..progress[k].."%")
+						DrawText3Ds(v[2],v[3],v[4]-0.7,"PROGRESSO: ~p~"..progress[k].."~w~%.")
 					else
-						DrawText3Ds(v[2],v[3],v[4]-0.7,"~g~E   ~w~PLANT")
+						DrawText3Ds(v[2],v[3],v[4]-0.7,"Pressione [~p~E~w~] para ~p~PLANTAR~w~.")
 					end
 
 					if distance <= 0.6 and IsControlJustPressed(1,38) then
@@ -761,23 +763,26 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
-		Citizen.Wait(1)
+		Citizen.Wait(idle)
 	end
 end)
 
 --[ TEXT | FUNCTIONS ]----------------------------------------------------------------------------------------------------------
 
 function DrawText3Ds(x,y,z,text)
-	local onScreen,_x,_y = World3dToScreen2d(x,y,z)
-	SetTextFont(4)
-	SetTextScale(0.35,0.35)
-	SetTextColour(255,255,255,150)
-	SetTextEntry("STRING")
-	SetTextCentre(1)
-	AddTextComponentString(text)
-	DrawText(_x,_y)
-	local factor = (string.len(text))/300
-	DrawRect(_x,_y+0.0125,0.01+factor,0.03,0,0,0,80)
+    local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+    local px,py,pz=table.unpack(GetGameplayCamCoords())
+    
+    SetTextScale(0.28, 0.28)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(1)
+    AddTextComponentString(text)
+    DrawText(_x,_y)
+    local factor = (string.len(text)) / 370
+    DrawRect(_x,_y+0.0125, 0.005+ factor, 0.03, 41, 11, 41, 68)
 end
 
 function drawTxt(text,font,x,y,scale,r,g,b,a)

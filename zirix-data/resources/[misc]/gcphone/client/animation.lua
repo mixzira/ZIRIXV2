@@ -101,6 +101,7 @@ function PhonePlayAnim(status,freeze,force)
 		Citizen.Wait(380)
 		newPhoneProp()
 		TriggerEvent("status:celular",true)
+		TriggerEvent("status:gps",true)
 		SetCurrentPedWeapon(myPedId,GetHashKey("WEAPON_UNARMED"),true)
 	end
 
@@ -114,6 +115,7 @@ function PhonePlayAnim(status,freeze,force)
 		deletePhone()
 		StopAnimTask(myPedId,lastDict,lastAnim,1.0)
 		TriggerEvent("status:celular",false)
+		TriggerEvent("status:gps",false)
 	end
 end
 
