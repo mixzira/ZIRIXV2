@@ -763,46 +763,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
---[ CANCELANDO O F6 ]--------------------------------------------------------------------------------------------------------------------
-
-local cancelando = false
-RegisterNetEvent('cancelando')
-AddEventHandler('cancelando',function(status)
-    cancelando = status
-end)
-
-Citizen.CreateThread(function()
-	while true do
-		Citizen.Wait(1)
-		if cancelando then
-			BlockWeaponWheelThisFrame()
-			DisableControlAction(0,29,true)
-			DisableControlAction(0,38,true)
-			DisableControlAction(0,47,true)
-			DisableControlAction(0,56,true)
-			DisableControlAction(0,57,true)
-			DisableControlAction(0,73,true)
-			DisableControlAction(0,137,true)
-			DisableControlAction(0,166,true)
-			DisableControlAction(0,167,true)
-			DisableControlAction(0,169,true)
-			DisableControlAction(0,170,true)
-			DisableControlAction(0,182,true)
-			DisableControlAction(0,187,true)
-			DisableControlAction(0,188,true)
-			DisableControlAction(0,189,true)
-			DisableControlAction(0,190,true)
-			DisableControlAction(0,243,true)
-			DisableControlAction(0,245,true)
-			DisableControlAction(0,257,true)
-			DisableControlAction(0,288,true)
-			DisableControlAction(0,289,true)
-			DisableControlAction(0,311,true)
-			DisableControlAction(0,344,true)			
-		end
-	end
-end)
-
 --[ AFKSYSTEM ]--------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()

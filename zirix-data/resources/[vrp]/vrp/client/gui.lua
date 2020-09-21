@@ -18,6 +18,49 @@ function tvRP.getAgachar()
     return agachar
 end
 
+--[ CANCELANDO O F6 ]--------------------------------------------------------------------------------------------------------------------
+
+local cancelando = false
+RegisterNetEvent('cancelando')
+AddEventHandler('cancelando',function(status)
+    cancelando = status
+end)
+
+Citizen.CreateThread(function()
+	while true do
+		local idle = 1000
+		if cancelando then
+			idle = 5
+			BlockWeaponWheelThisFrame()
+			DisableControlAction(0,29,true)
+			DisableControlAction(0,38,true)
+			DisableControlAction(0,47,true)
+			DisableControlAction(0,56,true)
+			DisableControlAction(0,57,true)
+			DisableControlAction(0,73,true)
+			DisableControlAction(0,137,true)
+			DisableControlAction(0,166,true)
+			DisableControlAction(0,167,true)
+			DisableControlAction(0,169,true)
+			DisableControlAction(0,170,true)
+			DisableControlAction(0,182,true)
+			DisableControlAction(0,187,true)
+			DisableControlAction(0,188,true)
+			DisableControlAction(0,189,true)
+			DisableControlAction(0,190,true)
+			DisableControlAction(0,243,true)
+			DisableControlAction(0,245,true)
+			DisableControlAction(0,257,true)
+			DisableControlAction(0,288,true)
+			DisableControlAction(0,289,true)
+			DisableControlAction(0,311,true)
+			DisableControlAction(0,344,true)			
+		end
+		Citizen.Wait(idle)
+	end
+end)
+
+
 Citizen.CreateThread(function()
 	while true do
 		local idle = 1000
@@ -248,7 +291,7 @@ RegisterKeyMapping ( 'vrp:anim01' , '[A] Cruzar os braços' , 'keyboard' , 'F1' 
 
 RegisterCommand('vrp:anim01', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		if IsEntityPlayingAnim(ped,"anim@heists@heist_corona@single_team","single_team_loop_boss",3) then
 			tvRP.DeletarObjeto()
 		else
@@ -261,7 +304,7 @@ RegisterKeyMapping ( 'vrp:anim02' , '[A] Aguardar' , 'keyboard' , 'F2' )
 
 RegisterCommand('vrp:anim02', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		if IsEntityPlayingAnim(ped,"mini@strip_club@idles@bouncer@base","base",3) then
 			tvRP.DeletarObjeto()
 		else
@@ -274,7 +317,7 @@ RegisterKeyMapping ( 'vrp:anim03' , '[A] Dedo do meio' , 'keyboard' , 'F3' )
 
 RegisterCommand('vrp:anim03', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		if IsEntityPlayingAnim(ped,"anim@mp_player_intupperfinger","idle_a_fp",3) then
 			tvRP.DeletarObjeto()
 		else
@@ -287,7 +330,7 @@ RegisterKeyMapping ( 'vrp:anim05' , '[A] Puto' , 'keyboard' , 'F5' )
 
 RegisterCommand('vrp:anim05', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		tvRP.playAnim(true,{{"misscarsteal4@actor","actor_berating_loop"}},false)
 	end
 end, false)
@@ -299,7 +342,7 @@ RegisterCommand('vrp:cancelAnims', function()
 	if cooldown < 1 then
 		cooldown = 20
 		if GetEntityHealth(ped) > 101 then
-			if not menu_state.opened then
+			if not menu_state.opened and not cancelando then
 				tvRP.DeletarObjeto()
 				ClearPedTasks(ped)
 			end
@@ -311,7 +354,7 @@ RegisterKeyMapping ( 'vrp:anim10' , '[A] Mãos na cabeça' , 'keyboard' , 'F10' 
 
 RegisterCommand('vrp:anim10', function()
 	local ped = PlayerPedId()
-	if GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		if IsEntityPlayingAnim(ped,"random@arrests@busted","idle_a",3) then
 			tvRP.DeletarObjeto()
 		else
@@ -325,7 +368,7 @@ RegisterKeyMapping ( 'vrp:animX' , '[A] Levantar as mãos' , 'keyboard' , 'X' )
 
 RegisterCommand('vrp:animX', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_celular and not cancelando then
 		SetCurrentPedWeapon(ped,GetHashKey("WEAPON_UNARMED"),true)
 		if IsEntityPlayingAnim(ped,"random@mugging3","handsup_standing_base",3) then
 			tvRP.DeletarObjeto()
@@ -358,7 +401,7 @@ RegisterKeyMapping ( 'vrp:animB' , '[A] Apontar o dedo' , 'keyboard' , 'B' )
 
 RegisterCommand('vrp:animB', function()
 	local ped = PlayerPedId()
-	if GetEntityHealth(ped) > 101 and not menu_celular then
+	if GetEntityHealth(ped) > 101 and not menu_celular and not cancelando then
 		tvRP.CarregarAnim("anim@mp_point")
 		if not apontar then
 			SetPedCurrentWeaponVisible(ped,0,1,1,1)
@@ -384,7 +427,7 @@ RegisterKeyMapping ( 'vrp:animp3' , '[A] Beleza' , 'keyboard' , '3' )
 
 RegisterCommand('vrp:animp3', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		tvRP.playAnim(true,{{"anim@mp_player_intincarthumbs_upbodhi@ps@","enter"}},false)
 	end
 end, false)
@@ -393,7 +436,7 @@ RegisterKeyMapping ( 'vrp:animp4' , '[A] Saudação' , 'keyboard' , '4' )
 
 RegisterCommand('vrp:animp4', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		tvRP.playAnim(true,{{"anim@mp_player_intcelebrationmale@salute","salute"}},false)
 	end
 end, false)
@@ -402,7 +445,7 @@ RegisterKeyMapping ( 'vrp:animp5' , '[A] Assobiar' , 'keyboard' , '5' )
 
 RegisterCommand('vrp:animp5', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		tvRP.playAnim(true,{{"rcmnigel1c","hailing_whistle_waive_a"}},false)
 	end
 end, false)
@@ -411,7 +454,7 @@ RegisterKeyMapping ( 'vrp:animp6' , '[A] Vergonha!' , 'keyboard' , '7' )
 
 RegisterCommand('vrp:animp6', function()
 	local ped = PlayerPedId()
-	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular then
+	if not IsPedInAnyVehicle(ped) and GetEntityHealth(ped) > 101 and not menu_state.opened and not menu_celular and not cancelando then
 		tvRP.playAnim(true,{{"anim@mp_player_intcelebrationmale@face_palm","face_palm"}},false)
 	end
 end, false)

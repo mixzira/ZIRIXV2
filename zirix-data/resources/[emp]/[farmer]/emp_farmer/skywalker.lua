@@ -12,20 +12,28 @@ vCLIENT = Tunnel.getInterface("emp_farmer")
 --[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 
 local locates = {}
-local blueberry = {}
-local marijuana = {}
+local ammount = {}
 
 --[ PLANTING | FUNCTION ]-------------------------------------------------------------------------------------------------------
+
+function emp.ammount()
+	local source = source
+	if ammount[source] == nil then
+		ammount[source] = math.random(2,6)
+	end
+end
 
 function emp.startPlanting(id,receive)
 	local source = source
 	local user_id = vRP.getUserId(source)
+
 	if user_id then
 		if not locates[id] then		
 			if receive == "blueberry" then				
 				if vRP.tryGetInventoryItem(user_id,"semente-blueberry",1) then
 					locates[id] = 0
 					TriggerClientEvent("cancelando",source,true)
+					TriggerClientEvent("progress",source,9000,"plantando")
 					vRPclient._playAnim(source,true,{{"amb@world_human_gardener_plant@female@idle_a","idle_a_female"}},false)
 					Citizen.Wait(9000)
 					vRPclient._stopAnim(source,false)
@@ -37,6 +45,7 @@ function emp.startPlanting(id,receive)
 				if vRP.tryGetInventoryItem(user_id,"semente-marijuana",1) then
 					locates[id] = 0
 					TriggerClientEvent("cancelando",source,true)
+					TriggerClientEvent("progress",source,9000,"plantando")
 					vRPclient._playAnim(source,true,{{"amb@world_human_gardener_plant@female@idle_a","idle_a_female"}},false)
 					Citizen.Wait(9000)
 					vRPclient._stopAnim(source,false)
@@ -47,44 +56,33 @@ function emp.startPlanting(id,receive)
 			end
 		else
 			if locates[id] >= 100 then
+				emp.ammount()
 				if receive == "blueberry" then
-					
-					if blueberry[source] == nil then
-						blueberry[source] = math.random(2,6)
-					end
-
-					if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("blueberry")*parseInt(blueberry[source]) <= vRP.getInventoryMaxWeight(user_id) then
+					if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("blueberry")*parseInt(ammount[source]) <= vRP.getInventoryMaxWeight(user_id) then
 						locates[id] = nil
 						TriggerClientEvent("cancelando",source,true)
-						TriggerClientEvent("Progress",source,10000)
-						vRPclient._playAnim(source,false,{"amb@world_human_gardener_plant@female@base","base_female"},true)
+						TriggerClientEvent("progress",source,10000,"colhendo")
+						vRPclient._playAnim(source,true,{{"amb@world_human_gardener_plant@female@idle_a","idle_a_female"}},false)
 						Citizen.Wait(10000)
 						vRPclient._stopAnim(source,false)
 						vCLIENT.returnPlanting(-1,locates)
 						TriggerClientEvent("cancelando",source,false)
-						vRP.giveInventoryItem(user_id,"blueberry",parseInt(blueberry[source]))
-						blueberry[source] = nil
+						vRP.giveInventoryItem(user_id,"blueberry",parseInt(ammount[source]))
+						ammount[source] = nil
 					end
-
 				elseif receive == "marijuana" then
-
-					if marijuana[source] == nil then
-						marijuana[source] = math.random(2,6)
-					end
-
-					if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("marijuana")*parseInt(marijuana[source]) <= vRP.getInventoryMaxWeight(user_id) then
+					if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("marijuana")*parseInt(ammount[source]) <= vRP.getInventoryMaxWeight(user_id) then
 						locates[id] = nil
 						TriggerClientEvent("cancelando",source,true)
-						TriggerClientEvent("Progress",source,10000)
-						vRPclient._playAnim(source,false,{"amb@world_human_gardener_plant@female@base","base_female"},true)
+						TriggerClientEvent("progress",source,10000,"colhendo")
+						vRPclient._playAnim(source,true,{{"amb@world_human_gardener_plant@female@idle_a","idle_a_female"}},false)
 						Citizen.Wait(10000)
 						vRPclient._stopAnim(source,false)
 						vCLIENT.returnPlanting(-1,locates)
 						TriggerClientEvent("cancelando",source,false)
-						vRP.giveInventoryItem(user_id,"marijuana",parseInt(marijuana[source]))
-						marijuana[source] = nil
+						vRP.giveInventoryItem(user_id,"marijuana",parseInt(ammount[source]))
+						ammount[source] = nil
 					end
-
 				end
 			end
 		end
@@ -98,9 +96,7 @@ Citizen.CreateThread(function()
 		for k,v in pairs(locates) do
 			if v ~= nil and v < 100 then
 				locates[k] = v + 1
-				
 				vCLIENT.returnPlanting(-1,locates)
-				
 				Citizen.Wait(10)
 			end
 		end
