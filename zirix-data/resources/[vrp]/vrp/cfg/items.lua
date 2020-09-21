@@ -148,6 +148,14 @@ cfg.items = {
 	["calcio-po"] = { "Cálcio em Pó",0.5 },
 	["querosene"] = { "Querosene",0.5 },
 
+	--[ By-product ][ Marijuana production ]-----------------------------------------------------------------------------
+	
+	["marijuana"] = { "Marijuana",0.1 },
+
+	--[ Miscellaneous ][ Marijuana production ]--------------------------------------------------------------------------
+	
+	["folha-marijuana"] = { "Folha de Marijuana",0.5 },
+	
 	--[ Weapons body ][ Weapons Production ]---------------------------------------------------------------------------
 
 	["corpo-ak47"] = { "Corpo de AK-47",2.0 },
@@ -191,7 +199,7 @@ cfg.items = {
 
 	--[ Emprego ][ Farmer ]------------------------------------------------------------------------------------------
 
-	["semente-maconha"] = { "Pacote de Sementes Genericas",0.1 },
+	["semente-marijuana"] = { "Pacote de Sementes Genericas",0.1 },
 	["semente-blueberry"] = { "Pacote de Sementes de Blueberry",0.1 },
 
 	--[ Emprego ][ Vanilla ]------------------------------------------------------------------------------------------
