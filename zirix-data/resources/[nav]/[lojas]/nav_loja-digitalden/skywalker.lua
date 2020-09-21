@@ -10,6 +10,7 @@ local valores = {
 	{ item = "radio", quantidade = 1, compra = 300 },
 	{ item = "maquininha", quantidade = 1, compra = 600 },
 	{ item = "celular", quantidade = 1, compra = 800 }
+	{ item = "celular-pro", quantidade = 1, compra = 2800 }
 }
 
 local valoresPlanos = {

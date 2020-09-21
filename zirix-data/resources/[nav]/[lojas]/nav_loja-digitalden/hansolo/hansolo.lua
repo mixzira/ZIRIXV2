@@ -24,6 +24,9 @@ RegisterNUICallback("ButtonClick",function(data,cb)
 	elseif data == "comprar-celular" then
 		TriggerServerEvent("departamento-comprar","celular")
 
+	elseif data == "comprar-celular" then
+		TriggerServerEvent("departamento-comprar","celular-pro")
+
 	
 	
 	elseif data == "comprar-planoOneDay" then
