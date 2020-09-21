@@ -152,6 +152,14 @@ local itemlist = {
 	["calcio-po"] = { index = "calcio-po", nome = "Cálcio em Pó", type = "usar" },
 	["querosene"] = { index = "querosene", nome = "Querosene", type = "usar" },
 	
+	--[ By-product ][ Marijuana production ]-----------------------------------------------------------------------------
+
+	["marijuana"] = { index = "marijuana", nome = "Marijuana", type = "usar" },
+
+	--[ Miscellaneous ][ Marijuana production ]--------------------------------------------------------------------------
+
+	["folha-marijuana"] = { index = "folha-marijuana", nome = "Folha de Marijuana", type = "usar" },
+	
 	--[ Weapons body ][ Weapons Production ]---------------------------------------------------------------------------
 	
 	["corpo-ak47"] = { index = "corpo-ak47", nome = "Corpo de AK-47", type = "usar" },
@@ -195,7 +203,7 @@ local itemlist = {
 
 	--[ Emprego ][ Farmer ]------------------------------------------------------------------------------------------
 
-	["semente-maconha"] = { index = "semente-maconha", nome = "Pacote de Sementes Genericas", type = "usar" },
+	["semente-marijuana"] = { index = "semente-maconha", nome = "Pacote de Sementes Genericas", type = "usar" },
 	["semente-blueberry"] = { index = "semente-blueberry", nome = "Pacote de Sementes de Blueberry", type = "usar" },
 	
 	--[ Desmanche ]------------------------------------------------------------------------------------------
