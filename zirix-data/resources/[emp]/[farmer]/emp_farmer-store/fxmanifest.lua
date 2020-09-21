@@ -15,6 +15,6 @@ server_scripts {
 
 files {
 	'nui/*.html',
-	'nui/*.css',
-	'nui/*.js'
+	'nui/*.js',
+    'nui/*.css'
 }

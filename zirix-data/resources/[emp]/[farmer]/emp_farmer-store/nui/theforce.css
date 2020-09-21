@@ -37,10 +37,10 @@ p {
 }
 
 img {
-    max-width: 60%;
-    max-height: 60%;
-    margin-top: 20%;
-    margin-left: 20%;
+    max-width: 100%;
+    max-height: 100%;
+    margin-top: 0%;
+    margin-left: 0%;
 }
 
 h1{
@@ -185,11 +185,6 @@ h1{
     width: 180px;
     height: 180px;
     margin-left: 11px;
-}
-
-.fotoItem img {
-    width: 180px;
-    height: 180px;
 }
 
 .tituloItem {

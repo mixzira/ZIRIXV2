@@ -1,5 +1,12 @@
+local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRP = Proxy.getInterface("vRP")
 
---[ MENU ]---------------------------------------------------------------------------------------
+--[ CONNECTION ]-------------------------------------------------------------------------------------------------------------------------
+
+emp = Tunnel.getInterface("emp_farmer-store")
+
+--[ MENU ]-------------------------------------------------------------------------------------------------------------------------------
 
 local menuactive = false
 function ToggleActionMenu()
@@ -18,34 +25,51 @@ end
 --[ BUTTON ]-----------------------------------------------------------------------------------------------------------------------------
 
 RegisterNUICallback("ButtonClick",function(data,cb)
-	if data == "vender-tomate" then
-		TriggerServerEvent("departamento-vender","tomate")
+	if data == "comprar-semente-blueberry" then
+		TriggerServerEvent("departamento-comprar","semente-blueberry")
 
-	elseif data == "vender-laranja" then
-		TriggerServerEvent("departamento-vender","laranja")
+	elseif data == "comprar-semente-laranja" then
+		TriggerServerEvent("departamento-comprar","semente-laranja")
+
+	elseif data == "comprar-semente-tomate" then
+		TriggerServerEvent("departamento-comprar","semente-tomate")
+
+	elseif data == "comprar-isca" then
+		TriggerServerEvent("departamento-comprar","isca")
+
+
+	--[ VENDER ]------------------
 
 	elseif data == "vender-blueberry" then
-		TriggerServerEvent("departamento-vender","blueberry")
-	
+		TriggerServerEvent("farmer-vender","blueberry")
+		
+	elseif data == "vender-laranja" then
+		TriggerServerEvent("farmer-vender","laranja")
+		
+	elseif data == "vender-tomate" then
+		TriggerServerEvent("farmer-vender","tomate")
+		
+	elseif data == "vender-peixe" then
+		TriggerServerEvent("farmer-vender","peixe")
+
 	elseif data == "fechar" then
 		ToggleActionMenu()
 	
 	end
 end)
 
---[ LOCS ]-----------------------------------------------------------------------------------------------------------------------------
+--[ LOCAIS ]-----------------------------------------------------------------------------------------------------------------------------
 
 local lojas = {
-	{ ['x'] = 180.09, ['y'] = -990.25, ['z'] = 30.1 },
+	{ ['x'] = 1149.19, ['y'] = -297.31, ['z'] = 69.1 }
 }
 
---[ ACTION ]---------------------------------------------------------------------------------------
+--[ MENU ]-------------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
 	while true do
 		local idle = 1000
-		
 		for k,v in pairs(lojas) do
 			local ped = PlayerPedId()
 			local x,y,z = table.unpack(GetEntityCoords(ped))
@@ -53,26 +77,25 @@ Citizen.CreateThread(function()
 			local distance = GetDistanceBetweenCoords(v.x,v.y,cdz,x,y,z,true)
 			local lojas = lojas[k]
 			
-			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) < 2.1 and not menuactive then
-				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~y~E~w~] para acessar a ~y~Hortifruti~w~.")
+			if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), lojas.x, lojas.y, lojas.z, true ) <= 1.5 and not menuactive then
+				DrawText3D(lojas.x, lojas.y, lojas.z, "Pressione [~p~E~w~] para acessar a ~p~LOJA DE CONVENIÊNCIAS~w~.")
 			end
 
 			if distance < 5.1 then
-				DrawMarker(23, lojas.x, lojas.y, lojas.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 234, 203, 102, 180, 0, 0, 0, 0)
+				DrawMarker(23, lojas.x, lojas.y, lojas.z-0.97, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 				idle = 5
 				if distance <= 1.2 then
-					if IsControlJustPressed(0,38) then
+					if IsControlJustPressed(0,38) and emp.checkCrimeRecord() then
 						ToggleActionMenu()
 					end
 				end
 			end
 		end
-
 		Citizen.Wait(idle)
 	end
 end)
 
---[ FUNCTION ]-----------------------------------------------------------------------------------------------------------------------------
+--[ FUNÇÃO ]-----------------------------------------------------------------------------------------------------------------------------
 
 function DrawText3D(x,y,z, text)
     local onScreen,_x,_y=World3dToScreen2d(x,y,z)
