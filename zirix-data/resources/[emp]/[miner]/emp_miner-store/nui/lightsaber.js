@@ -66,7 +66,7 @@ $(function() {
   }
   
   function sendData(name, data) {
-	$.post("http://nav_loja-minerio/" + name, JSON.stringify(data), function(
+	$.post("http://emp_miner-store/" + name, JSON.stringify(data), function(
 	  datab
 	) {
 	  if (datab != "ok") {
