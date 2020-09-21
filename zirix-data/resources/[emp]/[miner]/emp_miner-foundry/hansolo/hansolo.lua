@@ -73,7 +73,7 @@ Citizen.CreateThread(function()
 				idle = 5
 				DrawMarker(23, foundry.x, foundry.y, foundry.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 136, 96, 240, 180, 0, 0, 0, 0)
 				if distance <= 1.2 then
-					if IsControlJustPressed(0,38) then
+					if IsControlJustPressed(0,38) and emp.checkCrimeRecord() then
 						ToggleActionMenu()
 					end
 				end

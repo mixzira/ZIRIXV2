@@ -47,3 +47,18 @@ AddEventHandler("fundir",function(item)
 		end
 	end
 end)
+
+--[ FUNCTION ]-------------------------------------------------------------------------------------------------------------------
+
+function emp.checkCrimeRecord()
+	local source = source
+	local user_id = vRP.getUserId(source)
+	if user_id then
+		if vRP.checkCrimeRecord(user_id) > 0 then
+			TriggerClientEvent("Notify",source,"negado","Não contratamos pessoas com <b>Ficha Criminal</b>.",10000)
+			return false
+		else
+			return true
+		end
+	end
+end

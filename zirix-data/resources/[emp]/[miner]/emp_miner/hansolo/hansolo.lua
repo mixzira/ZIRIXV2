@@ -43,7 +43,7 @@ Citizen.CreateThread(function()
 					idle = 5
 					DrawMarker(21, rocks[selected].x, rocks[selected].y, rocks[selected].z-0.3, 0, 0, 0, 0, 180.0, 130.0, 0.6, 0.8, 0.5, 136, 96, 240, 180, 1, 0, 0, 1)
 					if distance <= 1.2 and IsControlJustPressed(1,38) then
-						if lastVehicle == 48339065 and emp.checkPlate(lastVehicle) then
+						if lastVehicle == 48339065 and emp.checkPlate(lastVehicle) and emp.checkCrimeRecord() then
 							if emp.checkWeight() then
 								working = true
 								vRP.DeletarObjeto()

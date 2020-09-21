@@ -1,5 +1,12 @@
+local Tunnel = module("vrp","lib/Tunnel")
+local Proxy = module("vrp","lib/Proxy")
+vRP = Proxy.getInterface("vRP")
 
---[ MENU ]---------------------------------------------------------------------------------------
+--[ CONNECTION ]-------------------------------------------------------------------------------------------------------------------------
+
+emp = Tunnel.getInterface("emp_miner-store")
+
+--[ MENU ]-------------------------------------------------------------------------------------------------------------------------------
 
 local menuactive = false
 function ToggleActionMenu()
@@ -42,7 +49,7 @@ local lojas = {
 	{ ['x'] = -620.89, ['y'] = -224.63, ['z'] = 38.06 },
 }
 
---[ ACTION ]---------------------------------------------------------------------------------------
+--[ ACTION ]---------------------------------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
 	SetNuiFocus(false,false)
@@ -64,7 +71,7 @@ Citizen.CreateThread(function()
 				DrawMarker(23, lojas.x, lojas.y, lojas.z-0.99, 0, 0, 0, 0, 0, 0, 0.7, 0.7, 0.5, 234, 203, 102, 180, 0, 0, 0, 0)
 				idle = 5
 				if distance <= 1.2 then
-					if IsControlJustPressed(0,38) then
+					if IsControlJustPressed(0,38) and emp.checkCrimeRecord() then
 						ToggleActionMenu()
 					end
 				end

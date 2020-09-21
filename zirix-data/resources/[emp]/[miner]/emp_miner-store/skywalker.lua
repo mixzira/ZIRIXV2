@@ -1,8 +1,14 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
+vRPclient = Tunnel.getInterface("vRP")
 
---[ VARIABLES ]------------------------------------------------------------------------------------------------------------------------------
+--[ CONNECTION ]----------------------------------------------------------------------------------------------------------------------
+
+emp = {}
+Tunnel.bindInterface("emp_miner-store",emp)
+
+--[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------------
 
 local valores = {
 	{ item = "diamante", quantidade = 1, vender = 700 },
@@ -30,3 +36,18 @@ AddEventHandler("departamento-vender",function(item)
 		end
 	end
 end)
+
+--[ FUNCTION ]------------------------------------------------------------------------------------------------------------------------
+
+function emp.checkCrimeRecord()
+	local source = source
+	local user_id = vRP.getUserId(source)
+	if user_id then
+		if vRP.checkCrimeRecord(user_id) > 0 then
+			TriggerClientEvent("Notify",source,"negado","Não contratamos pessoas com <b>Ficha Criminal</b>.",10000)
+			return false
+		else
+			return true
+		end
+	end
+end
