@@ -4,7 +4,7 @@ vRP = Proxy.getInterface("vRP")
 
 --[ CONNECTION ]---------------------------------------------------------------------------------
 
-emp = Tunnel.getInterface("emp_minerador-fundicao")
+emp = Tunnel.getInterface("emp_miner-foundry")
 
 --[ VARIABLES ]----------------------------------------------------------------------------------
 
