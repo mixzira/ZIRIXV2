@@ -8,6 +8,7 @@ Proxy.addInterface("vrp_doors",vRPN)
 
 local cfg = module("vrp_doors","cfg/config")
 local timers = {}
+local doors = {}
 
 AddEventHandler("vRP:playerSpawn",function(user_id,source,first_spawn)
 	if first_spawn then
@@ -89,32 +90,17 @@ AddEventHandler('vrpdoorsystem:timeForceOpen',function(id)
 	end
 end)
 
-function vRPN.timeLock(id)
-	local source = source
-	local user_id = vRP.getUserId(source)
-
-	if timers[id] == 0 or not timers[id] then
-		TriggerClientEvent('vrpdoorsystem:statusSend',-1,id,true)
-		if cfg.list[id].other ~= nil then
-			local idsecond = cfg.list[id].other
-			cfg.list[idsecond].lock = cfg.list[id].lock
-			TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,true)
-		end
-	end
-end
-
-
 RegisterServerEvent('vrpdoorsystem:timeLock')
 AddEventHandler('vrpdoorsystem:timeLock',function(id)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	
-	if timers[id] == 0 or not timers[id] then
-		TriggerClientEvent('vrpdoorsystem:statusSend',-1,id,true)
-		if cfg.list[id].other ~= nil then
-			local idsecond = cfg.list[id].other
-			cfg.list[idsecond].lock = cfg.list[id].lock
-			TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,true)
-		end
+	TriggerClientEvent('notify',source,'negado','teste')
+
+	TriggerClientEvent('vrpdoorsystem:statusSend',-1,id,true)
+	if cfg.list[id].other ~= nil then
+		local idsecond = cfg.list[id].other
+		cfg.list[idsecond].lock = cfg.list[id].lock
+		TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,true)
 	end
-end)]]
+end)

@@ -80,8 +80,13 @@ Citizen.CreateThread(function()
 							Citizen.Wait(2200)
 							TriggerServerEvent("vrpdoorsystem:timeForceOpen",id)
 						end
+					else
+
 					end
 				end
+
+
+				
 			end
 
 			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 5.1 then

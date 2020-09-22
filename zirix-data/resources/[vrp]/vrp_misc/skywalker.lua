@@ -30,7 +30,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(2000)
+		Citizen.Wait(10000)
 		minutes = minutes + 1
 		
 		if minutes >= 60 then
