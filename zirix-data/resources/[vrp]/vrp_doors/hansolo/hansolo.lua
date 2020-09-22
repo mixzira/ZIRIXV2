@@ -3,6 +3,7 @@ local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
 
 local doors = {}
+local hora = 0
 
 RegisterNetEvent('vrpdoorsystem:load')
 AddEventHandler('vrpdoorsystem:load',function(list)
@@ -36,17 +37,35 @@ function searchIdDoor1()
 	return 0
 end
 
+function CalculateTimeToDisplay()
+	hora = GetClockHours()
+	if hora <= 9 then
+		hora = "0" .. hora
+	end
+end
+
 Citizen.CreateThread(function()
 	while true do
 		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 		local idle = 1000
 		
-		if IsControlJustPressed(0,38) then
-			local id = searchIdDoor()
-			if id ~= 0 then
-				vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
-				Citizen.Wait(2200)
-				TriggerServerEvent("vrpdoorsystem:open",id)
+		local id = searchIdDoor()
+		if id ~= 0 then
+			CalculateTimeToDisplay()
+			if parseInt(hora) >= 07 and parseInt(hora) <= 17 then
+				for k,v in pairs(doors) do
+					if v.public then
+						TriggerServerEvent("vrpdoorsystem:timeOpen",id)
+					else
+						if IsControlJustPressed(0,38) then
+							vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
+							Citizen.Wait(2200)
+							TriggerServerEvent("vrpdoorsystem:open",id)
+						end
+					end
+				end
+			else
+				TriggerServerEvent("vrpdoorsystem:timeLock",id)
 			end
 		end
 
@@ -58,7 +77,9 @@ Citizen.CreateThread(function()
 					SetEntityCanBeDamaged(door,false)
 					if v.lock == false then
 						if v.text then
-							DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~destrancada~w~.")
+							if not v.public then
+								DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~destrancada~w~.")
+							end
 						end
 						NetworkRequestControlOfEntity(door)
 						FreezeEntityPosition(door,false)
@@ -66,7 +87,11 @@ Citizen.CreateThread(function()
 						local lock,heading = GetStateOfClosestDoorOfType(v.hash,v.x,v.y,v.z,lock,heading)
 						if heading > -0.02 and heading < 0.02 then
 							if v.text then
-								DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")
+								if v.public then
+									DrawText3Ds(v.x,v.y,v.z+0.2,"Horário de funcionamento: ~p~07~w~:~p~00 ~w~às ~p~17~w~:~p~00~w~.")
+								else
+									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")
+								end
 							end
 							NetworkRequestControlOfEntity(door)
 							FreezeEntityPosition(door,true)
