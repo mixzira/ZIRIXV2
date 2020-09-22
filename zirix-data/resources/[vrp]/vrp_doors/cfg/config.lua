@@ -148,8 +148,8 @@ cfg.list = {
 	[113] = { text = true, hash = 73386408, ['x'] = 315.69, ['y'] = -276.11, ['z'] = 54.17, lock = false, perm = "0", perm2 = "0", other = 114, public = true },
 	[114] = { text = true, hash = -1152174184, ['x'] = 314.58, ['y'] = -275.74, ['z'] = 54.17, lock = false, perm = "0", perm2 = "0", other = 113, public = true },
 
-	[115] = { text = true, hash = 110411286, ['x'] = 258.83, ['y'] = 203.75, ['z'] = 106.29, lock = false, perm = "0", perm2 = "0", other = 112, public = true },
-	[116] = { text = true, hash = 110411286, ['x'] = 260.07, ['y'] = 203.44, ['z'] = 106.29, lock = false, perm = "0", perm2 = "0", other = 111, public = true },
+	[115] = { text = true, hash = 110411286, ['x'] = 258.83, ['y'] = 203.75, ['z'] = 106.29, lock = false, perm = "0", perm2 = "0", other = 116, public = true },
+	[116] = { text = true, hash = 110411286, ['x'] = 260.07, ['y'] = 203.44, ['z'] = 106.29, lock = false, perm = "0", perm2 = "0", other = 115, public = true },
 
 	[117] = { text = true, hash = 110411286, ['x'] = 231.8, ['y'] = 215.74, ['z'] = 106.29, lock = false, perm = "0", perm2 = "0", other = 118, public = true },
 	[118] = { text = true, hash = 110411286, ['x'] = 232.37, ['y'] = 214.79, ['z'] = 106.29, lock = false, perm = "0", perm2 = "0", other = 117, public = true },
