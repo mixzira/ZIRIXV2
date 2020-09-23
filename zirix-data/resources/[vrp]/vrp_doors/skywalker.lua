@@ -1,19 +1,31 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
+vRPclient = Tunnel.getInterface("vRP")
+
+--[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
 vRPN = {}
 Tunnel.bindInterface("vrp_doors",vRPN)
 Proxy.addInterface("vrp_doors",vRPN)
 
+--[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
+
 local cfg = module("vrp_doors","cfg/config")
+local hora = 0
 local timers = {}
-local doors = {}
+
+--[ EVENTS ]--------------------------------------------------------------------------------------------------------------------
 
 AddEventHandler("vRP:playerSpawn",function(user_id,source,first_spawn)
 	if first_spawn then
 		TriggerClientEvent('vrpdoorsystem:load',source,cfg.list)
 	end
+end)
+
+RegisterServerEvent('vrpdoorsystem:updateHora')
+AddEventHandler('vrpdoorsystem:updateHora',function(hour)
+	hora = hour
 end)
 
 RegisterServerEvent('vrpdoorsystem:open')
@@ -58,24 +70,43 @@ Citizen.CreateThread(function()
 	end
 end)
 
-function vRPN.checkTime(id)
+function vRPN.checkItemTime(id)
 	local source = source
 	local user_id = vRP.getUserId(source)
 
 	if timers[id] == 0 or not timers[id] then
-		if vRP.tryGetInventoryItem(user_id,"lockpick",1) then
-			return true
+		if cfg.list[id].public then
+			if vRP.tryGetInventoryItem(user_id,"lockpick",1) then
+				return true
+			else
+				TriggerClientEvent('Notify',source,'negado','Você precisa de uma lockpick para fazer isso!')
+				return false
+			end
 		else
+			TriggerClientEvent('Notify',source,'negado','Você não pode destrancar essa porta!')
 			return false
 		end
 	else
-		TriggerClientEvent("Notify",source,"negado","Essa portá já está destrancada e ira se trancar novamente em "..timers[id].."segundos")
+		TriggerClientEvent('Notify',source,'negado','Porta destrancada por '..timers[id]..' segundos.')
 		return false
 	end
 end
 
-RegisterServerEvent('vrpdoorsystem:timeForceOpen')
-AddEventHandler('vrpdoorsystem:timeForceOpen',function(id)
+function vRPN.timeClose(id)
+	local source = source
+	local user_id = vRP.getUserId(source)
+	
+	if timers[id] == 0 or not timers[id] then
+		TriggerClientEvent('vrpdoorsystem:statusSend',-1,id,true)
+		if cfg.list[id].other ~= nil then
+			local idsecond = cfg.list[id].other
+			cfg.list[idsecond].lock = cfg.list[id].lock
+			TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,true)
+		end
+	end
+end
+
+function vRPN.forceOpen(id)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	
@@ -88,19 +119,17 @@ AddEventHandler('vrpdoorsystem:timeForceOpen',function(id)
 			TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,false)
 		end
 	end
-end)
+end
 
-RegisterServerEvent('vrpdoorsystem:timeLock')
-AddEventHandler('vrpdoorsystem:timeLock',function(id)
-	local source = source
-	local user_id = vRP.getUserId(source)
-	
-	TriggerClientEvent('notify',source,'negado','teste')
+--[ THREADS ]-------------------------------------------------------------------------------------------------------------------
 
-	TriggerClientEvent('vrpdoorsystem:statusSend',-1,id,true)
-	if cfg.list[id].other ~= nil then
-		local idsecond = cfg.list[id].other
-		cfg.list[idsecond].lock = cfg.list[id].lock
-		TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,true)
+Citizen.CreateThread(function()
+	while true do
+		Citizen.Wait(10000)
+		if parseInt(hora) >= 07 and parseInt(hora) <= 17 then
+			TriggerClientEvent('vrpdoorsystem:infoDoors',-1,false)
+		else
+			TriggerClientEvent('vrpdoorsystem:infoDoors',-1,true)
+		end
 	end
 end)
