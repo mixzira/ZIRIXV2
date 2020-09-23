@@ -4,16 +4,17 @@ vRP = Proxy.getInterface("vRP")
 
 --[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
-emP = Tunnel.getInterface("emp_garbageman")
+emp = Tunnel.getInterface("emp_garbageman")
 
 --[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 
 local blips = false
-local servico = false
-local selecionado = 0
-local CoordenadaX = -349.84
-local CoordenadaY = -1569.79
-local CoordenadaZ = 25.22
+local working = false
+local selected = 0
+local hour = 0
+local coordX = -351.05
+local coordY = -1566.82
+local coordZ = 25.23
 local locs = {
 	[1] = { -364.39,-1864.58,20.24 },
 	[2] = { 119.92,-2049.79,18.00 },
@@ -57,34 +58,39 @@ local locs = {
 
 --[ IN WORKING AREA | THREAD ]--------------------------------------------------------------------------------------------------
 
-local hora = 0
 function CalculateTimeToDisplay()
-	hora = GetClockHours()
-	if hora <= 9 then
-		hora = "0" .. hora
+	hour = GetClockHours()
+	if hour <= 9 then
+		hour = "0" .. hour
 	end
 end
 
---[ IN WORKING AREA | THREAD ]--------------------------------------------------------------------------------------------------
+--[ IN WORKING AREA | COAMMAND ]------------------------------------------------------------------------------------------------
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if not servico then
-			local ped = PlayerPedId()
-			if not IsPedInAnyVehicle(ped) then
-				local x,y,z = table.unpack(GetEntityCoords(ped))
-				local distance = Vdist(x,y,z,CoordenadaX,CoordenadaY,CoordenadaZ)
-				if distance <= 30.0 then
-					DrawMarker(23,CoordenadaX,CoordenadaY,CoordenadaZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
-					if distance <= 1.2 then
-						drawTxt("PRESSIONE  ~b~E~w~  PARA INICIAR A COLETA",4,0.5,0.93,0.50,255,255,255,180)
-						if IsControlJustPressed(1,38) then
+		local idle = 1000
+		local ped = PlayerPedId()
+		if not IsPedInAnyVehicle(ped) then
+			local x,y,z = table.unpack(GetEntityCoords(ped))
+			local distance = Vdist(x,y,z,coordX,coordY,coordZ)
+			if distance < 5.1 then
+				idle = 5
+				DrawMarker(23,coordX,coordY,coordZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
+
+				if GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()), coordX,coordY,coordZ, true ) <= 1.1  then
+					DrawText3D(coordX,coordY,coordZ, "Pressione [~p~E~w~] para iniciar a coleta de ~p~LIXO~w~.")
+				end
+
+				if distance < 1.3 then
+					if IsControlJustPressed(1,38) and emp.checkCrimeRecord() then
+						if not working then
 							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
-								servico = true
-								selecionado = 1
-								CriandoBlip(locs,selecionado)
+							if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
+								working = true
+								selected = 1
+								createBlip(locs,selected)
+								TriggerEvent("Notify","sucesso","Entrou em <b>serviço</b>.")
 							else
 								TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
 							end
@@ -93,6 +99,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -100,29 +107,33 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if servico then
+		local idle = 1000
+		if working then
 			local ped = PlayerPedId()
 			if IsPedInAnyVehicle(ped) then
 				local vehicle = GetVehiclePedIsUsing(ped)
 				local x,y,z = table.unpack(GetEntityCoords(ped))
-				local distance = Vdist(x,y,z,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3])
+				local distance = Vdist(x,y,z,locs[selected][1],locs[selected][2],locs[selected][3])
 
-				if distance <= 30.0 and IsVehicleModel(vehicle,GetHashKey("trash")) then
-					DrawMarker(21,locs[selecionado][1],locs[selecionado][2],locs[selecionado][3]+0.30,0,0,0,0,180.0,130.0,2.0,2.0,1.0,136, 96, 240, 180,1,0,0,1)
+				if distance < 30.1 and IsVehicleModel(vehicle,GetHashKey("trash2")) then
+					idle = 5
+					DrawMarker(21,locs[selected][1],locs[selected][2],locs[selected][3]+0.30,0,0,0,0,180.0,130.0,2.0,2.0,1.0,136, 96, 240, 180,1,0,0,1)
 					if distance <= 5.1 then
+
 						drawTxt("PRESSIONE  ~b~E~w~  PARA COLETAR SACO DE LIXO",4,0.5,0.93,0.50,255,255,255,180)
-						if IsControlJustPressed(1,38) then
+
+						if IsControlJustPressed(1,38) and emp.checkCrimeRecord() then
 							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
-								if emP.checkPayment() then
+							
+							if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
+								if emp.checkPayment() then
 									RemoveBlip(blips)
-									if selecionado == #locs then
-										selecionado = 1
+									if selected == #locs then
+										selected = 1
 									else
-										selecionado = selecionado + 1
+										selected = selected + 1
 									end
-									CriandoBlip(locs,selecionado)
+									createBlip(locs,selected)
 								end
 							else
 								TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
@@ -132,6 +143,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -139,13 +151,21 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if servico then
+		local idle = 1000
+		if working then
+			idle = 1
+			local ped = PlayerPedId()
+			if IsPedInAnyVehicle(ped) then
+				drawTxt("PRESSIONE ~r~F7~w~ PARA ENCERRAR A COLETA DE LIXO.",4,0.226,0.962,0.35,255,255,255,120)
+			else
+				drawTxt("PRESSIONE ~r~F7~w~ PARA ENCERRAR A COLETA DE LIXO.",4,0.072,0.962,0.35,255,255,255,120)
+			end
 			if IsControlJustPressed(1,121) then
-				servico = false
+				working = false
 				RemoveBlip(blips)
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -162,8 +182,8 @@ function drawTxt(text,font,x,y,scale,r,g,b,a)
 	DrawText(x,y)
 end
 
-function CriandoBlip(locs,selecionado)
-	blips = AddBlipForCoord(locs[selecionado][1],locs[selecionado][2],locs[selecionado][3])
+function createBlip(locs,selected)
+	blips = AddBlipForCoord(locs[selected][1],locs[selected][2],locs[selected][3])
 	SetBlipSprite(blips,1)
 	SetBlipColour(blips,5)
 	SetBlipScale(blips,0.4)
@@ -172,4 +192,20 @@ function CriandoBlip(locs,selecionado)
 	BeginTextCommandSetBlipName("STRING")
 	AddTextComponentString("Coleta de Lixo")
 	EndTextCommandSetBlipName(blips)
+end
+
+function DrawText3D(x,y,z, text)
+    local onScreen,_x,_y=World3dToScreen2d(x,y,z)
+    local px,py,pz=table.unpack(GetGameplayCamCoords())
+    
+    SetTextScale(0.28, 0.28)
+    SetTextFont(4)
+    SetTextProportional(1)
+    SetTextColour(255, 255, 255, 215)
+    SetTextEntry("STRING")
+    SetTextCentre(1)
+    AddTextComponentString(text)
+    DrawText(_x,_y)
+    local factor = (string.len(text)) / 370
+    DrawRect(_x,_y+0.0125, 0.005+ factor, 0.03, 41, 11, 41, 68)
 end

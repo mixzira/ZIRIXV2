@@ -191,7 +191,7 @@ local itemlist = {
 
 	--[ Emprego ][ Lixeiro ]------------------------------------------------------------------------------------------
 
-	["sacodelixo"] = {index = "sacodelixo", nome = "Saco de Lixo", type = "usar" },
+	["saco-lixo"] = {index = "saco-lixo", nome = "Saco de Lixo", type = "usar" },
 
 	--[ Emprego ][ Carteiro ]------------------------------------------------------------------------------------------
 
