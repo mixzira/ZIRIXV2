@@ -92,7 +92,9 @@ Citizen.CreateThread(function()
 				farol = 2
 			else
 				farol = 0
-			end
+      end
+      
+      DisplayRadar(true)
     else
 			if on_gps then
 			  DisplayRadar(true)

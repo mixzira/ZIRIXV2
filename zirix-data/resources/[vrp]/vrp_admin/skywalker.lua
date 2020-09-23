@@ -1474,8 +1474,8 @@ RegisterCommand("plano", function(source,args)
 	end
 end)
 
-function vRPidd.getId(sourceplayer)
-	local user_id = vRP.getUserId(sourceplayer)
+function vRPidd.getId()
+	local user_id = vRP.getUserId()
 	return user_id
 end
 

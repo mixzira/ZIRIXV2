@@ -5,7 +5,7 @@ vRP = Proxy.getInterface("vRP")
 vRPNserver = Tunnel.getInterface("vrp_doors")
 
 local doors = {}
-local hora = 0
+local hour = 0
 
 RegisterNetEvent('vrpdoorsystem:load')
 AddEventHandler('vrpdoorsystem:load',function(list)
@@ -22,101 +22,92 @@ end)
 function searchIdDoor()
 	local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 	for k,v in pairs(doors) do
-		if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 1.5 then
-			return k
+		if v.public then
+			return 0
+		else
+			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 1.5 then
+				return k
+			end
 		end
 	end
 	return 0
 end
 
-function searchIdDoor1()
+function searchPublicIdDoor()
 	local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 	for k,v in pairs(doors) do
-		if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 5.0 then
-			return true
+		if v.public then
+			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 5.1 then
+				return k
+			end
 		end
 	end
 	return 0
 end
 
 function CalculateTimeToDisplay()
-	hora = GetClockHours()
-	if hora <= 9 then
-		hora = "0" .. hora
+	hour = GetClockHours()
+	if hour <= 9 then
+		hour = "0" .. hour
 	end
 end
 
 Citizen.CreateThread(function()
 	while true do
-		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 		local idle = 1000
+		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
+		CalculateTimeToDisplay()
+
+		local publicId = searchPublicIdDoor()
+		if publicId ~= 0 then
+			if parseInt(hour) >= 07 and parseInt(hour) <= 17 then
+				vRPNserver.timeOpen(publicId)
+			else
+				vRPNserver.timeClose(publicId)
+			end
+
+			if IsControlJustPressed(0,38) and vRPNserver.checkItemTime(publicId) then
+				vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
+				Citizen.Wait(2200)
+				vRPNserver.forceOpen(publicId)
+			end
+		end
 		
 		local id = searchIdDoor()
 		if id ~= 0 then
-			CalculateTimeToDisplay()
-			if parseInt(hora) >= 07 and parseInt(hora) <= 17 then
-				for k,v in pairs(doors) do
-					if v.public then
-						TriggerServerEvent("vrpdoorsystem:timeOpen",id)
-					else
-						if IsControlJustPressed(0,38) then
-							vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
-							Citizen.Wait(2200)
-							TriggerServerEvent("vrpdoorsystem:open",id)
-						end
-					end
-				end
-			else
-				TriggerServerEvent("vrpdoorsystem:timeLock",id)
+			if IsControlJustPressed(0,38) then
+				vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
+				Citizen.Wait(2200)
+				TriggerServerEvent("vrpdoorsystem:open",id)
 			end
 		end
-
+		
 		for k,v in pairs(doors) do
-			if id ~= 0 then
-				if v.public then
-					if v.lock == true then
-						if IsControlJustPressed(0,38) and vRPNserver.checkTime(id) then
-							vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
-							Citizen.Wait(2200)
-							TriggerServerEvent("vrpdoorsystem:timeForceOpen",id)
+			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 5 then
+				idle = 5
+				local door = GetClosestObjectOfType(v.x,v.y,v.z,1.0,v.hash,false,false,false)
+				if door ~= 0 then
+					SetEntityCanBeDamaged(door,false)
+					if v.lock == false then
+						if v.text then
+							if not v.public then
+								DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~destrancada~w~.")
+							end
 						end
+						NetworkRequestControlOfEntity(door)
+						FreezeEntityPosition(door,false)
 					else
-
-					end
-				end
-
-
-				
-			end
-
-			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 5.1 then
-				idle = 100
-				if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 1.9 then
-					idle = 5
-					local door = GetClosestObjectOfType(v.x,v.y,v.z,1.0,v.hash,false,false,false)
-					if door ~= 0 then
-						SetEntityCanBeDamaged(door,false)
-						if v.lock == false then
+						local lock,heading = GetStateOfClosestDoorOfType(v.hash,v.x,v.y,v.z,lock,heading)
+						if heading > -0.02 and heading < 0.02 then
 							if v.text then
-								if not v.public then
-									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~destrancada~w~.")
+								if v.public then
+									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] ~p~tirar~w~.")
+								else
+									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")	
 								end
 							end
 							NetworkRequestControlOfEntity(door)
-							FreezeEntityPosition(door,false)
-						else
-							local lock,heading = GetStateOfClosestDoorOfType(v.hash,v.x,v.y,v.z,lock,heading)
-							if heading > -0.02 and heading < 0.02 then
-								if v.text then
-									if v.public then
-										DrawText3Ds(v.x,v.y,v.z+0.2,"Horário de funcionamento: ~p~07~w~:~p~00 ~w~às ~p~17~w~:~p~00~w~.")
-									else
-										DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")
-									end
-								end
-								NetworkRequestControlOfEntity(door)
-								FreezeEntityPosition(door,true)
-							end
+							FreezeEntityPosition(door,true)
 						end
 					end
 				end
