@@ -100,7 +100,9 @@ Citizen.CreateThread(function()
 						local lock,heading = GetStateOfClosestDoorOfType(v.hash,v.x,v.y,v.z,lock,heading)
 						if heading > -0.02 and heading < 0.02 then
 							if v.text then
-								if not v.public then
+								if v.public then
+									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] ~p~tirar~w~.")
+								else
 									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")	
 								end
 							end
