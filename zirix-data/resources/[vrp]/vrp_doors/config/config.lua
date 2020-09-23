@@ -203,6 +203,69 @@ cfg.list = {
 	[147] = { text = true, hash = -1148826190, ['x'] = -1.33, ['y'] = 6516.32, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", public = true, other = 148 },
 	[148] = { text = true, hash = 86849917, ['x'] = -0.56, ['y'] = 6516.93, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", public = true, other = 147 },
 
+	--[ LOJA DE DEPARTAMENTOS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+
+	[149] = { text = true, hash = 997554217, ['x'] = 29.51, ['y'] = -1349.07, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 150 },
+	[150] = { text = true, hash = 1196685123, ['x'] = 28.85, ['y'] = -1349.0, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 149 },
+
+	[151] = { text = true, hash = 997554217, ['x'] = 2559.11, ['y'] = 385.75, ['z'] = 108.63, lock = false, perm = "0", perm2 = "0", public = true, other = 152 },
+	[152] = { text = true, hash = 1196685123, ['x'] = 2559.18, ['y'] = 385.14, ['z'] = 108.63, lock = false, perm = "0", perm2 = "0", public = true, other = 151 },
+
+	[153] = { text = true, hash = 2065277225, ['x'] = 1159.91, ['y'] = -326.42, ['z'] = 69.21, lock = false, perm = "0", perm2 = "0", public = true, other = 154 },
+	[154] = { text = true, hash = -868672903, ['x'] = 1159.21, ['y'] = -326.61, ['z'] = 69.22, lock = false, perm = "0", perm2 = "0", public = true, other = 153 },
+
+	[155] = { text = true, hash = 2065277225, ['x'] = -711.33, ['y'] = -916.43, ['z'] = 19.22, lock = false, perm = "0", perm2 = "0", public = true, other = 156 },
+	[156] = { text = true, hash = -868672903,['x'] = -712.26, ['y'] = -916.38, ['z'] = 19.22, lock = false, perm = "0", perm2 = "0", public = true, other = 155 },
+
+	[157] = { text = true, hash = 2065277225,['x'] = -52.62, ['y'] = -1756.72, ['z'] = 29.43, lock = false, perm = "0", perm2 = "0", public = true, other = 158 },
+	[158] = { text = true, hash = -868672903,['x'] = -53.37, ['y'] = -1756.19, ['z'] = 29.44, lock = false, perm = "0", perm2 = "0", public = true, other = 157 },
+
+	[159] = { text = true, hash = 997554217,['x'] = 376.98, ['y'] = 323.35, ['z'] = 103.58, lock = false, perm = "0", perm2 = "0", public = true, other = 160 },
+	[160] = { text = true, hash = 1196685123,['x'] = 376.16, ['y'] = 323.71, ['z'] = 103.57, lock = false, perm = "0", perm2 = "0", public = true, other = 159 },
+
+	[161] = { text = true, hash = 997554217,['x'] = -3240.08, ['y'] = 1004.82, ['z'] = 12.88, lock = false, perm = "0", perm2 = "0", public = true, other = 162 },
+	[162] = { text = true, hash = -802238381,['x'] = -3240.05, ['y'] = 1004.13, ['z'] = 12.88, lock = false, perm = "0", perm2 = "0", public = true, other = 161 },
+
+	[163] = { text = true, hash = 997554217,['x'] = 1731.67, ['y'] = 6411.22, ['z'] = 35.04, lock = false, perm = "0", perm2 = "0", public = true, other = 164 },
+	[164] = { text = true, hash = 1196685123,['x'] = 1730.9, ['y'] = 6411.67, ['z'] = 35.04, lock = false, perm = "0", perm2 = "0", public = true, other = 163 },
+
+	[165] = { text = true, hash = 997554217,['x'] = 543.87, ['y'] = 2672.46, ['z'] = 42.16, lock = false, perm = "0", perm2 = "0", public = true, other = 166 },
+	[166] = { text = true, hash = 1196685123,['x'] = 544.51, ['y'] = 2672.65, ['z'] = 42.16, lock = false, perm = "0", perm2 = "0", public = true, other = 165 },
+
+	[167] = { text = true, hash = 997554217,['x'] = 1965.17, ['y'] = 3741.0, ['z'] = 32.35, lock = false, perm = "0", perm2 = "0", public = true, other = 168 },
+	[168] = { text = true, hash = 1196685123,['x'] = 1964.65, ['y'] = 3740.53, ['z'] = 32.35, lock = false, perm = "0", perm2 = "0", public = true, other = 167 },
+
+	[169] = { text = true, hash = 99755421,['x'] = 2682.16, ['y'] = 3283.16, ['z'] = 55.25, lock = false, perm = "0", perm2 = "0", public = true, other = 170 },
+	[170] = { text = true, hash = 1196685123,['x'] = 2681.66, ['y'] = 3281.94, ['z'] = 55.25, lock = false, perm = "0", perm2 = "0", public = true, other = 169 },
+
+	[171] = { text = true, hash = 2065277225,['x'] = 1698.73, ['y'] = 4928.8, ['z'] = 42.08, lock = false, perm = "0", perm2 = "0", public = true, other = 172 },
+	[172] = { text = true, hash = -868672903,['x'] = 1699.33, ['y'] = 4929.51, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", public = true, other = 171 },
+
+	[173] = { text = true, hash = 2065277225,['x'] = -1822.19, ['y'] = 788.68, ['z'] = 138.19, lock = false, perm = "0", perm2 = "0", public = true, other = 174 },
+	[174] = { text = true, hash = -868672903,['x'] = -1822.69, ['y'] = 788.08, ['z'] = 138.2, lock = false, perm = "0", perm2 = "0", public = true, other = 173 },
+
+	[175] = { text = true, hash = -1212951353,['x'] = 1394.52, ['y'] = 3600.16, ['z'] = 34.99, lock = false, perm = "0", perm2 = "0", public = true, other = 176 },
+	[176] = { text = true, hash = -1212951353,['x'] = 1393.75, ['y'] = 3599.84, ['z'] = 34.99, lock = false, perm = "0", perm2 = "0", public = true, other = 175 },
+
+	[177] = { text = true, hash = -1212951253,['x'] = -2973.29, ['y'] = 390.85, ['z'] = 15.05, lock = false, perm = "0", perm2 = "0", public = true, other = 177 },
+
+	[178] = { text = true, hash = 997554217,['x'] = -3038.79, ['y'] = 589.73, ['z'] = 7.92, lock = false, perm = "0", perm2 = "0", public = true, other = 179 },
+	[179] = { text = true, hash = 1196685123,['x'] = -3038.62, ['y'] = 589.17, ['z'] = 7.92, lock = false, perm = "0", perm2 = "0", public = true, other = 178 },
+
+	[180] = { text = true, hash = -1212951353,['x'] = 1140.99, ['y'] = -981.29, ['z'] = 46.42, lock = false, perm = "0", perm2 = "0", public = true, other = 180 },
+
+
+	[181] = { text = true, hash = -1212951353,['x'] = 1166.24, ['y'] = 2703.95, ['z'] = 38.16, lock = false, perm = "0", perm2 = "0", public = true, other = 181 },
+
+	[182] = { text = true, hash = -1212951353,['x'] = -1490.84, ['y'] = -383.03, ['z'] = 40.17, lock = false, perm = "0", perm2 = "0", public = true, other = 182 },
+
+	[183] = { text = true, hash = -1212951353,['x'] = -1226.19, ['y'] = -902.87, ['z'] = 12.33, lock = false, perm = "0", perm2 = "0", public = true, other = 183 },
+
+
+
+
+
 }
 
 return cfg
