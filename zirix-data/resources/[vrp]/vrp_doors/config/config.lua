@@ -201,8 +201,7 @@ cfg.list = {
 	[146] = { text = true, hash = 86849917, ['x'] = 1687.14, ['y'] = 4821.18, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", other = 145, public = true },
 
 	[147] = { text = true, hash = -1148826190, ['x'] = -1.33, ['y'] = 6516.32, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", other = 148, public = true },
-	[148] = { text = true, hash = 86849917, ['x'] = -0.56, ['y'] = 6516.93, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", other = 147, public = true },
-
+	[148] = { text = true, hash = 86849917, ['x'] = -0.56, ['y'] = 6516.93, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", other = 147, public = true }
 
 }
 
