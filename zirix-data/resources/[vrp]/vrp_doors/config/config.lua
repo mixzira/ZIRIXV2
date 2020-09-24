@@ -166,13 +166,13 @@ cfg.list = {
 	--[ LOJA DE ROUPAS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
 	[125] = { text = true, hash = -1148826190, ['x'] = 418.59, ['y'] = -808.1, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 126 },
-	[126] = { text = true, hash = 86849917, ['x'] = 418.57, ['y'] = -806.96, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 125 },
+	[126] = { text = true, hash = 868499217, ['x'] = 418.57, ['y'] = -806.96, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 125 },
 
 	[127] = { text = true, hash = -1148826190, ['x'] = 82.39, ['y'] = -1391.1, ['z'] = 29.4, lock = false, perm = "0", perm2 = "0", public = true, other = 128 },
-	[128] = { text = true, hash = 86849917, ['x'] = 82.34, ['y'] = -1392.05, ['z'] = 29.39, lock = false, perm = "0", perm2 = "0", public = true, other = 127 },
+	[128] = { text = true, hash = 868499217, ['x'] = 82.34, ['y'] = -1392.05, ['z'] = 29.39, lock = false, perm = "0", perm2 = "0", public = true, other = 127 },
 
 	[129] = { text = true, hash = -1148826190, ['x'] = -817.44, ['y'] = -1078.59, ['z'] = 11.34, lock = false, perm = "0", perm2 = "0", public = true, other = 130 },
-	[130] = { text = true, hash = 86849917, ['x'] = -818.23, ['y'] = -1079.09, ['z'] = 11.34, lock = false, perm = "0", perm2 = "0", public = true, other = 129 },
+	[130] = { text = true, hash = 868499217, ['x'] = -818.23, ['y'] = -1079.09, ['z'] = 11.34, lock = false, perm = "0", perm2 = "0", public = true, other = 129 },
 
 	[131] = { text = true, hash = 1780022985, ['x'] = -1200.69, ['y'] = -777.62, ['z'] = 17.33, lock = false, perm = "0", perm2 = "0", public = true },
 
@@ -190,21 +190,20 @@ cfg.list = {
 	[139] = { text = true, hash = 1780022985, ['x'] = -3168.6, ['y'] = 1055.91, ['z'] = 20.87, lock = false, perm = "0", perm2 = "0", public = true },
 
 	[140] = { text = true, hash = -1148826190, ['x'] = -1095.34, ['y'] = 2706.59, ['z'] = 19.11, lock = false, perm = "0", perm2 = "0", public = true, other = 141 },
-	[141] = { text = true, hash = 86849917, ['x'] = -1096.13, ['y'] = 2705.84, ['z'] = 19.11, lock = false, perm = "0", perm2 = "0", public = true, other = 140 },
+	[141] = { text = true, hash = 868499217, ['x'] = -1096.13, ['y'] = 2705.84, ['z'] = 19.11, lock = false, perm = "0", perm2 = "0", public = true, other = 140 },
 
 	[142] = { text = true, hash = 1780022985, ['x'] = 618.09, ['y'] = 2751.24, ['z'] = 42.09, lock = false, perm = "0", perm2 = "0", public = true },
 
 	[143] = { text = true, hash = -1148826190, ['x'] = 1198.53, ['y'] = 2703.16, ['z'] = 38.23, lock = false, perm = "0", perm2 = "0", public = true, other = 144 },
-	[144] = { text = true, hash = 86849917, ['x'] = 1197.34, ['y'] = 2703.18, ['z'] = 38.23, lock = false, perm = "0", perm2 = "0", public = true, other = 143 },
+	[144] = { text = true, hash = 868499217, ['x'] = 1197.34, ['y'] = 2703.18, ['z'] = 38.23, lock = false, perm = "0", perm2 = "0", public = true, other = 143 },
 
 	[145] = { text = true, hash = -1148826190, ['x'] = 1687.23, ['y'] = 4820.07, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", public = true, other = 146 },
-	[146] = { text = true, hash = 86849917, ['x'] = 1687.14, ['y'] = 4821.18, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", public = true, other = 145 },
+	[146] = { text = true, hash = 868499217, ['x'] = 1687.14, ['y'] = 4821.18, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", public = true, other = 145 },
 
 	[147] = { text = true, hash = -1148826190, ['x'] = -1.33, ['y'] = 6516.32, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", public = true, other = 148 },
-	[148] = { text = true, hash = 86849917, ['x'] = -0.56, ['y'] = 6516.93, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", public = true, other = 147 },
+	[148] = { text = true, hash = 868499217, ['x'] = -0.56, ['y'] = 6516.93, ['z'] = 31.88, lock = false, perm = "0", perm2 = "0", public = true, other = 147 },
 
 	--[ LOJA DE DEPARTAMENTOS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-	
 
 	[149] = { text = true, hash = 997554217, ['x'] = 29.51, ['y'] = -1349.07, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 150 },
 	[150] = { text = true, hash = 1196685123, ['x'] = 28.85, ['y'] = -1349.0, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 149 },
@@ -255,16 +254,11 @@ cfg.list = {
 
 	[180] = { text = true, hash = -1212951353,['x'] = 1140.99, ['y'] = -981.29, ['z'] = 46.42, lock = false, perm = "0", perm2 = "0", public = true, other = 180 },
 
-
 	[181] = { text = true, hash = -1212951353,['x'] = 1166.24, ['y'] = 2703.95, ['z'] = 38.16, lock = false, perm = "0", perm2 = "0", public = true, other = 181 },
 
 	[182] = { text = true, hash = -1212951353,['x'] = -1490.84, ['y'] = -383.03, ['z'] = 40.17, lock = false, perm = "0", perm2 = "0", public = true, other = 182 },
 
-	[183] = { text = true, hash = -1212951353,['x'] = -1226.19, ['y'] = -902.87, ['z'] = 12.33, lock = false, perm = "0", perm2 = "0", public = true, other = 183 },
-
-
-
-
+	[183] = { text = true, hash = -1212951353,['x'] = -1226.19, ['y'] = -902.87, ['z'] = 12.33, lock = false, perm = "0", perm2 = "0", public = true, other = 183 }
 
 }
 
