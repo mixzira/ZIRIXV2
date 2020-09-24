@@ -1,83 +1,96 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
-emP = Tunnel.getInterface("leiteiro_coletar")
------------------------------------------------------------------------------------------------------------------------------------------
--- VARIAVEIS
------------------------------------------------------------------------------------------------------------------------------------------
-local processo = false
-local segundos = 0
------------------------------------------------------------------------------------------------------------------------------------------
--- CORDENADAS DAS VACAS
------------------------------------------------------------------------------------------------------------------------------------------
-local vacas = {
-	{ 426.10,6463.47,28.77 },
-	{ 431.42,6459.22,28.75 },
-	{ 436.70,6454.85,28.74 },
-	{ 428.42,6477.27,28.78 }
+
+--[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
+
+emp = Tunnel.getInterface("emp_milkman")
+
+--[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
+
+local process = false
+local seconds = 0
+local hour = 0
+
+local cows = {
+	{ 425.55, 6463.64, 28.79 },
+	{ 431.11, 6459.52, 28.76 },
+	{ 436.25, 6454.87, 28.75 },
+	{ 429.02, 6476.92, 28.79 },
+	{ 434.12, 6472.93, 28.78 }
 }
------------------------------------------------------------------------------------------------------------------------------------------
--- FUNÇÕES
------------------------------------------------------------------------------------------------------------------------------------------
-local hora = 0
+
+--[ FUNCTION ]------------------------------------------------------------------------------------------------------------------
+
 function CalculateTimeToDisplay()
-	hora = GetClockHours()
-	if hora <= 9 then
-		hora = "0" .. hora
+	hour = GetClockHours()
+	if hour <= 9 then
+		hour = "0" .. hour
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- PROCESSO
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ THREAD ]--------------------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if not processo then
-			local ped = PlayerPedId()
-			if not IsPedInAnyVehicle(ped) then
-				local x,y,z = table.unpack(GetEntityCoords(ped))
-				for _,func in pairs(vacas) do
-					local x2,y2,z2 = table.unpack(func)
-					local distancia = Vdist(x,y,z,x2,y2,z2)
-					if distancia <= 1.2 then
-						drawTxt("PRESSIONE  ~b~E~w~  PARA ORDENHAR A VACA",4,0.5,0.93,0.50,255,255,255,180)
-						if IsControlJustPressed(1,38) then
-							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
-								if emP.checkPayment() then
-									TriggerEvent('cancelando',true)
-									processo = true
-									segundos = 10
+		local idle = 1000
+		local ped = PlayerPedId()
+		if not IsPedInAnyVehicle(ped) then
+			local x,y,z = table.unpack(GetEntityCoords(ped))
+			for _,func in pairs(cows) do
+				local x2,y2,z2 = table.unpack(func)
+				local distancia = Vdist(x,y,z,x2,y2,z2)
+				local lastVehicle = GetEntityModel(GetPlayersLastVehicle())
+				if distancia < 1.3 then
+					idle = 5
+					drawTxt("PRESSIONE  ~b~E~w~  PARA ORDENHAR A VACA",4,0.5,0.92,0.35,255,255,255,180)
+					if IsControlJustPressed(0,38) and emp.checkCrimeRecord() then
+						if not process then
+							if lastVehicle == 1026149675 and emp.checkPlate(lastVehicle) then
+								CalculateTimeToDisplay()
+								if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
+									if emp.checkPayment() then	
+										TriggerEvent('cancelando',true)
+										vRP._playAnim(false,{{"amb@medic@standing@tendtodead@base","base"}},true)	
+										process = true
+										seconds = 10
+										SetTimeout(10000,function()
+											vRP._stopAnim(false)
+										end)
+									end
+								else
+									TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
 								end
 							else
-								TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
+								TriggerEvent("Notify","negado","Você precisa utilizar o <b>veículo de serviço</b>.",10000)
 							end
 						end
 					end
 				end
 			end
 		end
-		if processo then
-			drawTxt("AGUARDE ~b~"..segundos.."~w~ SEGUNDOS ATÉ FINALIZAR A EXTRAÇÃO DO LEITE",4,0.5,0.93,0.50,255,255,255,180)
+		if process then
+			drawTxt("AGUARDE ~b~"..seconds.."~w~ SEGUNDOS ATÉ FINALIZAR A EXTRAÇÃO DO LEITE",4,0.5,0.94,0.35,255,255,255,180)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
 Citizen.CreateThread(function()
 	while true do
 		Citizen.Wait(1000)
-		if segundos > 0 and processo then
-			segundos = segundos - 1
-			if segundos == 0 then
-				processo = false
+		if seconds > 0 and process then
+			seconds = seconds - 1
+			if seconds == 0 then
+				process = false
 				TriggerEvent('cancelando',false)
 			end
 		end
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- FUNÇÕES
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ FUNCTION ]------------------------------------------------------------------------------------------------------------------
+
 function drawTxt(text,font,x,y,scale,r,g,b,a)
 	SetTextFont(font)
 	SetTextScale(scale,scale)

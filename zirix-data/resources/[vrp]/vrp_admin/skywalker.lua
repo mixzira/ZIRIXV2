@@ -765,7 +765,7 @@ RegisterCommand('money',function(source,args,rawCommand)
 				}
 			}), { ['Content-Type'] = 'application/json' })
 
-			vRP.giveMoney(user_id,parseInt(args[1]))
+			vRP.giveDinheirama(user_id,parseInt(args[1]))
 		end
 	end
 end)
