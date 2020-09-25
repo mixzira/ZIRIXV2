@@ -114,7 +114,7 @@ end)
 
 Citizen.CreateThread(function()
     while true do
-        local idle = 500
+        local idle = 1000
         
         if onrota then
             idle = 5
@@ -444,8 +444,9 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-        Citizen.Wait(1)
+        local idle = 1000
         if emaula then
+            idle = 5
             local ped = PlayerPedId()
             local pedcar = GetVehiclePedIsIn(ped)
 
@@ -466,39 +467,34 @@ Citizen.CreateThread(function()
                     TriggerEvent("Notify","negado","<b>Cuidado!</b> Essa colisão lhe custará pontos do seu teste. ( Erros:"..erros.." )")
                 end)
             end
+
+            DisableControlAction(1,243,true)
+            DisableControlAction(1,213,true)
+            DisableControlAction(0,21,true) 
+            DisableControlAction(0,24,true)
+            DisableControlAction(0,25,true) 
+            DisableControlAction(0,47,true) 
+            DisableControlAction(0,49,true)
+            DisableControlAction(0,44,true) 
+            DisableControlAction(0,303,true) 
+            DisableControlAction(0,246,true) 
+            DisableControlAction(0,311,true) 
+            DisableControlAction(0,58,true) 
+            DisableControlAction(0,23,true) 
+            DisableControlAction(0,263,true) 
+            DisableControlAction(0,264,true) 
+            DisableControlAction(0,257,true) 
+            DisableControlAction(0,140,true) 
+            DisableControlAction(0,141,true) 
+            DisableControlAction(0,142,true)
+            DisableControlAction(0,143,true) 
+            DisableControlAction(0,75,true) 
+            DisableControlAction(27,75,true)
+
         end
+        Citizen.Wait(idle)
 	end
 end)
-
-Citizen.CreateThread(function()
-    while true do
-      Citizen.Wait(0)
-      if emaula then
-        DisableControlAction(1,243,true)
-        DisableControlAction(1,213,true)
-        DisableControlAction(0,21,true) 
-        DisableControlAction(0,24,true)
-        DisableControlAction(0,25,true) 
-        DisableControlAction(0,47,true) 
-        DisableControlAction(0,49,true)
-        DisableControlAction(0,44,true) 
-        DisableControlAction(0,303,true) 
-        DisableControlAction(0,246,true) 
-        DisableControlAction(0,311,true) 
-        DisableControlAction(0,58,true) 
-        DisableControlAction(0,23,true) 
-        DisableControlAction(0,263,true) 
-        DisableControlAction(0,264,true) 
-        DisableControlAction(0,257,true) 
-        DisableControlAction(0,140,true) 
-        DisableControlAction(0,141,true) 
-        DisableControlAction(0,142,true)
-        DisableControlAction(0,143,true) 
-        DisableControlAction(0,75,true) 
-        DisableControlAction(27,75,true) 
-      end
-    end
-  end)
 
 --[ FUNÇÕES ]----------------------------------------------------------------------------------------------------------------------------
 

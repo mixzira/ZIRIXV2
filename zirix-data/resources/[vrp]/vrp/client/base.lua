@@ -24,7 +24,7 @@ end
 function tvRP.getSpeed()
 	local vx,vy,vz = table.unpack(GetEntityVelocity(GetPlayerPed(-1)))
 	return math.sqrt(vx*vx+vy*vy+vz*vz)
-  end
+end
 
 function tvRP.teleport(x,y,z)
 	SetEntityCoords(PlayerPedId(),x+0.0001,y+0.0001,z+0.0001,1,0,0,1)

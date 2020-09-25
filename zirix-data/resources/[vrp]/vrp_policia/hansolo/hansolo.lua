@@ -135,26 +135,23 @@ end)
 local blips = {}
 RegisterNetEvent('notificacao')
 AddEventHandler('notificacao',function(x,y,z,user_id)
-	--local distance = GetDistanceBetweenCoords(x,y,z,-186.1,-893.5,29.3,true)
-	--if distance <= 2100 then
-		if not DoesBlipExist(blips[user_id]) then
-			PlaySoundFrontend(-1,"Enter_1st","GTAO_FM_Events_Soundset",false)
-			TriggerEvent('chatMessage',"911",{64,64,255},"Disparos de arma de fogo aconteceram, verifique o ocorrido.")
-			blips[user_id] = AddBlipForCoord(x,y,z)
-			SetBlipScale(blips[user_id],0.5)
-			SetBlipSprite(blips[user_id],10)
-			SetBlipColour(blips[user_id],49)
-			BeginTextCommandSetBlipName("STRING")
-			AddTextComponentString("Disparos de arma de fogo")
-			EndTextCommandSetBlipName(blips[user_id])
-			SetBlipAsShortRange(blips[user_id],false)
-			SetTimeout(30000,function()
-				if DoesBlipExist(blips[user_id]) then
-					RemoveBlip(blips[user_id])
-				end
-			end)
-		end
-	--end
+	if not DoesBlipExist(blips[user_id]) then
+		PlaySoundFrontend(-1,"Enter_1st","GTAO_FM_Events_Soundset",false)
+		TriggerEvent('chatMessage',"911",{64,64,255},"Disparos de arma de fogo aconteceram, verifique o ocorrido.")
+		blips[user_id] = AddBlipForCoord(x,y,z)
+		SetBlipScale(blips[user_id],0.5)
+		SetBlipSprite(blips[user_id],10)
+		SetBlipColour(blips[user_id],49)
+		BeginTextCommandSetBlipName("STRING")
+		AddTextComponentString("Disparos de arma de fogo")
+		EndTextCommandSetBlipName(blips[user_id])
+		SetBlipAsShortRange(blips[user_id],false)
+		SetTimeout(30000,function()
+			if DoesBlipExist(blips[user_id]) then
+				RemoveBlip(blips[user_id])
+			end
+		end)
+	end
 end)
 
 --[ CONE ]-------------------------------------------------------------------------------------------------------------------------------
@@ -299,8 +296,9 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(500)
+		local idle = 1000
 		if prisioneiro then
+			idle = 500
 			local distance1 = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),1691.59,2566.05,45.56,true)
 			local distance2 = GetDistanceBetweenCoords(GetEntityCoords(PlayerPedId()),1669.51,2487.71,45.82,true)
 
@@ -334,6 +332,7 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
 
@@ -379,8 +378,9 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if reducaopenal then
+			idle = 5
 			BlockWeaponWheelThisFrame()
 			DisableControlAction(0,21,true)
 			DisableControlAction(0,22,true)
@@ -424,6 +424,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,311,true)
 			DisableControlAction(0,344,true)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 

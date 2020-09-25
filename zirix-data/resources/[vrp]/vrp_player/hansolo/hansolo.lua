@@ -283,31 +283,6 @@ Citizen.CreateThread(function()
 	end
 end)
 
---[ AGACHAR ]----------------------------------------------------------------------------------------------------------------------------
-
-Citizen.CreateThread(function()
-    while true do
-        Citizen.Wait(5)
-        local ped = PlayerPedId()
-        DisableControlAction(0,36,true)
-        if not IsPedInAnyVehicle(ped) then
-            RequestAnimSet("move_ped_crouched")
-            RequestAnimSet("move_ped_crouched_strafing")
-            if IsDisabledControlJustPressed(0,36) then
-                if agachar then
-                    ResetPedStrafeClipset(ped)
-                    ResetPedMovementClipset(ped,0.25)
-                    agachar = false
-                else
-                    SetPedStrafeClipset(ped,"move_ped_crouched_strafing")
-                    SetPedMovementClipset(ped,"move_ped_crouched",0.25)
-                    agachar = true
-                end
-            end
-        end
-    end
-end)
-
 --[ ANIMACAO DA BOCA AO FALAR ]----------------------------------------------------------------------------------------------------------
 
 function GetPlayers()
@@ -320,7 +295,7 @@ function GetPlayers()
   return players
 end
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
   RequestAnimDict("facials@gen_male@variations@normal")
   RequestAnimDict("mp_facial")
 
@@ -341,7 +316,7 @@ Citizen.CreateThread(function()
           end
       end
   end
-end)
+end)]]
 
 --[ NOCARJACK ]--------------------------------------------------------------------------------------------------------------------------
 
@@ -756,10 +731,12 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(1)
+		local idle = 1000
 		if energetico then
+			idle = 5
 			RestorePlayerStamina(PlayerId(),1.0)
 		end
+		Citizen.Wait(idle)
 	end
 end)
 

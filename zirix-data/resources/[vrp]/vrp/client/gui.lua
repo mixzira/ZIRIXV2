@@ -1,4 +1,13 @@
 local menu_state = {}
+local anims = {
+	{ dict = "random@mugging3","handsup_standing_base", anim = "handsup_standing_base" },
+	{ dict = "random@arrests@busted", anim = "idle_a" },
+	{ dict = "anim@heists@heist_corona@single_team", anim = "single_team_loop_boss" },
+	{ dict = "mini@strip_club@idles@bouncer@base", anim = "base" },
+	{ dict = "anim@mp_player_intupperfinger", anim = "idle_a_fp" },
+	{ dict = "random@arrests", anim = "generic_radio_enter" },
+	{ dict = "mp_player_int_upperpeace_sign", anim = "mp_player_int_peace_sign" }
+}
 
 function tvRP.openMenuData(menudata)
 	SendNUIMessage({ act = "open_menu", menudata = menudata })
@@ -56,14 +65,7 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,311,true)
 			DisableControlAction(0,344,true)			
 		end
-		Citizen.Wait(idle)
-	end
-end)
 
-
-Citizen.CreateThread(function()
-	while true do
-		local idle = 1000
 		if menu_celular then
 			idle = 5
 			BlockWeaponWheelThisFrame()
@@ -90,10 +92,63 @@ Citizen.CreateThread(function()
 			DisableControlAction(0,289,true)
 			DisableControlAction(0,344,true)			
 		end
+
 		if menu_state.opened then
 			idle = 5
 			DisableControlAction(0,75)
 		end
+
+		for _,block in pairs(anims) do
+			if IsEntityPlayingAnim(PlayerPedId(),block.dict,block.anim,3) or object then
+				idle = 5
+			    BlockWeaponWheelThisFrame()
+				DisableControlAction(0,16,true)
+				DisableControlAction(0,17,true)
+				DisableControlAction(0,24,true)
+				DisableControlAction(0,25,true)
+				DisableControlAction(0,137,true)
+				DisableControlAction(0,245,true)
+				DisableControlAction(0,257,true)
+			end
+		end
+
+		if apontar then
+			idle = 5
+
+			local camPitch = GetGameplayCamRelativePitch()
+			
+			if camPitch < -70.0 then
+				camPitch = -70.0
+			elseif camPitch > 42.0 then
+				camPitch = 42.0
+			end
+
+			camPitch = (camPitch + 70.0) / 112.0
+
+			local camHeading = GetGameplayCamRelativeHeading()
+			local cosCamHeading = Cos(camHeading)
+			local sinCamHeading = Sin(camHeading)
+
+			if camHeading < -180.0 then
+				camHeading = -180.0
+			elseif camHeading > 180.0 then
+				camHeading = 180.0
+			end
+
+			camHeading = (camHeading + 180.0) / 360.0
+
+			local blocked = 0
+			local nn = 0
+			local coords = GetOffsetFromEntityInWorldCoords(ped,(cosCamHeading*-0.2)-(sinCamHeading*(0.4*camHeading+0.3)),(sinCamHeading*-0.2)+(cosCamHeading*(0.4*camHeading+0.3)),0.6)
+			local ray = Cast_3dRayPointToPoint(coords.x,coords.y,coords.z-0.2,coords.x,coords.y,coords.z+0.2,0.4,95,ped,7);
+			nn,blocked,coords,coords = GetRaycastResult(ray)
+
+			Citizen.InvokeNative(0xD5BB4025AE449A4E,ped,"Pitch",camPitch)
+			Citizen.InvokeNative(0xD5BB4025AE449A4E,ped,"Heading",camHeading*-1.0+1.0)
+			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isBlocked",blocked)
+			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isFirstPerson",Citizen.InvokeNative(0xEE778F8C7E1142E2,Citizen.InvokeNative(0x19CAFA3C87F7C2FF))==4)
+		end
+
 		Citizen.Wait(idle)
 	end
 end)
@@ -182,7 +237,7 @@ function tvRP.CarregarObjeto(dict,anim,prop,flag,hand,pos1,pos2,pos3,pos4,pos5,p
 		AttachEntityToEntity(object,ped,GetPedBoneIndex(ped,hand),pos1,pos2,pos3,pos4,pos5,pos6,true,true,false,true,1,true)
 	else
 		tvRP.CarregarAnim(dict)
-		TaskPlayAnim(ped,dict,anim,3.0,3.0,-1,flag,0,0,0,0)
+		TaskPlayAnim(ped,dict,anim,3-.0,3.0,-1,flag,0,0,0,0)
 		local coords = GetOffsetFromEntityInWorldCoords(ped,0.0,0.0,-5.0)
 		object = CreateObject(GetHashKey(prop),coords.x,coords.y,coords.z,true,true,true)
 		SetEntityCollision(object,false,false)
@@ -450,7 +505,7 @@ RegisterCommand('vrp:animp5', function()
 	end
 end, false)
 
-RegisterKeyMapping ( 'vrp:animp6' , '[A] Vergonha!' , 'keyboard' , '7' )
+RegisterKeyMapping ( 'vrp:animp6' , '[A] Vergonha!' , 'keyboard' , '6' )
 
 RegisterCommand('vrp:animp6', function()
 	local ped = PlayerPedId()
@@ -459,84 +514,26 @@ RegisterCommand('vrp:animp6', function()
 	end
 end, false)
 
---[  ]-----------------------------------------------------------------------------
+RegisterKeyMapping ( 'vrp:ctrl' , '[A] Agachar' , 'keyboard' , 'LCONTROL' )
 
-local anims = {
-	{ dict = "random@mugging3","handsup_standing_base", anim = "handsup_standing_base" },
-	{ dict = "random@arrests@busted", anim = "idle_a" },
-	{ dict = "anim@heists@heist_corona@single_team", anim = "single_team_loop_boss" },
-	{ dict = "mini@strip_club@idles@bouncer@base", anim = "base" },
-	{ dict = "anim@mp_player_intupperfinger", anim = "idle_a_fp" },
-	{ dict = "random@arrests", anim = "generic_radio_enter" },
-	{ dict = "mp_player_int_upperpeace_sign", anim = "mp_player_int_peace_sign" }
-}
-
-Citizen.CreateThread(function()
-	while true do
-		local idle = 1000
-		for _,block in pairs(anims) do
-			if IsEntityPlayingAnim(PlayerPedId(),block.dict,block.anim,3) or object then
-				idle = 5
-			    BlockWeaponWheelThisFrame()
-				DisableControlAction(0,16,true)
-				DisableControlAction(0,17,true)
-				DisableControlAction(0,24,true)
-				DisableControlAction(0,25,true)
-				DisableControlAction(0,137,true)
-				DisableControlAction(0,245,true)
-				DisableControlAction(0,257,true)
+RegisterCommand('vrp:ctrl', function()
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) then
+		RequestAnimSet("move_ped_crouched")
+		RequestAnimSet("move_ped_crouched_strafing")
+		if IsDisabledControlJustPressed(0,36) then
+			if agachar then
+				ResetPedStrafeClipset(ped)
+				ResetPedMovementClipset(ped,0.25)
+				agachar = false
+			else
+				SetPedStrafeClipset(ped,"move_ped_crouched_strafing")
+				SetPedMovementClipset(ped,"move_ped_crouched",0.25)
+				agachar = true
 			end
 		end
-		Citizen.Wait(idle)
 	end
-end)
-
---[ FUNÇÃO DO APONTAR ]------------------------------------------------------------------------------------------------------------------
-
-Citizen.CreateThread(function()
-	while true do
-		local idle = 1000
-		local ped = PlayerPedId()
-		if apontar then
-
-			idle = 5
-
-			local camPitch = GetGameplayCamRelativePitch()
-			
-			if camPitch < -70.0 then
-				camPitch = -70.0
-			elseif camPitch > 42.0 then
-				camPitch = 42.0
-			end
-
-			camPitch = (camPitch + 70.0) / 112.0
-
-			local camHeading = GetGameplayCamRelativeHeading()
-			local cosCamHeading = Cos(camHeading)
-			local sinCamHeading = Sin(camHeading)
-
-			if camHeading < -180.0 then
-				camHeading = -180.0
-			elseif camHeading > 180.0 then
-				camHeading = 180.0
-			end
-
-			camHeading = (camHeading + 180.0) / 360.0
-
-			local blocked = 0
-			local nn = 0
-			local coords = GetOffsetFromEntityInWorldCoords(ped,(cosCamHeading*-0.2)-(sinCamHeading*(0.4*camHeading+0.3)),(sinCamHeading*-0.2)+(cosCamHeading*(0.4*camHeading+0.3)),0.6)
-			local ray = Cast_3dRayPointToPoint(coords.x,coords.y,coords.z-0.2,coords.x,coords.y,coords.z+0.2,0.4,95,ped,7);
-			nn,blocked,coords,coords = GetRaycastResult(ray)
-
-			Citizen.InvokeNative(0xD5BB4025AE449A4E,ped,"Pitch",camPitch)
-			Citizen.InvokeNative(0xD5BB4025AE449A4E,ped,"Heading",camHeading*-1.0+1.0)
-			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isBlocked",blocked)
-			Citizen.InvokeNative(0xB0A6CFD2C69C1088,ped,"isFirstPerson",Citizen.InvokeNative(0xEE778F8C7E1142E2,Citizen.InvokeNative(0x19CAFA3C87F7C2FF))==4)
-		end
-		Citizen.Wait(idle)
-	end
-end)
+end, false)
 
 --[ SYNCCLEAN ]--------------------------------------------------------------------------------------------------------------------------
 
