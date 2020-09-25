@@ -4,14 +4,19 @@ vRP = Proxy.getInterface("vRP")
 
 --[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
-emp = Tunnel.getInterface("vrp_milkman")
+emp = Tunnel.getInterface("vrp_milkman-delivery")
+
+--[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 
 local check = 0
 local blips = false
-local inService = false
-local serviceX = 173.10
-local serviceY = -26.04
-local serviceZ = 68.34
+local working = false
+local hour = 0
+
+local serviceX = 416.34
+local serviceY = 6520.8
+local serviceZ = 27.72
+
 local deliverys = {
 	[1] = { -34.20,-1847.02,26.19 },
 	[2] = { -20.62,-1858.82,25.40 },
@@ -214,37 +219,38 @@ local deliverys = {
 	[199] = { -1493.87,-668.44,33.39 },
 	[200] = { -1490.05,-671.55,33.39 }
 }
------------------------------------------------------------------------------------------------------------------------------------------
--- FUNÇÕES
------------------------------------------------------------------------------------------------------------------------------------------
-local hora = 0
+
+--[ FUNCTION ]------------------------------------------------------------------------------------------------------------------
+
 function CalculateTimeToDisplay()
-	hora = GetClockHours()
-	if hora <= 9 then
-		hora = "0" .. hora
+	hour = GetClockHours()
+	if hour <= 9 then
+		hour = "0" .. hour
 	end
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- STARTDELIVERY
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ THREAD ]--------------------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if not inService then
-			local ped = PlayerPedId()
-			if not IsPedInAnyVehicle(ped) then
-				local x,y,z = table.unpack(GetEntityCoords(ped))
-				local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
-				if distance <= 30.0 then
-					DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
-					if distance <= 1.2 then
-						drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.93,0.50,255,255,255,180)
-						if IsControlJustPressed(1,38) then
+		local idle = 1000
+		local ped = PlayerPedId()
+		if not IsPedInAnyVehicle(ped) then
+			local x,y,z = table.unpack(GetEntityCoords(ped))
+			local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
+			if distance < 15.1 then
+				idle = 5
+				DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
+				if distance <= 1.2 then
+					drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.92,0.35,255,255,255,180)
+					if IsControlJustPressed(1,38) then
+						if not working then
 							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
-								inService = true
+							if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
+								working = true
 								check = math.random(#deliverys)
 								makeBlipsServices()
+								TriggerEvent("Notify","sucesso","Entregas iniciada com <b>sucesso</b>.",8000)
 							else
 								TriggerEvent("Notify","importante","Funcionamento é das <b>06:00</b> as <b>20:00</b>.",8000)
 							end
@@ -253,26 +259,27 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- LOOPDELIVERYS
------------------------------------------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if inService then
-			local ped = PlayerPedId()
+		local idle = 1000
+		local ped = PlayerPedId()
+		if working then
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(deliverys[check][1],deliverys[check][2],deliverys[check][3],x,y,z)
-				if distance <= 30.0 then
+				if distance < 15.1 then
+					idle = 5
 					DrawMarker(21,deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,136, 96, 240, 180,0,0,0,1)
 					if distance <= 1.2 then
 						drawTexts("PRESSIONE  ~b~E~w~  PARA ENTREGAR GARRAFAS DE LEITE",4,0.5,0.93,0.50,255,255,255,180)
 						if IsControlJustPressed(1,38) then
+							
 							CalculateTimeToDisplay()
-							if parseInt(hora) >= 06 and parseInt(hora) <= 20 then
+							if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
 								if vSERVER.startPayments() then
 									RemoveBlip(blips)
 									check = math.random(#deliverys)
@@ -286,23 +293,25 @@ Citizen.CreateThread(function()
 				end
 			end
 		end
+		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- CANCELSERVICE
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ THREAD ]--------------------------------------------------------------------------------------------------------------------
+
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(5)
-		if inService and IsControlJustPressed(1,121) then
-			inService = false
+		local idle = 1000
+		if working and IsControlJustPressed(1,121) then
+			working = false
 			RemoveBlip(blips)
 		end
+		Citizen.Wait(idle)
 	end
 end)
------------------------------------------------------------------------------------------------------------------------------------------
--- DRAWTEXTS
------------------------------------------------------------------------------------------------------------------------------------------
+
+--[ FUNCTION ]------------------------------------------------------------------------------------------------------------------
+
 function drawTexts(text,font,x,y,scale,r,g,b,a)
 	SetTextFont(font)
 	SetTextScale(scale,scale)
@@ -313,9 +322,7 @@ function drawTexts(text,font,x,y,scale,r,g,b,a)
 	AddTextComponentString(text)
 	DrawText(x,y)
 end
------------------------------------------------------------------------------------------------------------------------------------------
--- MAKEBLIPSSERVICES
------------------------------------------------------------------------------------------------------------------------------------------
+
 function makeBlipsServices()
 	blips = AddBlipForCoord(deliverys[check][1],deliverys[check][2],deliverys[check][3])
 	SetBlipSprite(blips,1)
