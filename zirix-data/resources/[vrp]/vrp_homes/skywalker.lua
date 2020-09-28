@@ -950,114 +950,30 @@ end
 --[ STOREITEM ]--------------------------------------------------------------------------------------------------------------------------
 
 function src.storeItem(homeName,itemName,amount)
-	local source = source
-	if itemName then
+    if itemName then
+        local source = source
 		local user_id = vRP.getUserId(source)
-		local identity = vRP.getUserIdentity(user_id)
-		if user_id and actived[parseInt(user_id)] == 0 or not actived[parseInt(user_id)] then
-			if string.match(itemName,"passaporte") then
-				TriggerClientEvent("Notify",source,"importante","Não pode guardar este item.",8000)
-				return
-			end
-
-			local data = vRP.getSData("chest:"..tostring(homeName))
-			local items = json.decode(data) or {}
-			if items then
-				if parseInt(amount) > 0 then
-					local new_weight = vRP.computeItemsWeight(items)+vRP.getItemWeight(itemName)*parseInt(amount)
-					if new_weight <= parseInt(homes[tostring(homeName)][3]) then
-						if vRP.tryGetInventoryItem(parseInt(user_id),itemName,parseInt(amount)) then
-							
-							SendWebhookMessage(webhookbaucasas,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[GUARDOU]: "..vRP.format(parseInt(amount)).." "..vRP.itemNameList(itemName).." \n[BAU]: "..(tostring(homeName)).." "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
-							
-							if items[itemName] ~= nil then
-								items[itemName].amount = parseInt(items[itemName].amount) + parseInt(amount)
-							else
-								items[itemName] = { amount = parseInt(amount) }
-							end
-							actived[parseInt(user_id)] = 2
-						end
-					else
-						TriggerClientEvent("Notify",source,"negado","<b>Vault</b> cheio.",8000)
-					end
-				else
-					local inv = vRP.getInventory(parseInt(user_id))
-					for k,v in pairs(inv) do
-						if itemName == k then
-							local new_weight = vRP.computeItemsWeight(items)+vRP.getItemWeight(itemName)*parseInt(v.amount)
-							if new_weight <= parseInt(homes[tostring(homeName)][3]) then
-								if vRP.tryGetInventoryItem(parseInt(user_id),itemName,parseInt(v.amount)) then
-									if items[itemName] ~= nil then
-										items[itemName].amount = parseInt(items[itemName].amount) + parseInt(v.amount)
-									else
-										items[itemName] = { amount = parseInt(v.amount) }
-									end
-									
-									SendWebhookMessage(webhookbaucasas,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[GUARDOU]: "..vRP.format(parseInt(v.amount)).." "..vRP.itemNameList(itemName).." \n[BAU]: "..(tostring(homeName)).." "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
-									
-									actived[parseInt(user_id)] = 2
-								end
-							else
-								TriggerClientEvent("Notify",source,"negado","<b>Vault</b> cheio.",8000)
-							end
-						end
-					end
+		if user_id then
+			if itemName ~= "passaporte" then
+				if vRP.storeChestItem(user_id,"chest:"..tostring(homeName),itemName,amount,homes[tostring(homeName)][1]) then
+					TriggerClientEvent("vrp_homes:Update",source,"updateVault")
 				end
-				vRP.setSData("chest:"..tostring(homeName),json.encode(items))
-				TriggerClientEvent('Chest:UpdateVault',source,'updateVault')
 			end
-		end
-	end
-	return false
+        end
+    end
 end
-
 --[ TAKEITEM ]---------------------------------------------------------------------------------------------------------------------------
 
 function src.takeItem(homeName,itemName,amount)
-	local source = source
-	if itemName then
-		local user_id = vRP.getUserId(source)
-		local identity = vRP.getUserIdentity(user_id)
-		if user_id and actived[parseInt(user_id)] == 0 or not actived[parseInt(user_id)] then
-			local data = vRP.getSData("chest:"..tostring(homeName))
-			local items = json.decode(data) or {}
-			if items then
-				if parseInt(amount) > 0 then
-					if items[itemName] ~= nil and parseInt(items[itemName].amount) >= parseInt(amount) then
-						if vRP.getInventoryWeight(parseInt(user_id))+vRP.getItemWeight(itemName)*parseInt(amount) <= vRP.getInventoryMaxWeight(parseInt(user_id)) then
-							
-							SendWebhookMessage(webhookbaucasas,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[RETIROU]: "..vRP.format(parseInt(amount)).." "..vRP.itemNameList(itemName).." \n[BAU]: "..(tostring(homeName)).." "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
-							
-							vRP.giveInventoryItem(parseInt(user_id),itemName,parseInt(amount))
-							items[itemName].amount = parseInt(items[itemName].amount) - parseInt(amount)
-							if parseInt(items[itemName].amount) <= 0 then
-								items[itemName] = nil
-							end
-							actived[parseInt(user_id)] = 2
-						else
-							TriggerClientEvent("Notify",source,"negado","<b>Mochila</b> cheia.",8000)
-						end
-					end
-				else
-					if items[itemName] ~= nil and parseInt(items[itemName].amount) >= parseInt(amount) then
-						if vRP.getInventoryWeight(parseInt(user_id))+vRP.getItemWeight(itemName)*parseInt(items[itemName].amount) <= vRP.getInventoryMaxWeight(parseInt(user_id)) then
-							
-							SendWebhookMessage(webhookbaucasas,"```prolog\n[ID]: "..user_id.." "..identity.name.." "..identity.firstname.." \n[RETIROU]: "..vRP.format(parseInt(items[itemName].amount)).." "..vRP.itemNameList(itemName).." \n[BAU]: "..(tostring(homeName)).." "..os.date("\n[Data]: %d/%m/%Y [Hora]: %H:%M:%S").." \r```")
-							
-							vRP.giveInventoryItem(parseInt(user_id),itemName,parseInt(items[itemName].amount))
-							items[itemName] = nil
-							actived[parseInt(user_id)] = 2
-						else
-							TriggerClientEvent("Notify",source,"negado","<b>Mochila</b> cheia.",8000)
-						end
-					end
-				end
-				TriggerClientEvent('Chest:UpdateVault',source,'updateVault')
-				vRP.setSData("chest:"..tostring(homeName),json.encode(items))
-			end
-		end
-	end
-	return false
+    if itemName then
+        local source = source
+        local user_id = vRP.getUserId(source)
+        if user_id then
+            if vRP.tryChestItem(user_id,"chest:"..tostring(homeName),itemName,amount) then
+                TriggerClientEvent("vrp_homes:Update",source,"updateVault")
+            end
+        end
+    end
 end
 
 --[ CHECKPOLICE ]------------------------------------------------------------------------------------------------------------------------

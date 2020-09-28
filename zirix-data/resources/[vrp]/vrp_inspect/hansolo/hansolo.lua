@@ -5,7 +5,7 @@ vRP = Proxy.getInterface("vRP")
 --[ CONEXÃO ]----------------------------------------------------------------------------------------------------------------------------
 
 src = {}
-Tunnel.bindInterface("vrp_revistar",src)
+Tunnel.bindInterface("vrp_inspect",src)
 vSERVER = Tunnel.getInterface("vrp_inspect")
 
 --[ STARTFOCUS ]-------------------------------------------------------------------------------------------------------------------------

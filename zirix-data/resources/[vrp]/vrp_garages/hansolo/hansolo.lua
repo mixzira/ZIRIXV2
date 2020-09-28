@@ -1369,8 +1369,9 @@ RegisterKeyMapping('vrp_garages:lock', '[V] Trancar/destrancar veiculo', 'keyboa
 --[ BUTTONS ]----------------------------------------------------------------------------------------------------------------------------
 
 RegisterCommand('vrp_garages:lock', function()
+	local ped = PlayerPedId()
+	local vehicle = vRP.getNearestVehicle(5)
 	if vehicle and not IsPedInAnyVehicle(ped) then
-		local vehicle = vRP.getNearestVehicle(5)
 		if cooldown < 1 then
 			cooldown = 3
 			vSERVER.vehicleLock()

@@ -41,8 +41,8 @@ end)
 
 --[ AUTO-UPDATE ]-------------------------------------------------------------------------------------------------------------------------
 
-RegisterNetEvent("Chest:UpdateVault")
-AddEventHandler("Chest:UpdateVault",function(action)
+RegisterNetEvent("vrp_homes:Update")
+AddEventHandler("vrp_homes:Update",function(action)
 	SendNUIMessage({ action = action })
 end)
 

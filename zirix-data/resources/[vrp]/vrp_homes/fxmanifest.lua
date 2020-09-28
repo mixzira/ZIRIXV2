@@ -4,7 +4,7 @@ game 'gta5'
 author 'ZIRAFLIX'
 contact 'E-mail: contato@ziraflix.com - Discord: discord.gg/ziraflix'
 
-ui_page 'nui/index.html'
+ui_page 'nui/darkside.html'
 
 client_scripts {
 	'@vrp/lib/utils.lua',
@@ -18,7 +18,6 @@ server_scripts {
 
 files {
 	'nui/*.html',
-	'nui/**/*.css',
-	'nui/**/*.js',
-	'nui/*.woff'
+	'nui/*.js',
+	'nui/*.css'
 }

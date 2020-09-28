@@ -1,6 +1,9 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
 vRP = Proxy.getInterface("vRP")
+
+--[ CONECTION ]--------------------------------------------------------------------------------------------------------------------------
+
 vRPNserver = Tunnel.getInterface("vrp_trunkchest")
 
 --[ STARTFOCUS ]-------------------------------------------------------------------------------------------------------------------------
@@ -29,13 +32,16 @@ end)
 
 RegisterNetEvent("trunkchest:Open")
 AddEventHandler("trunkchest:Open",function()
-	TransitionToBlurred(1000)
-	SetNuiFocus(true,true)
-	SendNUIMessage({ action = "showMenu" })
+	local ped = PlayerPedId()
+	if not IsPedInAnyVehicle(ped) then
+		TransitionToBlurred(1000)
+		SetNuiFocus(true,true)
+		SendNUIMessage({ action = "showMenu" })
 
-	local vehicle = vRP.getNearestVehicle(7)
-	if IsEntityAVehicle(vehicle) then
-		TriggerServerEvent("trytrunk",VehToNet(vehicle))
+		local vehicle = vRP.getNearestVehicle(7)
+		if IsEntityAVehicle(vehicle) then
+			TriggerServerEvent("trytrunk",VehToNet(vehicle))
+		end
 	end
 end)
 
