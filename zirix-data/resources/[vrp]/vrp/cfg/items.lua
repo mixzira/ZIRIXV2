@@ -19,6 +19,7 @@ cfg.items = {
 	["passaporte"] = { "Passaporte",0.1 },
 	["portearmas"] = { "Porte de Armas",0.1 },
 	["identidade"] = { "Identidade",0.1 },
+	["cnh"] = { "CNH",0.1 },
 	["colete"] = { "Colete",2.0 },
 	["repairkit"] = { "Kit de Reparos",5.0 },
 	["dinheiro"] = { "Dinheiro",0.0 },
@@ -47,7 +48,7 @@ cfg.items = {
 
 	["serra"] = { "Serra",1.0 },
 	["furadeira"] = { "Furadeira",1.0 },
-	["pa"] = { "Pa de Jardinagem",0.5 },
+	["pa-jardinagem"] = { "Pá de Jardinagem",0.5 },
 
 	--[ Miscs ]--------------------------------------------------------------------------------------------------------
 

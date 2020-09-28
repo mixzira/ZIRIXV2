@@ -26,6 +26,7 @@ Citizen.CreateThread(function()
 			DestroyMobilePhone()
 			phone = false
 			CellCamActivate(false, false)
+			TriggerEvent("status:celular",false)
 			if firstTime == true then 
 				firstTime = false 
 				Citizen.Wait(2500)
@@ -45,6 +46,7 @@ Citizen.CreateThread(function()
 			HideHudComponentThisFrame(6)
 			HideHudComponentThisFrame(19)
 			HideHudAndRadarThisFrame()
+			TriggerEvent("status:celular",true)
 		end
 			
 		ren = GetMobilePhoneRenderId()

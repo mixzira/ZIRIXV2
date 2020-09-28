@@ -14,13 +14,13 @@ local itemlist = {
 	["passaporte"] = { index = "passaporte", nome = "Passaporte", type = "usar" },
 	["portearmas"] = { index = "portearmas", nome = "Porte de Armas", type = "usar" },
 	["identidade"] = { index = "identidade", nome = "Identidade", type = "usar" },
+	["cnh"] = { index = "cnh", nome = "CNH", type = "usar" },
 	["colete"] = { index = "colete", nome = "Colete Balístico", type = "usar" },
 	["repairkit"] = { index = "repairkit", nome = "Kit de Reparos", type = "usar" },
 	["dinheiro"] = { index = "dinheiro", nome = "Dinheiro", type = "usar" },
 	["cartao-debito"] = { index = "cartao-debito", nome = "Cartão de débito", type = "usar" },
 	["maquininha"] = { index = "maquininha", nome = "Maquininha", type = "usar" },
 	["paninho"] = { index = "paninho", nome = "Pano de Microfibra", type = "usar" },
-
 
 	["drone-basic1"] = { index = "drone-basic1", nome = "Drone Basico", type = "usar" },
 	["drone-basic2"] = { index = "drone-basic2", nome = "Drone Basico", type = "usar" },
@@ -31,7 +31,6 @@ local itemlist = {
 	["drone-police"] = { index = "drone-police", nome = "Drone da Policia", type = "usar" },
 
 	["carrinho"] = { index = "carrinho", nome = "Carrinho", type = "usar" },
-
 
 	["camisinha"] = { index = "camisinha", nome = "Camisinha", type = "usar" },
 	["vibrador"] = { index = "vibrador", nome = "Vibrador", type = "usar" },
@@ -49,7 +48,7 @@ local itemlist = {
 	
 	["serra"] = { index = "serra", nome = "Serra", type = "usar" },
 	["furadeira"] = { index = "furadeira", nome = "Furadeira", type = "usar" },
-	["pa"] = { index = "pa", nome = "Pa de Jardinagem", type = "usar" },
+	["pa-jardinagem"] = { index = "pa-jardinagem", nome = "Pá de Jardinagem", type = "usar" },
 
 	--[ Miscs ]-------------------------------------------------------------------------------------------------------- 
 
@@ -214,6 +213,7 @@ local itemlist = {
 	["blueberry"] = { index = "blueberry", nome = "Blueberry", type = "usar" },
 
 	--[ Desmanche ]------------------------------------------------------------------------------------------
+
 	["transmissao"] = { index = "transmissao", nome = "Transmissao", type = "usar" },
 	["suspensao"] = { index = "suspensao", nome = "Suspensao", type = "usar" },
 	["portas"] = { index = "portas", nome = "Portas", type = "usar" },
@@ -222,6 +222,7 @@ local itemlist = {
 	["capo"] = { index = "capo", nome = "Capo", type = "usar" },
 	["bateria-carro"] = { index = "bateria-carro", nome = "Bateria de Carro", type = "usar" },
 	["motor"] = { index = "motor", nome = "Motor", type = "usar" },
+
 	--[ Itens danificados ]--------------------------------------------------------------------------------------------
 
 	["celular-queimado"] = { index = "celular-queimado", nome = "Celular queimado", type = "usar" },
