@@ -1,5 +1,5 @@
-local hora = 2
-local minuto = 50
+local hora = 6
+local minuto = 20
 local currentweather = "EXRTASUNNY"
 local lastWeather = currentweather
 

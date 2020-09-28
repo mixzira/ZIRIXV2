@@ -373,8 +373,8 @@ local garages = {
 	[612] = { ['name'] = "Mecanico", ['payment'] = false, ['perm'] = "mecanico.permissao"},
 	[613] = { ['name'] = "GoPostal", ['payment'] = false, ['public'] = true },
 	[614] = { ['name'] = "Minerador", ['payment'] = false, ['public'] = true },
-	[615] = { ['name'] = "Lenhador", ['payment'] = false, ['public'] = true },
-	[616] = { ['name'] = "Lixeiro", ['payment'] = false, ['public'] = true },
+	[615] = { ['name'] = "Lixeiro", ['payment'] = false, ['public'] = true },
+	[616] = { ['name'] = "Leiteiro", ['payment'] = false, ['public'] = true },
 	[617] = { ['name'] = "Aluguel", ['payment'] = true, ['public'] = true }
 }
 
@@ -401,8 +401,8 @@ local workgarage = {
 	["Lixeiro"] = {
 		"trash2"
 	},
-	["Lenhador"] = {
-		"pounder"
+	["Leiteiro"] = {
+		"youga2"
 	},
 	["Minerador"] = {
 		"tiptruck"

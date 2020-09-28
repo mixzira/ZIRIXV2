@@ -29,7 +29,6 @@ local itemlist = {
 	["drone-advanced2"] = { index = "drone-advanced2", nome = "Drone Avancado", type = "usar" },
 	["drone-advanced3"] = { index = "drone-advanced3", nome = "Drone Avancado", type = "usar" },
 	["drone-police"] = { index = "drone-police", nome = "Drone da Policia", type = "usar" },
-
 	["carrinho"] = { index = "carrinho", nome = "Carrinho", type = "usar" },
 
 	["camisinha"] = { index = "camisinha", nome = "Camisinha", type = "usar" },
@@ -60,7 +59,7 @@ local itemlist = {
 	["minerio-diamante"] = { index = "minerio-diamante", nome = "Minerio de Diamante", type = "usar" },
 	["minerio-ouro"] = { index = "minerio-ouro", nome = "Minerio de Ouro", type = "usar" },
 	["minerio-prata"] = { index = "minerio-prata", nome = "Minerio de Prata", type = "usar" },
-	["minerio-ferro"] = { index = "minerio-ferro", nome = "Minerio de Ferro", type = "usar" },
+	["minerio-prata"] = { index = "minerio-ferro", nome = "Minerio de Ferro", type = "usar" },
 
 
 	["diamante"] = { index = "diamante", nome = "Diamante Bruto", type = "usar" },
@@ -232,7 +231,6 @@ local itemlist = {
 	["notebook-queimado"] = { index = "notebook-queimado", nome = "Notebook queimado", type = "usar" },
 	["controleremoto-queimado"] = { index = "controleremoto-queimado", nome = "Controle remoto queimado", type = "usar" },
 	["baterias-queimadas"] = { index = "baterias-queimadas", nome = "Baterias queimadas", type = "usar" },
-	
 	["radio-queimado"] = { index = "radio-queimado", nome = "Rádio queimado", type = "usar" },
 	["maquininha-queimada"] = { index = "maquininha-queimada", nome = "Maquininha queimada", type = "usar" },
 
@@ -1146,6 +1144,7 @@ local vehglobal = {
 	["w900"] = { ['name'] = "Kenworth W900", ['price'] = 1000000, ['tipo'] = "exclusive", ["mala"] = 50 },
 
 	["pounder"] = { ['name'] = "Pounder", ['price'] = 1000000, ['tipo'] = "work", ["mala"] = 10 },
+	["youga2"] = { ['name'] = "Youga XL", ['price'] = 1000000, ['tipo'] = "work", ["mala"] = 10 },
 
 	["thrax"] = { ['name'] = "Thrax", ['price'] = 12000000, ['tipo'] = "exclusive", ["mala"] = 50 },
 	["zorrusso"] = { ['name'] = "Zorrusso", ['price'] = 12000000, ['tipo'] = "exclusive", ["mala"] = 50 },

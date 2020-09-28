@@ -20,7 +20,7 @@ AddEventHandler("entrar-servico",function()
     if vRP.hasPermission(user_id,"ems.permissao") then
         TriggerClientEvent("Notify",source,"negado","Você já está em serviço.")
     else
-        vRP.addUserGroup(user_id,"dmla")
+        vRP.addUserGroup(user_id,"ems")
         TriggerEvent('eblips:add2',{ name = "Colaborador", src = source, color = 48 })
         TriggerClientEvent("Notify",source,"sucesso","Você entrou em serviço.")
         logEntradaServico()
@@ -34,7 +34,7 @@ AddEventHandler("sair-servico",function()
     if vRP.hasPermission(user_id,"paisana-ems.permissao") then
         TriggerClientEvent("Notify",source,"negado","Você já está fora de serviço.")
     else
-        vRP.addUserGroup(user_id,"paisana-dmla")
+        vRP.addUserGroup(user_id,"paisana-ems")
         TriggerEvent('eblips:remove',source)
         TriggerClientEvent("Notify",source,"sucesso","Você saiu de serviço.")
         logSaidaServico()

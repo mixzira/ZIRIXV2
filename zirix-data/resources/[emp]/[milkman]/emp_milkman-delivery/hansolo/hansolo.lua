@@ -238,12 +238,13 @@ Citizen.CreateThread(function()
 		if not IsPedInAnyVehicle(ped) then
 			local x,y,z = table.unpack(GetEntityCoords(ped))
 			local distance = Vdist(serviceX,serviceY,serviceZ,x,y,z)
+			local lastVehicle = GetEntityModel(GetPlayersLastVehicle())
 			if distance < 15.1 then
 				idle = 5
 				DrawMarker(23,serviceX,serviceY,serviceZ-0.97,0,0,0,0,0,0,1.0,1.0,0.5,136, 96, 240, 180,0,0,0,0)
 				if distance <= 1.2 then
 					drawTexts("PRESSIONE  ~b~E~w~  PARA INICIAR ENTREGAS",4,0.5,0.92,0.35,255,255,255,180)
-					if IsControlJustPressed(1,38) then
+					if IsControlJustPressed(1,38) and lastVehicle == 1026149675 and emp.checkPlate(lastVehicle) and emp.checkCrimeRecord() then
 						if not working then
 							CalculateTimeToDisplay()
 							if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
@@ -271,16 +272,17 @@ Citizen.CreateThread(function()
 			if not IsPedInAnyVehicle(ped) then
 				local x,y,z = table.unpack(GetEntityCoords(ped))
 				local distance = Vdist(deliverys[check][1],deliverys[check][2],deliverys[check][3],x,y,z)
+				local lastVehicle = GetEntityModel(GetPlayersLastVehicle())local lastVehicle = GetEntityModel(GetPlayersLastVehicle())
 				if distance < 15.1 then
 					idle = 5
 					DrawMarker(21,deliverys[check][1],deliverys[check][2],deliverys[check][3]-0.6,0,0,0,0.0,0,0,0.5,0.5,0.4,136, 96, 240, 180,0,0,0,1)
 					if distance <= 1.2 then
 						drawTexts("PRESSIONE  ~b~E~w~  PARA ENTREGAR GARRAFAS DE LEITE",4,0.5,0.93,0.50,255,255,255,180)
-						if IsControlJustPressed(1,38) then
+						if IsControlJustPressed(1,38) and lastVehicle == 1026149675 and emp.checkPlate(lastVehicle) and emp.checkCrimeRecord() then
 							
 							CalculateTimeToDisplay()
 							if parseInt(hour) >= 06 and parseInt(hour) <= 20 then
-								if vSERVER.startPayments() then
+								if emp.startPayments() then
 									RemoveBlip(blips)
 									check = math.random(#deliverys)
 									makeBlipsServices()
@@ -299,14 +301,12 @@ end)
 
 --[ THREAD ]--------------------------------------------------------------------------------------------------------------------
 
-Citizen.CreateThread(function()
-	while true do
-		local idle = 1000
-		if working and IsControlJustPressed(1,121) then
+RegisterCommand("off",function(source,args)
+	if args[1] == "leiteiro" then
+		if working then
 			working = false
 			RemoveBlip(blips)
 		end
-		Citizen.Wait(idle)
 	end
 end)
 

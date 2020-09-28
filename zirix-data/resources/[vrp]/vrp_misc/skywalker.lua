@@ -12,8 +12,8 @@ Tunnel.bindInterface("vrp_misc",misc)
 
 --[ VARIABLES ]-------------------------------------------------------------------------------------
 
-local hours = 2
-local minutes = 50
+local hours = 6
+local minutes = 20
 local weather = "EXTRASUNNY"
 local timers = {
 	[1] = { "EXTRASUNNY" }
@@ -30,7 +30,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(30000)
+		Citizen.Wait(10000)
 		minutes = minutes + 1
 		
 		if minutes >= 60 then
@@ -381,8 +381,14 @@ local damageItens = {
 	{ item = "controleremoto", damageItem = "controleremoto-queimado" },
 	{ item = "baterias", damageItem = "baterias-queimadas" },
 	{ item = "radio", damageItem = "radio-queimado" },
-	{ item = "maquininha", damageItem = "maquininha-queimada" },
 	
+	{ item = "portearmas", damageItem = nil },
+	{ item = "identidade", damageItem = nil },
+	{ item = "cnh", damageItem = nil },
+	{ item = "repairkit", damageItem = nil },
+	{ item = "dinheiro", damageItem = nil },
+	{ item = "cartao-debito", damageItem = nil },
+	{ item = "maquininha", damageItem = "maquininha-queimada" },
 
 	{ item = "drone-basic1", damageItem = nil },
 	{ item = "drone-basic2", damageItem = nil },
@@ -393,13 +399,33 @@ local damageItens = {
 	{ item = "drone-police", damageItem = nil },
 	{ item = "carrinho", damageItem = nil },
 
-	{ item = "passaporte", damageItem = nil },
-	{ item = "portearmas", damageItem = nil },
-	{ item = "identidade", damageItem = nil },
-	{ item = "dinheiro", damageItem = nil },
+	{ item = "camisinha", damageItem = nil },
+	{ item = "vibrador", damageItem = nil },
+	{ item = "kit", damageItem = nil },
+	
 	{ item = "dinheiro-sujo", damageItem = nil },
-	{ item = "cartao-debito", damageItem = nil },
+	{ item = "algema", damageItem = nil },
+	{ item = "lockpick", damageItem = nil },
+	{ item = "capuz", damageItem = nil },
+	{ item = "placa", damageItem = nil },
 
+	{ item = "serra", damageItem = nil },
+	{ item = "furadeira", damageItem = nil },
+	{ item = "pa-jardinagem", damageItem = nil },
+
+	{ item = "garrafa-vazia", damageItem = nil },
+	{ item = "ponta-britadeira", damageItem = nil },
+
+	{ item = "minerio-diamante", damageItem = nil },
+	{ item = "minerio-ouro", damageItem = nil },
+	{ item = "minerio-prata", damageItem = nil },
+	{ item = "minerio-ferro", damageItem = nil },
+
+	{ item = "diamante", damageItem = nil },
+	{ item = "barra-ouro", damageItem = nil },
+	{ item = "barra-prata", damageItem = nil },
+	{ item = "barra-ferro", damageItem = nil },
+	
 	{ item = "agua", damageItem = nil },
 	{ item = "leite", damageItem = nil },
 	{ item = "cafe", damageItem = nil },
@@ -444,34 +470,15 @@ local damageItens = {
 	{ item = "dorfrex", damageItem = nil },
 	{ item = "buscopom", damageItem = nil },
 
-	{ item = "minerio-diamante", damageItem = nil },
-	{ item = "minerio-ouro", damageItem = nil },
-	{ item = "minerio-prata", damageItem = nil },
-	{ item = "minerio-ferro", damageItem = nil },
-	
-	{ item = "diamante", damageItem = nil },
-	{ item = "barra-ouro", damageItem = nil },
-	{ item = "barra-prata", damageItem = nil },
-	{ item = "barra-ferro", damageItem = nil },
-
-	{ item = "isca", damageItem = nil },
-	{ item = "tora", damageItem = nil },
-	{ item = "sacodelixo", damageItem = nil },
-	{ item = "caixa-vazia", damageItem = nil },
-	{ item = "malote", damageItem = nil },
-	{ item = "semente-maconha", damageItem = nil },
-	{ item = "semente-blueberry", damageItem = nil },
-	{ item = "transmissao", damageItem = nil },
-	{ item = "suspensao", damageItem = nil },
-	{ item = "portas", damageItem = nil },
-	{ item = "borrachas", damageItem = nil },
-	{ item = "pneus", damageItem = nil },
-	{ item = "capo", damageItem = nil },
-	{ item = "bateria-carro", damageItem = nil },
-	{ item = "motor", damageItem = nil },
+	{ item = "r-paracetamil", damageItem = nil },
+	{ item = "r-voltarom", damageItem = nil },
+	{ item = "r-trandrylux", damageItem = nil },
+	{ item = "r-dorfrex", damageItem = nil },
+	{ item = "r-buscopom", damageItem = nil },
 
 	{ item = "metanfetamina", damageItem = nil },
 	{ item = "composito", damageItem = nil },
+
 	{ item = "nitrato-amonia", damageItem = nil },
 	{ item = "hidroxido-sodio", damageItem = nil },
 	{ item = "pseudoefedrina", damageItem = nil },
@@ -479,14 +486,55 @@ local damageItens = {
 
 	{ item = "cocaina", damageItem = nil },
 	{ item = "pasta-base", damageItem = nil },
+
 	{ item = "acido-sulfurico", damageItem = nil },
 	{ item = "folhas-coca", damageItem = nil },
 	{ item = "calcio-po", damageItem = nil },
 	{ item = "querosene", damageItem = nil },
 
+	{ item = "marijuana", damageItem = nil },
+	{ item = "folha-marijuana", damageItem = nil },
+
+	{ item = "corpo-ak47", damageItem = nil },
+	{ item = "corpo-aks74u", damageItem = nil },
+	{ item = "corpo-uzi", damageItem = nil },
+	{ item = "corpo-glock", damageItem = nil },
+	{ item = "corpo-magnum", damageItem = nil },
+
+	{ item = "molas", damageItem = nil },
+	{ item = "placa-metal", damageItem = nil },
+	{ item = "gatilho", damageItem = nil },
+	{ item = "capsulas", damageItem = nil },
 	{ item = "polvora", damageItem = nil },
 
-	{ item = "garrafa-leite", damageItem = nil }
+	{ item = "garrafa-leite", damageItem = nil },
+
+	{ item = "isca", damageItem = nil },
+
+	{ item = "tora", damageItem = nil },
+
+	{ item = "saco-lixo", damageItem = nil },
+
+	{ item = "encomenda", damageItem = nil },
+	{ item = "caixa-vazia", damageItem = nil },
+
+	{ item = "malote", damageItem = nil },
+
+	{ item = "semente-marijuana", damageItem = nil },
+	{ item = "semente-blueberry", damageItem = nil },
+
+	{ item = "laranja", damageItem = nil },
+	{ item = "tomate", damageItem = nil },
+	{ item = "blueberry", damageItem = nil },
+
+	{ item = "transmissao", damageItem = nil },
+	{ item = "suspensao", damageItem = nil },
+	{ item = "portas", damageItem = nil },
+	{ item = "borrachas", damageItem = nil },
+	{ item = "pneus", damageItem = nil },
+	{ item = "capo", damageItem = nil },
+	{ item = "bateria-carro", damageItem = nil },
+	{ item = "motor", damageItem = nil }
 }
 
 RegisterServerEvent('vrp_misc:damageItem')
@@ -503,12 +551,12 @@ AddEventHandler('vrp_misc:damageItem',function()
 
 			if damageItem == nil then
 				if vRP.tryGetInventoryItem(user_id,item,itemAmmount) then
-					TriggerClientEvent("Notify",source,"negado","Você perdeu <b>"..itemName.."</b> ao entrar na água.")
+					TriggerClientEvent("Notify",source,"negado","<b>Sua mochila abriu!</b> Você perdeu <b>"..itemName.."</b> ao entrar na água.",8000)
 				end
 			else
 				if vRP.tryGetInventoryItem(user_id,item,itemAmmount) then
 					vRP.giveInventoryItem(user_id,damageItem,itemAmmount)
-					TriggerClientEvent("Notify",source,"negado","Seu <b>"..itemName.." queimou</b> quando você entrou na água.")
+					TriggerClientEvent("Notify",source,"negado","Seu <b>"..itemName.." queimou</b> quando você entrou na água.",8000)
 				end
 			end
 		end
