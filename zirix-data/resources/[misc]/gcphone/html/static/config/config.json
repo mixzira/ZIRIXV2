@@ -27,9 +27,9 @@
 	"useWebRTCVocal": true,
 	"RTCConfig": {
 		"iceServers": [{
-			"urls": ["turn:186.233.185.35:25565"],
-			"username": "losanjosrp",
-			"credential": "roleplay"
+			"urls": ["turn:SEUIP:PORTA"],
+			"username": "",
+			"credential": ""
 		}]
 	},
 	
@@ -110,6 +110,21 @@
     {
       "number": "mecanico",
       "display": "Mecânico",
+      "backgroundColor": "yellow"
+    },
+    {
+      "number": "advogado",
+      "display": "Advogado(a)",
+      "backgroundColor": "yellow"
+    },
+    {
+      "number": "jornal",
+      "display": "Jornal",
+      "backgroundColor": "yellow"
+    },
+    {
+      "number": "ifood",
+      "display": "Ifood",
       "backgroundColor": "yellow"
     }
   ],

@@ -160,11 +160,9 @@ cfg.items = {
 	
 	--[ Weapons body ][ Weapons Production ]---------------------------------------------------------------------------
 
-	["corpo-ak47"] = { "Corpo de AK-47",2.0 },
-	["corpo-aks74u"] = { "Corpo de AKS-74U",2.0 },
-	["corpo-uzi"] = { "Corpo de Uzi",1.0 },
-	["corpo-glock"] = { "Corpo de Glock 19",1.0 },
-	["corpo-magnum"] = { "Corpo de Magnum 44",1.0 },
+	["corpo-fuzil"] = { "Corpo de Fuzil",2.0 },
+	["corpo-smg"] = { "Corpo de SMG",1.0 },
+	["corpo-pistola"] = { "Corpo de Pistola",1.0 },
 
 	--[ Miscellaneous ][ Weapons Production ]--------------------------------------------------------------------------
 

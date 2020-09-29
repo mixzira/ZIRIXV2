@@ -461,10 +461,10 @@ end)
 
 --[ IDS NA CABEÇA ]-----------------------------------------------------------------------------------------------------------
 
-local distancia = 500
-local mostraSeuID = false
+local distancia = 300
+local mostraSeuID = true
 local players = {}
-local admim= {}
+local admim = {}
 local mostrarid = false
 
 RegisterNetEvent('mostrarid')
@@ -503,7 +503,7 @@ Citizen.CreateThread(function()
                 x1, y1, z1 = table.unpack( GetEntityCoords( PlayerPedId(), true ) )
                 x2, y2, z2 = table.unpack( GetEntityCoords( GetPlayerPed( id ), true ) )
                 distance = math.floor(GetDistanceBetweenCoords(x1,  y1,  z1,  x2,  y2,  z2,  true))
-                if admim and (PlayerPedId() ~= GetPlayerPed( id ) or mostraSeuID)then
+                if admim and (PlayerPedId() ~= GetPlayerPed(id) or mostraSeuID) then
                     if ((distance < distancia)) then
                         DrawText3D(x2, y2, z2+1, players[id], 255, 255, 255)
                     end

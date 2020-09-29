@@ -1,0 +1,270 @@
+body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+    user-select: none;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    border: none;
+
+    cursor:pointer;
+
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    text-decoration: none;
+    background: none;
+}
+
+p {
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    margin-top: 8px;
+    font-size: small;
+
+    color: rgba(255, 255, 255, 0.7);
+}
+
+img {
+    max-width: 60%;
+    max-height: 60%;
+    margin-top: 20%;
+    margin-left: 20%;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 10pt;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+
+.conteudo {
+    position: absolute;
+    width: 900px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    border-radius: 5px;
+
+    transform: translate(-50%,-50%);
+}
+
+.menu {
+    position: absolute;
+    width: 880px;
+    height: 40px;
+    border-radius: 5px;
+    top: 10px;
+    left: 10px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.menu p {
+    text-align: left;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.itens {
+    position: absolute;
+    width: 880px;
+    height: 530px;
+    bottom: 10px;
+    left: 10px;
+    border-radius: 5px;
+}
+
+.sessaoItens {
+    width: 100%;
+    height: 100%;
+}
+
+.sessaoItens .conteudoItens {
+    position: realative;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  
+    overflow: auto;
+}
+
+.sessaoItens .conteudoItensTwo {
+    position: realative;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+  
+    overflow: auto;
+}
+
+.sessaoItens .conteudoItens .itemSessao {
+    position: relative;
+    width: 880px;
+    height: 160px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    -webkit-transition: background-color 0.2s linear;
+    -ms-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+}
+
+.sessaoItens .conteudoItensTwo .itemSessao {
+    position: relative;
+    width: 880px;
+    height: 160px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+
+    background-color: rgba(0, 0, 0, 0.4);
+
+    -webkit-transition: background-color 0.2s linear;
+    -ms-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+}
+
+
+.conteudoItens {
+    position: absolute;
+}
+
+.conteudoItensTwo {
+    position: absolute;
+}
+
+
+.item-info {
+    position: absolute;
+    width: 860px;
+    height: 140px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.fotoItem {
+    width: 140px;
+    height: 140px;
+    border-radius: 5px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.menuItem {
+    position: absolute;
+    width: 710px;
+    height: 40px;
+    top: 0px;
+    right: 0px;
+    border-radius: 5px;
+
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.nomeItem {
+    position: absolute;
+    width: 150px;
+    height: 30px;
+    top: 5px;
+    left: 5px;
+}
+
+.nomeItem p {
+    margin-left: 10px;
+    margin-top: 4px;
+    align-content: center;
+    text-align: left;
+    font-size: 15pt;
+}
+
+.produzir {
+    position: absolute;
+    width: 180px;
+    height: 30px;
+    top: 5px;
+    right: 5px;
+
+    border-radius: 5px;
+
+    background-color: rgba(255, 209, 135, 1.0);
+}
+
+.produzir button {
+    color: rgba(41, 41, 41, 1.0);
+}
+
+.produzir button:hover {
+    border-radius: 5px;
+    color: white;
+    background-color: rgba(207, 76, 35, 1.0);
+}
+
+.ingredients {
+    position: absolute;
+    width: 700px;
+    height: 90px;
+    left: 140px;
+    bottom: 0px;
+}
+
+.ingre {
+    position: relative;
+    width: 90px;
+    height: 90px;
+    border-radius: 5px;
+    margin-left: 10px;
+    float: left;
+
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.ingreAmount {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+    font-size: 10px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+    color: #a9a9a9;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 1px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+}

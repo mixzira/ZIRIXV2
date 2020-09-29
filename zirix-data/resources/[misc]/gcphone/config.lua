@@ -3,5 +3,7 @@ emergencyNumbers = {
   [112] = "EMS",
   ["taxi"] = "Táxi",
   ["mecanico"] = "Mecânico",
-  ["ADM"] = "Admin"
+  ["advogado"] = "Advogado(a)",
+  ["jornal"] = "Jornal",
+  ["ifood"] = "Ifood"
 }

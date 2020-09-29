@@ -161,11 +161,9 @@ local itemlist = {
 	
 	--[ Weapons body ][ Weapons Production ]---------------------------------------------------------------------------
 	
-	["corpo-ak47"] = { index = "corpo-ak47", nome = "Corpo de AK-47", type = "usar" },
-	["corpo-aks74u"] = { index = "corpo-aks74u", nome = "Corpo de AKS-74U", type = "usar" },
-	["corpo-uzi"] = { index = "corpo-uzi", nome = "Corpo de Uzi", type = "usar" },
-	["corpo-glock"] = { index = "corpo-glock", nome = "Corpo de Glock 19", type = "usar" },
-	["corpo-magnum"] = { index = "corpo-magnum", nome = "Corpo de Magnum 44", type = "usar" },
+	["corpo-fuzil"] = { index = "corpo-fuzil", nome = "Corpo de Fuzil", type = "usar" },
+	["corpo-smg"] = { index = "corpo-smg", nome = "Corpo de SMG", type = "usar" },
+	["corpo-pistola"] = { index = "corpo-pistola", nome = "Corpo de Pistola", type = "usar" },
 
 	--[ Miscellaneous ][ Weapons Production ]--------------------------------------------------------------------------
 	
