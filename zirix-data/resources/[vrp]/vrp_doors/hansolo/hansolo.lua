@@ -22,12 +22,8 @@ end)
 function searchIdDoor()
 	local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 	for k,v in pairs(doors) do
-		if v.public then
-			return 0
-		else
-			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 1.5 then
-				return k
-			end
+		if not v.public and GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 1.5 then
+			return k
 		end
 	end
 	return 0
@@ -52,24 +48,32 @@ function CalculateTimeToDisplay()
 	end
 end
 
+RegisterNetEvent('vrpdoorsystem:forceOpen')
+AddEventHandler('vrpdoorsystem:forceOpen',function(name)
+	local publicId = searchPublicIdDoor()
+	if publicId ~= 0 then
+		vRP._playAnim(true,{{"veh@mower@base","start_engine"}},true)
+		TriggerEvent("progress",15000,"Destrancando")
+		TriggerEvent("itensNotify","usar","Usou",""..name.."")
+		SetTimeout(15000,function()
+			vRPNserver.forceOpen(publicId)
+			vRP._stopAnim(false)
+		end)
+	end
+end)
+
 Citizen.CreateThread(function()
 	while true do
-		local idle = 1000
+		local idle = 500
 		local x,y,z = table.unpack(GetEntityCoords(PlayerPedId()))
 		CalculateTimeToDisplay()
 
 		local publicId = searchPublicIdDoor()
 		if publicId ~= 0 then
-			if parseInt(hour) >= 07 and parseInt(hour) <= 17 then
+			if parseInt(hour) >= 07 and parseInt(hour) <= 21 then
 				vRPNserver.timeOpen(publicId)
 			else
 				vRPNserver.timeClose(publicId)
-			end
-
-			if IsControlJustPressed(0,38) and vRPNserver.checkItemTime(publicId) then
-				vRP._playAnim(true,{{"veh@mower@base","start_engine"}},false)
-				Citizen.Wait(2200)
-				vRPNserver.forceOpen(publicId)
 			end
 		end
 		
@@ -83,14 +87,16 @@ Citizen.CreateThread(function()
 		end
 		
 		for k,v in pairs(doors) do
-			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) < 5 then
+			if GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 3.5 then
 				idle = 5
+
 				local door = GetClosestObjectOfType(v.x,v.y,v.z,1.0,v.hash,false,false,false)
+				
 				if door ~= 0 then
 					SetEntityCanBeDamaged(door,false)
 					if v.lock == false then
 						if v.text then
-							if not v.public then
+							if not v.public and GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 1.5 then
 								DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~destrancada~w~.")
 							end
 						end
@@ -100,7 +106,7 @@ Citizen.CreateThread(function()
 						local lock,heading = GetStateOfClosestDoorOfType(v.hash,v.x,v.y,v.z,lock,heading)
 						if heading > -0.02 and heading < 0.02 then
 							if v.text then
-								if not v.public then
+								if not v.public and GetDistanceBetweenCoords(x,y,z,v.x,v.y,v.z,true) <= 1.5 then
 									DrawText3Ds(v.x,v.y,v.z+0.2,"[~p~E~w~] Porta ~p~trancada~w~.")
 								end
 							end

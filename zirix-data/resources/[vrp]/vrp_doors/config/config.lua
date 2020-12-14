@@ -115,13 +115,13 @@ cfg.list = {
 
 	--[ VANILLA ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[96] = { text = true, hash = -495720969, ['x'] = 113.81, ['y'] = -1296.78, ['z'] = 29.27, lock = true, perm = "0.permissao", perm2 = "0.permissao", public = false },
-	[97] = { text = true, hash = -626684119, ['x'] = 99.74, ['y'] = -1293.36, ['z'] = 29.27, lock = true, perm = "0.permissao", perm2 = "0.permissao", public = false },
-	[98] = { text = true, hash = 668467214, ['x'] = 95.53, ['y'] = -1285.2, ['z'] = 29.28, lock = true, perm = "0.permissao", perm2 = "0.permissao", public = false },
+	[96] = { text = true, hash = -495720969, ['x'] = 113.81, ['y'] = -1296.78, ['z'] = 29.27, lock = true, perm = "orgmthree.permissao", perm2 = "lider-orgmthree.permissao", public = false },
+	[97] = { text = true, hash = -626684119, ['x'] = 99.74, ['y'] = -1293.36, ['z'] = 29.27, lock = true, perm = "orgmthree.permissao", perm2 = "lider-orgmthree.permissao", public = false },
+	[98] = { text = true, hash = 668467214, ['x'] = 95.53, ['y'] = -1285.2, ['z'] = 29.28, lock = true, perm = "orgmthree.permissao", perm2 = "lider-orgmthree.permissao", public = false },
 
 	--[ TEQUI-LA-LA ]----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[99] = { text = true, hash = -626684119, ['x'] = -560.23, ['y'] = 292.3, ['z'] = 82.18, lock = true, perm = "0.permissao", perm2 = "0.permissao", public = false },
+	[99] = { text = true, hash = -626684119, ['x'] = -560.23, ['y'] = 292.3, ['z'] = 82.18, lock = true, perm = "orgmtwo.permissao", perm2 = "lider-orgmtwo.permissao", public = false },
 
 	--[ DELEGACIA ANTIGA ]-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -215,135 +215,466 @@ cfg.list = {
 	[154] = { text = true, hash = -868672903, ['x'] = 1159.21, ['y'] = -326.61, ['z'] = 69.22, lock = false, perm = "0", perm2 = "0", public = true, other = 153 },
 
 	[155] = { text = true, hash = 2065277225, ['x'] = -711.33, ['y'] = -916.43, ['z'] = 19.22, lock = false, perm = "0", perm2 = "0", public = true, other = 156 },
-	[156] = { text = true, hash = -868672903,['x'] = -712.26, ['y'] = -916.38, ['z'] = 19.22, lock = false, perm = "0", perm2 = "0", public = true, other = 155 },
+	[156] = { text = true, hash = -868672903, ['x'] = -712.26, ['y'] = -916.38, ['z'] = 19.22, lock = false, perm = "0", perm2 = "0", public = true, other = 155 },
 
-	[157] = { text = true, hash = 2065277225,['x'] = -52.62, ['y'] = -1756.72, ['z'] = 29.43, lock = false, perm = "0", perm2 = "0", public = true, other = 158 },
-	[158] = { text = true, hash = -868672903,['x'] = -53.37, ['y'] = -1756.19, ['z'] = 29.44, lock = false, perm = "0", perm2 = "0", public = true, other = 157 },
+	[157] = { text = true, hash = 2065277225, ['x'] = -52.62, ['y'] = -1756.72, ['z'] = 29.43, lock = false, perm = "0", perm2 = "0", public = true, other = 158 },
+	[158] = { text = true, hash = -868672903, ['x'] = -53.37, ['y'] = -1756.19, ['z'] = 29.44, lock = false, perm = "0", perm2 = "0", public = true, other = 157 },
 
-	[159] = { text = true, hash = 997554217,['x'] = 376.98, ['y'] = 323.35, ['z'] = 103.58, lock = false, perm = "0", perm2 = "0", public = true, other = 160 },
-	[160] = { text = true, hash = 1196685123,['x'] = 376.16, ['y'] = 323.71, ['z'] = 103.57, lock = false, perm = "0", perm2 = "0", public = true, other = 159 },
+	[159] = { text = true, hash = 997554217, ['x'] = 376.98, ['y'] = 323.35, ['z'] = 103.58, lock = false, perm = "0", perm2 = "0", public = true, other = 160 },
+	[160] = { text = true, hash = 1196685123, ['x'] = 376.16, ['y'] = 323.71, ['z'] = 103.57, lock = false, perm = "0", perm2 = "0", public = true, other = 159 },
 
-	[161] = { text = true, hash = 997554217,['x'] = -3240.08, ['y'] = 1004.82, ['z'] = 12.88, lock = false, perm = "0", perm2 = "0", public = true, other = 162 },
-	[162] = { text = true, hash = -802238381,['x'] = -3240.05, ['y'] = 1004.13, ['z'] = 12.88, lock = false, perm = "0", perm2 = "0", public = true, other = 161 },
+	[161] = { text = true, hash = 997554217, ['x'] = -3240.08, ['y'] = 1004.82, ['z'] = 12.88, lock = false, perm = "0", perm2 = "0", public = true, other = 162 },
+	[162] = { text = true, hash = -802238381, ['x'] = -3240.05, ['y'] = 1004.13, ['z'] = 12.88, lock = false, perm = "0", perm2 = "0", public = true, other = 161 },
 
-	[163] = { text = true, hash = 997554217,['x'] = 1731.67, ['y'] = 6411.22, ['z'] = 35.04, lock = false, perm = "0", perm2 = "0", public = true, other = 164 },
-	[164] = { text = true, hash = 1196685123,['x'] = 1730.9, ['y'] = 6411.67, ['z'] = 35.04, lock = false, perm = "0", perm2 = "0", public = true, other = 163 },
+	[163] = { text = true, hash = 997554217, ['x'] = 1731.67, ['y'] = 6411.22, ['z'] = 35.04, lock = false, perm = "0", perm2 = "0", public = true, other = 164 },
+	[164] = { text = true, hash = 1196685123, ['x'] = 1730.9, ['y'] = 6411.67, ['z'] = 35.04, lock = false, perm = "0", perm2 = "0", public = true, other = 163 },
 
-	[165] = { text = true, hash = 997554217,['x'] = 543.87, ['y'] = 2672.46, ['z'] = 42.16, lock = false, perm = "0", perm2 = "0", public = true, other = 166 },
-	[166] = { text = true, hash = 1196685123,['x'] = 544.51, ['y'] = 2672.65, ['z'] = 42.16, lock = false, perm = "0", perm2 = "0", public = true, other = 165 },
+	[165] = { text = true, hash = 997554217, ['x'] = 543.87, ['y'] = 2672.46, ['z'] = 42.16, lock = false, perm = "0", perm2 = "0", public = true, other = 166 },
+	[166] = { text = true, hash = 1196685123, ['x'] = 544.51, ['y'] = 2672.65, ['z'] = 42.16, lock = false, perm = "0", perm2 = "0", public = true, other = 165 },
 
-	[167] = { text = true, hash = 997554217,['x'] = 1965.17, ['y'] = 3741.0, ['z'] = 32.35, lock = false, perm = "0", perm2 = "0", public = true, other = 168 },
-	[168] = { text = true, hash = 1196685123,['x'] = 1964.65, ['y'] = 3740.53, ['z'] = 32.35, lock = false, perm = "0", perm2 = "0", public = true, other = 167 },
+	[167] = { text = true, hash = 997554217, ['x'] = 1965.17, ['y'] = 3741.0, ['z'] = 32.35, lock = false, perm = "0", perm2 = "0", public = true, other = 168 },
+	[168] = { text = true, hash = 1196685123, ['x'] = 1964.65, ['y'] = 3740.53, ['z'] = 32.35, lock = false, perm = "0", perm2 = "0", public = true, other = 167 },
 
-	[169] = { text = true, hash = 99755421,['x'] = 2682.16, ['y'] = 3283.16, ['z'] = 55.25, lock = false, perm = "0", perm2 = "0", public = true, other = 170 },
-	[170] = { text = true, hash = 1196685123,['x'] = 2681.66, ['y'] = 3281.94, ['z'] = 55.25, lock = false, perm = "0", perm2 = "0", public = true, other = 169 },
+	[169] = { text = true, hash = 99755421, ['x'] = 2682.16, ['y'] = 3283.16, ['z'] = 55.25, lock = false, perm = "0", perm2 = "0", public = true, other = 170 },
+	[170] = { text = true, hash = 1196685123, ['x'] = 2681.66, ['y'] = 3281.94, ['z'] = 55.25, lock = false, perm = "0", perm2 = "0", public = true, other = 169 },
 
-	[171] = { text = true, hash = 2065277225,['x'] = 1698.73, ['y'] = 4928.8, ['z'] = 42.08, lock = false, perm = "0", perm2 = "0", public = true, other = 172 },
-	[172] = { text = true, hash = -868672903,['x'] = 1699.33, ['y'] = 4929.51, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", public = true, other = 171 },
+	[171] = { text = true, hash = 2065277225, ['x'] = 1698.73, ['y'] = 4928.8, ['z'] = 42.08, lock = false, perm = "0", perm2 = "0", public = true, other = 172 },
+	[172] = { text = true, hash = -868672903, ['x'] = 1699.33, ['y'] = 4929.51, ['z'] = 42.07, lock = false, perm = "0", perm2 = "0", public = true, other = 171 },
 
-	[173] = { text = true, hash = 2065277225,['x'] = -1822.19, ['y'] = 788.68, ['z'] = 138.19, lock = false, perm = "0", perm2 = "0", public = true, other = 174 },
-	[174] = { text = true, hash = -868672903,['x'] = -1822.69, ['y'] = 788.08, ['z'] = 138.2, lock = false, perm = "0", perm2 = "0", public = true, other = 173 },
+	[173] = { text = true, hash = 2065277225, ['x'] = -1822.19, ['y'] = 788.68, ['z'] = 138.19, lock = false, perm = "0", perm2 = "0", public = true, other = 174 },
+	[174] = { text = true, hash = -868672903, ['x'] = -1822.69, ['y'] = 788.08, ['z'] = 138.2, lock = false, perm = "0", perm2 = "0", public = true, other = 173 },
 
-	[175] = { text = true, hash = -1212951353,['x'] = 1394.52, ['y'] = 3600.16, ['z'] = 34.99, lock = false, perm = "0", perm2 = "0", public = true, other = 176 },
-	[176] = { text = true, hash = -1212951353,['x'] = 1393.75, ['y'] = 3599.84, ['z'] = 34.99, lock = false, perm = "0", perm2 = "0", public = true, other = 175 },
+	[175] = { text = true, hash = -1212951353, ['x'] = 1394.52, ['y'] = 3600.16, ['z'] = 34.99, lock = false, perm = "0", perm2 = "0", public = true, other = 176 },
+	[176] = { text = true, hash = -1212951353, ['x'] = 1393.75, ['y'] = 3599.84, ['z'] = 34.99, lock = false, perm = "0", perm2 = "0", public = true, other = 175 },
 
-	[177] = { text = true, hash = -1212951253,['x'] = -2973.29, ['y'] = 390.85, ['z'] = 15.05, lock = false, perm = "0", perm2 = "0", public = true, other = 177 },
+	[177] = { text = true, hash = -1212951253,['x'] = -2973.29, ['y'] = 390.85, ['z'] = 15.05, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[178] = { text = true, hash = 997554217,['x'] = -3038.79, ['y'] = 589.73, ['z'] = 7.92, lock = false, perm = "0", perm2 = "0", public = true, other = 179 },
-	[179] = { text = true, hash = 1196685123,['x'] = -3038.62, ['y'] = 589.17, ['z'] = 7.92, lock = false, perm = "0", perm2 = "0", public = true, other = 178 },
+	[178] = { text = true, hash = 997554217, ['x'] = -3038.79, ['y'] = 589.73, ['z'] = 7.92, lock = false, perm = "0", perm2 = "0", public = true, other = 179 },
+	[179] = { text = true, hash = 1196685123, ['x'] = -3038.62, ['y'] = 589.17, ['z'] = 7.92, lock = false, perm = "0", perm2 = "0", public = true, other = 178 },
 
-	[180] = { text = true, hash = -1212951353,['x'] = 1140.99, ['y'] = -981.29, ['z'] = 46.42, lock = false, perm = "0", perm2 = "0", public = true, other = 180 },
+	[180] = { text = true, hash = -1212951353, ['x'] = 1140.99, ['y'] = -981.29, ['z'] = 46.42, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[181] = { text = true, hash = -1212951353,['x'] = 1166.24, ['y'] = 2703.95, ['z'] = 38.16, lock = false, perm = "0", perm2 = "0", public = true, other = 181 },
+	[181] = { text = true, hash = -1212951353, ['x'] = 1166.24, ['y'] = 2703.95, ['z'] = 38.16, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[182] = { text = true, hash = -1212951353,['x'] = -1490.84, ['y'] = -383.03, ['z'] = 40.17, lock = false, perm = "0", perm2 = "0", public = true, other = 182 },
+	[182] = { text = true, hash = -1212951353, ['x'] = -1490.84, ['y'] = -383.03, ['z'] = 40.17, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[183] = { text = true, hash = -1212951353,['x'] = -1226.19, ['y'] = -902.87, ['z'] = 12.33, lock = false, perm = "0", perm2 = "0", public = true, other = 183 },
+	[183] = { text = true, hash = -1212951353, ['x'] = -1226.19, ['y'] = -902.87, ['z'] = 12.33, lock = false, perm = "0", perm2 = "0", public = true },
 
 
 	--[ FARMÁCIA ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[184] = { text = true, hash = 2059227086,['x'] = 96.73, ['y'] = -225.84, ['z'] = 54.69, lock = false, perm = "0", perm2 = "0", public = true, other = 185 },
-	[185] = { text = true, hash = 1417577297,['x'] = 97.22, ['y'] = -226.06, ['z'] = 54.69, lock = false, perm = "0", perm2 = "0", public = true, other = 184 },
+	[184] = { text = true, hash = 2059227086, ['x'] = 96.73, ['y'] = -225.84, ['z'] = 54.69, lock = false, perm = "0", perm2 = "0", public = true, other = 185 },
+	[185] = { text = true, hash = 1417577297, ['x'] = 97.22, ['y'] = -226.06, ['z'] = 54.69, lock = false, perm = "0", perm2 = "0", public = true, other = 184 },
 
-	[186] = { text = true, hash = 2059227086,['x'] = 325.14, ['y'] = -1075.09, ['z'] = 29.49, lock = false, perm = "0", perm2 = "0", public = true, other = 187 },
-	[187] = { text = true, hash = 1417577297,['x'] = 325.68, ['y'] = -1074.92, ['z'] = 29.49, lock = false, perm = "0", perm2 = "0", public = true, other = 186 },
-
-
+	[186] = { text = true, hash = 2059227086, ['x'] = 325.14, ['y'] = -1075.09, ['z'] = 29.49, lock = false, perm = "0", perm2 = "0", public = true, other = 187 },
+	[187] = { text = true, hash = 1417577297, ['x'] = 325.68, ['y'] = -1074.92, ['z'] = 29.49, lock = false, perm = "0", perm2 = "0", public = true, other = 186 },
 
 	--[ SALÃO DE BELEZA ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[188] = { text = true, hash = -166351209,['x'] = -822.71, ['y'] = -187.92, ['z'] = 37.57, lock = false, perm = "0", perm2 = "0", public = true, other = 189 },
-	[189] = { text = true, hash = 145369505,['x'] = -822.9, ['y'] = -187.51, ['z'] = 37.57, lock = false, perm = "0", perm2 = "0", public = true, other = 188 },
+	[188] = { text = true, hash = -1663512092, ['x'] = -822.71, ['y'] = -187.92, ['z'] = 37.57, lock = false, perm = "0", perm2 = "0", public = true, other = 189 },
+	[189] = { text = true, hash = 145369505, ['x'] = -822.9, ['y'] = -187.51, ['z'] = 37.57, lock = false, perm = "0", perm2 = "0", public = true, other = 188 },
 
-	[190] = { text = true, hash = -1844444717,['x'] = 133.2, ['y'] = -1711.53, ['z'] = 29.3, lock = false, perm = "0", perm2 = "0", public = true, other = 190 },
+	[190] = { text = true, hash = -1844444717, ['x'] = 133.2, ['y'] = -1711.53, ['z'] = 29.3, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[191] = { text = true, hash = -1844444717,['x'] = -1287.8, ['y'] = -1116.54, ['z'] = 7.0, lock = false, perm = "0", perm2 = "0", public = true, other = 191 },
+	[191] = { text = true, hash = -1844444717, ['x'] = -1287.8, ['y'] = -1116.54, ['z'] = 7.0, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[192] = { text = true, hash = -1844444717,['x'] = 1933.58, ['y'] = 3725.55, ['z'] = 32.85, lock = false, perm = "0", perm2 = "0", public = true, other = 192 },
+	[192] = { text = true, hash = -1844444717, ['x'] = 1933.58, ['y'] = 3725.55, ['z'] = 32.85, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[193] = { text = true, hash = -1844444717,['x'] = 1207.81, ['y'] = -470.87, ['z'] = 66.21, lock = false, perm = "0", perm2 = "0", public = true, other = 193 },
+	[193] = { text = true, hash = -1844444717, ['x'] = 1207.81, ['y'] = -470.87, ['z'] = 66.21, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[194] = { text = true, hash = -1844444717,['x'] = -30.68, ['y'] = -147.84, ['z'] = 57.08, lock = false, perm = "0", perm2 = "0", public = true, other = 194 },
+	[194] = { text = true, hash = -1844444717, ['x'] = -30.68, ['y'] = -147.84, ['z'] = 57.08, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[195] = { text = true, hash = -1844444717,['x'] = -281.31, ['y'] = 6232.11, ['z'] = 31.7, lock = false, perm = "0", perm2 = "0", public = true, other = 195 },
+	[195] = { text = true, hash = -1844444717, ['x'] = -281.31, ['y'] = 6232.11, ['z'] = 31.7, lock = false, perm = "0", perm2 = "0", public = true },
 
 	--[ AMMUNATION ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[196] = { text = true, hash = -8873588,['x'] = 1699.19, ['y'] = 3752.87, ['z'] = 34.71, lock = false, perm = "0", perm2 = "0", public = true, other = 197 },
-	[197] = { text = true, hash = 97297972,['x'] = 1698.82, ['y'] = 3752.1, ['z'] = 34.71, lock = false, perm = "0", perm2 = "0", public = true, other = 196 },
+	[196] = { text = true, hash = -8873588, ['x'] = 1699.19, ['y'] = 3752.87, ['z'] = 34.71, lock = false, perm = "0", perm2 = "0", public = true, other = 197 },
+	[197] = { text = true, hash = 97297972, ['x'] = 1698.82, ['y'] = 3752.1, ['z'] = 34.71, lock = false, perm = "0", perm2 = "0", public = true, other = 196 },
 
-	[198] = { text = true, hash = -8873588,['x'] = 244.21, ['y'] = -45.55, ['z'] = 69.95, lock = false, perm = "0", perm2 = "0", public = true, other = 199 },
-	[199] = { text = true, hash = 97297972,['x'] = 244.51, ['y'] = -45.05, ['z'] = 69.95, lock = false, perm = "0", perm2 = "0", public = true, other = 198 },
+	[198] = { text = true, hash = -8873588, ['x'] = 244.21, ['y'] = -45.55, ['z'] = 69.95, lock = false, perm = "0", perm2 = "0", public = true, other = 199 },
+	[199] = { text = true, hash = 97297972, ['x'] = 244.51, ['y'] = -45.05, ['z'] = 69.95, lock = false, perm = "0", perm2 = "0", public = true, other = 198 },
 
-	[200] = { text = true, hash = -8873588,['x'] = 843.47, ['y'] = -1024.63, ['z'] = 28.2, lock = false, perm = "0", perm2 = "0", public = true, other = 201 },
-	[201] = { text = true, hash = 97297972,['x'] = 844.39, ['y'] = -1024.59, ['z'] = 28.21, lock = false, perm = "0", perm2 = "0", public = true, other = 200 },
+	[200] = { text = true, hash = -8873588, ['x'] = 843.47, ['y'] = -1024.63, ['z'] = 28.2, lock = false, perm = "0", perm2 = "0", public = true, other = 201 },
+	[201] = { text = true, hash = 97297972, ['x'] = 844.39, ['y'] = -1024.59, ['z'] = 28.21, lock = false, perm = "0", perm2 = "0", public = true, other = 200 },
 
-	[202] = { text = true, hash = -8873588,['x'] = -324.91, ['y'] = 6076.66, ['z'] = 31.46, lock = false, perm = "0", perm2 = "0", public = true, other = 202 },
-	[203] = { text = true, hash = 97297972,['x'] = -325.64, ['y'] = 6075.78, ['z'] = 31.46, lock = false, perm = "0", perm2 = "0", public = true, other = 203 },
+	[202] = { text = true, hash = -8873588, ['x'] = -324.91, ['y'] = 6076.66, ['z'] = 31.46, lock = false, perm = "0", perm2 = "0", public = true, other = 202 },
+	[203] = { text = true, hash = 97297972, ['x'] = -325.64, ['y'] = 6075.78, ['z'] = 31.46, lock = false, perm = "0", perm2 = "0", public = true, other = 203 },
 
-	[204] = { text = true, hash = -8873588,['x'] = -663.63, ['y'] = -944.07, ['z'] = 21.83, lock = false, perm = "0", perm2 = "0", public = true, other = 205 },
-	[205] = { text = true, hash = 97297972,['x'] = -664.37, ['y'] = -944.18, ['z'] = 21.83, lock = false, perm = "0", perm2 = "0", public = true, other = 204 },
+	[204] = { text = true, hash = -8873588, ['x'] = -663.63, ['y'] = -944.07, ['z'] = 21.83, lock = false, perm = "0", perm2 = "0", public = true, other = 205 },
+	[205] = { text = true, hash = 97297972, ['x'] = -664.37, ['y'] = -944.18, ['z'] = 21.83, lock = false, perm = "0", perm2 = "0", public = true, other = 204 },
 
-	[206] = { text = true, hash = -8873588,['x'] = -1314.0, ['y'] = -390.82, ['z'] = 36.7, lock = false, perm = "0", perm2 = "0", public = true, other = 207 },
-	[207] = { text = true, hash = 97297972,['x'] = -1313.81, ['y'] = -389.95, ['z'] = 36.7, lock = false, perm = "0", perm2 = "0", public = true, other = 206 },
+	[206] = { text = true, hash = -8873588, ['x'] = -1314.0, ['y'] = -390.82, ['z'] = 36.7, lock = false, perm = "0", perm2 = "0", public = true, other = 207 },
+	[207] = { text = true, hash = 97297972, ['x'] = -1313.81, ['y'] = -389.95, ['z'] = 36.7, lock = false, perm = "0", perm2 = "0", public = true, other = 206 },
 
-	[208] = { text = true, hash = -8873588,['x'] = -1112.72, ['y'] = 2691.17, ['z'] = 18.58, lock = false, perm = "0", perm2 = "0", public = true, other = 209 },
-	[209] = { text = true, hash = 97297972,['x'] = -1113.46, ['y'] = 2690.46, ['z'] = 18.57, lock = false, perm = "0", perm2 = "0", public = true, other = 208 },
+	[208] = { text = true, hash = -8873588, ['x'] = -1112.72, ['y'] = 2691.17, ['z'] = 18.58, lock = false, perm = "0", perm2 = "0", public = true, other = 209 },
+	[209] = { text = true, hash = 97297972, ['x'] = -1113.46, ['y'] = 2690.46, ['z'] = 18.57, lock = false, perm = "0", perm2 = "0", public = true, other = 208 },
 
-	[210] = { text = true, hash = -8873588,['x'] = 2569.37, ['y'] = 303.19, ['z'] = 108.74, lock = false, perm = "0", perm2 = "0", public = true, other = 211 },
-	[211] = { text = true, hash = 97297972,['x'] = 2569.98, ['y'] = 303.28, ['z'] = 108.74, lock = false, perm = "0", perm2 = "0", public = true, other = 210 },
+	[210] = { text = true, hash = -8873588, ['x'] = 2569.37, ['y'] = 303.19, ['z'] = 108.74, lock = false, perm = "0", perm2 = "0", public = true, other = 211 },
+	[211] = { text = true, hash = 97297972, ['x'] = 2569.98, ['y'] = 303.28, ['z'] = 108.74, lock = false, perm = "0", perm2 = "0", public = true, other = 210 },
 
-	[212] = { text = true, hash = -8873588,['x'] = -3164.24, ['y'] = 1082.87, ['z'] = 20.85, lock = false, perm = "0", perm2 = "0", public = true, other = 213 },
-	[213] = { text = true, hash = 97297972,['x'] = -3164.64, ['y'] = 1082.25, ['z'] = 20.84, lock = false, perm = "0", perm2 = "0", public = true, other = 212 },
+	[212] = { text = true, hash = -8873588, ['x'] = -3164.24, ['y'] = 1082.87, ['z'] = 20.85, lock = false, perm = "0", perm2 = "0", public = true, other = 213 },
+	[213] = { text = true, hash = 97297972, ['x'] = -3164.64, ['y'] = 1082.25, ['z'] = 20.84, lock = false, perm = "0", perm2 = "0", public = true, other = 212 },
 
-	[214] = { text = true, hash = -8873588,['x'] = 17.6, ['y'] = -1115.11, ['z'] = 29.8, lock = false, perm = "0", perm2 = "0", public = true, other = 214 },
-	[215] = { text = true, hash = 97297972,['x'] = 17.04, ['y'] = -1114.9, ['z'] = 29.8	, lock = false, perm = "0", perm2 = "0", public = true, other = 215 },
+	[214] = { text = true, hash = -8873588, ['x'] = 17.6, ['y'] = -1115.11, ['z'] = 29.8, lock = false, perm = "0", perm2 = "0", public = true, other = 215 },
+	[215] = { text = true, hash = 97297972, ['x'] = 17.04, ['y'] = -1114.9, ['z'] = 29.8, lock = false, perm = "0", perm2 = "0", public = true, other = 214 },
 
-	[216] = { text = true, hash = -8873588,['x'] = 811.45, ['y'] = -2148.41, ['z'] = 29.62, lock = false, perm = "0", perm2 = "0", public = true, other = 217 },
-	[217] = { text = true, hash = 97297972,['x'] = 812.53, ['y'] = -2148.36, ['z'] = 29.62, lock = false, perm = "0", perm2 = "0", public = true, other = 216 },
+	[216] = { text = true, hash = -8873588, ['x'] = 811.45, ['y'] = -2148.41, ['z'] = 29.62, lock = false, perm = "0", perm2 = "0", public = true, other = 217 },
+	[217] = { text = true, hash = 97297972, ['x'] = 812.53, ['y'] = -2148.36, ['z'] = 29.62, lock = false, perm = "0", perm2 = "0", public = true, other = 216 },
 
 
 	--[ TATUAGENS]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+	[218] = { text = true, hash = 543652229, ['x'] = 1321.87, ['y'] = -1650.05, ['z'] = 52.29, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[218] = { text = true, hash = 543652229,['x'] = 1321.87, ['y'] = -1650.05, ['z'] = 52.29, lock = false, perm = "0", perm2 = "0", public = true, other = 218 },
+	[219] = { text = true, hash = 543652229, ['x'] = -1154.73, ['y'] = -1423.55, ['z'] = 4.96, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[219] = { text = true, hash = 543652229,['x'] = -1154.73, ['y'] = -1423.55, ['z'] = 4.96, lock = false, perm = "0", perm2 = "0", public = true, other = 219 },
+	[220] = { text = true, hash = 543652229, ['x'] = 321.1, ['y'] = 178.71, ['z'] = 103.59, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[220] = { text = true, hash = 543652229,['x'] = 321.1, ['y'] = 178.71, ['z'] = 103.59, lock = false, perm = "0", perm2 = "0", public = true, other = 220 },
+	[221] = { text = true, hash = 543652229, ['x'] = -3168.23, ['y'] = 1074.23, ['z'] = 20.83, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[221] = { text = true, hash = 543652229,['x'] = -3168.23, ['y'] = 1074.23, ['z'] = 20.83, lock = false, perm = "0", perm2 = "0", public = true, other = 221},
+	[221] = { text = true, hash = -1212951353, ['x'] = 1860.46, ['y'] = 3749.21, ['z'] = 33.04, lock = false, perm = "0", perm2 = "0", public = true },
 
-	[221] = { text = true, hash = -1212951353,['x'] = 1860.46, ['y'] = 3749.21, ['z'] = 33.04, lock = false, perm = "0", perm2 = "0", public = true, other = 222 },
-
-	[223] = { text = true, hash = -1212951353,['x'] = -289.78, ['y'] = 6199.54, ['z'] = 31.49, lock = false, perm = "0", perm2 = "0", public = true, other = 223 },
+	[223] = { text = true, hash = -1212951353, ['x'] = -289.78, ['y'] = 6199.54, ['z'] = 31.49, lock = false, perm = "0", perm2 = "0", public = true },
 
 	--[ lOJA DE FERRAMENTAS]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-	[224] = { text = true, hash = 1183182250,['x'] = -42.81, ['y'] = -1661.5, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 225 },
-	[225] = { text = true, hash = -44475594,['x'] = -43.36, ['y'] = -1662.19, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 224}
+	[224] = { text = true, hash = 1183182250, ['x'] = -42.81, ['y'] = -1661.5, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 225 },
+	[225] = { text = true, hash = -44475594, ['x'] = -43.36, ['y'] = -1662.19, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 224},
 
+	[226] = { text = true, hash = -1821777087, ['x'] = -39.89, ['y'] = -1674.67, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 227 },
+	[227] = { text = true, hash = -1821777087, ['x'] = -40.89, ['y'] = -1673.8, ['z'] = 29.5, lock = false, perm = "0", perm2 = "0", public = true, other = 226 },
+
+	--[ WEAZEL NEWS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[228] = { text = true, hash = 1476344400, ['x'] = -597.8, ['y'] = -932.28, ['z'] = 23.84, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 229 },
+	[229] = { text = true, hash = 206447435, ['x'] = -597.91, ['y'] = -931.64, ['z'] = 23.84, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 228 },
+
+	[230] = { text = true, hash = 1476344400, ['x'] = -598.02, ['y'] = -930.07, ['z'] = 23.7, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 231 },
+	[231] = { text = true, hash = 206447435, ['x'] = -597.95, ['y'] = -929.44, ['z'] = 23.84, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 230 },
+
+	[232] = { text = true, hash = 1476344400, ['x'] = -597.88, ['y'] = -928.06, ['z'] = 23.84, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 233 },
+	[233] = { text = true, hash = 206447435, ['x'] = -597.86, ['y'] = -927.6, ['z'] = 23.84, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 232 },
+
+	[234] = { text = true, hash = 105027640, ['x'] = -593.03, ['y'] = -912.9, ['z'] = 23.82, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 235 },
+	[235] = { text = true, hash = 970882927, ['x'] = -592.01, ['y'] = -913.08, ['z'] = 23.82, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 234 },
+
+	[236] = { text = true, hash = 105027640, ['x'] = -590.33, ['y'] = -913.02, ['z'] = 23.82, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 237 },
+	[237] = { text = true, hash = 970882927, ['x'] = -589.29, ['y'] = -913.02, ['z'] = 23.82, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 236 },
+
+	[238] = { text = true, hash = -1482724697, ['x'] = -575.5, ['y'] = -939.54, ['z'] = 23.82, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 239 },
+	[239] = { text = true, hash = 1991608532, ['x'] = -574.69, ['y'] = -939.66, ['z'] = 23.82, lock = true, perm = "jornal.permissao", perm2 = "lider-jornal.permissao", public = false, other = 238 },
+
+	--[ WEAZEL NEWS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[240] = { text = true, hash = -1116041313, ['x'] = 128.39, ['y'] = -1298.07, ['z'] = 29.27, lock = true, perm = "orgmthree.permissao", perm2 = "lider-orgmthree.permissao", public = false },
+
+	--[ GALAXY ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[241] = { text = true, hash = -1989765534, ['x'] = 355.12, ['y'] = 301.11, ['z'] = 104.04, lock = true, perm = "orgmone.permissao", perm2 = "lider-orgmone.permissao", public = false },
+	[242] = { text = true, hash = -1555108147, ['x'] = 377.9, ['y'] = 268.46, ['z'] = 95.0, lock = true, perm = "orgmone.permissao", perm2 = "lider-orgmone.permissao", public = false },
+	[243] = { text = true, hash = 1695461688, ['x'] = 380.79, ['y'] = 266.44, ['z'] = 91.2, lock = true, perm = "orgmone.permissao", perm2 = "lider-orgmone.permissao", public = false },
+
+	--[ WEAZEL NEWS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[244] = { text = true, hash = 993120320, ['x'] = -564.43, ['y'] = 276.6, ['z'] = 83.14, lock = true, perm = "orgmtwo.permissao", perm2 = "lider-orgmtwo.permissao", public = false },
+
+	--[ FABRICA COCA SUL ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[245] = { text = true, hash = 1427451548, ['x'] = 449.98, ['y'] = -1981.07, ['z'] = 24.49, lock = true, perm = "orgdone.permissao", perm2 = "lider-orgdone.permissao", public = false },
+
+	--[ WEAZEL NEWS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	--[246] = { text = true, hash = 1427451548, ['x'] = 449.98, ['y'] = -1981.07, ['z'] = 24.49, lock = true, perm = "orgdone.permissao", perm2 = "lider-orgdone.permissao", public = false },
+
+	--[ WEAZEL NEWS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[247] = { text = true, hash = 1427451548, ['x'] = 2522.19, ['y'] = 4124.19, ['z'] = 38.67, lock = true, perm = "orgdtwo.permissao", perm2 = "lider-orgdtwo.permissao", public = false },
+
+	--[ EMS ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	[248] = { text = true, hash = 493136920, ['x'] = -440.25, ['y'] = -322.48, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[249] = { text = true, hash = 665455406, ['x'] = -443.59, ['y'] = -319.91, ['z'] = 34.92, lock = false, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 250 },
+	[250] = { text = true, hash = 665455406, ['x'] = -444.77, ['y'] = -320.49, ['z'] = 34.92, lock = false, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 249 },
+	[251] = { text = true, hash = 493136920, ['x'] = -442.88, ['y'] = -316.06, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[252] = { text = true, hash = 493136920, ['x'] = -446.85, ['y'] = -306.34, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[253] = { text = true, hash = 493136920, ['x'] = -449.26, ['y'] = -300.65, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[254] = { text = true, hash = 493136920, ['x'] = -452.53, ['y'] = -292.61, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[255] = { text = true, hash = 493136920, ['x'] = -457.46, ['y'] = -294.52, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[256] = { text = true, hash = 493136920, ['x'] = -455.34, ['y'] = -299.69, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[257] = { text = true, hash = 493136920, ['x'] = -452.97, ['y'] = -305.26, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[258] = { text = true, hash = 493136920, ['x'] = -451.93, ['y'] = -308.24, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[259] = { text = true, hash = 493136920, ['x'] = -449.65, ['y'] = -313.89, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	[260] = { text = true, hash = 493136920, ['x'] = -448.24, ['y'] = -316.89, ['z'] = 34.92, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false },
+	
+	[262] = { text = true, hash = 665455406, ['x'] = -456.6, ['y'] = -288.52, ['z'] = 34.92, lock = false, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 263 },
+	[263] = { text = true, hash = 665455406, ['x'] = -457.52, ['y'] = -289.0, ['z'] = 34.92, lock = false, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 262 },
+
+
+	--[Casa da Fazenda ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	[264] = { text = true, hash = -52575179, ['x'] = 1390.36, ['y'] = 1162.6, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 265 },
+	[265] = { text = true, hash = -1032171637, ['x'] = 1390.46, ['y'] = 1162.09, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 264 },
+
+	[266] = { text = true, hash = -1032171637, ['x'] = 1408.18, ['y'] = 1164.38, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 267 },
+	[267] = { text = true, hash = -52575179, ['x'] = 1408.24, ['y'] = 1165.01, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 266 },
+
+	[268] = { text = true, hash = -1032171637,['x'] = 1408.17, ['y'] = 1159.7, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 269 },
+	[269] = { text = true, hash = -52575179, ['x'] = 1408.24, ['y'] = 1160.34, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 268 },
+
+	[270] = { text = true, hash = 262671971, ['x'] = 1406.7, ['y'] = 1128.22, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false},
+
+	[271] = { text = true, hash = -2023754432, ['x'] = 1396.67, ['y'] = 1134.2, ['z'] = 109.75, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false},
+
+	[272] = { text = true, hash = -2023754432, ['x'] = 1398.01, ['y'] = 1143.06, ['z'] = 109.75, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false},
+
+	[273] = { text = true, hash = -1032171637, ['x'] = 1390.72, ['y'] = 1131.97, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 274 },
+	[274] = { text = true, hash = -52575179, ['x'] = 1390.63, ['y'] = 1132.47, ['z'] = 114.34, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 273 },
+	
+	[275] = { text = true, hash = 262671971, ['x'] = 1395.88, ['y'] = 1141.5, ['z'] = 114.66, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 276 },
+	[276] = { text = true, hash = 1504256620, ['x'] = 1395.81, ['y'] = 1142.09, ['z'] = 114.66, lock = true, perm = "orggone.permissao", perm2 = "lider-orggone.permissao", public = false, other = 275 },
+
+	--[Los Santos Custon1 ]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	[277] = { text = true, hash = -550347177, ['x'] = -356.13, ['y'] = -134.68, ['z'] = 39.01, perm = "mecanico.permissao", perm2 = "lider-mecanico.permissao", public = false},
+
+	--[Hospital]---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	
+	
+    [278] = { text = true, hash = 665455406, ['x'] = -456.9, ['y'] = -288.7, ['z'] = -130.87, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", other = 279 },
+	[279] = { text = true, hash = 665455406, ['x'] = -457.21, ['y'] = -288.98, ['z'] = -130.87, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", other = 278 },
+
+	[280] = { text = true, hash = 493136920, ['x'] = -458.32, ['y'] = -292.65, ['z'] = -130.87, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[281] = { text = true, hash = 493136920, ['x'] = -452.76, ['y'] = -292.34, ['z'] = -130.87, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[282] = { text = true, hash = 493136920, ['x'] = -455.42, ['y'] = -299.67, ['z'] = -130.87, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[283] = { text = true, hash = 493136920, ['x'] = -449.47, ['y'] = -299.96, ['z'] = -130.87, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[284] = { text = true, hash = 493136920, ['x'] = -447.0, ['y'] = -306.31, ['z'] = -130.87, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[284] = { text = true, hash = 493136920, ['x'] = -451.66, ['y'] = -308.19, ['z'] = -130.87, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[285] = { text = true, hash = 665455406, ['x'] = -495.72, ['y'] = -333.25, ['z'] = 69.53, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 286 },
+	[286] = { text = true, hash = 665455406, ['x'] = -495.75, ['y'] = -333.85, ['z'] = 69.53, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 285 },
+
+	[287] = { text = true, hash = 493136920, ['x'] = -496.51, ['y'] = -337.96, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[288] = { text = true, hash = -551608542, ['x'] = -500.9, ['y'] = -335.83, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[289] = { text = true, hash = -551608542 ,['x'] = -500.53, ['y'] = -325.58, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[290] = { text = true, hash = -551608542, ['x'] = -502.41, ['y'] = -311.66, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[291] = { text = true, hash = -551608542, ['x'] = -503.61, ['y'] = -302.51, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[292] = { text = true, hash = 493136920, ['x'] = -484.32, ['y'] = -337.14, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[293] = { text = true, hash = 493136920, ['x'] = -483.77, ['y'] = -333.8, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[294] = { text = true, hash = 493136920, ['x'] = -476.93, ['y'] = -337.93, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[295] = { text = true, hash = 493136920, ['x'] = -476.21, ['y'] = -334.66, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+	
+	[296] = { text = true, hash = 493136920, ['x'] = -468.92, ['y'] = -335.75, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[297] = { text = true, hash = 493136920, ['x'] = -469.5, ['y'] = -338.91, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+	
+	[298] = { text = true, hash = 493136920, ['x'] = -461.33, ['y'] = -336.79, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[299] = { text = true, hash = 493136920, ['x'] = -462.37, ['y'] = -339.86, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[300] = { text = true, hash = 493136920, ['x'] = -453.78, ['y'] = -336.38, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	[301] = { text = true, hash = 493136920, ['x'] = -445.09, ['y'] = -342.29, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+   	[302] = { text = true, hash = 493136920, ['x'] = -440.14, ['y'] = -337.85, ['z'] = 69.53, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	
+	[304] = { text = true, hash = 665455406, ['x'] = -444.56, ['y'] = -320.25, ['z'] = 69.53, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false, other = 305 },
+	[305] = { text = true, hash = 665455406, ['x'] = -443.9, ['y'] = -320.08, ['z'] = 69.53, lock = true, perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false,other = 304 },
+
+	[306] = { text = true, hash = 493136920, ['x'] = -446.91, ['y'] = -306.34, ['z'] = -130.87, lock = true,perm = "ems.permissao", perm2 = "paisana-ems.permissao", public = false},
+
+	--[ Prefeitura ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[307] = { text = true, hash = -384927587, ['x'] = -545.96, ['y'] = -190.9, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 308 },
+	[308] = { text = true, hash = -384927587, ['x'] = -546.39, ['y'] = -190.21, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 307 },
+	[309] = { text = true, hash = -881696544, ['x'] = -541.16, ['y'] = -190.05, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[310] = { text = true, hash = 1335309163, ['x'] = -537.35, ['y'] = -183.37, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[311] = { text = true, hash = 1335309163, ['x'] = -541.25, ['y'] = -189.99, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+    [312] = { text = true, hash = 1335309163, ['x'] = -535.09, ['y'] = -186.68, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[313] = { text = true, hash = -384927587, ['x'] = -532.0, ['y'] = -183.28, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 314 },
+	[314] = { text = true, hash = -384927587, ['x'] = -532.67, ['y'] = -182.23, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 313 },
+	[315] = { text = true, hash = 736699661, ['x'] = -527.55, ['y'] = -185.06, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[316] = { text = true, hash = 736699661, ['x'] = -511.3, ['y'] = -205.25, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 317 },
+	[317] = { text = true, hash = 736699661, ['x'] = -511.89, ['y'] = -205.56, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 316 },
+	[318] = { text = true, hash = 736699661, ['x'] = -521.14, ['y'] = -181.46, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[319] = { text = true, hash = 1042741067, ['x'] = -519.95, ['y'] = -178.57, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[320] = { text = true, hash = 1042741067, ['x'] = -522.36, ['y'] = -174.31, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[321] = { text = true, hash = -384927587, ['x'] = -556.52, ['y'] = -196.16, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 322 },
+	[322] = { text = true, hash = -384927587, ['x'] = -556.31, ['y'] = -196.79, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 321 },
+	[323] = { text = true, hash = 1042741067, ['x'] = -557.62, ['y'] = -199.54, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 324 },
+	[324] = { text = true, hash = 1042741067, ['x'] = -558.39, ['y'] = -200.01, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 323 },
+	[325] = { text = true, hash = 1042741067, ['x'] = -561.37, ['y'] = -197.26, ['z'] = 38.22, lock = true,perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false},
+	[326] = { text = true, hash = 1956494919, ['x'] = -567.42, ['y'] = -200.72, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 327 },
+	[327] = { text = true, hash = 1956494919, ['x'] = -568.13, ['y'] = -201.1, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 326 },
+	[328] = { text = true, hash = -384927587, ['x'] = -570.43, ['y'] = -204.2, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 329 },
+	[329] = { text = true, hash = -384927587, ['x'] = -570.03, ['y'] = -204.8, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 328 },
+	[330] = { text = true, hash = -739665083, ['x'] = -569.66, ['y'] = -209.71, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[331] = { text = true, hash = -739665083, ['x'] = -576.83, ['y'] = -213.81, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[332] = { text = true, hash = 1042741067, ['x'] = -579.66, ['y'] = -213.06, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[333] = { text = true, hash = 1042741067, ['x'] = -582.08, ['y'] = -208.79, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+ 	--[Mansão-F]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	[334] = { text = true, hash = 159994461, ['x'] = -816.55, ['y'] = 178.52, ['z'] = 72.23, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 325 },
+	[335] = { text = true, hash = -1686014385, ['x'] = -816.21, ['y'] = 178.09, ['z'] = 72.23, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 324 },
+	[336] = { text = true, hash = -1454760130, ['x'] = -793.52, ['y'] = 181.18, ['z'] = 72.84, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 327 },
+	[337] = { text = true, hash = 1245831483, ['x'] = -793.9, ['y'] = 181.81, ['z'] = 72.84, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[338] = { text = true, hash = -1454760130,['x'] = -795.83, ['y'] = 177.42, ['z'] = 72.84, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 339 },
+	[339] = { text = true, hash = 1245831483,['x'] = -795.83, ['y'] = 177.42, ['z'] = 72.84, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false, other = 338 },
+	[340] = { text = true, hash = -1563640173, ['x'] = -806.85, ['y'] = 185.62, ['z'] = 72.49, lock = true,perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+	--[Mansão-M]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+ 	[341] = { text = true, hash = 308207762, ['x'] = -806.85, ['y'] = 185.62, ['z'] = 72.49, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+ 	--[Mansão-p]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+ 	[342] = { text = true, hash = 308207762, ['x'] = -3216.85, ['y'] = 815.42, ['z'] = 8.94, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+ 
+	--[ Hotel 1º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[343] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[344] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[345] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[346] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[347] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[348] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[349] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 31.37, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+	--[ Hotel 2º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[350] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[351] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[352] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[353] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[354] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[355] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[356] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 34.8, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+ 	--[ Hotel 3º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[357] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[358] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[359] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[360] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[361] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[362] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[363] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 38.22, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+ 	--[ Hotel 4º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[364] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[365] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[366] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[367] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[368] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[369] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[370] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 41.54, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+ 	--[ Hotel 5º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[371] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[372] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[373] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[374] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[375] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[376] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[377] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 44.86, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+ 	--[ Hotel 6º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[378] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[379] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[380] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[381] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[382] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[383] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[384] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 48.18 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+  	--[ Hotel 7º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[385] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[386] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[387] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[388] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[389] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[390] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[391] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 51.58 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+  	--[ Hotel 8º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[392] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[393] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[394] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[395] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[396] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[397] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[398] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 54.91 , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+  	--[ Hotel 9º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[399] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[400] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[401] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[402] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[403] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[404] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[405] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 58.22  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+   	--[ Hotel 10º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[406] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[407] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[408] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[409] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[410] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[411] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[412] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 61.51  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+   	--[ Hotel 11º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[413] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[414] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[415] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[416] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[417] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[418] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[419] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 64.82  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+   	--[ Hotel 12º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[420] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[421] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[422] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[423] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[424] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[425] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[426] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 68.19  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+  	--[ Hotel 13º ]--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	 
+	[427] = { text = false, hash = 1398355146, ['x'] = -1002.79, ['y'] = -775.57, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[428] = { text = false, hash = 1398355146, ['x'] = -1002.75, ['y'] = -767.98, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[429] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -753.32, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[430] = { text = false, hash = 1398355146, ['x'] = -1002.84, ['y'] = -745.8, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[431] = { text = false, hash = 1398355146, ['x'] = -1002.87, ['y'] = -738.47, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[432] = { text = false, hash = 1398355146, ['x'] = -1002.86, ['y'] = -731.06, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+	[433] = { text = false, hash = 1398355146, ['x'] = -1002.89, ['y'] = -760.65, ['z'] = 71.66  , lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false },
+
+	[434] = { text = true, hash = 1557126584, ['x'] = 449.86, ['y'] = -986.31, ['z'] = 30.69, lock = true, perm = "ems1.permissao", perm2 = "paisana1-ems1.permissao", public = false }
 }
 
 return cfg	

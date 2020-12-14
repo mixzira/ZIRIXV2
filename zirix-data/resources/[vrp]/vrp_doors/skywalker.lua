@@ -1,6 +1,8 @@
 local Tunnel = module("vrp","lib/Tunnel")
 local Proxy = module("vrp","lib/Proxy")
+local Tools = module("vrp","lib/Tools")
 vRP = Proxy.getInterface("vRP")
+vRPclient = Tunnel.getInterface("vRP")
 
 --[ CONNECTION ]----------------------------------------------------------------------------------------------------------------
 
@@ -10,8 +12,11 @@ Proxy.addInterface("vrp_doors",vRPN)
 
 --[ VARIABLES ]-----------------------------------------------------------------------------------------------------------------
 
+local idgens = Tools.newIDGenerator()
 local cfg = module("vrp_doors","config/config")
 local timers = {}
+local pick = {}
+local blips = {}
 
 --[ SPAWN | EVENT ]-------------------------------------------------------------------------------------------------------------
 
@@ -86,32 +91,33 @@ end
 --[ FORCE OPEN DOOR | FUNCTION ]------------------------------------------------------------------------------------------------
 
 function vRPN.forceOpen(id)
+	local source = source
+	local user_id = vRP.getUserId(source)
 	if timers[id] == 0 or not timers[id] then
 		timers[id] = 120
 		TriggerClientEvent('vrpdoorsystem:statusSend',-1,id,false)
 		if cfg.list[id].other ~= nil then
-			local idsecond = cfg.list[id].other
-			cfg.list[idsecond].lock = cfg.list[id].lock
-			TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,false)
+			if vRP.getInventoryItemAmount(user_id,"lockpick") >= 1 and vRP.tryGetInventoryItem(user_id,"lockpick",1) then
+				local idsecond = cfg.list[id].other
+				cfg.list[idsecond].lock = cfg.list[id].lock
+				TriggerClientEvent('vrpdoorsystem:statusSend',-1,idsecond,false)
+
+				local policia = vRP.getUsersByPermission("policia.permissao")
+				local x,y,z = vRPclient.getPosition(source)
+
+				for k,v in pairs(policia) do
+					local player = vRP.getUserSource(parseInt(v))
+					if player then
+						async(function()
+							local id = idgens:gen()
+							vRPclient._playSound(player,"CONFIRM_BEEP","HUD_MINI_GAME_SOUNDSET")
+							TriggerClientEvent('chatMessage',player,"911",{64,64,255},"Alarme de estabelecimento disparando.")
+							pick[id] = vRPclient.addBlip(player,x,y,z,10,1,"Ocorrência",0.5,false)
+							SetTimeout(20000,function() vRPclient.removeBlip(player,pick[id]) idgens:free(id) end)
+						end)
+					end
+				end
+			end
 		end
-	end
-end
-
---[ CHECK TIME AND ITEM | FUNCTION ]--------------------------------------------------------------------------------------------
-
-function vRPN.checkItemTime(id)
-	local source = source
-	local user_id = vRP.getUserId(source)
-
-	if timers[id] == 0 or not timers[id] then
-		if vRP.tryGetInventoryItem(user_id,"lockpick",1) then
-			return true
-		else
-			TriggerClientEvent("Notify",source,"negado","Precisa de <b>Lockpick</b>.")
-			return false
-		end
-	else
-		TriggerClientEvent("Notify",source,"negado","Essa porta <b>já está destrancada</b> por <b>"..timers[id].." segundos</b>.")
-		return false
 	end
 end
