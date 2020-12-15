@@ -1,3 +1,5 @@
+const config = require('./config/config.lua');
+
 $(document).ready(function(){
 	window.addEventListener("message",function(event){
 		switch(event.data.action){
@@ -119,7 +121,7 @@ const updateMochila = () => {
 		$('#inventario-items').html(`
 			${nameList.map((item) => (`
 				<div class="item" data-item-key="${item.key}" data-item-type="${item.type}" data-name-key="${item.name}">
-					<div id="thumb"><img src='http://192.99.251.232:3554/images/vrp_itens/${item.index}.png'></div>	
+					<div id="thumb"><img src=${config.imageServer}'/images/vrp_itens/${item.index}.png'></div>	
 					<div id="peso">${(item.peso*item.amount).toFixed(2)}Kg</div>
 					<div id="quantity">${formatarNumero(item.amount)}x</div>
 					<div id="itemname">${item.name}</div>
