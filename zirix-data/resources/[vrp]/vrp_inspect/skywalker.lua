@@ -9,13 +9,6 @@ src = {}
 Tunnel.bindInterface("vrp_inspect",src)
 vCLIENT = Tunnel.getInterface("vrp_inspect")
 
---[ WEBHOOKS ]---------------------------------------------------------------------------------------------------------------------------
-
-local logRevistar = ""
-local logSaquear = ""
-local logPegar = ""
-local logEnviar = ""
-
 --[ VARIAVEIS ]--------------------------------------------------------------------------------------------------------------------------
 
 local opened = {}

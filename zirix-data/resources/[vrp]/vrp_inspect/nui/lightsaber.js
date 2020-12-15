@@ -21,7 +21,7 @@ $(document).ready(function(){
 
 	document.onkeyup = function(data){
 		if (data.which == 27){
-			$.post("http://vrp_revistar/chestClose");
+			$.post("http://vrp_inspect/chestClose");
 		}
 	};
 });
@@ -81,7 +81,7 @@ const updateDrag = () => {
 
 			if (itemData.key === undefined) return;
 
-			$.post("http://vrp_revistar/takeItem", JSON.stringify({
+			$.post("http://vrp_inspect/takeItem", JSON.stringify({
 				item: itemData.key,
 				amount: Number($("#amount").val())
 			}))
@@ -98,7 +98,7 @@ const updateDrag = () => {
 
 			if (itemData.key === undefined) return;
 
-			$.post("http://vrp_revistar/storeItem", JSON.stringify({
+			$.post("http://vrp_inspect/storeItem", JSON.stringify({
 				item: itemData.key,
 				amount: Number($("#amount").val())
 			}))
@@ -122,7 +122,7 @@ const formatarNumero = (n) => {
 }
 
 const updateChest = () => {
-	$.post("http://vrp_revistar/requestChest",JSON.stringify({}),(data) => {
+	$.post("http://vrp_inspect/requestChest",JSON.stringify({}),(data) => {
 		const nameList = data.inventario.sort((a,b) => (a.name > b.name) ? 1: -1);
 		const nameList2 = data.inventario2.sort((a,b) => (a.name > b.name) ? 1: -1);
 		$('#inventory').html(`
