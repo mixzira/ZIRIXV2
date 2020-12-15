@@ -21,7 +21,7 @@ RegisterCommand("revistar",function(source,args,rawCommand)
 	local x,y,z = vRPclient.getPosition(source)
 	if user_id then
 		local nplayer = vRPclient.getNearestPlayer(source,2)
-		if nplayer and vRPclient.getHealth(source) >= 102 then then
+		if nplayer and vRPclient.getHealth(source) >= 102 then
 			local nuser_id = vRP.getUserId(nplayer)
 			local identitynu = vRP.getUserIdentity(nuser_id)
 			if vRP.hasPermission(user_id,"policia.permissao") then
