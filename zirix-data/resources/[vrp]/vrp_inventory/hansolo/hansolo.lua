@@ -215,7 +215,7 @@ local drunkStats = 0
 local drunkLight = false
 local drunkVery = false
 
-Citizen.CreateThread(function()
+--[[Citizen.CreateThread(function()
 	while true do
         Citizen.Wait(30000)
         if drunkVery or drunkLight then
@@ -257,7 +257,7 @@ Citizen.CreateThread(function()
         end
         Citizen.Wait(idle)
 	end
-end)
+end)]]
 
 RegisterNetEvent("inventory:checkDrunk")
 AddEventHandler("inventory:checkDrunk",function()
