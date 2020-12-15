@@ -9,17 +9,8 @@ Tunnel.bindInterface("vrp_inventory",vRPN)
 Proxy.addInterface("vrp_inventory",vRPN)
 
 vRPCclient = Tunnel.getInterface("vrp_inventory")
-
 local idgens = Tools.newIDGenerator()
-
 vGARAGE = Tunnel.getInterface("vrp_garages")
-
---[ WEBHOOK ]----------------------------------------------------------------------------------------------------------------------------
-
-local logInvDropar = ""
-local logInvEnviar = ""
-local logInvEquipar = ""
-local logInvDesequipar = ""
 
 --[ VARIÁVEIS ]--------------------------------------------------------------------------------------------------------------------------
 
@@ -47,122 +38,29 @@ end
 function vRPN.sendItem(itemName,type,amount)
 	local source = source
 	if itemName then
-		if itemName == "passaporte" then
-			TriggerClientEvent("Notify",source,"negado","Você não pode <b>enviar</b> seu <b>passaporte</b>.",8000)
-		else
-			local user_id = vRP.getUserId(source)
-			local nplayer = vRPclient.getNearestPlayer(source,2)
-			local nuser_id = vRP.getUserId(nplayer)
-			local identity = vRP.getUserIdentity(user_id)
-			local identitynu = vRP.getUserIdentity(nuser_id)
-			if nuser_id and vRP.itemIndexList(itemName) and item ~= vRP.itemIndexList("passaporte") then
-				local x,y,z = vRPclient.getPosition(source)
-				if parseInt(amount) > 0 then
-					if vRP.getInventoryWeight(nuser_id) + vRP.getItemWeight(itemName) * amount <= vRP.getInventoryMaxWeight(nuser_id) then
-						if vRP.tryGetInventoryItem(user_id,itemName,amount) then
-							vRP.giveInventoryItem(nuser_id,itemName,amount)
-							vRPclient._playAnim(source,true,{{"mp_common","givetake1_a"}},false)
-							TriggerClientEvent("Notify",source,"sucesso","Enviou <b>"..vRP.format(amount).."x "..vRP.itemNameList(itemName).."</b>.",8000)
-							
-							PerformHttpRequest(logInvEnviar, function(err, text, headers) end, 'POST', json.encode({
-								embeds = {
-									{ 	------------------------------------------------------------
-										title = "REGISTRO DE ITEM ENVIADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-										thumbnail = {
-										url = "https://i.imgur.com/5ydYKZg.png"
-										}, 
-										fields = {
-											{ 
-												name = "**QUEM ENVIOU:**", 
-												value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-											},
-											{ 
-												name = "**ITEM ENVIADO:**", 
-												value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(amount)).."** ]"
-											},
-											{ 
-												name = "**QUEM RECEBEU:**", 
-												value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"
-											},
-											{ 
-												name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**",
-												value = "⠀"
-											}
-										}, 
-										footer = { 
-											text = "ZIRIX - "..os.date("%d/%m/%Y |: %H:%M:%S"), 
-											icon_url = "https://i.imgur.com/5ydYKZg.png"
-										},
-										color = 16431885 
-									}
-								}
-							}), { ['Content-Type'] = 'application/json' })
+		local user_id = vRP.getUserId(source)
+		local nplayer = vRPclient.getNearestPlayer(source,2)
+		local nuser_id = vRP.getUserId(nplayer)
+		local identity = vRP.getUserIdentity(user_id)
+		local identitynu = vRP.getUserIdentity(nuser_id)
 
-							local nameFix = string.gsub(itemName,"|","-")
-							TriggerClientEvent("itensNotify",source,"sucesso","Enviou",""..nameFix.."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
-							TriggerClientEvent("itensNotify",nplayer,"sucesso","Recebeu",""..nameFix.."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
-							
-							vRPclient._playAnim(nplayer,true,{{"mp_common","givetake1_a"}},false)
-							TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
-							TriggerClientEvent('vrp_inventory:Update',nplayer,'updateMochila')
-							return true
-						end
-					end
-				else
-					local data = vRP.getUserDataTable(user_id)
-					for k,v in pairs(data.inventory) do
-						if itemName == k then
-							if vRP.getInventoryWeight(nuser_id) + vRP.getItemWeight(itemName) * parseInt(v.amount) <= vRP.getInventoryMaxWeight(nuser_id) then
-								if vRP.tryGetInventoryItem(user_id,itemName,parseInt(v.amount)) then
-									vRP.giveInventoryItem(nuser_id,itemName,parseInt(v.amount))
-									vRPclient._playAnim(source,true,{{"mp_common","givetake1_a"}},false)
-									TriggerClientEvent("Notify",source,"sucesso","Enviou <b>"..vRP.format(parseInt(v.amount)).."x "..vRP.itemNameList(itemName).."</b>.",8000)
-									
-									PerformHttpRequest(logInvEnviar, function(err, text, headers) end, 'POST', json.encode({
-										embeds = {
-											{ 	------------------------------------------------------------
-												title = "REGISTRO DE ITEM ENVIADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-												thumbnail = {
-												url = "https://i.imgur.com/5ydYKZg.png"
-												}, 
-												fields = {
-													{ 
-														name = "**QUEM ENVIOU:**", 
-														value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-													},
-													{ 
-														name = "**ITEM ENVIADO:**", 
-														value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(v.amount)).."** ]"
-													},
-													{ 
-														name = "**QUEM RECEBEU:**", 
-														value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"
-													},
-													{ 
-														name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**",
-														value = "⠀"
-													}
-												}, 
-												footer = { 
-													text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-													icon_url = "https://i.imgur.com/5ydYKZg.png" 
-												},
-												color = 16431885 
-											}
-										}
-									}), { ['Content-Type'] = 'application/json' })
-									
-									local nameFix = string.gsub(itemName,"|","-")
-									TriggerClientEvent("itensNotify",source,"sucesso","Enviou",""..nameFix.."",""..vRP.format(parseInt(v.amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(v.amount)).."")
-									TriggerClientEvent("itensNotify",nplayer,"sucesso","Recebeu",""..nameFix.."",""..vRP.format(parseInt(v.amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(v.amount)).."")
+		if nuser_id and vRP.itemIndexList(itemName) then
+			local x,y,z = vRPclient.getPosition(source)
+			if parseInt(amount) > 0 then
+				if vRP.getInventoryWeight(nuser_id) + vRP.getItemWeight(itemName) * amount <= vRP.getInventoryMaxWeight(nuser_id) then
+					if vRP.tryGetInventoryItem(user_id,itemName,amount) then
+						vRP.giveInventoryItem(nuser_id,itemName,amount)
+						vRPclient._playAnim(source,true,{{"mp_common","givetake1_a"}},false)
+						
+						PerformHttpRequest(config.webhookSend, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM ENVIADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{name = "**QUEM ENVIOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**ITEM ENVIADO:**", value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(amount)).."** ]"}, {name = "**QUEM RECEBEU:**", value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀"}}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y |: %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
 
-									vRPclient._playAnim(nplayer,true,{{"mp_common","givetake1_a"}},false)
-									TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
-									TriggerClientEvent('vrp_inventory:Update',nplayer,'updateMochila')
-									return true
-								end
-							end
-						end
+						TriggerClientEvent("itensNotify",source,"sucesso","Enviou",""..vRP.itemNameList(itemName).."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
+						TriggerClientEvent("itensNotify",nplayer,"sucesso","Recebeu",""..vRP.itemNameList(itemName).."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
+						
+						vRPclient._playAnim(nplayer,true,{{"mp_common","givetake1_a"}},false)
+						TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
+						TriggerClientEvent('vrp_inventory:Update',nplayer,'updateMochila')
+						return true
 					end
 				end
 			end
