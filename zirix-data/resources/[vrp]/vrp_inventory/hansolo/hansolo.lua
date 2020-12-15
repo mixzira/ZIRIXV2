@@ -237,7 +237,7 @@ end)
 
 Citizen.CreateThread(function()
 	while true do
-		local idle = 1000
+		local idle = 2000
         if drunkVery then
             idle = 1
             DisableControlAction(0,21) 
