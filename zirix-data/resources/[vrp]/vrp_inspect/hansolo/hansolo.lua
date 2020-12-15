@@ -78,8 +78,8 @@ local sCarry = false
 function src.toggleCarry(source)
 	uCarry = source
 	iCarry = not iCarry
-
 	local ped = PlayerPedId()
+	
 	if iCarry and uCarry then
 		Citizen.InvokeNative(0x6B9BBD38AB0796DF,PlayerPedId(),GetPlayerPed(GetPlayerFromServerId(uCarry)),4103,11816,0.5,0.0,0.0,0.0,0.0,0.0,false,false,false,false,2,true)
 		sCarry = true

@@ -405,12 +405,23 @@ function src.resetInspect()
 	local user_id = vRP.getUserId(source)
 	if user_id and opened[parseInt(user_id)] then
 		local nplayer = vRP.getUserSource(parseInt(opened[parseInt(user_id)]))
-		if nplayer then
-			TriggerClientEvent("cancelando",nplayer,false)
-		end
+		if plunder then
+			if nplayer then
+				TriggerClientEvent('cancelando',nplayer,false)
+			end
 
-		opened[parseInt(user_id)] = nil
-		vRPclient._stopAnim(source,false)
+			opened[parseInt(user_id)] = nil
+			vRPclient._stopAnim(source,false)
+		else
+			if nplayer then
+				vCLIENT.toggleCarry(nplayer,source)
+				TriggerClientEvent('cancelando',nplayer,false)
+			end
+
+			opened[parseInt(user_id)] = nil
+			vRPclient._stopAnim(source,false)
+			vRPclient._stopAnim(nplayer,false)
+		end
 	end
 end
 
