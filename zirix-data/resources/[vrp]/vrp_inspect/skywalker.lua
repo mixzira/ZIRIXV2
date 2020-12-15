@@ -21,121 +21,51 @@ RegisterCommand("revistar",function(source,args,rawCommand)
 	local x,y,z = vRPclient.getPosition(source)
 	if user_id then
 		local nplayer = vRPclient.getNearestPlayer(source,2)
-		if nplayer then
+		if nplayer and vRPclient.getHealth(source) >= 102 then then
 			local nuser_id = vRP.getUserId(nplayer)
 			local identitynu = vRP.getUserIdentity(nuser_id)
-			if not vRP.hasPermission(nuser_id,"policia.permissao") then
-				if vRP.hasPermission(user_id,"policia.permissao") then
-					vRPclient._playAnim(source,true,{"oddjobs@shop_robbery@rob_till","loop"},true)
-					vRPclient._playAnim(nplayer,true,{"random@arrests@busted","idle_a"},true)
-
-					TriggerClientEvent("cancelando",nplayer,true)
-
-					local weapons = vRPclient.replaceWeapons(nplayer,{})
-					for k,v in pairs(weapons) do
-						vRP.giveInventoryItem(parseInt(nuser_id),"wbody|"..k,1)
-						if parseInt(v.ammo) > 0 then
-							vRP.giveInventoryItem(parseInt(nuser_id),"wammo|"..k,parseInt(v.ammo))
-						end
-					end
-
-					PerformHttpRequest(logRevistar, function(err, text, headers) end, 'POST', json.encode({
-						embeds = {
-							{ 	------------------------------------------------------------
-								title = "REGISTRO DE REVISTAR:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-								thumbnail = {
-								url = "https://i.imgur.com/5ydYKZg.png"
-								}, 
-								fields = {
-									{ 
-										name = "**QUEM ESTÁ REVISTANDO:**", 
-										value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-									},
-									{ 
-										name = "**QUEM ESTÁ SENDO REVISTADO:**", 
-										value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"
-									},
-									{ 
-										name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**",
-										value = "⠀"
-									}
-								}, 
-								footer = { 
-									text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-									icon_url = "https://i.imgur.com/5ydYKZg.png" 
-								},
-								color = 16431885 
-							}
-						}
-					}), { ['Content-Type'] = 'application/json' })
-
-					opened[parseInt(user_id)] = parseInt(nuser_id)
-					vCLIENT.openInspect(source)
-				else
-					local policia = vRP.getUsersByPermission("policia.permissao")
-					if #policia >= 2 then
-						local h = vCLIENT.entityHeading(source)
-						if vRPclient.getHealth(nplayer) >= 102 then
-							local request = vRP.request(nplayer,"Solicitação de revista! Deseja cooperar?",60)
-							if request then
-								vRPclient._playAnim(source,true,{"oddjobs@shop_robbery@rob_till","loop"},true)
-								vRPclient._playAnim(nplayer,true,{"random@arrests@busted","idle_a"},true)
-
-								TriggerClientEvent("cancelando",nplayer,true)
-
-								local weapons = vRPclient.replaceWeapons(nplayer,{})
-								for k,v in pairs(weapons) do
-									vRP.giveInventoryItem(parseInt(nuser_id),"wbody|"..k,1)
-									if parseInt(v.ammo) > 0 then
-										vRP.giveInventoryItem(parseInt(nuser_id),"wammo|"..k,parseInt(v.ammo))
-									end
-								end
-
-								PerformHttpRequest(logRevistar, function(err, text, headers) end, 'POST', json.encode({
-									embeds = {
-										{ 	------------------------------------------------------------
-											title = "REGISTRO DE REVISTAR:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-											thumbnail = {
-											url = "https://i.imgur.com/5ydYKZg.png"
-											}, 
-											fields = {
-												{ 
-													name = "**QUEM ESTÁ REVISTANDO:**", 
-													value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-												},
-												{ 
-													name = "**QUEM ESTÁ SENDO REVISTADO:**", 
-													value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"
-												},
-												{ 
-													name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**",
-													value = "⠀"
-												}
-											}, 
-											footer = { 
-												text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-												icon_url = "https://i.imgur.com/5ydYKZg.png" 
-											},
-											color = 16431885 
-										}
-									}
-								}), { ['Content-Type'] = 'application/json' })
-
-								opened[parseInt(user_id)] = parseInt(nuser_id)
-								vCLIENT.openInspect(source)
-							else
-								TriggerClientEvent("Notify",source,"negado","Revista negada! A pessoa não quer cooperar.",5000)
-							end
-						end
-					else
-						TriggerClientEvent("Notify",source,"negado","Você não pode fazer isso nesse momento.",5000)
+			if vRP.hasPermission(user_id,"policia.permissao") then
+				vRPclient._playAnim(source,true,{{"oddjobs@shop_robbery@rob_till","loop"}},true)
+				vRPclient._playAnim(nplayer,true,{{"random@arrests@busted","idle_a"}},true)
+				TriggerClientEvent("cancelando",nplayer,true)
+				local weapons = vRPclient.replaceWeapons(nplayer,{})
+				for k,v in pairs(weapons) do
+					vRP.giveInventoryItem(parseInt(nuser_id),"wbody|"..k,1)
+					if parseInt(v.ammo) > 0 then
+						vRP.giveInventoryItem(parseInt(nuser_id),"wammo|"..k,parseInt(v.ammo))
 					end
 				end
+				PerformHttpRequest(config.webhookInspect, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE REVISTAR:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM ESTÁ REVISTANDO:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**QUEM ESTÁ SENDO REVISTADO:**", value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀" }}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
+				opened[parseInt(user_id)] = parseInt(nuser_id)
+				vCLIENT.openInspect(source)
 			else
-				TriggerClientEvent("Notify",source,"negado","Você não pode inspecionar o inventário de outros policiais.",5000)
+				local policia = vRP.getUsersByPermission("policia.permissao")
+				if #policia >= 2 then
+					local h = vCLIENT.entityHeading(source)
+					if vRPclient.getHealth(nplayer) >= 102 then
+						local request = vRP.request(nplayer,"Solicitação de revista! Deseja cooperar?",60)
+						if request then
+							vRPclient._playAnim(source,true,{"oddjobs@shop_robbery@rob_till","loop"},true)
+							vRPclient._playAnim(nplayer,true,{"random@arrests@busted","idle_a"},true)
+							TriggerClientEvent("cancelando",nplayer,true)
+							local weapons = vRPclient.replaceWeapons(nplayer,{})
+							for k,v in pairs(weapons) do
+								vRP.giveInventoryItem(parseInt(nuser_id),"wbody|"..k,1)
+								if parseInt(v.ammo) > 0 then
+									vRP.giveInventoryItem(parseInt(nuser_id),"wammo|"..k,parseInt(v.ammo))
+								end
+							end
+							PerformHttpRequest(config.webhookInspect, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE REVISTAR:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM ESTÁ REVISTANDO:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**QUEM ESTÁ SENDO REVISTADO:**", value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀" }}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
+							opened[parseInt(user_id)] = parseInt(nuser_id)
+							vCLIENT.openInspect(source)
+						else
+							TriggerClientEvent("Notify",source,"negado","Revista negada! A pessoa não quer cooperar.",5000)
+						end
+					end
+				else
+					TriggerClientEvent("Notify",source,"negado","Você não pode fazer isso nesse momento.",5000)
+				end
 			end
-		else
-			TriggerClientEvent("Notify",source,"negado","Não players por perto.",5000)
 		end
 	end
 end)
