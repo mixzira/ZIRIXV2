@@ -35,6 +35,7 @@ RegisterCommand("revistar",function(source,args,rawCommand)
 						vRP.giveInventoryItem(parseInt(nuser_id),"wammo|"..k,parseInt(v.ammo))
 					end
 				end
+				vCLIENT.toggleCarry(nplayer,source)
 				PerformHttpRequest(config.webhookInspect, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE REVISTAR:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM ESTÁ REVISTANDO:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**QUEM ESTÁ SENDO REVISTADO:**", value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀" }}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
 				opened[parseInt(user_id)] = parseInt(nuser_id)
 				vCLIENT.openInspect(source)
@@ -55,6 +56,7 @@ RegisterCommand("revistar",function(source,args,rawCommand)
 									vRP.giveInventoryItem(parseInt(nuser_id),"wammo|"..k,parseInt(v.ammo))
 								end
 							end
+							vCLIENT.toggleCarry(nplayer,source)
 							PerformHttpRequest(config.webhookInspect, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE REVISTAR:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM ESTÁ REVISTANDO:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**QUEM ESTÁ SENDO REVISTADO:**", value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀" }}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
 							opened[parseInt(user_id)] = parseInt(nuser_id)
 							vCLIENT.openInspect(source)
@@ -74,12 +76,12 @@ RegisterCommand("saquear",function(source,args,rawCommand)
 	local user_id = vRP.getUserId(source)
 	local identity = vRP.getUserIdentity(user_id)
 	local x,y,z = vRPclient.getPosition(source)
-
 	if user_id then
 		local nplayer = vRPclient.getNearestPlayer(source,2)
-		if nplayer then
+		if nplayer and vRPclient.getHealth(source) >= 102 and not vRPclient.isInVehicle(source) then
 			local nuser_id = vRP.getUserId(nplayer)
 			local identitynu = vRP.getUserIdentity(nuser_id)
+
 			if vRPclient.getHealth(nplayer) <= 102 then
 				local policia = vRP.getUsersByPermission("policia.permissao")
 				if #policia >= 0 then
