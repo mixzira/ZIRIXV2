@@ -129,6 +129,15 @@ const updateMochila = () => {
 		$('#pesoinfo').html(`
 			<div class="peso"><b>EM USO:</b>  ${(data.peso).toFixed(2)}Kg    <s>|</s>    <b>DISPONÍVEL:</b>  ${(data.maxpeso-data.peso).toFixed(2)}Kg     <s>|</s>    <b>TAMANHO:</b>  ${(data.maxpeso).toFixed(2)}Kg</div>
 		`);
+		$('#inventario-titulo').html(`
+			<div class="pesomochila">
+				<div id="pesoinfo"></div>
+			</div>
+			<input id="amount" class="qtd" maxlength="9" spellcheck="false" value="" placeholder="Quantidade">
+			<div class="usar"><img src="${data.ip}/images/vrp_itens/usar.png"></div>
+			<div class="enviar"><img src="${data.ip}/images/vrp_itens/enviar.png"></div>
+			<div class="dropar"><img src="${data.ip}/images/vrp_itens/dropar.png"></div>
+		`);
 		updateDrag();
 	});
 }
