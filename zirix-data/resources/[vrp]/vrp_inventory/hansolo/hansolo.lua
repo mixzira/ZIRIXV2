@@ -107,9 +107,10 @@ end)
 --[ MOCHILA ]----------------------------------------------------------------------------------------------------------------------------
 
 RegisterNUICallback("requestMochila",function(data,cb)
-	local inventario,peso,maxpeso = vRPNserver.Mochila()
+    local inventario,peso,maxpeso = vRPNserver.Mochila()
+    local ip = config.imageServer
 	if inventario then
-		cb({ inventario = inventario, peso = peso, maxpeso = maxpeso })
+		cb({ inventario = inventario, peso = peso, maxpeso = maxpeso, ip = ip })
 	end
 end)
 
