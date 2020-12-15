@@ -51,12 +51,9 @@ function vRPN.sendItem(itemName,type,amount)
 					if vRP.tryGetInventoryItem(user_id,itemName,amount) then
 						vRP.giveInventoryItem(nuser_id,itemName,amount)
 						vRPclient._playAnim(source,true,{{"mp_common","givetake1_a"}},false)
-						
 						PerformHttpRequest(config.webhookSend, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM ENVIADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{name = "**QUEM ENVIOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**ITEM ENVIADO:**", value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(amount)).."** ]"}, {name = "**QUEM RECEBEU:**", value = "**"..identitynu.name.." "..identitynu.firstname.."** [**"..nuser_id.."**]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀"}}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y |: %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
-
 						TriggerClientEvent("itensNotify",source,"sucesso","Enviou",""..vRP.itemNameList(itemName).."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
 						TriggerClientEvent("itensNotify",nplayer,"sucesso","Recebeu",""..vRP.itemNameList(itemName).."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
-						
 						vRPclient._playAnim(nplayer,true,{{"mp_common","givetake1_a"}},false)
 						TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
 						TriggerClientEvent('vrp_inventory:Update',nplayer,'updateMochila')
@@ -83,86 +80,10 @@ function vRPN.dropItem(itemName,type,amount)
 			if parseInt(amount) > 0 and vRP.tryGetInventoryItem(user_id,itemName,amount) then
 				TriggerEvent("DropSystem:create",itemName,amount,x,y,z,3600)
 				vRPclient._playAnim(source,true,{{"pickup_object","pickup_low"}},false)
-
-				PerformHttpRequest(logInvDropar, function(err, text, headers) end, 'POST', json.encode({
-					embeds = {
-						{ 	------------------------------------------------------------
-							title = "REGISTRO DE ITEM DROPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-							thumbnail = {
-							url = "https://i.imgur.com/5ydYKZg.png"
-							}, 
-							fields = {
-								{ 
-									name = "**QUEM DROPOU:**", 
-									value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-								},
-								{ 
-									name = "**ITEM DROPADO:**", 
-									value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(amount)).."** ]\n⠀⠀"
-								},
-								{ 
-									name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**",
-									value = "⠀"
-								}
-							}, 
-							footer = {
-								text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-								icon_url = "https://i.imgur.com/5ydYKZg.png" 
-							},
-							color = 16431885 
-						}
-					}
-				}), { ['Content-Type'] = 'application/json' })
-
-				local nameFix = string.gsub(itemName,"|","-")
-				TriggerClientEvent("itensNotify",source,"sucesso","Dropou",""..nameFix.."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
+				PerformHttpRequest(config.webhookDrop, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM DROPADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM DROPOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]" }, { name = "**ITEM DROPADO:**", value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(amount)).."** ]\n⠀⠀"}, { name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**", value = "⠀"}}, footer = {text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon }, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
+				TriggerClientEvent("itensNotify",source,"sucesso","Dropou",""..vRP.itemNameList(itemName).."",""..vRP.format(parseInt(amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(amount)).."")
 				TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
 				return true
-			else
-				local data = vRP.getUserDataTable(user_id)
-				for k,v in pairs(data.inventory) do
-					if itemName == k then
-						if vRP.tryGetInventoryItem(user_id,itemName,parseInt(v.amount)) then
-							TriggerEvent("DropSystem:create",itemName,parseInt(v.amount),x,y,z,3600)
-							vRPclient._playAnim(source,true,{{"pickup_object","pickup_low"}},false)
-
-							PerformHttpRequest(logInvDropar, function(err, text, headers) end, 'POST', json.encode({
-								embeds = {
-									{ 	------------------------------------------------------------
-										title = "REGISTRO DE ITEM DROPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-										thumbnail = {
-										url = "https://i.imgur.com/5ydYKZg.png"
-										}, 
-										fields = {
-											{ 
-												name = "**QUEM DROPOU:**", 
-												value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-											},
-											{ 
-												name = "**ITEM DROPADO:**", 
-												value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(v.amount)).."** ]\n⠀⠀"
-											},
-											{ 
-												name = "**LOCAL: "..tD(x)..", "..tD(y)..", "..tD(z).."**",
-												value = "⠀"
-											}
-										}, 
-										footer = { 
-											text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"),
-											icon_url = "https://i.imgur.com/5ydYKZg.png" 
-										},
-										color = 16431885 
-									}
-								}
-							}), { ['Content-Type'] = 'application/json' })
-
-							local nameFix = string.gsub(itemName,"|","-")
-							TriggerClientEvent("itensNotify",source,"sucesso","Dropou",""..nameFix.."",""..vRP.format(parseInt(v.amount)).."",""..vRP.format(vRP.getItemWeight(itemName)*parseInt(v.amount)).."")
-							TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
-							return true
-						end
-					end
-				end
 			end
 		end
 	end
@@ -173,14 +94,12 @@ end
 
 local pick = {}
 local blips = {}
+
 function vRPN.useItem(itemName,type,ramount)
 	local source = source
 	local user_id = vRP.getUserId(source)
 	if user_id and ramount ~= nil and parseInt(ramount) >= 0 and not actived[user_id] and actived[user_id] == nil then
 		if type == "usar" then
-			---------
-			--[ ULTILITÁRIOS ]--------------------------------------------------------------------------------------------------------------------------------
-			---------
 			if itemName == "mochila" then
 				if vRP.getInventoryMaxWeight(user_id) >= 90 then
 					TriggerClientEvent("Notify",source,"negado","Você não pode equipar mais mochilas.",8000)
@@ -1125,35 +1044,8 @@ function vRPN.useItem(itemName,type,ramount)
 				local nameweapon = string.gsub(itemName,"wbody|","")
 				weapons[string.gsub(itemName,"wbody|","")] = { ammo = 0 }
 				vRPclient._giveWeapons(source,weapons)
-
-				PerformHttpRequest(logInvEquipar, function(err, text, headers) end, 'POST', json.encode({
-					embeds = {
-						{ 	------------------------------------------------------------
-							title = "REGISTRO DE ITEM EQUIPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-							thumbnail = {
-							url = "https://i.imgur.com/5ydYKZg.png"
-							}, 
-							fields = {
-								{ 
-									name = "**QUEM EQUIPOU:**", 
-									value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-								},
-								{ 
-									name = "**ITEM EQUIPADO:**", 
-									value = "[ **Item: "..vRP.itemNameList(itemName).."** ]"
-								}
-							}, 
-							footer = { 
-								text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-								icon_url = "https://i.imgur.com/5ydYKZg.png" 
-							},
-							color = 16431885 
-						}
-					}
-				}), { ['Content-Type'] = 'application/json' })
-				
-				local nameFix = string.gsub(itemName,"|","-")
-				TriggerClientEvent("itensNotify",source,"usar","Equipou",""..nameFix.."")
+				PerformHttpRequest(config.webhookEquip, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM EQUIPADO:\n⠀",thumbnail = {url = config.webhookIcon}, fields = {{name = "**QUEM EQUIPOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, {name = "**ITEM EQUIPADO:**", value = "[ **Item: "..vRP.itemNameList(itemName).."** ]"}}, footer = {text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
+				TriggerClientEvent("itensNotify",source,"usar","Equipou",""..vRP.itemNameList(itemName).."")
 				TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
 			end
 		elseif type == "recarregar" then
@@ -1177,35 +1069,8 @@ function vRPN.useItem(itemName,type,ramount)
 							weapons[weaponuse] = { ammo = v.amount }
 							itemAmount = v.amount
 							vRPclient._giveWeapons(source,weapons,false)
-							
-							PerformHttpRequest(logInvEquipar, function(err, text, headers) end, 'POST', json.encode({
-								embeds = {
-									{ 	------------------------------------------------------------
-										title = "REGISTRO DE ITEM EQUIPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-										thumbnail = {
-										url = "https://i.imgur.com/5ydYKZg.png"
-										}, 
-										fields = {
-											{ 
-												name = "**QUEM EQUIPOU:**", 
-												value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-											},
-											{ 
-												name = "**ITEM EQUIPADO:**", 
-												value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(v.amount)).."** ]"
-											}
-										}, 
-										footer = { 
-											text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-											icon_url = "https://i.imgur.com/5ydYKZg.png" 
-										},
-										color = 16431885 
-									}
-								}
-							}), { ['Content-Type'] = 'application/json' })
-							
-							local nameFix = string.gsub(itemName,"|","-")
-							TriggerClientEvent("itensNotify",source,"usar","Recarregou",""..nameFix.."")
+							PerformHttpRequest(config.webhookEquip, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM EQUIPADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM EQUIPOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, { name = "**ITEM EQUIPADO:**", value = "[ **Item: "..vRP.itemNameList(itemName).."** ][ **Quantidade: "..vRP.format(parseInt(v.amount)).."** ]"}}, footer = {text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon},color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
+							TriggerClientEvent("itensNotify",source,"usar","Recarregou",""..vRP.itemNameList(itemName).."")
 							TriggerClientEvent('vrp_inventory:Update',source,'updateMochila')
 						end
           			end
@@ -1227,73 +1092,19 @@ RegisterCommand('garmas',function(source,args,rawCommand)
 	local user_id = vRP.getUserId(source)
 	local identity = vRP.getUserIdentity(user_id)
 	local rtime = math.random(3,8)
-
 	TriggerClientEvent("Notify",source,"aviso","<b>Aguarde!</b> Suas armas estão sendo desequipadas.",9500)
 	TriggerClientEvent("progress",source,10000,"guardando")
-
 	SetTimeout(1000*rtime,function()
 		if user_id then
 			local weapons = vRPclient.replaceWeapons(source,{})
 			for k,v in pairs(weapons) do
 				vRP.giveInventoryItem(user_id,"wbody|"..k,1)
-
-				PerformHttpRequest(logInvDesequipar, function(err, text, headers) end, 'POST', json.encode({
-					embeds = {
-						{ 	------------------------------------------------------------
-							title = "REGISTRO DE ITEM DESEQUIPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-							thumbnail = {
-							url = "https://i.imgur.com/5ydYKZg.png"
-							}, 
-							fields = {
-								{ 
-									name = "**QUEM DESEQUIPOU:**", 
-									value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-								},
-								{ 
-									name = "**ITEM EQUIPADO:**", 
-									value = "[ **Item: "..k.."** ][ **Quantidade: 1** ]"
-								}
-							}, 
-							footer = { 
-								text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-								icon_url = "https://i.imgur.com/5ydYKZg.png" 
-							},
-							color = 16431885 
-						}
-					}
-				}), { ['Content-Type'] = 'application/json' })
-
+				PerformHttpRequest(config.webhookUnEquip, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM DESEQUIPADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{ name = "**QUEM DESEQUIPOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"},{ name = "**ITEM EQUIPADO:**", value = "[ **Item: "..k.."** ][ **Quantidade: 1** ]"}}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
 				if v.ammo > 0 then
 					vRP.giveInventoryItem(user_id,"wammo|"..k,v.ammo)
-
-					PerformHttpRequest(logInvDesequipar, function(err, text, headers) end, 'POST', json.encode({
-						embeds = {
-							{ 	------------------------------------------------------------
-								title = "REGISTRO DE ITEM DESEQUIPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-								thumbnail = {
-								url = "https://i.imgur.com/5ydYKZg.png"
-								}, 
-								fields = {
-									{ 
-										name = "**QUEM DESEQUIPOU:**", 
-										value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-									},
-									{ 
-										name = "**ITEM DESEQUIPADO:**", 
-										value = "[ **Item: "..k.."** ][ **Quantidade: "..vRP.format(parseInt(v.ammo)).."** ]"
-									}
-								}, 
-								footer = { 
-									text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-									icon_url = "https://i.imgur.com/5ydYKZg.png" 
-								},
-								color = 16431885 
-							}
-						}
-					}), { ['Content-Type'] = 'application/json' })
+					PerformHttpRequest(config.webhookUnEquip, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM DESEQUIPADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{name = "**QUEM DESEQUIPOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, {name = "**ITEM DESEQUIPADO:**", value = "[ **Item: "..k.."** ][ **Quantidade: "..vRP.format(parseInt(v.ammo)).."** ]"}}, footer = { text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon},color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
 				end
 			end
-
 			TriggerClientEvent("Notify",source,"sucesso","Guardou seu armamento na mochila.")
 		end
 	end)
@@ -1309,7 +1120,6 @@ RegisterCommand('gcolete',function(source,args,rawCommand)
 	local user_id = vRP.getUserId(source)
 	local identity = vRP.getUserIdentity(user_id)
 	local rtime = math.random(3,8)
-
 	if vRPclient.getArmour(source) <= 99 then
 		TriggerClientEvent("Notify",source,"negado","Você não pode desequipar um <b>colete danificado</b>.")
 	else	
@@ -1317,33 +1127,7 @@ RegisterCommand('gcolete',function(source,args,rawCommand)
 		TriggerClientEvent("progress",source,10000,"guardando")
 		SetTimeout(1000*rtime,function()
 			if vRP.getInventoryWeight(user_id)+vRP.getItemWeight("colete") <= vRP.getInventoryMaxWeight(user_id) then
-
-				PerformHttpRequest(logInvDesequipar, function(err, text, headers) end, 'POST', json.encode({
-					embeds = {
-						{ 	------------------------------------------------------------
-							title = "REGISTRO DE ITEM DESEQUIPADO:⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n⠀",
-							thumbnail = {
-							url = "https://i.imgur.com/5ydYKZg.png"
-							}, 
-							fields = {
-								{ 
-									name = "**QUEM DESEQUIPOU:**", 
-									value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"
-								},
-								{ 
-									name = "**ITEM DESEQUIPADO:**", 
-									value = "[ **Item: Colete** ][ **Quantidade: 1** ]"
-								}
-							}, 
-							footer = { 
-								text = "ZIRIX - "..os.date("%d/%m/%Y | %H:%M:%S"), 
-								icon_url = "https://i.imgur.com/5ydYKZg.png" 
-							},
-							color = 16431885 
-						}
-					}
-				}), { ['Content-Type'] = 'application/json' })
-
+				PerformHttpRequest(config.webhookUnEquip, function(err, text, headers) end, 'POST', json.encode({embeds = {{title = "REGISTRO DE ITEM DESEQUIPADO:\n⠀", thumbnail = {url = config.webhookIcon}, fields = {{name = "**QUEM DESEQUIPOU:**", value = "**"..identity.name.." "..identity.firstname.."** [**"..user_id.."**]"}, {name = "**ITEM DESEQUIPADO:**", value = "[ **Item: Colete** ][ **Quantidade: 1** ]"}}, footer = {text = config.webhookBottom..os.date("%d/%m/%Y | %H:%M:%S"), icon_url = config.webhookIcon}, color = config.webhookColor}}}), { ['Content-Type'] = 'application/json' })
 				vRP.giveInventoryItem(user_id,"colete",1)
 				vRPclient.setArmour(source,0)
 			else
