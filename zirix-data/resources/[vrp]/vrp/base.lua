@@ -534,7 +534,7 @@ AddEventHandler("queue:playerConnecting",function(source,ids,name,setKickReason,
 						deferrals.done()
 					end
 				else
-					deferrals.done("Esse é o servidor de desenvolvimento! [ Adquira a sua ZIRIX em: discord.gg/ziraflix ][ ID: "..user_id.." ]")
+					deferrals.done("Esse é o servidor de desenvolvimento! [ Adquira a sua ZIRIX em: discord.gg/MgvQnUaTJ4 ][ ID: "..user_id.." ]")
 					TriggerEvent("queue:playerConnectingRemoveQueues",ids)
 				end
 			else
