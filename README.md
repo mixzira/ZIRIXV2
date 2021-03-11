@@ -8,7 +8,7 @@ Está versão passará constantemente por atualizações, implementando novos sc
 Caso o download da base esteja corrompendo, baixe utilizando o [GitHub Desktop](https://desktop.github.com).
 
 ## Suporte
-Você pode buscar suporte em nossa comunidade em: https://discord.gg/MgvQnUaTJ4
+Você pode buscar suporte em nosso [Discord](https://discord.gg/MgvQnUaTJ4). 
 
 ## Contato
 - **Comercial: contato@ziraflix.com**
