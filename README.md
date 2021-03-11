@@ -1,4 +1,4 @@
-# ZIRIX V2 (0.1.6)
+# ZIRIX V2
 **ZIRIX é uma base vRPex para FiveM, com um conjunto de scripts da comunidade e do grupo de desenvolvimento da ZIRAFLIX**.
 
 ## Versão gratuita e atualizada!
