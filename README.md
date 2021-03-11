@@ -6,7 +6,7 @@ Está versão passará constantemente por atualizações, implementando novos sc
 
 ## Está tendo problemas para baixar?
 Caso o download da base esteja corrompendo, baixe utilizando o Github desktop.
-Download do Github Desktop: https://desktop.github.com
+- Download do Github Desktop: https://desktop.github.com
 
 ## Suporte
 Você pode buscar suporte em nossa comunidade em: https://discord.gg/MgvQnUaTJ4
