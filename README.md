@@ -5,7 +5,7 @@
 Está versão passará constantemente por atualizações, implementando novos scripts e corrigindo bugs. Em troca pedimos apenas que reportem os bugs em nosso Discord.
 
 ## Está tendo problemas para baixar?
-Caso o download da base esteja corrompendo, baixe utilizando o [Github desktop](https://desktop.github.com).
+Caso o download da base esteja corrompendo, baixe utilizando o [GitHub Desktop](https://desktop.github.com).
 
 ## Suporte
 Você pode buscar suporte em nossa comunidade em: https://discord.gg/MgvQnUaTJ4
