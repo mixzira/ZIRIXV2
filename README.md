@@ -9,8 +9,6 @@ Download do Github Desktop: https://desktop.github.com
 Você pode buscar suporte em nossa comunidade em: https://discord.gg/MgvQnUaTJ4
 
 ### Contato
-```
-• Comercial: contato@ziraflix.com
-• Discord: https://discord.gg/MgvQnUaTJ4
-• Website: https://ziraflix.com
-```
+• Comercial: contato@ziraflix.com #
+• Discord: https://discord.gg/MgvQnUaTJ4 #
+• Website: https://ziraflix.com #
