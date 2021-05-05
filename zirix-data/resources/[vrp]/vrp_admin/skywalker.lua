@@ -394,8 +394,8 @@ RegisterCommand('reviver',function(source,args,rawCommand)
 
                 vRPclient.killGod(nplayer)
 				vRPclient.setHealth(nplayer,400)
-				vRP.varyThirst(nplayer,-15)
-				vRP.varyHunger(nplayer,-15)
+				vRP.varyThirst(nuser_id,-15)
+				vRP.varyHunger(nuser_id,-15)
             end
 		else
 			PerformHttpRequest(logAdminReviver, function(err, text, headers) end, 'POST', json.encode({
@@ -422,8 +422,8 @@ RegisterCommand('reviver',function(source,args,rawCommand)
 
             vRPclient.killGod(source)
 			vRPclient.setHealth(source,400)
-			vRP.varyThirst(source,-100)
-			vRP.varyHunger(source,-100)
+			vRP.varyThirst(user_id,-100)
+			vRP.varyHunger(user_id,-100)
         end
     end
 end)
